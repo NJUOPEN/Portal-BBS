@@ -17,7 +17,7 @@ class SQL_Operator
 	public $OK;//指示当前状态是否正常
 	private $state;//指示当前状态，外部不可更改
 	
-	public function __construct()//析构函数
+	public function __construct()//构造函数
 	{
 		$OK=false;	$state=false;
 		$db=mysql_connect(SQL_HOST,SQL_ACCOUNT,SQL_PASSWORD);
