@@ -1,44 +1,46 @@
 <?php
-/*
-Project: NJUOPEN/Portal-BBS
-Contributor:WHZ
-*/
+/**
+ * Project: NJUOPEN/Portal-BBS
+ * Contributor:WHZ
+ * Filename: log.php
+ */
 
-//登录:POST,username=username&password=password&action=login
-//登出:POST,action=logout
 //参考:blog.csdn.net/sysprogram/article/details/21107041
 
-header("Content-type: text/html; charset=utf-8");
-
-//登录
-if ($_POST['action']=='login') {
-	$username = $_POST['username'];
-	$password = sha1($_POST['password']);//TODO 散列函数
-
-	//连接数据库
-	include('SQL.php');
-	$data = new SQL_Operator;
-
-	//认证
-	$check_result = $data->get('user_list', $username, $password);//TODO 表的名称
-	if(!empty($check_result)){
-    	//登录成功
-   		session_start();
-    	$_SESSION['username'] = $username;
-    	$_SESSION['userid'] = $check_result['userid'];
-    	echo "登录成功<br />";
-    	exit;
-	} else {
-    	exit("登录失败<br />");
+class log {
+	/**
+	 * 登录
+	 */
+	public function login($params) {
+		$username = $params['username'];
+		$password = sha1($params['password']);
+		//TODO 数据库存储的是明码还是hash值?
+		//连接数据库
+		include('SQL.php');
+		$data = new SQL_Operator;
+		//认证
+		// TODO 可以写SQL_Operator::get吗?
+		$check_result = $data->get('BaseInfOfUsers', $username, $password);
+		if(!empty($check_result)) { //登录成功
+   			session_start();
+    		$_SESSION['username'] = $username;
+    		$_SESSION['userid'] = $check_result['userid'];
+    		echo "登录成功<br />";
+    		exit;
+		} else {
+    		exit("登录失败<br />");
+		}
 	}
-}
 
-//登出
-if($_POST['action'] == "logout"){
-    unset($_SESSION['userid']);
-    unset($_SESSION['username']);
-    echo "注销<br />";
-    exit;
+	/**
+	 * 登出
+	 */
+	public function logout() {
+    		unset($_SESSION['userid']);
+    		unset($_SESSION['username']);
+    		echo "注销成功<br />";
+    		exit;
+    }
 }
 
 ?>
