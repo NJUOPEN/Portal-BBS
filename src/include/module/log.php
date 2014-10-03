@@ -13,12 +13,11 @@ header("Content-type: text/html; charset=utf-8");
 //登录
 if ($_POST['action']=='login') {
 	$username = $_POST['username'];
-	$password = $_POST['password'];//TODO 散列函数
+	$password = sha1($_POST['password']);//TODO 散列函数
 
 	//连接数据库
 	include('SQL.php');
 	$data = new SQL_Operator;
-	$data->__construct();
 
 	//认证
 	$check_result = $data->get('user_list', $username, $password);//TODO 表的名称
