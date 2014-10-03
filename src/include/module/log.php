@@ -19,7 +19,6 @@ class log {
 		include('SQL.php');
 		$data = new SQL_Operator;
 		//认证
-		// TODO 可以写SQL_Operator::get吗?
 		$check_result = $data->get('BaseInfOfUsers', $username, $password);
 		if(!empty($check_result)) { //登录成功
    			session_start();
