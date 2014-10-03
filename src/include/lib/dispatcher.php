@@ -7,7 +7,7 @@
  * 研究了emlog和网上的一些dispatcher例子,对于路由表的概念不太理解,
  * 不明白如何直接通过一个method变量就能来创造类,暂时只能将就着用switch罗列出来
  */
-class Dispatcher() {
+class Dispatcher {
     /**
      * 指示需要调用的模块
      */
