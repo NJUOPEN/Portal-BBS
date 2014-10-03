@@ -45,4 +45,6 @@ class SQL_Operator
 		}
 		return $result;
 	}
+	
+	
 }
