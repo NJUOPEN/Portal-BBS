@@ -30,9 +30,11 @@ class Dispatcher {
     public function dispatcher() {
         switch ($this->action) {
             case 'login' :
+                include('log.php');
                 Log::login($this->params);
                 break;
             case 'logout' :
+                include('log.php');
                 Log::logout();
                 break;
             // TODO add more
