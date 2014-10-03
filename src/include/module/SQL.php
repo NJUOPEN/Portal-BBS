@@ -25,8 +25,8 @@ class SQL_Operator
 		$db=mysql_connect(SQL_HOST,SQL_ACCOUNT,SQL_PASSWORD);
 		if (!$db)  return;
 		if (!mysql_select_db(SQL_DB,$db)) return;
-		define($tableOfUsers,'BaseInfOfUsers');
-	        define($tableOfPost,'PostOfUsers');
+	$tableOfUsers='BaseInfOfUsers';
+	$tableOfPost='PostOfUsers';
 		$OK=true;	$state=true;
 	}
 	public function checkTable($tableName)//检测表是否存在；若不存在，则创建之；返回值：true/false
@@ -85,39 +85,41 @@ class SQL_Operator
 		$num=getTotalNumOfPost();
 		mysql_query('insert into '.$tableOfPost.' values('.$ID.','.$IDofUser.','.$Time.$ifFollow.','.$addOfPost.','.$numOfFellow.','.$idOfFellow.');',$db);
 	}
-	public function addUser(){//新建用户
+	public function addUser($SysID ,$Name ,$Code ,$Picture ,$Root ,$Rank ,
+$Blank ,$Gender ,$Age ){//新建用户
 		if(!$state)return null;
-		mysql_query('insert into '.$tableOfUsers);
+		mysql_query('insert into '.$tableOfUsers.' values('.$SysID.' ,'.$Name .','.$Code.' ,'.$Picture.' ,'.$Root.' ,'.$Rank.','
+.$Blank.' ,'.$Gender.' ,'.$Age,$db);
 	}
 	public function resetUserName($idOfUser,$name){//更改用户名
 				if(!$state)return null;
-		mysql_query('update '.$tableOfUsers.' set Name='.$name.' where SysID='.$idOfUser.';');	
+		mysql_query('update '.$tableOfUsers.' set Name='.$name.' where SysID='.$idOfUser.';',$db);	
 	}
 	public function resetUserCode($idOfUser,$code){//更改密码
 			if(!$state)return null;
-		mysql_query('update '.$tableOfUsers.' set Code='.$code.' where SysID='.$idOfUser.';');		
+		mysql_query('update '.$tableOfUsers.' set Code='.$code.' where SysID='.$idOfUser.';',$db);		
 	}
 	public function resetUserRank($idOfUser,$rank){//更改排名
 			if(!$state)return null;
 	
-		mysql_query('update '.$tableOfUsers.' set Rank='.$rank.' where SysID='.$idOfUser.';');
+		mysql_query('update '.$tableOfUsers.' set Rank='.$rank.' where SysID='.$idOfUser.';',$db);
 	}
 	public function resetUserRoot($idOfUser,$root){//更改权限
 			if(!$state)return null;
-		mysql_query('update '.$tableOfUsers.' set Root='.$root.' where SysID='.$idOfUser.';');	
+		mysql_query('update '.$tableOfUsers.' set Root='.$root.' where SysID='.$idOfUser.';',$db);	
 		
 	}
 	public function resetUserPicture($idOfUser,$picture){//更改头像
 			if(!$state)return null;
 	
-		mysql_query('update '.$tableOfUsers.' set Picture='.$picture.' where SysID='.$idOfUser.';');
+		mysql_query('update '.$tableOfUsers.' set Picture='.$picture.' where SysID='.$idOfUser.';',$db);
 	}
 	public function resetPost($idOfPost){//更新更贴数目
 		if(!$state)return null;
 		$InfOfPost=getInfOfPost($idOfPost);
 		$NumOfPost=(int)$InfOfPost[5];
 		$NumOfPost=$NumOfPost+1;
-		mysql_query('update '.$tableOfPost.' set FellowNum='.$NumOfPost.' where PostID='.$idOfPost.';');
+		mysql_query('update '.$tableOfPost.' set FellowNum='.$NumOfPost.' where PostID='.$idOfPost.';',$db);
 	}
 	public function getTotalNumOfPost(){//统计总的帖子数目
 		if(!$state)return null;
