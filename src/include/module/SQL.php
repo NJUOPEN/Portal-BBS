@@ -6,7 +6,13 @@ Contributor:ZFY,WTZ
 Software Licence: GPLv2 or later
 */
 
-//此模块加载前，数据库配置信息（主机、用户名、密码、数据库名等）应当已经加载
+/*
+此模块加载前，以下常量应当已经初始化：
+	SQL_HOST:数据库IP地址；
+	SQL_ACCOUNT：数据库用户名；
+	SQL_PASSWORD：数据库密码；
+	SQL_DB：数据库名；
+*/
 
 class SQL_Operator
 {
@@ -32,7 +38,7 @@ class SQL_Operator
 	public function checkTable($tableName)//检测表是否存在；若不存在，则创建之；返回值：true/false
 	{
 		mysql_query('CREATE TABLE IF NOT EXISTS '.$tableName.';',$db);
-		if(mysql_num_rows(mysql_query("SHOW TABLES LIKE '".$tableName."'",$db)==1)
+		if(mysql_num_rows(mysql_query("SHOW TABLES LIKE ".$tableName.";",$db))==1)
 			return true;
 		else
 			return false;
@@ -130,8 +136,284 @@ $Blank ,$Gender ,$Age ){//新建用户
 			array_push($result,$temp);
 		}
 		return $result;
-	}
+	}	
+}
 
+
+
+class SQL_Obj
+{
+	const SQL_DATE_FORMAT='Y-m-d h:m:s';
 	
+	protected $db; //数据库对象的句柄
 	
+	public $OK;//指示当前状态是否正常
+	private $state;//指示当前状态，外部不可更改
+	
+	public function __construct() //构造函数，初始化SQL接口并设置状态变量($OK)
+	{
+		$OK=false;	$state=false;
+		$db=mysql_connect(SQL_HOST,SQL_ACCOUNT,SQL_PASSWORD);
+		if (!$db)  return;
+		if (!mysql_select_db(SQL_DB,$db)) return;
+		$OK=true;
+		$state=true;
+	}
+	
+	protected function checkTable($tableName) //检测表是否存在；若不存在，则创建之；返回值：true/false
+	{
+		mysql_query('CREATE TABLE IF NOT EXISTS '.$tableName.';',$db);
+		if(mysql_num_rows(mysql_query("SHOW TABLES LIKE '".$tableName."'",$db))==1)
+			return true;
+		else
+			return false;
+	}
+	
+	protected static function resourceToArray($resID) //将SQL查询返回的资源ID转变成可用的字符串数组
+	{
+		$result=array();//用于存放查询结果的数组
+		while($temp=mysql_fetch_array($resID))//判断每次取出的记录是否为空
+		{
+			array_push($result,$temp);
+		}
+		return $result;	
+	}
+	
+	protected static function buildCondition($fieldName,$fieldValue)
+	{
+	/*
+		功能：
+			通过字段名与给定值之间的关系来构建查询条件（WHERE子句）；
+		参数:
+			$fieldName:要进行比较的字段；
+			$fieldValue:要进行比较的值；
+		返回值：
+			构建好的查询条件（单个）；
+	*/
+		if ($fieldName==NULL || $fieldName=='')
+		{
+			return '';
+		}
+		else
+		{
+			return ' WHERE "'.$fieldName.'"="'.$fieldValue.'"';
+		}
+	}
+	
+	protected static function buildConditions($fieldList)
+	{
+	/*	
+		功能：
+			通过字段名与给定值之间的关系来构建查询条件（WHERE子句）；
+		参数:
+			$fieldList:要进行比较的条件数组，其中每一个元素都应包括如下的MAP结构：
+				name：字段名称；
+				condition：比较条件，可以是'>  =  <  >=  <=  !='中的任何一个；
+				value：进行比较的值（string类型）；
+				//TODO：还可以添加不同比较之间的逻辑关系，如AND、OR、NOT；
+		返回值：
+			构建好的查询条件（多个）
+	*/
+		foreach ($fieldList as $field)
+		{
+			if ($field['name'] && $field['value'])
+				$condition.='"'.$field['name'].'"'.$field['condition'].'"'.$field['value'].'" AND ';
+		}
+		if ($condition=='')
+			return '';
+		else
+			return ' WHERE '.substr($condition,0,strlen($condition)-5);//截去末尾多余的' AND '
+	}
+	
+	protected function addRecord($tableName,$value)
+	{
+	/*	
+		功能：
+			添加一条记录；
+		参数:
+			$tableName:需要操作的表的名称；
+			$value:要添加的记录；
+		返回值：
+			true/false：操作成功或失败；
+	*/
+		if (count($value)<1) return false;
+		if (!$state) return false;
+		if (!checkTable($tableName)) return false;
+		$query='INSERT INTO '.$tableName;
+		foreach (array_keys($value) as $temp)
+		{
+			$query.='"'.$temp.'",';
+		}
+		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
+		$query.=') VALUES(';
+		foreach (array_values($value) as $temp)
+		{
+			$query.='"'.$temp.'",';
+		}
+		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
+		$query.=');';
+		mysql_query($query,$db);
+		if (mysql_affected_rows()>0) return true; else return false;		
+	}
+	
+	protected function getRecordByField($tableName,$fieldName,$value) 
+	{
+	/*	
+		功能：
+			查找具有与给定值相等的某个字段的记录；
+		参数:
+			$tableName:需要操作的表的名称；
+			$fieldName:要进行比较的字段名称；
+			$value:要进行比较的值；
+		返回值：
+			记录数组，每一个记录对应数组中的每一个元素
+	*/
+		if (!$state) return NULL;
+		if (!checkTable($tableName)) return NULL;
+		return self::resourceToArray(mysql_query('SELECT * FROM '.$tableName.self::buildCondition($fieldName,$value).';',$db));
+	}
+	
+	protected function setRecordByField($tableName,$fieldName,$value,$record) 
+	{
+	/*	
+		功能：
+			查找具有与给定值相等的某个字段的记录，并更新该记录；
+		参数:
+			$tableName:需要操作的表的名称；
+			$fieldName:要进行比较的字段名称；
+			$value：要进行比较的值；
+			$record：新的记录值（包含所有字段）；
+		返回值：
+			true/false：操作成功或失败；
+	*/
+		if (count($record)<1) return false;
+		if (!$state) return false;
+		if (!checkTable($tableName)) return false;
+		$query='UPDATE FROM '.$tableName.'(';
+		foreach (array_keys($value) as $temp)
+		{
+			$query.='"'.$temp.'",';
+		}
+		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
+		$query.=') VALUES(';
+		foreach (array_values($value) as $temp)
+		{
+			$query.='"'.$temp.'",';
+		}
+		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
+		$query.=')'.self::buildCondition($fieldName,$value).';';
+		mysql_query($query,$db);
+		if (mysql_affected_rows()>0) return true; else return false;
+	}
+	
+	protected function setFieldByField($tableName,$fieldName,$value,$newFieldName,$newFieldValue) 
+	{
+	/*	
+		功能：
+			查找具有与给定值相等的某个字段的记录，并更新该记录的指定字段；是setRecordByField的简化版；
+		参数:
+			$tableName:需要操作的表的名称；
+			$fieldName:要进行比较的字段名称；
+			$value:要进行比较的值；
+			$newFieldName：需要更新的字段名称（单个字段）；
+			$newFieldName：需要更新的字段的值；
+		返回值：
+			true/false：操作成功或失败；
+	*/
+		if (count($record)<1) return false;
+		if (!$state) return false;
+		if (!checkTable($tableName)) return false;
+		mysql_query('UPDATE FROM '.$tableName.'('.$newFieldName.') VALUES('.$newFieldValue.')'.self::buildCondition($fieldName,$value).';',$db);
+		if (mysql_affected_rows()>0) return true; else return false;
+	}
+	
+	protected function deleteRecordByField($tableName,$fieldName,$value) 
+	{
+	/*	
+		功能：
+			查找具有与给定值相等的某个字段的记录，并删除该记录；
+		参数:
+			$tableName:需要操作的表的名称；
+			$fieldName:要进行比较的字段名称；
+			$value:要进行比较的值；
+		返回值：
+			true/false：操作成功或失败；
+	*/
+		if (!$state) return false;
+		if (!checkTable($tableName)) return false;
+		mysql_query('DELETE FROM '.$tableName.self::buildCondition($fieldName,$value).';',$db);
+		if (mysql_affected_rows()>0) return true; else return false;
+	}
+}
+
+class SQL_Info extends SQL_Obj
+{
+	/*
+		功能：
+			根据某个字段的值是否相等来查找记录
+		参数:
+			$tableName:需要操作的表的名称；
+			$fieldList:要进行比较的字段列表数组，其中每一个元素都应包括如下的MAP结构：
+				name：字段名称；
+				condition：比较条件，可以是'> = < >= <= !='中的任何一个；
+				value：进行比较的值（string类型）；
+				//TODO：还可以添加不同比较之间的逻辑关系，如AND、OR、NOT；
+		返回值：（同getRecordByField）			
+	*/
+	public function getRecordByFields($tableName,$fieldList)  //根据某几个字段的值是否相等来查找记录
+	{
+		if (!$state) return NULL;
+		if (!checkTable($tableName)) return NULL;
+		$query='SELECT * FROM '.$tableName.buildCondition($fieldList);
+		return self::resourceToArray(mysql_query($query,$db));
+	}	
+}
+
+class SQL_Msg extends SQL_Obj
+{	
+}
+
+class SQL_Log extends SQL_Obj
+{
+}
+
+class SQL_User extends SQL_Info //用户操作类
+{
+	private $tableOfUsers='BaseInfOfUsers';
+	
+	public function getInfOfUser($idOfUser){//返回知道ID的用户的所有信息：字符串数组
+		return $this->getRecordByField($tableOfUsers,'SysId',$idOfUser);
+	}
+	public function delectUser($IDOfUser){//删除知道ID的用户
+		return $this->deleteRecordByField($tableOfUsers,'SysId',$IDOfUser);
+	}	
+	public function addUser($SysID ,$Name ,$Code ,$Picture ,$Root ,$Rank ,
+$Blank ,$Gender ,$Age ){//新建用户
+		//TODO:将用户信息放到一个统一的class中，参数太多不便于调用；
+		//建议将SysID的生成交给本类来完成，不必在上层做
+		return $this->addRecord($tableOfUsers,array('SysID'=>$SysID,'Name'=>$Name,'Code'=>$Code,'Picture'=>$Picture,'Root'=>$Root,'Rank'=>$Rank,'Blank'=>$Blank,'Gender'=>$Gender,'Age'=>$Age));
+	}
+	public function resetUserName($idOfUser,$name){//更改用户名
+		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Name',$name);
+	}
+	public function resetUserCode($idOfUser,$code){//更改密码
+		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Code',$code);
+	}
+	public function resetUserRank($idOfUser,$rank){//更改排名
+		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Rank',$rank);
+	}
+	public function resetUserRoot($idOfUser,$root){//更改权限
+		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Root',$root);		
+	}
+	public function resetUserPicture($idOfUser,$picture){//更改头像
+		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Picture',$picture);
+	}
+}
+
+class SQL_Post extends SQL_Msg //贴子操作类
+{
+}
+
+class SQL_SysLog extends SQL_Log //系统日志操作类
+{
 }
