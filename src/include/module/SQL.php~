@@ -6,7 +6,6 @@ Note:
 本模块包含SQL操作类，利用下列的类可以对用户、贴子等具体信息进行操作；
 
 <类继承关系图>
-SQL_Operator：临时类，外部请勿使用；待设计完善后须删除；
 SQL_Obj(基类，包含基本的添加[add]、读取[get]、写入[set]、删除[delete]记录的操作)
  |
  |--SQL_Info(信息操作类，用于需要频繁读取，但不需要频繁更新的内容)
@@ -393,7 +392,7 @@ class SQL_Info extends SQL_Obj
 	public function getRecordByFields($tableName,$fieldList)  //根据某几个字段的值是否相等来查找记录
 	{
 		if (!checkTable($tableName)) return NULL;
-		$query='SELECT * FROM '.$tableName.buildConditions($fieldList);
+		$query='SELECT * FROM '.$tableName.buildCondition($fieldList);
 		return self::resourceToArray(mysql_query($query,$db));
 	}	
 }
