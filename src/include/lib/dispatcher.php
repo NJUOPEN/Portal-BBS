@@ -7,40 +7,33 @@
  * 研究了emlog和网上的一些dispatcher例子,对于路由表的概念不太理解,
  * 不明白如何直接通过一个method变量就能来创造类,暂时只能将就着用switch罗列出来
  */
-class Dispatcher {
-    /**
-     * 指示需要调用的模块
-     */
-    private $action;
-    /**
-     * 附加的参数
-     */
-    private $params;
 
-    public function __construct() {
-        $this->action = $_POST['action'];
-        $this->params = array();
-        foreach ($_POST as $key=>$val) {
-            if ($key != 'action') {
-                $this->params[$key]=$val;
-            }
-        }
+$action;
+$params;
+//print_r($_POST);
+$action = $_POST['action'];
+$params = array();
+foreach ($_POST as $key=>$val) {
+    if ($key != 'action') {
+        $params[$key]=$val;
     }
-
-    public function dispatcher() {
-        switch ($this->action) {
-            case 'login' :
-                include('log.php');
-                Log::login($this->params);
-                break;
-            case 'logout' :
-                include('log.php');
-                Log::logout();
-                break;
-            // TODO add more
-            default:
-                echo 'model not found!';
-        }
-    }
+}
+//print_r($params);
+//echo '<br />';
+//echo "Exec switch codes<br />";
+switch ($action) {
+    case 'login' :
+        //echo "Into Login case<br />";
+        include('c:\src\log.php');
+        login($params);
+        break;
+    case 'logout' :
+        //echo "Into Logout case<br />";
+        include('c:\src\log.php');
+        logout();
+        break;
+        // TODO add more
+        default:
+        echo 'model not found!';
 }
 ?>
