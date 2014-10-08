@@ -8,6 +8,7 @@
  * 不明白如何直接通过一个method变量就能来创造类,暂时只能将就着用switch罗列出来
  */
 
+include ('C:\wamp\www\Portal-BBS\src\config.php');
 $action;
 $params;
 //print_r($_POST);
@@ -24,12 +25,12 @@ foreach ($_POST as $key=>$val) {
 switch ($action) {
     case 'login' :
         //echo "Into Login case<br />";
-        include('c:\src\log.php');
+        include(BBS_ROOT.'/src/module/log.php');
         login($params);
         break;
     case 'logout' :
         //echo "Into Logout case<br />";
-        include('c:\src\log.php');
+        include(BBS_ROOT.'/src/module/log.php');
         logout();
         break;
         // TODO add more
