@@ -13,7 +13,7 @@
 		<td>
 		<p align="center"><b><font size="7">LOGO</font></b></td>
 		<td width="483">&nbsp;&nbsp;&nbsp;&nbsp;
-		<?php if($_SESSION['SysID']=='') {?>
+		<?php if(!isset($_SESSION['SysID'])) {?>
 		<form name='test' action='?' method='POST' onsubmit='return matchName();'>
 		<p>用户名: <input id ="Name" type='text' name='Name' /></p>
 		<p>密码: <input id="Code" type='password' name='Code' /></p>
