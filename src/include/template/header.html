@@ -13,10 +13,25 @@
 		<td>
 		<p align="center"><b><font size="7">LOGO</font></b></td>
 		<td width="483">&nbsp;&nbsp;&nbsp;&nbsp;
-		<p>&nbsp;&nbsp;&nbsp;&nbsp; 账号： <input type="text" name="T2" size="20"></p>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp; 密码： <input type="text" name="T1" size="20">&nbsp;&nbsp;
+		<p>&nbsp;&nbsp;&nbsp;&nbsp; 账号： <input id="name" type="text" name="T2" size="20"></p>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp; 密码： <input id="password" type="text" name="T1" size="20">&nbsp;&nbsp;
 		</p>
 		<p>&nbsp;&nbsp;&nbsp;&nbsp; <font size="6">&nbsp;&nbsp; </font>（用户登录界面）&nbsp;&nbsp; 
 		（CSS、JS交互）</td>
 	</tr>
 </table>
+
+<script>
+	function matchName(){
+		var reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+		if(!reg.test(document.getElementById("name").value)){
+			alert("账户包含非法字符。支持中文、英文、数字、“_”");
+		}
+	}
+	function matchPassword(){
+		v x=document.getElementById("password").value.length;
+		if(x<6||x>18){
+			alert(密码长度不符。请输入6-18位密码);
+		}
+	}
+</script>
