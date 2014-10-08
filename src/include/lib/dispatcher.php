@@ -24,12 +24,12 @@ foreach ($_POST as $key=>$val) {
 switch ($action) {
     case 'login' :
         //echo "Into Login case<br />";
-        include(BBS_ROOT.'/src/module/log.php');
+        include(BBS_ROOT.'/include/module/log.php');
         login($params);
         break;
     case 'logout' :
         //echo "Into Logout case<br />";
-        include(BBS_ROOT.'/src/module/log.php');
+        include(BBS_ROOT.'/include/module/log.php');
         logout();
         break;
         // TODO add more

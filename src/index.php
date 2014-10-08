@@ -4,7 +4,7 @@
 include_once('./config.php');
 
 //进行请求分发(dispatch)
-include_once(BBS_ROOT.'/src/include/lib/dispatcher.php');
+include_once(BBS_ROOT.'/include/lib/dispatcher.php');
 
 //输出
 include_once(BBS_TEMPLATE.'/header.html');

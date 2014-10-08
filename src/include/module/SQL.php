@@ -33,6 +33,7 @@ SQL_Obj(基类，包含基本的添加[add]、读取[get]、写入[set]、删除
 	SQL_DB：数据库名；
 */
 
+/*
 class SQL_Operator
 {
 	const SQL_DATE_FORMAT='Y-m-d h:m:s';
@@ -65,7 +66,7 @@ class SQL_Operator
 	public function get($tableName,$fieldName,$value) //返回值：字符串数组
 	{
 		if (!$state) return NULL;
-		if (!checkTable($tableName)) return NULL;
+		if (!$this->checkTable($tableName)) return NULL;
 		$hResult=mysql_query('SELECT * FROM '.$tableName.';',$db);//返回SQL查询结果的资源ID
 		$result=array();//用于存放查询结果的数组
 		while($temp=mysql_fetch_array($hResult))//判断每次取出的记录是否为空
@@ -167,7 +168,7 @@ $Blank ,$Gender ,$Age ){//新建用户
 		return $result;
 	}	
 }
-
+*/
 
 
 class SQL_Obj
@@ -226,7 +227,7 @@ class SQL_Obj
 		}
 		else
 		{
-			return ' WHERE "'.$fieldName.'"="'.$fieldValue.'"';
+			return ' WHERE '.$fieldName.' = "'.$fieldValue.'"';
 		}
 	}
 	
@@ -247,7 +248,7 @@ class SQL_Obj
 		foreach ($fieldList as $field)
 		{
 			if ($field['name'] && $field['value'])
-				$condition.='"'.$field['name'].'"'.$field['condition'].'"'.$field['value'].'" AND ';
+				$condition.=$field['name'].$field['condition'].'"'.$field['value'].'" AND ';
 		}
 		if ($condition=='')
 			return '';
@@ -267,7 +268,7 @@ class SQL_Obj
 			true/false：操作成功或失败；
 	*/
 		if (count($value)<1) return false;
-		if (!checkTable($tableName)) return false;
+		if (!$this->checkTable($tableName)) return false;
 		$query='INSERT INTO '.$tableName;
 		foreach (array_keys($value) as $temp)
 		{
@@ -297,7 +298,7 @@ class SQL_Obj
 		返回值：
 			记录数组，每一个记录对应数组中的每一个元素
 	*/
-		if (!checkTable($tableName)) return NULL;
+		if (!$this->checkTable($tableName)) return NULL;
 		return self::resourceToArray(mysql_query('SELECT * FROM '.$tableName.self::buildCondition($fieldName,$value).';',$this->db));
 	}
 	
@@ -315,7 +316,7 @@ class SQL_Obj
 			true/false：操作成功或失败；
 	*/
 		if (count($record)<1) return false;
-		if (!checkTable($tableName)) return false;
+		if (!$this->checkTable($tableName)) return false;
 		$query='UPDATE FROM '.$tableName.'(';
 		foreach (array_keys($value) as $temp)
 		{
@@ -348,7 +349,7 @@ class SQL_Obj
 			true/false：操作成功或失败；
 	*/
 		if (count($record)<1) return false;
-		if (!checkTable($tableName)) return false;
+		if (!$this->checkTable($tableName)) return false;
 		mysql_query('UPDATE FROM '.$tableName.'('.$newFieldName.') VALUES('.$newFieldValue.')'.self::buildCondition($fieldName,$value).';',$this->db);
 		if (mysql_affected_rows()>0) return true; else return false;
 	}
@@ -365,7 +366,7 @@ class SQL_Obj
 		返回值：
 			true/false：操作成功或失败；
 	*/
-		if (!checkTable($tableName)) return false;
+		if (!$this->checkTable($tableName)) return false;
 		mysql_query('DELETE FROM '.$tableName.self::buildCondition($fieldName,$value).';',$db);
 		if (mysql_affected_rows()>0) return true; else return false;
 	}
@@ -381,8 +382,8 @@ class SQL_Obj
 		返回值：
 			整数表示的记录个数；
 	*/
-		if (!checkTable($tableName)) return false;
-		mysql_query('SELECT COUNT($ '.$tableName.self::buildCondition($fieldName,$value).';',$this->db);
+		if (!$this->checkTable($tableName)) return false;
+		return (int)mysql_query('SELECT COUNT($ '.$tableName.self::buildCondition($fieldName,$value).';',$this->db);
 	}
 }
 
@@ -402,7 +403,7 @@ class SQL_Info extends SQL_Obj
 	*/
 	public function getRecordByFields($tableName,$fieldList)  //根据某几个字段的值是否相等来查找记录
 	{
-		if (!checkTable($tableName)) return NULL;
+		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM '.$tableName.buildConditions($fieldList);
 		return self::resourceToArray(mysql_query($query,$this->db));
 	}	
@@ -421,33 +422,35 @@ class SQL_User extends SQL_Info //用户操作类
 	private $tableOfUsers='BaseInfOfUsers';
 	
 	public function getInfOfUser($idOfUser){//返回知道ID的用户的所有信息：字符串数组
-		return $this->getRecordByField($tableOfUsers,'SysId',$idOfUser);
+		$result=$this->getRecordByField($this->tableOfUsers,'SysId',$idOfUser);
+		if (count($result)>0) return $result[0]; else return NULL; //只返回满足条件的第一个记录
 	}
-	public function getInfOfUserByName($nameOfUser){//返回知道ID的用户的所有信息：字符串数组
-		return $this->getRecordByField($tableOfUsers,'Name',$nameOfUser);
+	public function getInfOfUserByName($nameOfUser){//返回知道Name的用户的所有信息：字符串数组
+		$result=$this->getRecordByField($this->tableOfUsers,'Name',$nameOfUser);
+		if (count($result)>0) return $result[0]; else return NULL; //只返回满足条件的第一个记录
 	}
 	public function delectUser($IDOfUser){//删除知道ID的用户
-		return $this->deleteRecordByField($tableOfUsers,'SysId',$IDOfUser);
+		return $this->deleteRecordByField($this->tableOfUsers,'SysId',$IDOfUser);
 	}	
 	public function addUser($SysID ,$Name ,$Code ,$Picture ,$Root ,$Rank ,
 $Blank ,$Gender ,$Age ){//新建用户
 		//FIXME:将用户信息放到一个统一的class中，参数太多不便于调用；
-		return $this->addRecord($tableOfUsers,array('Name'=>$Name,'Code'=>$Code,'Picture'=>$Picture,'Root'=>$Root,'Rank'=>$Rank,'Blank'=>$Blank,'Gender'=>$Gender,'Age'=>$Age));
+		return $this->addRecord($this->tableOfUsers,array('Name'=>$Name,'Code'=>$Code,'Picture'=>$Picture,'Root'=>$Root,'Rank'=>$Rank,'Blank'=>$Blank,'Gender'=>$Gender,'Age'=>$Age));
 	}
 	public function resetUserName($idOfUser,$name){//更改用户名
 		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Name',$name);
 	}
 	public function resetUserCode($idOfUser,$code){//更改密码
-		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Code',$code);
+		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Code',$code);
 	}
 	public function resetUserRank($idOfUser,$rank){//更改排名
-		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Rank',$rank);
+		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Rank',$rank);
 	}
 	public function resetUserRoot($idOfUser,$root){//更改权限
-		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Root',$root);		
+		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Root',$root);		
 	}
 	public function resetUserPicture($idOfUser,$picture){//更改头像
-		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Picture',$picture);
+		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Picture',$picture);
 	}
 }
 
