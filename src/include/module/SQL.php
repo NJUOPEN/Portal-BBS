@@ -94,6 +94,16 @@ class SQL_Operator
 		}
 		return $result;
 	}
+		public function getInfOfUserByName($nameOfUser){//返回知道名字的用户的所有信息：字符串数组
+		if(!$state)return null;
+		$hResult=mysql_query('select * from '.$tableOfUsers.' where Name='.$nameOfUser.';',$db);
+		$result=array();
+	       while($temp=mysql_fetch_array($hResult))
+		{
+			array_push($result,$temp);
+		}
+		return $result;
+	}
 	public function delectUser($IDOfUser){//删除知道ID的用户
 		if(!$state)return null;
 		mysql_query('delect from '.$tableOfUsers.' where SysID='.$IDOfUser.';',$db);
@@ -412,6 +422,9 @@ class SQL_User extends SQL_Info //用户操作类
 	
 	public function getInfOfUser($idOfUser){//返回知道ID的用户的所有信息：字符串数组
 		return $this->getRecordByField($tableOfUsers,'SysId',$idOfUser);
+	}
+		public function getInfOfUserByName($nameOfUser){//返回知道ID的用户的所有信息：字符串数组
+		return $this->getRecordByField($tableOfUsers,'Name',$nameOfUser);
 	}
 	public function delectUser($IDOfUser){//删除知道ID的用户
 		return $this->deleteRecordByField($tableOfUsers,'SysId',$IDOfUser);

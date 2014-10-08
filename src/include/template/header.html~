@@ -19,21 +19,14 @@
 		</p>
 		<p>&nbsp;&nbsp;&nbsp;&nbsp; <font size="6">&nbsp;&nbsp; </font>（用户登录界面）&nbsp;&nbsp; 
 		（CSS、JS交互）
-		<form name='test' action='?' method='POST' onsubmit='matchName();matchPassword();'>
+		<form name='test' action='?action=login' method='POST' onsubmit='matchName();matchPassword();'>
 		<p>username: <input id ="Name" type='text' name='Name' /></p>
 		<p>password: <input id="Code" type='password' name='Code' /></p>
-		<input id='action' type='hidden' name='action' value='login' />
 		<p><input type='submit' name='submit' /></p>
 		</form>
 		<?php else
 		{
-			echo $_SESSION['Name'].'已经登录。';
-		?>
-		<form name='test' action='?' method='POST'>
-		<input id='action' type='hidden' name='action' value='logout' />
-		<p><input type='submit' name='submit' value='登出' /></p>
-		</form>
-		<?php
+			echo $_SESSION['Name'];
 		}
 		?>		
 		</td>
