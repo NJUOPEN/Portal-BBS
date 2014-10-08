@@ -1,3 +1,3 @@
 use UsersOfOPENBBS;
 show tables;
-insert into BaseInfOfUsers values('0000004','srxh','123456','c:/Users',1,0,'null',2,19);
+insert into BaseInfOfUsers values('4','srxh','7c4a8d09ca3762af61e59520943dc26494f8941b','c:/Users',1,0,'null',2,19);
