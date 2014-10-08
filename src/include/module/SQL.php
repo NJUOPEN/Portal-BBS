@@ -94,7 +94,7 @@ class SQL_Operator
 		}
 		return $result;
 	}
-		public function getInfOfUserByName($nameOfUser){//返回知道ID的用户的所有信息：字符串数组
+		public function getInfOfUserByName($nameOfUser){//返回知道名字的用户的所有信息：字符串数组
 		if(!$state)return null;
 		$hResult=mysql_query('select * from '.$tableOfUsers.' where Name='.$nameOfUser.';',$db);
 		$result=array();
