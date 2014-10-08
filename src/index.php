@@ -13,7 +13,6 @@ include_once(BBS_TEMPLATE.'/announcement.html');
 include_once(BBS_TEMPLATE.'/official.html');
 include_once(BBS_TEMPLATE.'/hot.html');
 include_once(BBS_TEMPLATE.'/forum.html');
-include_once(BBS_TEMPLATE.'/forum.html');
 include_once(BBS_TEMPLATE.'/footer.html');
 
 

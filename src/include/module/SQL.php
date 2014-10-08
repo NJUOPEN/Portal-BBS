@@ -181,19 +181,19 @@ class SQL_Obj
 	
 	public function __construct() //构造函数，初始化SQL接口并设置状态变量($OK,$state)
 	{
-		$OK=false;	$state=false;
-		$db=mysql_connect(SQL_HOST,SQL_ACCOUNT,SQL_PASSWORD);
-		if (!$db)  return;
-		if (!mysql_select_db(SQL_DB,$db)) return;
-		$OK=true;
-		$state=true;
+		$this->OK=false;	$this->state=false;
+		$this->db=mysql_connect(SQL_HOST,SQL_ACCOUNT,SQL_PASSWORD);
+		if (!$this->db)  return;
+		if (!mysql_select_db(SQL_DB,$this->db)) return;
+		$this->OK=true;
+		$this->state=true;
 	}
 	
 	protected function checkTable($tableName) //检测表是否存在；若不存在，则创建之；返回值：true/false
 	{
-		if (!$state) return false;
-		mysql_query('CREATE TABLE IF NOT EXISTS '.$tableName.';',$db);
-		if(mysql_num_rows(mysql_query("SHOW TABLES LIKE '".$tableName."'",$db))==1)
+		if (!$this->state) return false;
+		mysql_query('CREATE TABLE IF NOT EXISTS '.$tableName.';',$this->db);
+		if(mysql_num_rows(mysql_query("SHOW TABLES LIKE '".$tableName."'",$this->db))==1)
 			return true;
 		else
 			return false;
@@ -281,7 +281,7 @@ class SQL_Obj
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=');';
-		mysql_query($query,$db);
+		mysql_query($query,$this->db);
 		if (mysql_affected_rows()>0) return true; else return false;		
 	}
 	
@@ -298,7 +298,7 @@ class SQL_Obj
 			记录数组，每一个记录对应数组中的每一个元素
 	*/
 		if (!checkTable($tableName)) return NULL;
-		return self::resourceToArray(mysql_query('SELECT * FROM '.$tableName.self::buildCondition($fieldName,$value).';',$db));
+		return self::resourceToArray(mysql_query('SELECT * FROM '.$tableName.self::buildCondition($fieldName,$value).';',$this->db));
 	}
 	
 	protected function setRecordByField($tableName,$fieldName,$value,$record) 
@@ -329,7 +329,7 @@ class SQL_Obj
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=')'.self::buildCondition($fieldName,$value).';';
-		mysql_query($query,$db);
+		mysql_query($query,$this->db);
 		if (mysql_affected_rows()>0) return true; else return false;
 	}
 	
@@ -349,7 +349,7 @@ class SQL_Obj
 	*/
 		if (count($record)<1) return false;
 		if (!checkTable($tableName)) return false;
-		mysql_query('UPDATE FROM '.$tableName.'('.$newFieldName.') VALUES('.$newFieldValue.')'.self::buildCondition($fieldName,$value).';',$db);
+		mysql_query('UPDATE FROM '.$tableName.'('.$newFieldName.') VALUES('.$newFieldValue.')'.self::buildCondition($fieldName,$value).';',$this->db);
 		if (mysql_affected_rows()>0) return true; else return false;
 	}
 	
@@ -382,7 +382,7 @@ class SQL_Obj
 			整数表示的记录个数；
 	*/
 		if (!checkTable($tableName)) return false;
-		mysql_query('SELECT COUNT($ '.$tableName.self::buildCondition($fieldName,$value).';',$db);
+		mysql_query('SELECT COUNT($ '.$tableName.self::buildCondition($fieldName,$value).';',$this->db);
 	}
 }
 
@@ -404,7 +404,7 @@ class SQL_Info extends SQL_Obj
 	{
 		if (!checkTable($tableName)) return NULL;
 		$query='SELECT * FROM '.$tableName.buildConditions($fieldList);
-		return self::resourceToArray(mysql_query($query,$db));
+		return self::resourceToArray(mysql_query($query,$this->db));
 	}	
 }
 
@@ -423,7 +423,7 @@ class SQL_User extends SQL_Info //用户操作类
 	public function getInfOfUser($idOfUser){//返回知道ID的用户的所有信息：字符串数组
 		return $this->getRecordByField($tableOfUsers,'SysId',$idOfUser);
 	}
-		public function getInfOfUserByName($nameOfUser){//返回知道ID的用户的所有信息：字符串数组
+	public function getInfOfUserByName($nameOfUser){//返回知道ID的用户的所有信息：字符串数组
 		return $this->getRecordByField($tableOfUsers,'Name',$nameOfUser);
 	}
 	public function delectUser($IDOfUser){//删除知道ID的用户
