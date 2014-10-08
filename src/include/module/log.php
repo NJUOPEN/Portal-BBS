@@ -33,8 +33,8 @@ function login($params) {
 function logout() {
 	//echo "$_SESSION[userid]<br />";
 	//echo "$_SESSION[username]<br />";
-    unset($_SESSION['userid']);
-    unset($_SESSION['username']);
+    unset($_SESSION['SysID']);
+    unset($_SESSION['Name']);
     echo "Log out success<br />";
     exit;
     }
