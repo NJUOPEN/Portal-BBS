@@ -9,8 +9,8 @@
 if (!session_id()) session_start();
 
 function login($params) {
-		$username = $params['username'];
-		$password = $params['password'];
+		$username = $params['Name'];
+		$password = sha1($params['Code']);
 		//TODO 数据库存储的是明码还是hash值?
 		//连接数据库
 		include(BBS_ROOT.'include/module/SQL.php');
