@@ -16,7 +16,7 @@
 		
 		<form name='test' action=? method='POST' onsubmit='matchName();matchPassword();'>
 		<p>action: <input type='text' name='action' /></p>
-		<p>username: <input id = "Name" type='text' name='Name' /></p>
+		<p>username: <input id ="Name" type='text' name='Name' /></p>
 		<p>password: <input id="Code" type='password' name='Code' /></p>
 		<p><input type='submit' name='submit' /></p>
 		</form>
@@ -38,7 +38,7 @@
 		
 	}
 	function matchPassword(){
-		v x=document.getElementById("Code").value.length;
+		var x=document.getElementById("Code").value.length;
 		if(x<6||x>18){
 			alert("密码长度不符。请输入6-18位密码");
 			return false;
