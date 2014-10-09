@@ -1,1 +1,2 @@
-insert into PostOfUsers values('0000007','0000003','2014.10.3.16.18',1,'c:/',0,'0000005');
+insert into PostOfUsers values(7,4,'2014-10-3 16:18:00',1,'Hello world!',0,0);
+insert into PostOfUsers values(8,4,'2014-10-3 16:18:00',0,'Hello!',1,7);

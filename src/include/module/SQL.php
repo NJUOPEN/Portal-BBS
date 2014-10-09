@@ -370,7 +370,7 @@ class SQL_Obj
 		mysql_query('DELETE FROM '.$tableName.self::buildCondition($fieldName,$value).';',$db);
 		if (mysql_affected_rows()>0) return true; else return false;
 	}
-	protected function countRecord($tableName)
+	protected function countRecordByField($tableName,$fieldName,$value)
 	{
 	/*	
 		功能：
@@ -383,7 +383,7 @@ class SQL_Obj
 			整数表示的记录个数；
 	*/
 		if (!$this->checkTable($tableName)) return false;
-		return (int)mysql_query('SELECT COUNT($ '.$tableName.self::buildCondition($fieldName,$value).';',$this->db);
+		return (int)mysql_query('SELECT COUNT('.$tableName.')'.self::buildCondition($fieldName,$value).';',$this->db);
 	}
 }
 
@@ -432,9 +432,9 @@ class SQL_User extends SQL_Info //用户操作类
 	public function delectUser($IDOfUser){//删除知道ID的用户
 		return $this->deleteRecordByField($this->tableOfUsers,'SysId',$IDOfUser);
 	}	
-	public function addUser($SysID ,$Name ,$Code ,$Picture ,$Root ,$Rank ,
+	public function addUser($Name ,$Code ,$Picture ,$Root ,$Rank ,
 $Blank ,$Gender ,$Age ){//新建用户
-		//FIXME:将用户信息放到一个统一的class中，参数太多不便于调用；
+		//FIXME:请将用户信息放到一个统一的class中，参数太多不便于调用
 		return $this->addRecord($this->tableOfUsers,array('Name'=>$Name,'Code'=>$Code,'Picture'=>$Picture,'Root'=>$Root,'Rank'=>$Rank,'Blank'=>$Blank,'Gender'=>$Gender,'Age'=>$Age));
 	}
 	public function resetUserName($idOfUser,$name){//更改用户名
@@ -461,6 +461,26 @@ class SQL_Area extends SQL_Info //板块操作类
 class SQL_Post extends SQL_Msg //贴子操作类
 {
 	private $tableOfPost='PostOfUsers';
+	
+	private function resetPost($idOfPost){//更新更贴数目
+		$num=$this->countRecordByField($this->tableOfPost,'FellowAdd',$idOfPost);
+		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FellowAdd',$num+1);
+	}
+	public function delectPost($IDofPost){//删除知道ID的帖子
+		return $this->deleteRecordByField($this->tableOfPost,'PostID',$IDofPost);
+	}
+	public function writePost($IDofUser,$Time,$content,$ifFollow=false,$idOfFellow=0){//发帖
+		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用
+		if ($isFollow)
+		{
+			if (!$this->resetPost($idOfFellow)) return false;
+		}
+		return $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'PostAdd'=>$content,'FellowNum'=>0,'FellowAdd'=>$idOfFellow));
+	}
+	public function getTotalNumOfPost()
+	{
+		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
+	}
 }
 
 class SQL_SysLog extends SQL_Log //系统日志操作类

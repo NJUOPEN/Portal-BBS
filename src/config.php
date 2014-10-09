@@ -6,9 +6,9 @@
 define('BBS_ROOT',dirname(__FILE__));
 define('BBS_TEMPLATE',BBS_ROOT.'/include/template');
 
-define('SQL_HOST','127.0.0.1');
+define('SQL_HOST','localhost');
 define('SQL_ACCOUNT','test');
 define('SQL_PASSWORD','password');
-define('SQL_DB','db');
+define('SQL_DB','UsersOfOPENBBS');
 
 ?>
