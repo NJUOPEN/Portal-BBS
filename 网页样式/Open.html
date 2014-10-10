@@ -7,58 +7,61 @@
 
 <style type="text/css">
 
-.pre-blank-field {
+div.pre-blank-field {
     background-color:white;
 	height:70px;
 	width:100%;
 	clear:both;
 }
-.logo-field {
+div.logo-field {
     background-color:rgb(200,255,200);
     height:170px;
 	width:75%;
 	float:left;
 }
-.login-field {
+div.login-field {
     background-color:rgb(50,255,50);
     height:170px;
 	width:25%;
 	float:right;
 }
-.notice-field {
+div.notice-field {
     height:40px;
 	width:100%;
 	clear:both;
 }
-.search-field {
+div.search-field {
     height:100px;
 	width:100%;
 	border:solid 1px;
 	
 }
-.development-field {
+div.development-field {
     height:150px;
 	width:100%;
 	border:solid 1px;
 }
-.hot-post-field {
+div.hot-post-field {
     height:150px;
 	width:100%;
 	border:solid 1px;
 	
 }
-.total-post-field {
+div.total-post-field {
     height:300px;
 	width:100%;
 	border:solid 1px;
 }
-.information-field {
+div.information-field {
     height:70px;
 	width:100%;
 }
 
 
 
+img.logo-pic {
+    height:170px;
+}
 
 </style>
 
@@ -76,10 +79,8 @@
     </p>
 </div>
 <div class="logo-field">
-    <p align='center'>
-	Here is logo
-	</p>
-
+    <img class='logo-pic' src='../src/include/template/img/logo.png'></img>
+	
 </div>
 
 
@@ -88,7 +89,7 @@
     <?php if(!isset($_SESSION['SysID'])) {?>
 	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
 	<pre>  用户名: <input id ="Name" type='text' name='Name' /></pre>
-	<pre>    密码: <input id="Code" type='password' name='Code' /></pre>
+	<pre>  密  码: <input id="Code" type='password' name='Code' /></pre>
 	<input id='action' type='hidden' name='action' value='login' />
 	<pre> <input type='submit' name='submit' value='登录' /></pre>
 	</form>
