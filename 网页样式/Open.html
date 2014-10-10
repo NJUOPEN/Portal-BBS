@@ -4,81 +4,212 @@
 <!--meta http-equiv="X-UA-Compatible" content="IE=7" />-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>OPEN社团主页</title>
+
+<style type="text/css">
+
+.pre-blank-field {
+    background-color:white;
+	height:70px;
+	width:100%;
+	clear:both;
+}
+.logo-field {
+    background-color:rgb(200,255,200);
+    height:170px;
+	width:75%;
+	float:left;
+}
+.login-field {
+    background-color:rgb(50,255,50);
+    height:170px;
+	width:25%;
+	float:right;
+}
+.notice-field {
+    height:40px;
+	width:100%;
+	clear:both;
+}
+.search-field {
+    height:100px;
+	width:100%;
+	border:solid 1px;
+	
+}
+.development-field {
+    height:150px;
+	width:100%;
+	border:solid 1px;
+}
+.hot-post-field {
+    height:150px;
+	width:100%;
+	border:solid 1px;
+	
+}
+.total-post-field {
+    height:300px;
+	width:100%;
+	border:solid 1px;
+}
+.information-field {
+    height:70px;
+	width:100%;
+}
+
+
+
+
+</style>
+
+
+
+
+
 </head>
 
 <body>
 
-<table border="1" width="100%" id="table1" height="151">
-	<tr>
-		<td>
-		<p align="center"><b><font size="7">LOGO</font></b></td>
-		<td width="483">&nbsp;&nbsp;&nbsp;&nbsp;
-		<p>&nbsp;&nbsp;&nbsp;&nbsp; 账号： <input type="text" name="T2" size="20"></p>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp; 密码： <input type="text" name="T1" size="20">&nbsp;&nbsp;
-		</p>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp; <font size="6">&nbsp;&nbsp; </font>（用户登录界面）&nbsp;&nbsp; 
-		（CSS、JS交互）</td>
-	</tr>
-</table>
-<p>
-<p><marquee>此处发布最新通知</marquee></p>
-<table border="1" width="100%" id="table4" height="96">
-	<tr>
-		<td height="90">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="text" name="T3" size="16" value="（搜帖栏）">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		热搜词：XX&nbsp; XX&nbsp; XX</p>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</td>
-	</tr>
-</table>
-<p>　</p>
-<table border="1" width="100%" id="table6" height="157">
-	<tr>
-		<td height="40">&nbsp; 官方动态</td>
-	</tr>
-	<tr>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp; 用户须知&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		重要通告&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 团队日志 （文字带超链接）</td>
-	</tr>
-</table>
-<p>　</p>
-<table border="1" width="100%" id="table7" height="157">
-	<tr>
-		<td height="40">&nbsp; 热门帖</td>
-	</tr>
-	<tr>
-		<td>&nbsp;&nbsp;&nbsp; XXXX&nbsp;&nbsp;&nbsp;
-		<p>&nbsp;&nbsp;&nbsp; XXXX </p>
-		<p>&nbsp;&nbsp;&nbsp; XXXX(与JS交互)</td>
-	</tr>
-</table>
-<p>　</p>
-<table border="1" width="100%" id="table8" height="157">
-	<tr>
-		<td height="40">&nbsp; 交流与讨论</td>
-	</tr>
-	<tr>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		</p>
-		<p>&nbsp;&nbsp;&nbsp; 【装饰图案】&nbsp; XXXX</p>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp;【装饰图案】&nbsp; XXXX&nbsp;&nbsp;&nbsp;&nbsp; （按主题分类）</p>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp; </p>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; …………</p>
-		<p>&nbsp;</p>
-		</td>
-	</tr>
-</table>
-<p>　</p>
-<table border="1" width="100%" id="table9" height="62">
-	<tr>
-		<td>
-		<p align="center">网页基本信息</td>
-	</tr>
-</table>
+<div class="pre-blank-field">
+    <p align='center'>
+	blank left
+    </p>
+</div>
+<div class="logo-field">
+    <p align='center'>
+	Here is logo
+	</p>
+
+</div>
+
+
+
+<div class="login-field">
+    <?php if(!isset($_SESSION['SysID'])) {?>
+	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
+	<pre>  用户名: <input id ="Name" type='text' name='Name' /></pre>
+	<pre>    密码: <input id="Code" type='password' name='Code' /></pre>
+	<input id='action' type='hidden' name='action' value='login' />
+	<pre> <input type='submit' name='submit' value='登录' /></pre>
+	</form>
+	<?php } else
+	{
+	        echo $_SESSION['Name'].'已经登录。';
+	?>
+	<form name='test' action='?' method='POST'>
+	<input id='action' type='hidden' name='action' value='logout' />
+	<pre> <input type='submit' name='submit' value='登出' /></pre>
+	</form>
+	<?php
+	}
+	?>
+</div>
+
+<script>
+	function matchName(){
+		var reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+		if(!reg.test(document.getElementById("Name").value)){
+			alert("账户包含非法字符。支持中文、英文、数字、“_”");
+			return false;
+		}
+		else{
+			return matchPassword();
+		}
+		
+	}
+	function matchPassword(){
+		var x=document.getElementById("Code").value.length;
+		if(x<6||x>18){
+			alert("密码长度不符。请输入6-18位密码");
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+</script>
+
+
+<div class="notice-field">
+<marquee>此处发布最新通知</marquee>
+</div>
+
+
+<div class="search-field">
+	<pre><input type="text" name="T3" size="16" value="（搜帖栏）">热搜词：XX  XX  XX</pre>
+</div>
+
+<br/>
+
+<div class="development-field">
+	
+	<p height="40">官方动态</p>
+	<pre>     用户须知     重要通告     团队日志 （文字带超链接）</pre>
+</div>
+
+<br/>
+
+
+<div class="hot-post-field">
+	
+	<ul height="40">
+	    <p>热门帖</p>
+	    <li>XXXX</li>
+		<br/>
+	    <li>XXXX</li>
+		<br/>
+	</ul>
+</div>
+
+<br/>
+
+<div class="total-post-field">
+	
+	<p height="40">&nbsp; 交流与讨论</p>
+	
+	<ul>
+		<li>【装饰图案】XXXX</li>
+		<br/>
+		<li>【装饰图案】XXXX（按主题分类）</li>
+		<br/>
+		<li>…………</li>
+		<br/>
+		<br/>
+		<br/>
+	</ul>
+</div>
+<br/>
+
+<div class="information-field">
+	<p align="center">网页基本信息</p>
+	
+</div>
 
 </body>
 
+
+
+
+
+
+
+
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
