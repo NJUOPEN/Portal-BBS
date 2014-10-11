@@ -27,7 +27,7 @@ li.single-post-field {
 
 div.poster-field {
     height:150px;
-	width:15.5%;
+	width:15.4%;
 	float:left;
 	border:dotted 1px;
 }
@@ -40,11 +40,23 @@ div.post-details-field {
 }
 
 
+p.reply-prompt {
+    position:relative;
+	left:20px;
+}
 
+.reply-input-field {
+    position:relative;
+	left:20px;
+	height:100px;
+	width:75%;
+}
 
-
-
-
+.reply-submit-field {
+    position:relative;
+	left:20px;
+	top:20px;
+}
 
 
 
