@@ -1,0 +1,52 @@
+
+/*µ¥ÌûÑùÊ½UI*/
+
+div.pre-index {
+    height:40px;
+	width:100%;
+	clear:both;
+}
+
+
+
+div.post-field {
+    height:1212px;
+	width:100%;
+	border:solid 1px;
+}
+
+
+li.single-post-field {
+    position:relative;
+    height:150px;
+	width:103.6%;
+	border:dotted 1px;
+	left:-40px;
+	top:-18px;
+	
+}
+
+div.poster-field {
+    height:150px;
+	width:15.6%;
+	float:left;
+	border:dotted 1px;
+}
+
+div.post-details-field {
+    height:150px;
+	width:84%;
+	float:right;
+	border:dotted 1px;
+}
+
+
+
+
+
+
+
+
+
+
+

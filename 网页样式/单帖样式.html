@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>贴子名字</title>
+
+<link rel="stylesheet" type="text/css" href="./GeneralUI.css">
+<link rel="stylesheet" type="text/css" href="./SinglePostUI.css">
+
+
+</head>
+
+
+
+<body>
+
+<div class="pre-blank-field">
+    <p align='center'></p>
+</div>
+
+
+<div class="logo-field">
+    <img class='logo-pic' src='../src/include/template/img/logo.png'></img>
+	
+</div>
+
+
+<div class="login-field">
+    <?php if(!isset($_SESSION['SysID'])) {?>
+	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
+	<pre>  用户名: <input id ="Name" type='text' name='Name' /></pre>
+	<pre>  密  码: <input id="Code" type='password' name='Code' /></pre>
+	<input id='action' type='hidden' name='action' value='login' />
+	<pre> <input type='submit' name='submit' value='登录' /></pre>
+	</form>
+	<?php } else
+	{
+	        echo $_SESSION['Name'].'已经登录。';
+	?>
+	<form name='test' action='?' method='POST'>
+	<input id='action' type='hidden' name='action' value='logout' />
+	<pre> <input type='submit' name='submit' value='登出' /></pre>
+	</form>
+	<?php
+	}
+	?>
+</div>
+
+<script>
+	function matchName(){
+		var reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+		if(!reg.test(document.getElementById("Name").value)){
+			alert("账户包含非法字符。支持中文、英文、数字、“_”");
+			return false;
+		}
+		else{
+			return matchPassword();
+		}
+		
+	}
+	function matchPassword(){
+		var x=document.getElementById("Code").value.length;
+		if(x<6||x>18){
+			alert("密码长度不符。请输入6-18位密码");
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+</script>
+
+
+<div class="pre-index">
+    <a>主页</a>/<a>次级</a>/<a>次次级</a>
+</div>
+
+
+
+<div class="post-field">
+    <ul>
+	    <li class="single-post-field">
+		    <div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			</div>
+		</li>
+		<li class="single-post-field">
+		    <div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			</div>
+		</li>
+		<li class="single-post-field">
+		    <div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			</div>
+		</li>
+		<li class="single-post-field">
+		    <div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			</div>
+		</li>
+		<li class="single-post-field">
+		    <div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			</div>
+		</li>
+		<li class="single-post-field">
+		    <div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			</div>
+		</li>
+		<li class="single-post-field">
+		    <div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			</div>
+		</li>
+		<li class="single-post-field">
+		    <div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			</div>
+		</li>
+	</ul>
+	
+</div>
+
+
+<pre align="center">  上一页  X（当前页） 下一页  跳转至<input type="text" size="2">/Y页 <input type="submit" value="跳转">       共Y页，共Z个回复
+</pre>
+
+
+
+
+<div class="information-field">
+	<p align="center">网页基本信息</p>
+	
+</div>
+
+
+</body>
+
+
+
+
+
+
+
+
+</html>
