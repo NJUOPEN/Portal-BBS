@@ -1,0 +1,73 @@
+
+
+div.pre-index {
+    height:40px;
+	width:100%;
+	clear:both;
+}
+
+
+div.post-list-field {
+    height:518px;
+	width:100%;
+    border:solid 1px;
+}
+
+li.single-list-field {
+    border:dotted 1px;
+	height:50px;
+	width:103.6%;
+	position:relative;
+	left:-40px;
+	top:-18px;
+}
+
+div.do-post-field {
+    height:250px;
+	width:100%;
+	border:solid 1px;
+}
+
+
+h4.do-post-prompt-field {
+    position:relative;
+	left:20px;
+	top:-10px;
+}
+
+.do-post-name-input-field {
+    type:text;
+	height:20px;
+	width:600px;
+    position:relative;
+	left:20px;
+	top:-20px;
+}
+
+.do-post-text-input-field {
+    typr:text;
+	height:125px;
+	width:800px;
+	position:relative;
+	left:20px;
+	top:-10px;
+}
+
+.do-post-submit-button {
+    width:70px;
+	position:relative;
+	left:20px;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
