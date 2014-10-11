@@ -19,16 +19,15 @@ div.post-field {
 li.single-post-field {
     position:relative;
     height:150px;
-	width:103.6%;
+	width:100%;
 	border:dotted 1px;
-	left:-40px;
 	top:-18px;
 	
 }
 
 div.poster-field {
     height:150px;
-	width:15.6%;
+	width:15.5%;
 	float:left;
 	border:dotted 1px;
 }

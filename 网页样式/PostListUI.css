@@ -16,9 +16,8 @@ div.post-list-field {
 li.single-list-field {
     border:dotted 1px;
 	height:50px;
-	width:103.6%;
+	width:100%;
 	position:relative;
-	left:-40px;
 	top:-18px;
 }
 
@@ -38,7 +37,7 @@ h4.do-post-prompt-field {
 .do-post-name-input-field {
     type:text;
 	height:20px;
-	width:600px;
+	width:50%;
     position:relative;
 	left:20px;
 	top:-20px;
@@ -47,7 +46,7 @@ h4.do-post-prompt-field {
 .do-post-text-input-field {
     typr:text;
 	height:125px;
-	width:800px;
+	width:80%;
 	position:relative;
 	left:20px;
 	top:-10px;
