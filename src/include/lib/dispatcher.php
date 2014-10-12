@@ -10,7 +10,6 @@
 
 $action;
 $params;
-//print_r($_POST);
 $action = $_POST['action'];
 $params = array();
 foreach ($_POST as $key=>$val) {
@@ -18,9 +17,6 @@ foreach ($_POST as $key=>$val) {
         $params[$key]=$val;
     }
 }
-//print_r($params);
-//echo '<br />';
-//echo "Exec switch codes<br />";
 switch ($action) {
     case 'login' :
         //echo "Into Login case<br />";
@@ -33,7 +29,5 @@ switch ($action) {
         logout();
         break;
         // TODO add more
-        default:
-        echo 'model not found!';
 }
 ?>
