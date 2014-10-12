@@ -28,6 +28,15 @@ div.login-field {
 	float:right;
 }
 
+#Name {
+    width:50%;
+}
+#Code {
+    width:50%;
+	position:relative;
+	left:-1%;
+}
+
 
 div.information-field {
     height:70px;
