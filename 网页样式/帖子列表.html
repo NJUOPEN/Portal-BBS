@@ -30,10 +30,10 @@
 <div class="login-field">
     <?php if(!isset($_SESSION['SysID'])) {?>
 	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
-	<pre>  用户名: <input id ="Name" type='text' name='Name' /></pre>
-	<pre>  密  码: <input id="Code" type='password' name='Code' /></pre>
+	<p class='login-name-field'>用户名:<input id ="Name" type='text' name='Name' /></p>
+	<p class='login-password-field'>密码:<input id="Code" type='password' name='Code' /></p>
 	<input id='action' type='hidden' name='action' value='login' />
-	<pre> <input type='submit' name='submit' value='登录' /></pre>
+	<input type='submit' name='submit' value='登录' class='login-button'/>
 	</form>
 	<?php } else
 	{
@@ -41,7 +41,7 @@
 	?>
 	<form name='test' action='?' method='POST'>
 	<input id='action' type='hidden' name='action' value='logout' />
-	<pre> <input type='submit' name='submit' value='登出' /></pre>
+	<input type='submit' name='submit' value='登出' class='logout-button'/>
 	</form>
 	<?php
 	}
@@ -73,7 +73,7 @@
 </script>
 
 
-<!-- 以上是头部 -->
+<!-- 以上是帖子列表头部 -->
 
 
 <div class="pre-index">
@@ -98,7 +98,7 @@
 	</ul>
 </div>
 
-<p align="center">上一页 X（当前页） 下一页 跳转至<input type="text" size="1">/Y页 <input type="submit" value="跳转"> 共Y页，共Z个回复</p>
+<p align="center">上一页 X（当前页） 下一页 跳转至<input type="text" size="1"/>/Y页 <input type="submit" value="跳转"/> 共Y页，共Z个回复</p>
 
 <!-- 以上是帖子列表以及翻页 -->
 
@@ -106,11 +106,11 @@
 <div class="do-post-field">
     
 	<p><b class="do-post-prompt-field">发表新主题</b></p>
-	<input class="do-post-name-input-field">
+	<input class="do-post-name-input-field"/>
 	<br/>
-	<input class="do-post-text-input-field">
+	<input class="do-post-text-input-field"/>
 	<br/>
-	<input class="do-post-submit-button" type="submit" value="发布">
+	<input class="do-post-submit-button" type="submit" value="发布"/>
 </div>
 
 

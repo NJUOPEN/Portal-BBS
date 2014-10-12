@@ -29,10 +29,10 @@
 <div class="login-field">
     <?php if(!isset($_SESSION['SysID'])) {?>
 	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
-	<pre>  用户名: <input id ="Name" type='text' name='Name' /></pre>
-	<pre>  密  码: <input id="Code" type='password' name='Code' /></pre>
+	<p class='login-name-field'>用户名:<input id ="Name" type='text' name='Name' /></p>
+	<p class='login-password-field'>密码:<input id="Code" type='password' name='Code' /></p>
 	<input id='action' type='hidden' name='action' value='login' />
-	<pre> <input type='submit' name='submit' value='登录' /></pre>
+	<input type='submit' name='submit' value='登录' class='login-button'/>
 	</form>
 	<?php } else
 	{
@@ -40,7 +40,7 @@
 	?>
 	<form name='test' action='?' method='POST'>
 	<input id='action' type='hidden' name='action' value='logout' />
-	<pre> <input type='submit' name='submit' value='登出' /></pre>
+	<input type='submit' name='submit' value='登出' class='logout-button'/>
 	</form>
 	<?php
 	}
@@ -72,7 +72,7 @@
 </script>
 
 
-<!-- 以上仍然是头部 -->
+<!-- 以上是单帖样式头部 -->
 
 
 <div class="pre-index">
@@ -138,16 +138,16 @@
 </div>
 
 
-<p align="center" clear="both">上一页 X（当前页） 下一页 跳转至<input type="text" size="1">/Y页 <input type="submit" value="跳转"> 共Y页，共Z个回复</pre>
+<p align="center" clear="both">上一页 X（当前页） 下一页 跳转至<input type="text" size="1"/>/Y页 <input type="submit" value="跳转"/> 共Y页，共Z个回复</pre>
 
 <!-- 以上是看回复与翻页 -->
 
 
 <div>	
     <p class="reply-prompt">回帖</p>
-	<input class="reply-input-field" type="text">
+	<input class="reply-input-field" type="text"/>
 	<br/>
-	<input class="reply-submit-field" type="submit" value="发表">
+	<input class="reply-submit-field" type="submit" value="发表"/>
 	<br/>
 </div>
 

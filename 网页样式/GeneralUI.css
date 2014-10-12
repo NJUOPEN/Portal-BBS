@@ -30,12 +30,35 @@ div.login-field {
 
 #Name {
     width:50%;
+	position:relative;
 }
 #Code {
     width:50%;
 	position:relative;
-	left:-1%;
+	
 }
+
+.login-name-field {
+    position:relative;
+	font-family:sans-serif;
+}
+
+.login-password-field {
+    position:relative;
+	font-family:sans-serif;
+}
+
+.login-button {
+    position:relative;
+}
+
+.logout-button {
+    position:relative;
+}
+
+
+
+
 
 
 div.information-field {
