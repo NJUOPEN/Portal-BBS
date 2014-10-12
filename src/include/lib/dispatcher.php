@@ -8,10 +8,16 @@
  * 不明白如何直接通过一个method变量就能来创造类,暂时只能将就着用switch罗列出来
  */
 
+/*
+ 申明了以下全局变量：
+	$action:前端提交的动作；
+	$params:前端提交的参数；
+*/
 $action;
 $params;
-$action = $_POST['action'];
+$action = $_REQUEST['action'];
 $params = array();
+
 foreach ($_POST as $key=>$val) {
     if ($key != 'action') {
         $params[$key]=$val;
@@ -28,6 +34,14 @@ switch ($action) {
         include(BBS_ROOT.'/include/module/log.php');
         logout();
         break;
-        // TODO add more
+    case 'postList' :
+    	include(BBS_ROOT.'/include/module/post.php');
+    	showPostList();
+    	break;
+    case 'postView' :
+    	include(BBS_ROOT.'/include/module/post.php');
+    	showPostView();
+    	break;
+    // TODO add more
 }
 ?>

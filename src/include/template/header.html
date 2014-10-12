@@ -4,36 +4,56 @@
 <!--meta http-equiv="X-UA-Compatible" content="IE=7" />-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>OPEN社团主页</title>
+
+
+<link rel="stylesheet" type="text/css" href="<?php echo BBS_WEB_TEMPLATE;?>/GeneralUI.css">
+<?php
+
+if (count($cssList)<1) array_push($cssList,'MainUI.css'); //若无额外CSS，则使用默认主页CSS
+foreach($cssList as $temp) echo '<link rel="stylesheet" type="text/css" href="'.BBS_WEB_TEMPLATE.'/'.$temp.'">';
+
+if (count($jsList)>0)
+foreach($jsList as $temp) echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" type="text/javascript"></script>';
+
+?>
+
 </head>
 
 <body>
 
-<table border="1" width="100%" id="table1" height="151">
-	<tr>
-		<td>
-		<p align="center"><b><font size="7">LOGO</font></b></td>
-		<td width="483">&nbsp;&nbsp;&nbsp;&nbsp;
-		<?php if(!isset($_SESSION['SysID'])) {?>
-		<form name='test' action='?' method='POST' onsubmit='return matchName();'>
-		<p>用户名: <input id ="Name" type='text' name='Name' /></p>
-		<p>密码: <input id="Code" type='password' name='Code' /></p>
-		<input id='action' type='hidden' name='action' value='login' />
-		<p><input type='submit' name='submit' value='登录' /></p>
-		</form>
-		<?php } else
-		{
-			echo $_SESSION['Name'].'已经登录。';
-		?>
-		<form name='test' action='?' method='POST'>
-		<input id='action' type='hidden' name='action' value='logout' />
-		<p><input type='submit' name='submit' value='登出' /></p>
-		</form>
-		<?php
-		}
-		?>		
-		</td>
-	</tr>
-</table>
+
+<div class="pre-blank-field">
+    <p align='center'></p>
+</div>
+
+
+<div class="logo-field">
+    <img class='logo-pic' src='../src/include/template/img/logo.gif'></img>
+	
+</div>
+
+
+
+<div class="login-field">
+    <?php if(!isset($_SESSION['SysID'])) {?>
+	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
+	<pre>  用户名: <input id ="Name" type='text' name='Name' /></pre>
+	<pre>  密  码: <input id="Code" type='password' name='Code' /></pre>
+	<input id='action' type='hidden' name='action' value='login' />
+	<pre> <input type='submit' name='submit' value='登录' /></pre>
+	</form>
+	<?php } else
+	{
+	        echo $_SESSION['Name'].'已经登录。';
+	?>
+	<form name='test' action='?' method='POST'>
+	<input id='action' type='hidden' name='action' value='logout' />
+	<pre> <input type='submit' name='submit' value='登出' /></pre>
+	</form>
+	<?php
+	}
+	?>
+</div>
 
 <script>
 	function matchName(){
@@ -58,3 +78,4 @@
 		}
 	}
 </script>
+<div style="clear:both;"></div><!--需要额外加一个DIV使得以上FLOAT作用不会继续传递到下面的DIV-->

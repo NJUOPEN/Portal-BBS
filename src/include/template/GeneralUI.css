@@ -1,0 +1,49 @@
+
+
+/*通用UI*/
+
+li {
+    list-style-type:none;
+}
+
+
+
+
+div.pre-blank-field {
+    background-color:white;
+	height:10px;
+	width:100%;
+	clear:both;
+}
+div.logo-field {
+    background-color:rgb(200,255,200);
+    height:250px;
+	width:75%;
+	float:left;
+}
+div.login-field {
+    background-color:rgb(100,255,100);
+    height:250px;
+	width:25%;
+	float:right;
+}
+
+
+div.information-field {
+    height:70px;
+	width:100%;
+}
+
+
+img.logo-pic {
+    height:250px;
+}
+
+
+
+
+
+
+
+
+
