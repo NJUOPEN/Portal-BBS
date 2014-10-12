@@ -480,6 +480,9 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	public function getPost($IDofPost){
 		return $this->getRecordByField($tableName,"PostID",$IDofPost);
 	}
+	public function getPostByTitle($title){
+		return $this->getRecordByField($tableName,"Title",$title);
+	}
 	public function getTotalNumOfPost()
 	{
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
