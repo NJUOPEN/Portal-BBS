@@ -477,6 +477,9 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		}
 		return $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'PostAdd'=>$content,'FellowNum'=>0,'FellowAdd'=>$idOfFellow));
 	}
+	public function getPost($IDofPost){
+		return $this->getRecordByField($tableName,"PostID",$IDofPost);
+	}
 	public function getTotalNumOfPost()
 	{
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
