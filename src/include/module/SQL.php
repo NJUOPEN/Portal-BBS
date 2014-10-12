@@ -484,6 +484,15 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	{
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
 	}
+	public function getLastIDofPost($Number){
+		$lastOne=getTotalNumOfPost();
+		$list=array();
+		for($i=0;$i<$number;$i++){
+			$list[$i]=getPost($lastOne-$i);
+			}
+			return $list;
+		
+	}
 }
 
 class SQL_SysLog extends SQL_Log //系统日志操作类
