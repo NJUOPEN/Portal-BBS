@@ -19,9 +19,14 @@
 					allowPreviewEmoticons : false,
 					allowImageUpload : false,
 					items : [
-						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+						 'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+        'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+        'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+        'anchor', 'link', 'unlink', '|', 'about']
 				});
 			});
 		</script>
@@ -163,7 +168,7 @@
 <div>	
     <p class="reply-prompt">回帖</p>
 	<form>
-			<textarea class="reply-input-field" name="content" >KindEditor</textarea>
+			<textarea class="reply-input-field" id="editor_1" name="content" >KindEditor</textarea>
 	</form>
 	<br/>
 	<input class="reply-submit-field" type="submit" value="发表"/>
