@@ -8,6 +8,23 @@
 <link rel="stylesheet" type="text/css" href="./GeneralUI.css">
 <link rel="stylesheet" type="text/css" href="./SinglePostUI.css">
 
+<link rel="stylesheet" href="editor/kindeditor/themes/default/default.css" />
+		<script charset="utf-8" src="editor/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="editor/kindeditor/lang/zh_CN.js"></script>
+		<script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="content"]', {
+					resizeType : 1,
+					allowPreviewEmoticons : false,
+					allowImageUpload : false,
+					items : [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+				});
+			});
+		</script>
 
 </head>
 
@@ -145,7 +162,9 @@
 
 <div>	
     <p class="reply-prompt">回帖</p>
-	<input class="reply-input-field" type="text"/>
+	<form>
+			<textarea class="reply-input-field" name="content" >KindEditor</textarea>
+	</form>
 	<br/>
 	<input class="reply-submit-field" type="submit" value="发表"/>
 	<br/>
