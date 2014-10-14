@@ -23,7 +23,7 @@
 
 
 <div class="logo-field">
-    <img class='logo-pic' src='../src/include/template/img/logo.gif'></img>
+    <img class='logo-pic' src='../src/include/template/img/logo.gif'/>
 	
 </div>
 
@@ -32,8 +32,14 @@
 <div class="login-field">
     <?php if(!isset($_SESSION['SysID'])) {?>
 	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
-	<p class='login-name-field'>用户名:<input id ="Name" type='text' name='Name' /></p>
-	<p class='login-password-field'>密码:<input id="Code" type='password' name='Code' /></p>
+	<div class='login-name-field'>
+	<img class='login-name-pic' src='../src/include/template/img/username.gif'/>
+	<input id ="Name" type='text' name='Name' />
+	</div>
+	<div class='login-password-field'>
+	<img class='login-password-pic' src='../src/include/template/img/password.gif'/>
+	<input id="Code" type='password' name='Code' />
+	</div>
 	<input id='action' type='hidden' name='action' value='login' />
 	<input type='submit' name='submit' value='登录' class='login-button'/>
 	</form>

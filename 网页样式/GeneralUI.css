@@ -18,35 +18,50 @@ div.pre-blank-field {
 div.logo-field {
     background-color:rgb(200,255,200);
     height:250px;
-	width:75%;
+	width:80%;
 	float:left;
 }
 div.login-field {
-    background-color:rgb(100,255,100);
+    background-color:rgb(200,255,200);
     height:250px;
-	width:25%;
+	width:20%;
 	float:right;
 }
 
 #Name {
-    width:50%;
+    width:100px;
 	position:relative;
+	
 }
 #Code {
-    width:50%;
+    width:100px;
 	position:relative;
 	
 }
 
 .login-name-field {
     position:relative;
-	font-family:sans-serif;
+	width:50px;
 }
 
 .login-password-field {
     position:relative;
-	font-family:sans-serif;
+	width:50px;
 }
+
+.login-name-pic {
+    position:relative;
+	width:150%;
+	
+}
+
+
+.login-password-pic {
+    position:relative;
+	width:150%;
+}
+
+
 
 .login-button {
     position:relative;
