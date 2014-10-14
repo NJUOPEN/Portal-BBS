@@ -36,12 +36,16 @@ switch ($action) {
         break;
     case 'postList' :
     	include(BBS_ROOT.'/include/module/post.php');
-    	showPostList();
+    	showPostList($params);
     	break;
     case 'postView' :
     	include(BBS_ROOT.'/include/module/post.php');
     	showPostView();
     	break;
+    case 'show' :
+	include(BBS_ROOT.'/include/module/post.php');
+    	showPostList($params);
+	break;
     // TODO add more
 }
 ?>
