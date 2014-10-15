@@ -478,7 +478,7 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		return $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'PostAdd'=>$content,'FellowNum'=>0,'FellowAdd'=>$idOfFellow));
 	}
 	public function getPost($IDofPost){
-		return $this->getRecordByField($tableName,"PostID",$IDofPost);
+		return $this->getRecordByField($this->tableOfPost,"PostID",$IDofPost);
 	}
 	public function getPostByTitle($title){
 		return $this->getRecordByField($tableName,"Title",$title);
@@ -487,13 +487,14 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	{
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
 	}
-	public function getLastInfofPost($Number){
-		$lastOne=getTotalNumOfPost();
+	public function getLastInfofPost($number) {
+		$lastOne= $this->getTotalNumOfPost();
 		$list=array();
+		echo $lastOne.'<br />';
 		for($i=0;$i<$number;$i++){
-			$list[$i]=getPost($lastOne-$i);
-			}
-			return $list;
+			$list[$i]=$this->getPost($i);
+		}
+		return $list;
 		
 	}
 }
