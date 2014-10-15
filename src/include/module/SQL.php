@@ -383,7 +383,8 @@ class SQL_Obj
 			整数表示的记录个数；
 	*/
 		if (!$this->checkTable($tableName)) return false;
-		return (int)mysql_query('SELECT COUNT('.$tableName.')'.self::buildCondition($fieldName,$value).';',$this->db);
+		$count=self::resourceToArray(mysql_query('SELECT COUNT("'.$fieldName.'") FROM '.$tableName.self::buildCondition($fieldName,$value).';',$this->db));
+		return (int)$count[0];
 	}
 }
 
@@ -489,10 +490,12 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	}
 	public function getLastInfofPost($number) {
 		$lastOne= $this->getTotalNumOfPost();
+		//if ($number>$lastOne) $number=$lastOne;
+		$lastOne=10; //仅供调试用，正式运行后请加注释
 		$list=array();
-		echo $lastOne.'<br />';
-		for($i=0;$i<$number;$i++){
-			$list[$i]=$this->getPost($i);
+		for($i=0;$i<$lastOne-$number+1;$i++){
+			$temp=$this->getPost($i+1);
+			$list[$i]=$temp[0]; //FIXME:逐条获取的运行效率太低
 		}
 		return $list;
 		
