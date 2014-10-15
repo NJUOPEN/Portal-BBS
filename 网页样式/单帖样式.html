@@ -43,13 +43,14 @@
 
 
 <div class="logo-field">
-    <img class='logo-pic' src='../src/include/template/img/logo.gif'></img>
+    <img class='logo-pic' src='../src/include/template/img/logo.gif' />
 	
 </div>
 
 
 <div class="login-field">
     <?php if(!isset($_SESSION['SysID'])) {?>
+    <form name='test' action='?' method='POST' onsubmit='return matchName();'>
 	<div class='login-name-field'>
 	<img class='login-name-pic' src='../src/include/template/img/username.gif'/>
 	<input id ="Name" type='text' name='Name' />
@@ -172,7 +173,6 @@
 
 <div>	
     <p class="reply-prompt">回帖</p>
-	<form>
 			<textarea class="reply-input-field" id="editor_1" name="content" >KindEditor</textarea>
 	</form>
 	<br/>
@@ -188,15 +188,8 @@
 	
 </div>
 
-
 </body>
-
-
-
 
 </html>
 
 <!-- 以上是网页信息及html结束 -->
-
-
-

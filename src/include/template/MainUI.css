@@ -1,11 +1,13 @@
 
 
-/*Ö÷Ò³UI*/
+/*ä¸»é¡µUI*/
 
 div.notice-field {
     height:40px;
 	width:100%;
 	clear:both;
+	position:relative;
+	top:10px;
 }
 div.search-field {
     height:100px;
@@ -30,7 +32,9 @@ div.total-post-field {
 	border:solid 1px;
 }
 
-
+.notice-marquee {
+    
+}
 
 
 

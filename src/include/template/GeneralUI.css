@@ -28,6 +28,38 @@ div.login-field {
 	float:right;
 }
 
+#Name {
+    width:50%;
+	position:relative;
+}
+#Code {
+    width:50%;
+	position:relative;
+	
+}
+
+.login-name-field {
+    position:relative;
+	font-family:sans-serif;
+}
+
+.login-password-field {
+    position:relative;
+	font-family:sans-serif;
+}
+
+.login-button {
+    position:relative;
+}
+
+.logout-button {
+    position:relative;
+}
+
+
+
+
+
 
 div.information-field {
     height:70px;
