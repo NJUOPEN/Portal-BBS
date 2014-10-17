@@ -19,6 +19,7 @@ $action = $_REQUEST['action'];
 $params = array();
 
 foreach ($_POST as $key=>$val) {
+	//FIXME:通过$_POST获取数据，可能导致部分由GET提交的数据被遗漏，如$params['num']
     if ($key != 'action') {
         $params[$key]=$val;
     }
