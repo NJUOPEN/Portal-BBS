@@ -407,17 +407,17 @@ class SQL_Info extends SQL_Obj
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM '.$tableName.buildConditions($fieldList);
 		return self::resourceToArray(mysql_query($query,$this->db));
-	}	
+	}
+}
+
+class SQL_Msg extends SQL_Obj
+{
 	protected function getTopRecord($tableName,$fieldList,$descendent=true,$count=-1)  //将记录按给定字段排序并返回前数个记录
 	{
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT '.($count>=0?'TOP '.$count:'').' * FROM '.$tableName.' ORDER BY"'.$fieldList.'" '.($descendent?'DESC':'ASC');
 		return self::resourceToArray(mysql_query($query,$this->db));
 	}
-}
-
-class SQL_Msg extends SQL_Obj
-{	
 }
 
 class SQL_Log extends SQL_Obj
