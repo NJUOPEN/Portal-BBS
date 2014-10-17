@@ -213,8 +213,8 @@ class SQL_Obj
 	protected static function buildCondition($fieldName,$fieldValue)
 	{
 	/*
-		功能：
-			通过字段名与给定值之间的关系来构建查询条件（WHERE子句）；
+	    功能：
+	    通过字段名与给定值之间的关系来构建查询条件（WHERE子句）；
 		参数:
 			$fieldName:要进行比较的字段；
 			$fieldValue:要进行比较的值；
@@ -490,11 +490,13 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	}
 	public function getLastInfofPost($number) {
 		$lastOne= $this->getTotalNumOfPost();
+		echo $lastOne;
 		//if ($number>$lastOne) $number=$lastOne;
-		$lastOne=10; //仅供调试用，正式运行后请加注释
+		//$lastOne=10; //仅供调试用，正式运行后请加注释
 		$list=array();
-		for($i=0;$i<$lastOne-$number+1;$i++){
-			$temp=$this->getPost($i+1);
+		for($i=0; $i<$number; $i++){
+			$temp=$this->getPost($i);
+			//TODO 改改改
 			$list[$i]=$temp[0]; //FIXME:逐条获取的运行效率太低
 		}
 		return $list;

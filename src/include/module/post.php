@@ -15,10 +15,9 @@ function showPostList($params)
 	include(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
 	$result = $PostList->getLastInfofPost($params['num']);
-	//print_r($result);
 	for($i=0;$i<count($result);$i++)
 	{
-		echo $i.':'.$result[$i]['Title'].'<br />';
+		echo $result[$i]['PostID'].':'.$result[$i]['Title'].'<br />';
 	}
 }
 function showPostView()
