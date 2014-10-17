@@ -281,7 +281,6 @@ class SQL_Msg extends SQL_Obj
 		$query='SELECT * FROM '.$tableName.' ORDER BY "'.$fieldList.'" '.($descendent?'DESC':'ASC');
 		if ($count && $count>=0)	$query.=' LIMIT '.$count;
 		$query.=';';
-		echo $query;
 		return self::resourceToArray(mysql_query($query,$this->db));
 	}
 }
