@@ -64,11 +64,15 @@ div.login-field {
 
 
 .login-button {
+    height:40px;
     position:relative;
+	top:10px;
 }
 
 .logout-button {
+    height:40px;
     position:relative;
+	top:10px;
 }
 
 
