@@ -5,11 +5,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>OPEN社团主页</title>
 
-
-<link rel="stylesheet" type="text/css" href="./GeneralUI.css">
-<link rel="stylesheet" type="text/css" href="./MainUI.css">
-
-
+<link rel="stylesheet" type="text/css" href="<?php echo BBS_WEB_TEMPLATE.'/';?>GeneralUI.css">
+<?php 
+if (count($cssList)==0) array_push($cssList,'MainUI.css');
+foreach($cssList as $temp)
+{
+	echo '<link rel="stylesheet" type="text/css" href="'.BBS_WEB_TEMPLATE.'/'.$temp.'">';
+}
+if (count($jsList)>0)
+	foreach($jsList as $temp)
+	{
+		echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" type="text/javascript"></script>';
+	}
+?>
 </head>
 
 
