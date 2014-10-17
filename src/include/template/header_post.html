@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>贴子名字</title>
+
+<link rel="stylesheet" type="text/css" href="./GeneralUI.css">
+<link rel="stylesheet" type="text/css" href="./SinglePostUI.css">
+
+<link rel="stylesheet" href="editor/kindeditor/themes/default/default.css" />
+		<script charset="utf-8" src="editor/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="editor/kindeditor/lang/zh_CN.js"></script>
+		<script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="content"]', {
+					resizeType : 1,
+					allowPreviewEmoticons : false,
+					allowImageUpload : false,
+					items : [
+						 'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+        'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+        'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+        'anchor', 'link', 'unlink', '|', 'about']
+				});
+			});
+		</script>
+
+</head>
+
+
+
+<body>
+
+<div class="pre-blank-field">
+    <p align='center'></p>
+</div>
+
+
+<div class="logo-field">
+    <img class='logo-pic' src='../src/include/template/img/logo.gif' />
+	
+</div>
+
+
+<div class="login-field">
+    <?php if(!isset($_SESSION['SysID'])) {?>
+    <form name='test' action='?' method='POST' onsubmit='return matchName();'>
+	<div class='login-name-field'>
+	<img class='login-name-pic' src='../src/include/template/img/username.gif'/>
+	<input id ="Name" type='text' name='Name' />
+	</div>
+	<div class='login-password-field'>
+	<img class='login-password-pic' src='../src/include/template/img/password.gif'/>
+	<input id="Code" type='password' name='Code' maxlength='18'/>
+	</div>
+	<input id='action' type='hidden' name='action' value='login' />
+	<input type='image' name='submit' value='登录' src='../src/include/template/img/login.gif' class='login-button'/>
+	</form>
+	<?php } else
+	{
+	        echo $_SESSION['Name'].'已经登录。';
+	?>
+	<form name='test' action='?' method='POST'>
+	<input id='action' type='hidden' name='action' value='logout' />
+	<input type='image' name='submit' value='登出' src='../src/include/template/img/logout.gif' class='logout-button'/>
+	</form>
+	<?php
+	}
+	?>
+</div>
+
+<script>
+	function matchName(){
+		var reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+		if(!reg.test(document.getElementById("Name").value)){
+			alert("账户包含非法字符。支持中文、英文、数字、“_”");
+			return false;
+		}
+		else{
+			return matchPassword();
+		}
+		
+	}
+	function matchPassword(){
+		var x=document.getElementById("Code").value.length;
+		if(x<6||x>18){
+			alert("密码长度不符。请输入6-18位密码");
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+</script>
+
+
