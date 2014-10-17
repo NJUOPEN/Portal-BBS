@@ -49,7 +49,7 @@ if (count($jsList)>0)
 	<input id="Code" type='password' name='Code' maxlength='18'/>
 	</div>
 	<input id='action' type='hidden' name='action' value='login' />
-	<input type='submit' name='submit' value='登录' class='login-button'/>
+	<input type='image' name='submit' value='登录' src='../src/include/template/img/login.gif' class='login-button'/>
 	</form>
 	<?php } else
 	{
@@ -57,7 +57,7 @@ if (count($jsList)>0)
 	?>
 	<form name='test' action='?' method='POST'>
 	<input id='action' type='hidden' name='action' value='logout' />
-	<input type='submit' name='submit' value='登出' class='logout-button'/>
+	<input type='image' name='submit' value='登出' src='../src/include/template/img/logout.gif' class='logout-button'/>
 	</form>
 	<?php
 	}

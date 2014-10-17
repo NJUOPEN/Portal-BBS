@@ -23,18 +23,24 @@ include_once(BBS_ROOT.'/include/lib/dispatcher.php');
 
 //输出
 header("Content-type: text/html; charset=utf-8");
-include_once(BBS_TEMPLATE.'/header.html');//显示顶部通用样式
-include_once(BBS_TEMPLATE.'/announcement.html');
 
+include_once(BBS_TEMPLATE.'/header.html');//显示通用顶部
 switch($action)//以下内容为可变部分，根据前端的ACTION进行选择性加载
 {
 	
 	case 'postList':
-		include_once(BBS_TEMPLATE.'/postList.html');//显示贴子列表页
+		include_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
+		include_once(BBS_TEMPLATE.'/listControl.html');//显示贴子列表
+		include_once(BBS_TEMPLATE.'/replyPost.html');//显示回帖模块
+		break;		
 	case 'postView':
-		include_once(BBS_TEMPLATE.'/postView.html');//显示贴子内容页
+		include_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
+		include_once(BBS_TEMPLATE.'/viewControl.html');//显示贴子内容
+		include_once(BBS_TEMPLATE.'/replyPost.html');//显示回帖模块
+		break;		
 	default:
 		//显示默认主页
+		include_once(BBS_TEMPLATE.'/announcement.html');//显示公告
 		include_once(BBS_TEMPLATE.'/official.html');
 		include_once(BBS_TEMPLATE.'/hot.html');
 		include_once(BBS_TEMPLATE.'/new.html');
