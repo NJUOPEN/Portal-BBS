@@ -213,8 +213,8 @@ class SQL_Obj
 	protected static function buildCondition($fieldName,$fieldValue)
 	{
 	/*
-		功能：
-			通过字段名与给定值之间的关系来构建查询条件（WHERE子句）；
+	    功能：
+	    通过字段名与给定值之间的关系来构建查询条件（WHERE子句）；
 		参数:
 			$fieldName:要进行比较的字段；
 			$fieldValue:要进行比较的值；
