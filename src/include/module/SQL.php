@@ -402,12 +402,18 @@ class SQL_Info extends SQL_Obj
 				//TODO：还可以添加不同比较之间的逻辑关系，如AND、OR、NOT；
 		返回值：（同getRecordByField）			
 	*/
-	public function getRecordByFields($tableName,$fieldList)  //根据某几个字段的值是否相等来查找记录
+	protected function getRecordByFields($tableName,$fieldList)  //根据某几个字段的值是否相等来查找记录
 	{
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM '.$tableName.buildConditions($fieldList);
 		return self::resourceToArray(mysql_query($query,$this->db));
 	}	
+	protected function getTopRecord($tableName,$fieldList,$descendent=true,$count=-1)  //将记录按给定字段排序并返回前数个记录
+	{
+		if (!$this->checkTable($tableName)) return NULL;
+		$query='SELECT '.($count>=0?'TOP '.$count:'').' * FROM '.$tableName.' ORDER BY"'.$fieldList.'" '.($descendent?'DESC':'ASC');
+		return self::resourceToArray(mysql_query($query,$this->db));
+	}
 }
 
 class SQL_Msg extends SQL_Obj
@@ -489,16 +495,7 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
 	}
 	public function getLastInfofPost($number) {
-		$lastOne= $this->getTotalNumOfPost();
-		//if ($number>$lastOne) $number=$lastOne;
-		$lastOne=10; //仅供调试用，正式运行后请加注释
-		$list=array();
-		for($i=0;$i<$lastOne-$number+1;$i++){
-			$temp=$this->getPost($i+1);
-			$list[$i]=$temp[0]; //FIXME:逐条获取的运行效率太低
-		}
-		return $list;
-		
+		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number);
 	}
 }
 
