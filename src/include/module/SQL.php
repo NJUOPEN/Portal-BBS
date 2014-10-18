@@ -280,7 +280,9 @@ class SQL_Msg extends SQL_Obj
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM '.$tableName.' ORDER BY "'.$fieldList.'" '.($descendent?'DESC':'ASC');
 		//FIXME 为什么要用 $count && $count>=0, 在这种条件下输入0或者空会输出所有帖子,是这样期望的吗?
-		if ($count>=0)	$query.=' LIMIT '.$count;
+		if ($count>=0 && $count != NULL)	{
+		    $query.=' LIMIT '.$count;
+		}
 		$query.=';';
 		echo $query;
 		return self::resourceToArray(mysql_query($query,$this->db));
