@@ -284,7 +284,6 @@ class SQL_Msg extends SQL_Obj
 		    $query.=' LIMIT '.$count;
 		}
 		$query.=';';
-		echo $query;
 		return self::resourceToArray(mysql_query($query,$this->db));
 	}
 }
