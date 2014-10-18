@@ -54,7 +54,7 @@ switch ($action) {
     	break;
     case 'doPost' :
 		include(BBS_ROOT.'/include/module/post.php');
-		echo 'here\' a function doPost<br/>';	
+    	doPost($params);
 		break;
     case 'invalid' :
 		echo 'action is set invalid<br />';
