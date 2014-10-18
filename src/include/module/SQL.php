@@ -338,19 +338,19 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	private $tableOfPost='PostOfUsers';
 	
 	private function resetPost($idOfPost){//更新更贴数目
-		$num=$this->countRecordByField($this->tableOfPost,'FellowAdd',$idOfPost);
-		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FellowAdd',$num+1);
+		$num=$this->countRecordByField($this->tableOfPost,'FollowAdd',$idOfPost);
+		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FollowAdd',$num+1);
 	}
 	public function delectPost($IDofPost){//删除知道ID的帖子
 		return $this->deleteRecordByField($this->tableOfPost,'PostID',$IDofPost);
 	}
-	public function writePost($IDofUser,$Time,$content,$ifFollow=false,$idOfFellow=0){//发帖
+	public function writePost($IDofUser,$Time,$title,$content,$ifFollow=false,$idOfFollow=0){//发帖
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用
 		if ($isFollow)
 		{
-			if (!$this->resetPost($idOfFellow)) return false;
+			if (!$this->resetPost($idOfFollow)) return false;
 		}
-		return $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'PostAdd'=>$content,'FellowNum'=>0,'FellowAdd'=>$idOfFellow));
+		return $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$title,'PostAdd'=>$content,'FollowNum'=>0,'FollowAdd'=>$idOfFollow));
 	}
 	public function getPost($IDofPost){
 		return $this->getRecordByField($this->tableOfPost,"PostID",$IDofPost);
