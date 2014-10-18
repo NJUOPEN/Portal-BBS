@@ -25,10 +25,11 @@ function splitFile($content,$target,$args)
 define('TARGET_FOLDER','../src/include/template/');
 
 
-//将需要分割的[HTML文件名]和[段落标签]写在这里，$fileList顺序须与下面的$split_args相对应
+//TODO:将需要分割的[HTML文件名]和[段落标签]写在这里，$fileList顺序须与下面的$split_args相对应
 $fileList=array('./Open.html','./SinglePost.html','./PostList.html');
 
-//将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致
+
+//TODO:将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致
 $split_args=array(
 	/*分割主页的参数*/array('header.html'=>'<!-- 以上是主页头部 -->',
 						'announcement.html'=>'<!-- 以上是通知栏 -->',
@@ -42,17 +43,18 @@ $split_args=array(
 							'viewControl.html'=>'<!-- 以上是看回复与翻页 -->',
 							'replyPost.html'=>'<!-- 以上是回帖部分 -->',
 							'footer.html'=>'<!-- 以上是网页信息及html结束 -->'),
-	/*分割帖子浏览页面的参数*/array('header_post.html'=>'<!-- 以上是帖子列表头部 -->',
+	/*分割帖子列表页面的参数*/array('header_post.html'=>'<!-- 以上是帖子列表头部 -->',
 								'areaControl.html'=>'<!-- 以上是返回上一级连接，但是和另外一个不一样 -->',
 								'listControl.html'=>'<!-- 以上是帖子列表以及翻页 -->',
 								'addPost.html'=>'<!-- 以上是发布主题 -->',
 								'footer.html'=>'<!-- 以上是网页信息以及html结束 -->')
 				);
-				
-//将需要[替换的字符]写在这里，如：相对路径替换为绝对路径，调试信息替换为空字符串等
-$replace_args=array("src='./"=>"src=<?php echo BBS_WEB_TEMPLATE.'/';?>",
-					"href='./"=>"href=<?php echo BBS_WEB_TEMPLATE.'/';?>",
-					"src='../src/include/template/"=>"src='<?php echo BBS_WEB_TEMPLATE.'/';?>");
+
+
+//TODO:将需要[替换的字符]写在这里，如：相对路径替换为绝对路径，调试信息替换为空字符串等
+$replace_args=array('src=\'./'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+					'href="./'=>'href="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+					'src=\'../src/include/template/'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>');
 
 
 echo 'Split begin...<br />';

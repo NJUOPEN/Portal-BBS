@@ -34,7 +34,7 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 	case 'postList':
 		include_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
 		include_once(BBS_TEMPLATE.'/listControl.html');//显示贴子列表
-		include_once(BBS_TEMPLATE.'/replyPost.html');//显示回帖模块
+		include_once(BBS_TEMPLATE.'/addPost.html');//显示发帖模块
 		break;		
 	case 'postView':
 		include_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
@@ -49,7 +49,6 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 		include_once(BBS_TEMPLATE.'/new.html');
 		include_once(BBS_TEMPLATE.'/forum.html');
 		include_once(BBS_TEMPLATE.'/search.html');
-		include_once(BBS_TEMPLATE.'/replyPost.html'); //主页是否也要显示发帖栏？？
 		//TODO:添加登录、登出提示框，将login、logout的样式与默认主页分离；
 }
 include_once(BBS_TEMPLATE.'/footer.html');//显示底部通用样式

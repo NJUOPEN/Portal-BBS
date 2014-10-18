@@ -1,14 +1,17 @@
 
 
 
-<div class="do-post-field">
-    
-	<p><b class="do-post-prompt-field">发表新主题</b></p>
-	<input class="do-post-name-input-field"/>
+<div>	
+    <p class="reply-prompt">回帖</p>
+
+	<form id="form1" name="form1" method="post" action="?">
+	<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
 	<br/>
-	<input class="do-post-text-input-field"/ >
+	<input id="content_1" type="hidden" runat="server" value="" />
 	<br/>
-	<input class="do-post-submit-button" type="submit" value="发布"/>
+    <input class="reply-submit-field" type="submit" value="发表" onclick='save();'/>
+	</form>
+	<br/>
 </div>
 
 
