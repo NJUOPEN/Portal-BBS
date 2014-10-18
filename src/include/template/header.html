@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo BBS_WEB_TEMPLATE.'/';?>GeneralUI.css">
 <?php 
-if (count($cssList)==0) array_push($cssList,'MainUI.css');
+if (count($cssList)==0) array_push($cssList,'MainUI.css','PostListUI.css');
 foreach($cssList as $temp)
 {
 	echo '<link rel="stylesheet" type="text/css" href="'.BBS_WEB_TEMPLATE.'/'.$temp.'">';
@@ -31,7 +31,7 @@ if (count($jsList)>0)
 
 
 <div class="logo-field">
-    <img class='logo-pic' src='../src/include/template/img/logo.gif'/>
+    <img class='logo-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/logo.gif'/>
 	
 </div>
 
@@ -41,15 +41,15 @@ if (count($jsList)>0)
     <?php if(!isset($_SESSION['SysID'])) {?>
 	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
 	<div class='login-name-field'>
-	<img class='login-name-pic' src='../src/include/template/img/username.gif'/>
+	<img class='login-name-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif'/>
 	<input id ="Name" type='text' name='Name' />
 	</div>
 	<div class='login-password-field'>
-	<img class='login-password-pic' src='../src/include/template/img/password.gif'/>
+	<img class='login-password-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/password.gif'/>
 	<input id="Code" type='password' name='Code' maxlength='18'/>
 	</div>
 	<input id='action' type='hidden' name='action' value='login' />
-	<input type='image' name='submit' value='登录' src='../src/include/template/img/login.gif' class='login-button'/>
+	<input type='image' name='submit' value='登录' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif' class='login-button'/>
 	</form>
 	<?php } else
 	{
@@ -57,7 +57,7 @@ if (count($jsList)>0)
 	?>
 	<form name='test' action='?' method='POST'>
 	<input id='action' type='hidden' name='action' value='logout' />
-	<input type='image' name='submit' value='登出' src='../src/include/template/img/logout.gif' class='logout-button'/>
+	<input type='image' name='submit' value='登出' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif' class='logout-button'/>
 	</form>
 	<?php
 	}

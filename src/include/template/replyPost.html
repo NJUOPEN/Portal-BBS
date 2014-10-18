@@ -1,20 +1,14 @@
 
 
-<?php 
-global $_SESSION;
-if (isset($_SESSION['SysID'])) {
-if ($_SESSION['SysID'] == NULL) echo 'hit';
-echo 'what!';
-echo $_SESSION['SysID'];
-?>
-<div>	
-    <p class="reply-prompt">回帖</p>
-			<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
-	</form>
+
+<div class="do-post-field">
+    
+	<p><b class="do-post-prompt-field">发表新主题</b></p>
+	<input class="do-post-name-input-field"/>
 	<br/>
-	<input class="reply-submit-field" type="submit" value="发表"/>
+	<input class="do-post-text-input-field"/ >
 	<br/>
+	<input class="do-post-submit-button" type="submit" value="发布"/>
 </div>
-<?php
-}
-?>
+
+

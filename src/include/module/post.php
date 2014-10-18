@@ -20,5 +20,6 @@ function showPostView()
 {
 	global $cssList;
 	array_push($cssList,'SinglePostUI.css');
+	array_push($cssList,'PostListUI.css');
 }
 ?>

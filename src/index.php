@@ -1,13 +1,15 @@
 <?php
-session_start();
-error_reporting(7);
-/*
-本文件为论坛前台操作的公共入口
-运行时，依次进行以下操作：
-	加载配置文件；
-	分发请求；
-	输出样式；
-*/
+/**
+ *本文件为论坛前台操作的公共入口
+ *运行时，依次进行以下操作：
+ *	系统基本配置
+ *	加载数据库/前端样式配置文件；
+ *	分发请求；
+ *	输出样式；
+**/
+
+session_start();	//开启会话控制
+error_reporting(7);	//设置错误提示等级
 
 //加载全局配制
 include_once('./config.php');
@@ -47,7 +49,8 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 		include_once(BBS_TEMPLATE.'/new.html');
 		include_once(BBS_TEMPLATE.'/forum.html');
 		include_once(BBS_TEMPLATE.'/search.html');
-	//TODO:添加登录、登出提示框，将login、logout的样式与默认主页分离；
+		include_once(BBS_TEMPLATE.'/replyPost.html'); //主页是否也要显示发帖栏？？
+		//TODO:添加登录、登出提示框，将login、logout的样式与默认主页分离；
 }
 include_once(BBS_TEMPLATE.'/footer.html');//显示底部通用样式
 
