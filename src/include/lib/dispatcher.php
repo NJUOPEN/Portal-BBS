@@ -19,7 +19,7 @@ echo 'The request_method is '.$method.'<br />';
 
 if ($method == 'POST') {
     foreach ($_POST as $key=>$val) {
-    //FIXME:通过$_POST获取数据，可能导致部分由GET提交的数据被遗漏，如$params['num']
+    //FIXED:通过$_POST获取数据，可能导致部分由GET提交的数据被遗漏，如$params['num']
         if ($key != 'action') {
             $params[$key]=$val;
         }
@@ -53,6 +53,10 @@ switch ($action) {
     	include(BBS_ROOT.'/include/module/post.php');
     	showPostView();
     	break;
+    case 'doPost' :
+		include(BBS_ROOT.'/include/module/post.php');
+		echo 'here\' a function doPost<br/>';	
+		break;
     case 'invalid' :
 	echo 'action is set invalid<br />';
     // TODO add more
