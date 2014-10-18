@@ -38,7 +38,6 @@ function doPost($params) {
 	$date = getdate();
 	$time = $date['year'];
 	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
-	echo $time.'<br/>';
-	$newPost->writePost($_SESSION['SysID'], $time, 'test test', false, 0);
+	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], $params['content']);
 }
 ?>

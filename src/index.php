@@ -32,6 +32,7 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 {
 	
 	case 'postList':
+	case 'doPost'://似乎不是个好办法
 		include_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
 		include_once(BBS_TEMPLATE.'/listControl.html');//显示贴子列表
 		include_once(BBS_TEMPLATE.'/addPost.html');//显示发帖模块
@@ -49,8 +50,6 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 		include_once(BBS_TEMPLATE.'/new.html');
 		include_once(BBS_TEMPLATE.'/forum.html');
 		include_once(BBS_TEMPLATE.'/search.html');
-		//DELETE ME 仅供测试时使用
-		include_once(BBS_TEMPLATE.'/addPost.html');//显示发贴模块
 		//TODO:添加登录、登出提示框，将login、logout的样式与默认主页分离；
 }
 include_once(BBS_TEMPLATE.'/footer.html');//显示底部通用样式

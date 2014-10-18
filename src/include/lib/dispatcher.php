@@ -14,9 +14,6 @@ $action = $_REQUEST['action'];
 $params = array();
 $method = $_SERVER['REQUEST_METHOD'];
 
-//FIXME:测试用输出
-echo 'The request_method is '.$method.'<br />';
-
 if ($method == 'POST') {
     foreach ($_POST as $key=>$val) {
     //FIXED:通过$_POST获取数据，可能导致部分由GET提交的数据被遗漏，如$params['num']
