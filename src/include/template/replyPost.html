@@ -2,13 +2,15 @@
 
 
 <div class="do-post-field">
-    
-	<p><b class="do-post-prompt-field">发表新主题</b></p>
+    <p><b class="do-post-prompt-field">发表新主题</b></p>
+    <form name='doPost' method='POST' action='?'>
 	<input class="do-post-name-input-field"/>
 	<br/>
-	<input class="do-post-text-input-field"/ >
+	<textarea class='do-post-text-input-field' name='content'></textarea>
 	<br/>
+	<input type='hidden' name='action' value='doPost'/>
 	<input class="do-post-submit-button" type="submit" value="发布"/>
+    </form>
 </div>
 
 
