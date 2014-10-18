@@ -33,143 +33,6 @@ SQL_Obj(基类，包含基本的添加[add]、读取[get]、写入[set]、删除
 	SQL_DB：数据库名；
 */
 
-/*
-class SQL_Operator
-{
-	const SQL_DATE_FORMAT='Y-m-d h:m:s';
-	private $tableOfUsers;
-	private $tableOfPost;
-	
-	private $db;
-	
-	public $OK;//指示当前状态是否正常
-	private $state;//指示当前状态，外部不可更改
-	
-	public function __construct()//构造函数
-	{
-		$OK=false;	$state=false;
-		$db=mysql_connect(SQL_HOST,SQL_ACCOUNT,SQL_PASSWORD);
-		if (!$db)  return;
-		if (!mysql_select_db(SQL_DB,$db)) return;
-	$tableOfUsers='BaseInfOfUsers';
-	$tableOfPost='PostOfUsers';
-		$OK=true;	$state=true;
-	}
-	public function checkTable($tableName)//检测表是否存在；若不存在，则创建之；返回值：true/false
-	{
-		mysql_query('CREATE TABLE IF NOT EXISTS '.$tableName.';',$db);
-		if(mysql_num_rows(mysql_query("SHOW TABLES LIKE ".$tableName.";",$db))==1)
-			return true;
-		else
-			return false;
-	}
-	public function get($tableName,$fieldName,$value) //返回值：字符串数组
-	{
-		if (!$state) return NULL;
-		if (!$this->checkTable($tableName)) return NULL;
-		$hResult=mysql_query('SELECT * FROM '.$tableName.';',$db);//返回SQL查询结果的资源ID
-		$result=array();//用于存放查询结果的数组
-		while($temp=mysql_fetch_array($hResult))//判断每次取出的记录是否为空
-		{
-			array_push($result,$temp);
-		}
-		return $result;
-	}
-	public function getInfOfPost($idOfPost){//返回帖子的信息
-	       if(!$state)return null;
-	       $IDofUser=mysql_query('select * from '.$tableOfPost.' where PostID='.$idOfPost.';',$db);
-	       $result=array();
-	       while($temp=mysql_fetch_array($IDofUser))
-		{
-			array_push($result,$temp);
-		}
-		return $result;
-	}
-	public function getInfOfUser($idOfUser){//返回知道ID的用户的所有信息：字符串数组
-		if(!$state)return null;
-		$hResult=mysql_query('select * from '.$tableOfUsers.' where SysID='.$idOfUser.';',$db);
-		$result=array();
-	       while($temp=mysql_fetch_array($hResult))
-		{
-			array_push($result,$temp);
-		}
-		return $result;
-	}
-		public function getInfOfUserByName($nameOfUser){//返回知道名字的用户的所有信息：字符串数组
-		if(!$state)return null;
-		$hResult=mysql_query('select * from '.$tableOfUsers.' where Name='.$nameOfUser.';',$db);
-		$result=array();
-	       while($temp=mysql_fetch_array($hResult))
-		{
-			array_push($result,$temp);
-		}
-		return $result;
-	}
-	public function delectUser($IDOfUser){//删除知道ID的用户
-		if(!$state)return null;
-		mysql_query('delect from '.$tableOfUsers.' where SysID='.$IDOfUser.';',$db);
-	
-		
-	}
-	public function delectPost($IDofPost){//删除知道ID的帖子
-		if(!$state)return null;
-        	mysql_query('delect from '.$tableOfPost.' where Name='.$IDofPost.';',$db);
-
-	}
-	public function writePost($ID,$Time,$IDofUser,$ifFollow,$addOfPost,$numOfFellow,$idOfFellow){//发帖
-		if(!$state)return null;
-		$num=getTotalNumOfPost();
-		mysql_query('insert into '.$tableOfPost.' values('.$ID.','.$IDofUser.','.$Time.$ifFollow.','.$addOfPost.','.$numOfFellow.','.$idOfFellow.');',$db);
-	}
-	public function addUser($SysID ,$Name ,$Code ,$Picture ,$Root ,$Rank ,
-$Blank ,$Gender ,$Age ){//新建用户
-		if(!$state)return null;
-		mysql_query('insert into '.$tableOfUsers.' values('.$SysID.' ,'.$Name .','.$Code.' ,'.$Picture.' ,'.$Root.' ,'.$Rank.','
-.$Blank.' ,'.$Gender.' ,'.$Age,$db);
-	}
-	public function resetUserName($idOfUser,$name){//更改用户名
-				if(!$state)return null;
-		mysql_query('update '.$tableOfUsers.' set Name='.$name.' where SysID='.$idOfUser.';',$db);	
-	}
-	public function resetUserCode($idOfUser,$code){//更改密码
-			if(!$state)return null;
-		mysql_query('update '.$tableOfUsers.' set Code='.$code.' where SysID='.$idOfUser.';',$db);		
-	}
-	public function resetUserRank($idOfUser,$rank){//更改排名
-			if(!$state)return null;
-	
-		mysql_query('update '.$tableOfUsers.' set Rank='.$rank.' where SysID='.$idOfUser.';',$db);
-	}
-	public function resetUserRoot($idOfUser,$root){//更改权限
-			if(!$state)return null;
-		mysql_query('update '.$tableOfUsers.' set Root='.$root.' where SysID='.$idOfUser.';',$db);	
-		
-	}
-	public function resetUserPicture($idOfUser,$picture){//更改头像
-			if(!$state)return null;
-	
-		mysql_query('update '.$tableOfUsers.' set Picture='.$picture.' where SysID='.$idOfUser.';',$db);
-	}
-	public function resetPost($idOfPost){//更新更贴数目
-		if(!$state)return null;
-		$InfOfPost=getInfOfPost($idOfPost);
-		$NumOfPost=(int)$InfOfPost[5];
-		$NumOfPost=$NumOfPost+1;
-		mysql_query('update '.$tableOfPost.' set FellowNum='.$NumOfPost.' where PostID='.$idOfPost.';',$db);
-	}
-	public function getTotalNumOfPost(){//统计总的帖子数目
-		if(!$state)return null;
-		$count=mysql_query('select count(PostID) from '.$tableOfPost.';',$db);
-		$result=array();
-	       while($temp=mysql_fetch_array($count))
-		{
-			array_push($result,$temp);
-		}
-		return $result;
-	}	
-}
-*/
-
 
 class SQL_Obj
 {
@@ -213,8 +76,8 @@ class SQL_Obj
 	protected static function buildCondition($fieldName,$fieldValue)
 	{
 	/*
-		功能：
-			通过字段名与给定值之间的关系来构建查询条件（WHERE子句）；
+	    功能：
+	    通过字段名与给定值之间的关系来构建查询条件（WHERE子句）；
 		参数:
 			$fieldName:要进行比较的字段；
 			$fieldValue:要进行比较的值；
@@ -383,7 +246,8 @@ class SQL_Obj
 			整数表示的记录个数；
 	*/
 		if (!$this->checkTable($tableName)) return false;
-		return (int)mysql_query('SELECT COUNT('.$tableName.')'.self::buildCondition($fieldName,$value).';',$this->db);
+		$count=self::resourceToArray(mysql_query('SELECT COUNT("'.$fieldName.'") FROM '.$tableName.self::buildCondition($fieldName,$value).';',$this->db));
+		return (int)$count[0];
 	}
 }
 
@@ -401,16 +265,27 @@ class SQL_Info extends SQL_Obj
 				//TODO：还可以添加不同比较之间的逻辑关系，如AND、OR、NOT；
 		返回值：（同getRecordByField）			
 	*/
-	public function getRecordByFields($tableName,$fieldList)  //根据某几个字段的值是否相等来查找记录
+	protected function getRecordByFields($tableName,$fieldList)  //根据某几个字段的值是否相等来查找记录
 	{
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM '.$tableName.buildConditions($fieldList);
 		return self::resourceToArray(mysql_query($query,$this->db));
-	}	
+	}
 }
 
 class SQL_Msg extends SQL_Obj
-{	
+{
+	protected function getTopRecord($tableName,$fieldList,$descendent=true,$count=-1)  //将记录按给定字段排序并返回前数个记录
+	{
+		if (!$this->checkTable($tableName)) return NULL;
+		$query='SELECT * FROM '.$tableName.' ORDER BY "'.$fieldList.'" '.($descendent?'DESC':'ASC');
+		//FIXME 为什么要用 $count && $count>=0, 在这种条件下输入0或者空会输出所有帖子,是这样期望的吗?
+		if ($count>=0 && $count != NULL)	{
+		    $query.=' LIMIT '.$count;
+		}
+		$query.=';';
+		return self::resourceToArray(mysql_query($query,$this->db));
+	}
 }
 
 class SQL_Log extends SQL_Obj
@@ -463,22 +338,22 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	private $tableOfPost='PostOfUsers';
 	
 	private function resetPost($idOfPost){//更新更贴数目
-		$num=$this->countRecordByField($this->tableOfPost,'FellowAdd',$idOfPost);
-		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FellowAdd',$num+1);
+		$num=$this->countRecordByField($this->tableOfPost,'FollowAdd',$idOfPost);
+		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FollowAdd',$num+1);
 	}
 	public function delectPost($IDofPost){//删除知道ID的帖子
 		return $this->deleteRecordByField($this->tableOfPost,'PostID',$IDofPost);
 	}
-	public function writePost($IDofUser,$Time,$content,$ifFollow=false,$idOfFellow=0){//发帖
+	public function writePost($IDofUser,$Time,$title,$content,$ifFollow=false,$idOfFollow=0){//发帖
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用
 		if ($isFollow)
 		{
-			if (!$this->resetPost($idOfFellow)) return false;
+			if (!$this->resetPost($idOfFollow)) return false;
 		}
-		return $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'PostAdd'=>$content,'FellowNum'=>0,'FellowAdd'=>$idOfFellow));
+		return $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$title,'PostAdd'=>$content,'FollowNum'=>0,'FollowAdd'=>$idOfFollow));
 	}
 	public function getPost($IDofPost){
-		return $this->getRecordByField($tableName,"PostID",$IDofPost);
+		return $this->getRecordByField($this->tableOfPost,"PostID",$IDofPost);
 	}
 	public function getPostByTitle($title){
 		return $this->getRecordByField($tableName,"Title",$title);
@@ -487,14 +362,8 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	{
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
 	}
-	public function getLastInfofPost($Number){
-		$lastOne=getTotalNumOfPost();
-		$list=array();
-		for($i=0;$i<$number;$i++){
-			$list[$i]=getPost($lastOne-$i);
-			}
-			return $list;
-		
+	public function getLastInfofPost($number) {
+		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number);
 	}
 }
 

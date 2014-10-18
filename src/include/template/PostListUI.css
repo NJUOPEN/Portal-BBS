@@ -28,14 +28,14 @@ div.do-post-field {
 }
 
 
-h4.do-post-prompt-field {
+.do-post-prompt-field {
     position:relative;
 	left:20px;
 	top:-10px;
 }
 
 .do-post-name-input-field {
-    type:text;
+    /*type:text; CSS有type这个属性？*/ 
 	height:20px;
 	width:50%;
     position:relative;
@@ -44,7 +44,7 @@ h4.do-post-prompt-field {
 }
 
 .do-post-text-input-field {
-    typr:text;
+	/*type:text;*/
 	height:125px;
 	width:80%;
 	position:relative;

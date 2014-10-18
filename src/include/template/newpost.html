@@ -1,0 +1,32 @@
+<link rel="stylesheet" type="text/css" href="./PostListUI.css">
+<div class="post-list-field">
+    <ul>
+	<?php
+	for ($i=0; $i<count($new_posts); $i++) {
+	?><li class="single-list-field">
+	<?php
+	    echo $new_posts[$i]['PostID'].': '.$new_posts[$i]['Title'];
+	?></li>
+	<?php
+	}
+	?>
+	</ul>
+</div>
+
+<p align="center">上一页 X（当前页） 下一页 跳转至<input type="text" size="1"/>/Y页 <input type="submit" value="跳转"/> 共Y页，共Z个回复</p>
+
+<!-- 以上是帖子列表以及翻页 -->
+
+
+<div class="do-post-field">
+    
+	<p><b class="do-post-prompt-field">发表新主题</b></p>
+	<input class="do-post-name-input-field"/>
+	<br/>
+	<input class="do-post-text-input-field"/ >
+	<br/>
+	<input class="do-post-submit-button" type="submit" value="发布"/>
+</div>
+
+
+<!-- 以上是发布主题 -->

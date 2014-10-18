@@ -1,0 +1,21 @@
+
+
+
+<div class="post-list-field">
+    <ul>
+	<?php
+	for ($i = 0; $i < count($post_list); $i++) {
+	?><li class="single-list-field"><?php
+	    $post = $post_list[$i];
+	    echo $post['PostID'].': '.$post['Title'].'<br/>'.$post['PostAdd'];
+	    ?></li><?php
+	}
+	?>
+	</ul>
+</div>
+
+<p align="center">上一页 X（当前页） 下一页 跳转至<input type="text" size="1"/>/Y页 <input type="submit" value="跳转"/> 共Y页，共Z个回复</p>
+<p align="center">
+    <form name="return" method="GET" action="?";>
+	<input type="submit" value="return"/>
+    </form>	

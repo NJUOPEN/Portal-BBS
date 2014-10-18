@@ -1,0 +1,228 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARROW	网页样式/editor/kindeditor/kindeditor-all-min.js	/^START_UPLOAD:-120};SWFUpload.CURSOR={ARROW:-1,HAND:-2};SWFUpload.WINDOW_MODE={WINDOW:"window",TRANSPARENT:"transparent",OPAQUE:"opaque"};SWFUpload.completeURL=function(b){if(typeof b!=="string"||b.match(\/^https?:\\\/\\\/\/i)||b.match(\/^\\\/\/))return b;var d=window.location.pathname.lastIndexOf("\/");path=d<=0?"\/":window.location.pathname.substr(0,d)+"\/";return path+b};SWFUpload.prototype.initSettings=function(){this.ensureDefault=function(b,d){this.settings[b]=this.settings[b]==void 0?d:this.settings[b]};$/;"	p	class:SWFUpload.CURSOR
+ARROW	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^SWFUpload.CURSOR = {$/;"	p	class:SWFUpload.CURSOR
+B	网页样式/editor/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(w,i){function Z(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function wa(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function J(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function m(a,b){if(Z(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function B(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	f
+BBS_ROOT	src/config.php	/^define('BBS_ROOT',dirname(__FILE__));$/;"	d
+BBS_TEMPLATE	src/config.php	/^define('BBS_TEMPLATE',BBS_ROOT.'\/include\/template');$/;"	d
+BBS_WEB_ROOT	src/config.php	/^define('BBS_WEB_ROOT','http:\/\/127.0.0.1\/Portal-BBS\/src');$/;"	d
+BBS_WEB_TEMPLATE	src/config.php	/^define('BBS_WEB_TEMPLATE',BBS_WEB_ROOT.'\/include\/template');$/;"	d
+BaseInfOfUsers	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	t
+BaseInfOfUsers.Age	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	F
+BaseInfOfUsers.Code	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	F
+BaseInfOfUsers.Email	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	F
+BaseInfOfUsers.Gender	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	F
+BaseInfOfUsers.Name	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	F
+BaseInfOfUsers.Picture	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	F
+BaseInfOfUsers.Rank	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	F
+BaseInfOfUsers.Root	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	F
+BaseInfOfUsers.SysID	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table BaseInfOfUsers(SysID int NOT NULL AUTO_INCREMENT,Name varchar(15),Code varchar(40),Picture varchar(40),Root int(1),Rank int(8),Email varchar(50),Gender int(2),Age smallint,primary key(SysID));$/;"	F
+C	网页样式/editor/kindeditor/kindeditor-min.js	/^"")}function xa(a,b,c){c=c===i?",":c;return(c+b+c).indexOf(c+a+c)>=0}function s(a,b){b=b||"px";return a&&\/^\\d+$\/.test(a)?a+b:a}function t(a){var b;return a&&(b=\/(\\d+)\/.exec(a))?parseInt(b[1],10):0}function C(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function fa(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function ga(a){var b=a.split("-"),a="";m(b,function(b,d){a+=b>0?d.charAt(0).toUpperCase()+$/;"	f	function:xa
+HTTP_ERROR	网页样式/editor/kindeditor/kindeditor-all-min.js	/^SWFUpload.QUEUE_ERROR={QUEUE_LIMIT_EXCEEDED:-100,FILE_EXCEEDS_SIZE_LIMIT:-110,ZERO_BYTE_FILE:-120,INVALID_FILETYPE:-130};SWFUpload.UPLOAD_ERROR={HTTP_ERROR:-200,MISSING_UPLOAD_URL:-210,IO_ERROR:-220,SECURITY_ERROR:-230,UPLOAD_LIMIT_EXCEEDED:-240,UPLOAD_FAILED:-250,SPECIFIED_FILE_ID_NOT_FOUND:-260,FILE_VALIDATION_FAILED:-270,FILE_CANCELLED:-280,UPLOAD_STOPPED:-290};SWFUpload.FILE_STATUS={QUEUED:-1,IN_PROGRESS:-2,ERROR:-3,COMPLETE:-4,CANCELLED:-5};SWFUpload.BUTTON_ACTION={SELECT_FILE:-100,SELECT_FILES:-110,$/;"	p	class:SWFUpload.UPLOAD_ERROR
+HTTP_ERROR	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^SWFUpload.UPLOAD_ERROR = {$/;"	p	class:SWFUpload.UPLOAD_ERROR
+J	网页样式/editor/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(w,i){function Z(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function wa(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function J(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function m(a,b){if(Z(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function B(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	f	function:wa
+K.swfupload	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^});$/;"	f
+OK	src/include/module/SQL.php	/^		$this->OK=false;	$this->state=false;$/;"	v
+OK	src/include/module/SQL.php	/^		$this->OK=true;$/;"	v
+OK	src/include/module/SQL.php	/^	public $OK;\/\/指示当前状态是否正常$/;"	v
+OPAQUE	网页样式/editor/kindeditor/kindeditor-all-min.js	/^START_UPLOAD:-120};SWFUpload.CURSOR={ARROW:-1,HAND:-2};SWFUpload.WINDOW_MODE={WINDOW:"window",TRANSPARENT:"transparent",OPAQUE:"opaque"};SWFUpload.completeURL=function(b){if(typeof b!=="string"||b.match(\/^https?:\\\/\\\/\/i)||b.match(\/^\\\/\/))return b;var d=window.location.pathname.lastIndexOf("\/");path=d<=0?"\/":window.location.pathname.substr(0,d)+"\/";return path+b};SWFUpload.prototype.initSettings=function(){this.ensureDefault=function(b,d){this.settings[b]=this.settings[b]==void 0?d:this.settings[b]};$/;"	p	class:SWFUpload.WINDOW_MODE
+OPAQUE	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^	TRANSPARENT : "transparent",$/;"	p	class:SWFUpload.WINDOW_MODE
+Object	网页样式/editor/kindeditor/kindeditor-all-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(b,d){function f(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function j(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function e(a,c){for(var g=0,b=c.length;g<b;g++)if(a===c[g])return g;return-1}function h(a,c){if(f(a))for(var g=0,b=a.length;g<b;g++){if(c.call(a[g],g,a[g])===!1)break}else for(g in a)if(a.hasOwnProperty(g)&&c.call(a[g],g,a[g])===!1)break}function m(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,"")}$/;"	c
+Object	网页样式/editor/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(w,i){function Z(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function wa(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function J(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function m(a,b){if(Z(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function B(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	c
+PostList	src/include/module/post.php	/^	$PostList = new SQL_Post;$/;"	v
+PostOfUsers	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table PostOfUsers(PostID int NOT NULL AUTO_INCREMENT,IDofUsers int,Time varchar(20),IfFollow int(1),Title varchar(100),PostAdd text,FellowNum smallint,FellowAdd int,primary key(PostID));$/;"	t
+PostOfUsers.FellowAdd	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table PostOfUsers(PostID int NOT NULL AUTO_INCREMENT,IDofUsers int,Time varchar(20),IfFollow int(1),Title varchar(100),PostAdd text,FellowNum smallint,FellowAdd int,primary key(PostID));$/;"	F
+PostOfUsers.FellowNum	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table PostOfUsers(PostID int NOT NULL AUTO_INCREMENT,IDofUsers int,Time varchar(20),IfFollow int(1),Title varchar(100),PostAdd text,FellowNum smallint,FellowAdd int,primary key(PostID));$/;"	F
+PostOfUsers.IDofUsers	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table PostOfUsers(PostID int NOT NULL AUTO_INCREMENT,IDofUsers int,Time varchar(20),IfFollow int(1),Title varchar(100),PostAdd text,FellowNum smallint,FellowAdd int,primary key(PostID));$/;"	F
+PostOfUsers.IfFollow	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table PostOfUsers(PostID int NOT NULL AUTO_INCREMENT,IDofUsers int,Time varchar(20),IfFollow int(1),Title varchar(100),PostAdd text,FellowNum smallint,FellowAdd int,primary key(PostID));$/;"	F
+PostOfUsers.PostAdd	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table PostOfUsers(PostID int NOT NULL AUTO_INCREMENT,IDofUsers int,Time varchar(20),IfFollow int(1),Title varchar(100),PostAdd text,FellowNum smallint,FellowAdd int,primary key(PostID));$/;"	F
+PostOfUsers.PostID	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table PostOfUsers(PostID int NOT NULL AUTO_INCREMENT,IDofUsers int,Time varchar(20),IfFollow int(1),Title varchar(100),PostAdd text,FellowNum smallint,FellowAdd int,primary key(PostID));$/;"	F
+PostOfUsers.Time	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table PostOfUsers(PostID int NOT NULL AUTO_INCREMENT,IDofUsers int,Time varchar(20),IfFollow int(1),Title varchar(100),PostAdd text,FellowNum smallint,FellowAdd int,primary key(PostID));$/;"	F
+PostOfUsers.Title	数据库/数据库创建信息/BuildOPENBBS.sql	/^create table PostOfUsers(PostID int NOT NULL AUTO_INCREMENT,IDofUsers int,Time varchar(20),IfFollow int(1),Title varchar(100),PostAdd text,FellowNum smallint,FellowAdd int,primary key(PostID));$/;"	F
+QUEUED	网页样式/editor/kindeditor/kindeditor-all-min.js	/^SWFUpload.QUEUE_ERROR={QUEUE_LIMIT_EXCEEDED:-100,FILE_EXCEEDS_SIZE_LIMIT:-110,ZERO_BYTE_FILE:-120,INVALID_FILETYPE:-130};SWFUpload.UPLOAD_ERROR={HTTP_ERROR:-200,MISSING_UPLOAD_URL:-210,IO_ERROR:-220,SECURITY_ERROR:-230,UPLOAD_LIMIT_EXCEEDED:-240,UPLOAD_FAILED:-250,SPECIFIED_FILE_ID_NOT_FOUND:-260,FILE_VALIDATION_FAILED:-270,FILE_CANCELLED:-280,UPLOAD_STOPPED:-290};SWFUpload.FILE_STATUS={QUEUED:-1,IN_PROGRESS:-2,ERROR:-3,COMPLETE:-4,CANCELLED:-5};SWFUpload.BUTTON_ACTION={SELECT_FILE:-100,SELECT_FILES:-110,$/;"	p	class:SWFUpload.FILE_STATUS
+QUEUED	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^SWFUpload.FILE_STATUS = {$/;"	p	class:SWFUpload.FILE_STATUS
+QUEUE_LIMIT_EXCEEDED	网页样式/editor/kindeditor/kindeditor-all-min.js	/^SWFUpload.QUEUE_ERROR={QUEUE_LIMIT_EXCEEDED:-100,FILE_EXCEEDS_SIZE_LIMIT:-110,ZERO_BYTE_FILE:-120,INVALID_FILETYPE:-130};SWFUpload.UPLOAD_ERROR={HTTP_ERROR:-200,MISSING_UPLOAD_URL:-210,IO_ERROR:-220,SECURITY_ERROR:-230,UPLOAD_LIMIT_EXCEEDED:-240,UPLOAD_FAILED:-250,SPECIFIED_FILE_ID_NOT_FOUND:-260,FILE_VALIDATION_FAILED:-270,FILE_CANCELLED:-280,UPLOAD_STOPPED:-290};SWFUpload.FILE_STATUS={QUEUED:-1,IN_PROGRESS:-2,ERROR:-3,COMPLETE:-4,CANCELLED:-5};SWFUpload.BUTTON_ACTION={SELECT_FILE:-100,SELECT_FILES:-110,$/;"	p	class:SWFUpload.QUEUE_ERROR
+QUEUE_LIMIT_EXCEEDED	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^SWFUpload.QUEUE_ERROR = {$/;"	p	class:SWFUpload.QUEUE_ERROR
+SELECT_FILE	网页样式/editor/kindeditor/kindeditor-all-min.js	/^SWFUpload.QUEUE_ERROR={QUEUE_LIMIT_EXCEEDED:-100,FILE_EXCEEDS_SIZE_LIMIT:-110,ZERO_BYTE_FILE:-120,INVALID_FILETYPE:-130};SWFUpload.UPLOAD_ERROR={HTTP_ERROR:-200,MISSING_UPLOAD_URL:-210,IO_ERROR:-220,SECURITY_ERROR:-230,UPLOAD_LIMIT_EXCEEDED:-240,UPLOAD_FAILED:-250,SPECIFIED_FILE_ID_NOT_FOUND:-260,FILE_VALIDATION_FAILED:-270,FILE_CANCELLED:-280,UPLOAD_STOPPED:-290};SWFUpload.FILE_STATUS={QUEUED:-1,IN_PROGRESS:-2,ERROR:-3,COMPLETE:-4,CANCELLED:-5};SWFUpload.BUTTON_ACTION={SELECT_FILE:-100,SELECT_FILES:-110,$/;"	p	class:SWFUpload.BUTTON_ACTION
+SELECT_FILE	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^SWFUpload.BUTTON_ACTION = {$/;"	p	class:SWFUpload.BUTTON_ACTION
+SOURCE_FILE	网页样式/split.php	/^define('SOURCE_FILE','.\/Open.html');$/;"	d
+SQL_ACCOUNT	src/config.php	/^define('SQL_ACCOUNT','test');$/;"	d
+SQL_Area	src/include/module/SQL.php	/^class SQL_Area extends SQL_Info \/\/板块操作类$/;"	c
+SQL_DB	src/config.php	/^define('SQL_DB','UsersOfOPENBBS');$/;"	d
+SQL_HOST	src/config.php	/^define('SQL_HOST','localhost');$/;"	d
+SQL_Info	src/include/module/SQL.php	/^class SQL_Info extends SQL_Obj$/;"	c
+SQL_Log	src/include/module/SQL.php	/^class SQL_Log extends SQL_Obj$/;"	c
+SQL_Msg	src/include/module/SQL.php	/^class SQL_Msg extends SQL_Obj$/;"	c
+SQL_Obj	src/include/module/SQL.php	/^class SQL_Obj$/;"	c
+SQL_PASSWORD	src/config.php	/^define('SQL_PASSWORD','password');$/;"	d
+SQL_Post	src/include/module/SQL.php	/^class SQL_Post extends SQL_Msg \/\/贴子操作类$/;"	c
+SQL_SysLog	src/include/module/SQL.php	/^class SQL_SysLog extends SQL_Log \/\/系统日志操作类$/;"	c
+SQL_User	src/include/module/SQL.php	/^class SQL_User extends SQL_Info \/\/用户操作类$/;"	c
+SWFUpload	网页样式/editor/kindeditor/kindeditor-all-min.js	/^(function(){window.SWFUpload=function(b){this.initSWFUpload(b)};SWFUpload.prototype.initSWFUpload=function(b){try{this.customSettings={},this.settings=b,this.eventQueue=[],this.movieName="KindEditor_SWFUpload_"+SWFUpload.movieCount++,this.movieElement=null,SWFUpload.instances[this.movieName]=this,this.initSettings(),this.loadFlash(),this.displayDebugInfo()}catch(d){throw delete SWFUpload.instances[this.movieName],d;}};SWFUpload.instances={};SWFUpload.movieCount=0;SWFUpload.version="2.2.0 2009-03-25";$/;"	c
+SWFUpload	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^});$/;"	c
+TARGET_FOLDER	网页样式/split.php	/^define('TARGET_FOLDER','..\/src\/include\/template\/');$/;"	d
+TRANSPARENT	网页样式/editor/kindeditor/kindeditor-all-min.js	/^START_UPLOAD:-120};SWFUpload.CURSOR={ARROW:-1,HAND:-2};SWFUpload.WINDOW_MODE={WINDOW:"window",TRANSPARENT:"transparent",OPAQUE:"opaque"};SWFUpload.completeURL=function(b){if(typeof b!=="string"||b.match(\/^https?:\\\/\\\/\/i)||b.match(\/^\\\/\/))return b;var d=window.location.pathname.lastIndexOf("\/");path=d<=0?"\/":window.location.pathname.substr(0,d)+"\/";return path+b};SWFUpload.prototype.initSettings=function(){this.ensureDefault=function(b,d){this.settings[b]=this.settings[b]==void 0?d:this.settings[b]};$/;"	p	class:SWFUpload.WINDOW_MODE
+TRANSPARENT	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^	WINDOW : "window",$/;"	p	class:SWFUpload.WINDOW_MODE
+USERFILE	src/include/module/file.php	/^define("USERFILE",".\/userfile\/");$/;"	d
+WINDOW	网页样式/editor/kindeditor/kindeditor-all-min.js	/^START_UPLOAD:-120};SWFUpload.CURSOR={ARROW:-1,HAND:-2};SWFUpload.WINDOW_MODE={WINDOW:"window",TRANSPARENT:"transparent",OPAQUE:"opaque"};SWFUpload.completeURL=function(b){if(typeof b!=="string"||b.match(\/^https?:\\\/\\\/\/i)||b.match(\/^\\\/\/))return b;var d=window.location.pathname.lastIndexOf("\/");path=d<=0?"\/":window.location.pathname.substr(0,d)+"\/";return path+b};SWFUpload.prototype.initSettings=function(){this.ensureDefault=function(b,d){this.settings[b]=this.settings[b]==void 0?d:this.settings[b]};$/;"	p	class:SWFUpload.WINDOW_MODE
+WINDOW	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^SWFUpload.WINDOW_MODE = {$/;"	p	class:SWFUpload.WINDOW_MODE
+_VERSION	网页样式/editor/kindeditor/kindeditor-all.js	/^var _VERSION = '4.1.10 (2013-11-23)',$/;"	v
+_VERSION	网页样式/editor/kindeditor/kindeditor.js	/^var _VERSION = '4.1.10 (2013-11-23)',$/;"	v
+__construct	src/include/module/SQL.php	/^	public function __construct() \/\/构造函数，初始化SQL接口并设置状态变量($OK,$state)$/;"	f
+_addUnit	网页样式/editor/kindeditor/kindeditor-all.js	/^function _addUnit(val, unit) {$/;"	f
+_addUnit	网页样式/editor/kindeditor/kindeditor.js	/^function _addUnit(val, unit) {$/;"	f
+_each	网页样式/editor/kindeditor/kindeditor-all.js	/^function _each(obj, fn) {$/;"	f
+_each	网页样式/editor/kindeditor/kindeditor.js	/^function _each(obj, fn) {$/;"	f
+_inArray	网页样式/editor/kindeditor/kindeditor-all.js	/^function _inArray(val, arr) {$/;"	f
+_inArray	网页样式/editor/kindeditor/kindeditor.js	/^function _inArray(val, arr) {$/;"	f
+_inString	网页样式/editor/kindeditor/kindeditor-all.js	/^function _inString(val, str, delimiter) {$/;"	f
+_inString	网页样式/editor/kindeditor/kindeditor.js	/^function _inString(val, str, delimiter) {$/;"	f
+_isArray	网页样式/editor/kindeditor/kindeditor-all.js	/^function _isArray(val) {$/;"	f
+_isArray	网页样式/editor/kindeditor/kindeditor.js	/^function _isArray(val) {$/;"	f
+_isFunction	网页样式/editor/kindeditor/kindeditor-all.js	/^function _isFunction(val) {$/;"	f
+_isFunction	网页样式/editor/kindeditor/kindeditor.js	/^function _isFunction(val) {$/;"	f
+_removeUnit	网页样式/editor/kindeditor/kindeditor-all.js	/^function _removeUnit(val) {$/;"	f
+_removeUnit	网页样式/editor/kindeditor/kindeditor.js	/^function _removeUnit(val) {$/;"	f
+_trim	网页样式/editor/kindeditor/kindeditor-all.js	/^function _trim(str) {$/;"	f
+_trim	网页样式/editor/kindeditor/kindeditor.js	/^function _trim(str) {$/;"	f
+a	src/include/module/file.php	/^		$a=resetUserPicture($id,$file_id);$/;"	v
+action	src/include/lib/dispatcher.php	/^$action = $_REQUEST['action'];$/;"	v
+addMapControl	网页样式/editor/kindeditor/plugins/baidumap/index.html	/^	function addMapControl(){$/;"	f
+addRecord	src/include/module/SQL.php	/^	protected function addRecord($tableName,$value)$/;"	f
+addUser	src/include/module/SQL.php	/^	public function addUser($Name ,$Code ,$Picture ,$Root ,$Rank ,$/;"	f
+b.swfupload	网页样式/editor/kindeditor/kindeditor-all-min.js	/^b('<div class="ke-progressbar"><div class="ke-progressbar-bar"><div class="ke-progressbar-bar-inner"><\/div><\/div><div class="ke-progressbar-percent">0%<\/div><\/div>').hide().appendTo(m);b('<div class="ke-message">'+j.options.pendingMessage+"<\/div>").appendTo(m);e.append('<div class="ke-name">'+d.name+"<\/div>");j.progressbars[d.id]={bar:b(".ke-progressbar-bar-inner",h),percent:b(".ke-progressbar-percent",h)}},remove:function(){this.removeFiles();this.swfu.destroy();this.div.html("")}});b.swfupload=$/;"	f
+buildCondition	src/include/module/SQL.php	/^	protected static function buildCondition($fieldName,$fieldValue)$/;"	f
+buildConditions	src/include/module/SQL.php	/^	protected static function buildConditions($fieldList)$/;"	f
+checkTable	src/include/module/SQL.php	/^	protected function checkTable($tableName) \/\/检测表是否存在；若不存在，则创建之；返回值：true\/false$/;"	f
+check_result	src/include/module/log.php	/^		$check_result = $data->getInfOfUserByName($username);$/;"	v
+console.log	网页样式/editor/kindeditor/kindeditor-all.js	/^if (!console.log) {$/;"	f
+console.log	网页样式/editor/kindeditor/kindeditor.js	/^if (!console.log) {$/;"	f
+content	网页样式/split.php	/^$content=fread($f,filesize(SOURCE_FILE));$/;"	v
+count	src/include/module/SQL.php	/^		$count=self::resourceToArray(mysql_query('SELECT COUNT("'.$fieldName.'") FROM '.$tableName.self::buildCondition($fieldName,$value).';',$this->db));$/;"	v
+countRecordByField	src/include/module/SQL.php	/^	protected function countRecordByField($tableName,$fieldName,$value)$/;"	f
+createMap	网页样式/editor/kindeditor/plugins/baidumap/index.html	/^	function createMap(){$/;"	f
+cssList	src/index.php	/^$cssList=array();$/;"	v
+data	src/include/module/log.php	/^		$data = new SQL_User;$/;"	v
+db	src/include/module/SQL.php	/^		$this->db=mysql_connect(SQL_HOST,SQL_ACCOUNT,SQL_PASSWORD);$/;"	v
+db	src/include/module/SQL.php	/^	protected $db; \/\/数据库对象的句柄$/;"	v
+delectPost	src/include/module/SQL.php	/^	public function delectPost($IDofPost){\/\/删除知道ID的帖子$/;"	f
+delectUser	src/include/module/SQL.php	/^	public function delectUser($IDOfUser){\/\/删除知道ID的用户$/;"	f
+deleteRecordByField	src/include/module/SQL.php	/^	protected function deleteRecordByField($tableName,$fieldName,$value) $/;"	f
+e	网页样式/editor/kindeditor/kindeditor-all-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(b,d){function f(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function j(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function e(a,c){for(var g=0,b=c.length;g<b;g++)if(a===c[g])return g;return-1}function h(a,c){if(f(a))for(var g=0,b=a.length;g<b;g++){if(c.call(a[g],g,a[g])===!1)break}else for(g in a)if(a.hasOwnProperty(g)&&c.call(a[g],g,a[g])===!1)break}function m(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,"")}$/;"	f	function:j
+e	网页样式/editor/kindeditor/plugins/code/prettify.js	/^(function(){function L(a){function m(a){var f=a.charCodeAt(0);if(f!==92)return f;var b=a.charAt(1);return(f=r[b])?f:"0"<=b&&b<="7"?parseInt(a.substring(1),8):b==="u"||b==="x"?parseInt(a.substring(2),16):a.charCodeAt(1)}function e(a){if(a<32)return(a<16?"\\\\x0":"\\\\x")+a.toString(16);a=String.fromCharCode(a);if(a==="\\\\"||a==="-"||a==="["||a==="]")a="\\\\"+a;return a}function h(a){for(var f=a.substring(1,a.length-1).match(\/\\\\u[\\dA-Fa-f]{4}|\\\\x[\\dA-Fa-f]{2}|\\\\[0-3][0-7]{0,2}|\\\\[0-7]{1,2}|\\\\[\\S\\s]|[^\\\\]\/g),a=$/;"	f
+errno	src/include/module/request.php	/^	$errno = '';$/;"	v
+errstr	src/include/module/request.php	/^	$errstr = '';$/;"	v
+f	网页样式/split.php	/^	$f=fopen(TARGET_FOLDER.$split_key,'wb');$/;"	v
+f	网页样式/split.php	/^$f=fopen(SOURCE_FILE,'rb');$/;"	v
+file_content	src/include/module/file.php	/^		$file_content=fread($fp,filesize($file_id));$/;"	v
+file_id	src/include/module/file.php	/^	$file_id=md5(time());\/\/生成文件的md5$/;"	v
+findSection	网页样式/split.php	/^function findSection($source,$tag,$from=0)  \/\/根据给定标签截取对应段落$/;"	f
+flag	src/include/module/request.php	/^		$flag = 1;$/;"	v
+flag	src/include/module/request.php	/^	$flag = 0;$/;"	v
+fp	src/include/module/file.php	/^		$fp=fopen(USERFILE.$file_id,"rb");$/;"	v
+fp	src/include/module/file.php	/^	$fp=fopen(USERFILE.$file_id,"wb");$/;"	v
+getInfOfUser	src/include/module/SQL.php	/^	public function getInfOfUser($idOfUser){\/\/返回知道ID的用户的所有信息：字符串数组$/;"	f
+getInfOfUserByName	src/include/module/SQL.php	/^	public function getInfOfUserByName($nameOfUser){\/\/返回知道Name的用户的所有信息：字符串数组$/;"	f
+getLastInfofPost	src/include/module/SQL.php	/^	public function getLastInfofPost($number) {$/;"	f
+getParam	网页样式/editor/kindeditor/plugins/baidumap/index.html	/^	function getParam(name) {$/;"	f
+getPost	src/include/module/SQL.php	/^	public function getPost($IDofPost){$/;"	f
+getPostByTitle	src/include/module/SQL.php	/^	public function getPostByTitle($title){$/;"	f
+getRecordByField	src/include/module/SQL.php	/^	protected function getRecordByField($tableName,$fieldName,$value) $/;"	f
+getRecordByFields	src/include/module/SQL.php	/^	protected function getRecordByFields($tableName,$fieldList)  \/\/根据某几个字段的值是否相等来查找记录$/;"	f
+getTopRecord	src/include/module/SQL.php	/^	protected function getTopRecord($tableName,$fieldList,$descendent=true,$count=-1)  \/\/将记录按给定字段排序并返回前数个记录$/;"	f
+getTotalNumOfPost	src/include/module/SQL.php	/^	public function getTotalNumOfPost()$/;"	f
+h	网页样式/editor/kindeditor/kindeditor-all-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(b,d){function f(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function j(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function e(a,c){for(var g=0,b=c.length;g<b;g++)if(a===c[g])return g;return-1}function h(a,c){if(f(a))for(var g=0,b=a.length;g<b;g++){if(c.call(a[g],g,a[g])===!1)break}else for(g in a)if(a.hasOwnProperty(g)&&c.call(a[g],g,a[g])===!1)break}function m(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,"")}$/;"	f	function:j
+h	网页样式/editor/kindeditor/plugins/code/prettify.js	/^(function(){function L(a){function m(a){var f=a.charCodeAt(0);if(f!==92)return f;var b=a.charAt(1);return(f=r[b])?f:"0"<=b&&b<="7"?parseInt(a.substring(1),8):b==="u"||b==="x"?parseInt(a.substring(2),16):a.charCodeAt(1)}function e(a){if(a<32)return(a<16?"\\\\x0":"\\\\x")+a.toString(16);a=String.fromCharCode(a);if(a==="\\\\"||a==="-"||a==="["||a==="]")a="\\\\"+a;return a}function h(a){for(var f=a.substring(1,a.length-1).match(\/\\\\u[\\dA-Fa-f]{4}|\\\\x[\\dA-Fa-f]{2}|\\\\[0-3][0-7]{0,2}|\\\\[0-7]{1,2}|\\\\[\\S\\s]|[^\\\\]\/g),a=$/;"	f
+header	src/include/module/request.php	/^	$header  = "$method $dest HTTP\/1.1\\r\\n";$/;"	v
+inheader	src/include/module/request.php	/^			$inheader = 0;$/;"	v
+inheader	src/include/module/request.php	/^	$inheader = 1;$/;"	v
+initMap	网页样式/editor/kindeditor/plugins/baidumap/index.html	/^	function initMap(){$/;"	f
+initSWFUpload	网页样式/editor/kindeditor/kindeditor-all-min.js	/^(function(){window.SWFUpload=function(b){this.initSWFUpload(b)};SWFUpload.prototype.initSWFUpload=function(b){try{this.customSettings={},this.settings=b,this.eventQueue=[],this.movieName="KindEditor_SWFUpload_"+SWFUpload.movieCount++,this.movieElement=null,SWFUpload.instances[this.movieName]=this,this.initSettings(),this.loadFlash(),this.displayDebugInfo()}catch(d){throw delete SWFUpload.instances[this.movieName],d;}};SWFUpload.instances={};SWFUpload.movieCount=0;SWFUpload.version="2.2.0 2009-03-25";$/;"	m	class:SWFUpload
+initSWFUpload	网页样式/editor/kindeditor/plugins/multiimage/multiimage.js	/^SWFUpload.prototype.initSWFUpload = function (settings) {$/;"	m	class:SWFUpload
+initialize	网页样式/editor/kindeditor/plugins/baidumap/map.html	/^			function initialize() {$/;"	f
+initialize	网页样式/editor/kindeditor/plugins/map/map.html	/^		function initialize() {$/;"	f
+j	网页样式/editor/kindeditor/kindeditor-all-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(b,d){function f(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function j(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function e(a,c){for(var g=0,b=c.length;g<b;g++)if(a===c[g])return g;return-1}function h(a,c){if(f(a))for(var g=0,b=a.length;g<b;g++){if(c.call(a[g],g,a[g])===!1)break}else for(g in a)if(a.hasOwnProperty(g)&&c.call(a[g],g,a[g])===!1)break}function m(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,"")}$/;"	f
+jsList	src/index.php	/^$jsList=array();$/;"	v
+l	网页样式/editor/kindeditor/kindeditor-all-min.js	/^function n(a,c,g){g=g===d?",":g;return(g+c+g).indexOf(g+a+g)>=0}function o(a,c){c=c||"px";return a&&\/^\\d+$\/.test(a)?a+c:a}function l(a){var c;return a&&(c=\/(\\d+)\/.exec(a))?parseInt(c[1],10):0}function s(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function v(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function p(a){var c=a.split("-"),a="";h(c,function(c,b){a+=c>0?b.charAt(0).toUpperCase()+$/;"	f	function:n
+length	src/include/module/request.php	/^	$length = strlen($post);$/;"	v
+line	src/include/module/request.php	/^		$line = fgets($fp); \/\/去除请求包的头只显示页面的返回数据$/;"	v
+load_file	src/include/module/file.php	/^function load_file($file_id,&$file_content)$/;"	f
+login	src/include/module/log.php	/^function login($params) {$/;"	f
+logout	src/include/module/log.php	/^function logout() {$/;"	f
+m	网页样式/editor/kindeditor/kindeditor-all-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(b,d){function f(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function j(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function e(a,c){for(var g=0,b=c.length;g<b;g++)if(a===c[g])return g;return-1}function h(a,c){if(f(a))for(var g=0,b=a.length;g<b;g++){if(c.call(a[g],g,a[g])===!1)break}else for(g in a)if(a.hasOwnProperty(g)&&c.call(a[g],g,a[g])===!1)break}function m(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,"")}$/;"	f
+m	网页样式/editor/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(w,i){function Z(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function wa(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function J(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function m(a,b){if(Z(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function B(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	f	function:wa
+matchName	src/include/template/header.html	/^	function matchName(){$/;"	f
+matchName	网页样式/Open.html	/^	function matchName(){$/;"	f
+matchName	网页样式/Open_old1.html	/^	function matchName(){$/;"	f
+matchName	网页样式/单帖样式.html	/^	function matchName(){$/;"	f
+matchName	网页样式/帖子列表.html	/^	function matchName(){$/;"	f
+matchPassword	src/include/template/header.html	/^	function matchPassword(){$/;"	f
+matchPassword	网页样式/Open.html	/^	function matchPassword(){$/;"	f
+matchPassword	网页样式/Open_old1.html	/^	function matchPassword(){$/;"	f
+matchPassword	网页样式/单帖样式.html	/^	function matchPassword(){$/;"	f
+matchPassword	网页样式/帖子列表.html	/^	function matchPassword(){$/;"	f
+n	网页样式/editor/kindeditor/kindeditor-all-min.js	/^function n(a,c,g){g=g===d?",":g;return(g+c+g).indexOf(g+a+g)>=0}function o(a,c){c=c||"px";return a&&\/^\\d+$\/.test(a)?a+c:a}function l(a){var c;return a&&(c=\/(\\d+)\/.exec(a))?parseInt(c[1],10):0}function s(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function v(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function p(a){var c=a.split("-"),a="";h(c,function(c,b){a+=c>0?b.charAt(0).toUpperCase()+$/;"	f
+num	src/include/module/SQL.php	/^		$num=$this->countRecordByField($this->tableOfPost,'FellowAdd',$idOfPost);$/;"	v
+o	网页样式/editor/kindeditor/kindeditor-all-min.js	/^function n(a,c,g){g=g===d?",":g;return(g+c+g).indexOf(g+a+g)>=0}function o(a,c){c=c||"px";return a&&\/^\\d+$\/.test(a)?a+c:a}function l(a){var c;return a&&(c=\/(\\d+)\/.exec(a))?parseInt(c[1],10):0}function s(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function v(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function p(a){var c=a.split("-"),a="";h(c,function(c,b){a+=c>0?b.charAt(0).toUpperCase()+$/;"	f	function:n
+p	网页样式/split.php	/^	$p=strpos($source,$tag,$from);$/;"	v
+p1	网页样式/split.php	/^	$p1=$p2+strlen($split_value);$/;"	v
+p1	网页样式/split.php	/^$p1=0;$p2=0;$/;"	v
+p2	网页样式/split.php	/^	$p2=strpos($content,$split_value,$p1);$/;"	v
+params	src/include/lib/dispatcher.php	/^$params = array();$/;"	v
+password	src/include/module/log.php	/^		$password = sha1($params['Code']);$/;"	v
+post	src/include/module/request.php	/^	$post = '';$/;"	v
+q	网页样式/editor/kindeditor/plugins/code/prettify.js	/^var q=null;window.PR_SHOULD_USE_CONTINUATION=!0;$/;"	v
+query	src/include/module/SQL.php	/^		$query='INSERT INTO '.$tableName;$/;"	v
+query	src/include/module/SQL.php	/^		$query='SELECT * FROM '.$tableName.' ORDER BY "'.$fieldList.'" '.($descendent?'DESC':'ASC');$/;"	v
+query	src/include/module/SQL.php	/^		$query='SELECT * FROM '.$tableName.buildConditions($fieldList);$/;"	v
+query	src/include/module/SQL.php	/^		$query='UPDATE FROM '.$tableName.'(';$/;"	v
+remove_file	src/include/module/file.php	/^function remove_file($file_id)$/;"	f
+request	src/include/module/request.php	/^function request($dest, $src, $method, $argv = array()) {$/;"	f
+resetPost	src/include/module/SQL.php	/^	private function resetPost($idOfPost){\/\/更新更贴数目$/;"	f
+resetUserCode	src/include/module/SQL.php	/^	public function resetUserCode($idOfUser,$code){\/\/更改密码$/;"	f
+resetUserName	src/include/module/SQL.php	/^	public function resetUserName($idOfUser,$name){\/\/更改用户名$/;"	f
+resetUserPicture	src/include/module/SQL.php	/^	public function resetUserPicture($idOfUser,$picture){\/\/更改头像$/;"	f
+resetUserRank	src/include/module/SQL.php	/^	public function resetUserRank($idOfUser,$rank){\/\/更改排名$/;"	f
+resetUserRoot	src/include/module/SQL.php	/^	public function resetUserRoot($idOfUser,$root){\/\/更改权限$/;"	f
+resourceToArray	src/include/module/SQL.php	/^	protected static function resourceToArray($resID) \/\/将SQL查询返回的资源ID转变成可用的字符串数组$/;"	f
+response	src/include/module/request.php	/^	$response = fsockopen("localhost",80,$errno,$errstr,10) or exit($errstr." ".$errno);$/;"	v
+result	src/include/module/SQL.php	/^		$result=$this->getRecordByField($this->tableOfUsers,'Name',$nameOfUser);$/;"	v
+result	src/include/module/SQL.php	/^		$result=$this->getRecordByField($this->tableOfUsers,'SysId',$idOfUser);$/;"	v
+result	src/include/module/SQL.php	/^		$result=array();\/\/用于存放查询结果的数组$/;"	v
+result	src/include/module/post.php	/^	$result = $PostList->getLastInfofPost($params['num']);$/;"	v
+return	网页样式/editor/kindeditor/kindeditor-all-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(b,d){function f(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function j(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function e(a,c){for(var g=0,b=c.length;g<b;g++)if(a===c[g])return g;return-1}function h(a,c){if(f(a))for(var g=0,b=a.length;g<b;g++){if(c.call(a[g],g,a[g])===!1)break}else for(g in a)if(a.hasOwnProperty(g)&&c.call(a[g],g,a[g])===!1)break}function m(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,"")}$/;"	c
+return	网页样式/editor/kindeditor/kindeditor-all.js	/^	}$/;"	c
+return	网页样式/editor/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(w,i){function Z(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function wa(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function J(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function m(a,b){if(Z(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function B(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	c
+return	网页样式/editor/kindeditor/kindeditor.js	/^	}$/;"	c
+s	网页样式/editor/kindeditor/kindeditor-all-min.js	/^function n(a,c,g){g=g===d?",":g;return(g+c+g).indexOf(g+a+g)>=0}function o(a,c){c=c||"px";return a&&\/^\\d+$\/.test(a)?a+c:a}function l(a){var c;return a&&(c=\/(\\d+)\/.exec(a))?parseInt(c[1],10):0}function s(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function v(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function p(a){var c=a.split("-"),a="";h(c,function(c,b){a+=c>0?b.charAt(0).toUpperCase()+$/;"	f	function:n
+s	网页样式/editor/kindeditor/kindeditor-min.js	/^"")}function xa(a,b,c){c=c===i?",":c;return(c+b+c).indexOf(c+a+c)>=0}function s(a,b){b=b||"px";return a&&\/^\\d+$\/.test(a)?a+b:a}function t(a){var b;return a&&(b=\/(\\d+)\/.exec(a))?parseInt(b[1],10):0}function C(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function fa(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function ga(a){var b=a.split("-"),a="";m(b,function(b,d){a+=b>0?d.charAt(0).toUpperCase()+$/;"	f	function:xa
+save_file	src/include/module/file.php	/^function save_file($id,$file_name,$file_type,$file_content)$/;"	f
+search	网页样式/editor/kindeditor/plugins/baidumap/map.html	/^			function search(address) {$/;"	f
+search	网页样式/editor/kindeditor/plugins/map/map.html	/^		function search(address) {$/;"	f
+setFieldByField	src/include/module/SQL.php	/^	protected function setFieldByField($tableName,$fieldName,$value,$newFieldName,$newFieldValue) $/;"	f
+setMapEvent	网页样式/editor/kindeditor/plugins/baidumap/index.html	/^	function setMapEvent(){$/;"	f
+setRecordByField	src/include/module/SQL.php	/^	protected function setRecordByField($tableName,$fieldName,$value,$record) $/;"	f
+showPostList	src/include/module/post.php	/^function showPostList($params)$/;"	f
+showPostView	src/include/module/post.php	/^function showPostView()$/;"	f
+split_args	网页样式/split.php	/^$split_args=array('header.html'=>'<!-- 以上是主页头部 -->','announcement.html'=>'<!-- 以上是通知栏 -->','official.html'=>'<!-- 以上是官方动态 -->','hot.html'=>'<!-- 以上是热帖 -->','forum.html'=>'<!-- 以上是交流区 -->','search.html'=>'<!-- 以上是死去的搜索 -->','footer.html'=>'<!-- 以上是网页信息和html结尾 -->'); \/\/将文件名和对应分割标签写在这里$/;"	v
+state	src/include/module/SQL.php	/^		$this->state=true;$/;"	v
+state	src/include/module/SQL.php	/^	private $state;\/\/指示当前状态，外部不可更改$/;"	v
+t	网页样式/editor/kindeditor/kindeditor-min.js	/^"")}function xa(a,b,c){c=c===i?",":c;return(c+b+c).indexOf(c+a+c)>=0}function s(a,b){b=b||"px";return a&&\/^\\d+$\/.test(a)?a+b:a}function t(a){var b;return a&&(b=\/(\\d+)\/.exec(a))?parseInt(b[1],10):0}function C(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function fa(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function ga(a){var b=a.split("-"),a="";m(b,function(b,d){a+=b>0?d.charAt(0).toUpperCase()+$/;"	f	function:xa
+tableOfPost	src/include/module/SQL.php	/^	private $tableOfPost='PostOfUsers';$/;"	v
+tableOfUsers	src/include/module/SQL.php	/^	private $tableOfUsers='BaseInfOfUsers';$/;"	v
+toString	网页样式/editor/kindeditor/kindeditor-all-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(b,d){function f(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function j(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function e(a,c){for(var g=0,b=c.length;g<b;g++)if(a===c[g])return g;return-1}function h(a,c){if(f(a))for(var g=0,b=a.length;g<b;g++){if(c.call(a[g],g,a[g])===!1)break}else for(g in a)if(a.hasOwnProperty(g)&&c.call(a[g],g,a[g])===!1)break}function m(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,"")}$/;"	m	class:Object
+toString	网页样式/editor/kindeditor/kindeditor-all-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(b,d){function f(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function j(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function e(a,c){for(var g=0,b=c.length;g<b;g++)if(a===c[g])return g;return-1}function h(a,c){if(f(a))for(var g=0,b=a.length;g<b;g++){if(c.call(a[g],g,a[g])===!1)break}else for(g in a)if(a.hasOwnProperty(g)&&c.call(a[g],g,a[g])===!1)break}function m(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,"")}$/;"	m	class:return
+toString	网页样式/editor/kindeditor/kindeditor-all.js	/^	return Object.prototype.toString.call(val) === '[object Array]';$/;"	m	class:return
+toString	网页样式/editor/kindeditor/kindeditor-all.js	/^	return Object.prototype.toString.call(val) === '[object Function]';$/;"	m	class:return
+toString	网页样式/editor/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(w,i){function Z(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function wa(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function J(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function m(a,b){if(Z(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function B(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	m	class:Object
+toString	网页样式/editor/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(w,i){function Z(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function wa(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function J(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function m(a,b){if(Z(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function B(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	m	class:return
+toString	网页样式/editor/kindeditor/kindeditor.js	/^	return Object.prototype.toString.call(val) === '[object Array]';$/;"	m	class:return
+toString	网页样式/editor/kindeditor/kindeditor.js	/^	return Object.prototype.toString.call(val) === '[object Function]';$/;"	m	class:return
+username	src/include/module/log.php	/^		$username = $params['Name'];$/;"	v
+wa	网页样式/editor/kindeditor/kindeditor-min.js	/^\/* KindEditor 4.1.10 (2013-11-23), Copyright (C) kindsoft.net, Licence: http:\/\/www.kindsoft.net\/license.php *\/(function(w,i){function Z(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Array]"}function wa(a){if(!a)return!1;return Object.prototype.toString.call(a)==="[object Function]"}function J(a,b){for(var c=0,d=b.length;c<d;c++)if(a===b[c])return c;return-1}function m(a,b){if(Z(a))for(var c=0,d=a.length;c<d;c++){if(b.call(a[c],c,a[c])===!1)break}else for(c in a)if(a.hasOwnProperty(c)&&b.call(a[c],c,a[c])===!1)break}function B(a){return a.replace(\/(?:^[ \\t\\n\\r]+)|(?:[ \\t\\n\\r]+$)\/g,$/;"	f
+writePost	src/include/module/SQL.php	/^	public function writePost($IDofUser,$Time,$content,$ifFollow=false,$idOfFellow=0){\/\/发帖$/;"	f
+xa	网页样式/editor/kindeditor/kindeditor-min.js	/^"")}function xa(a,b,c){c=c===i?",":c;return(c+b+c).indexOf(c+a+c)>=0}function s(a,b){b=b||"px";return a&&\/^\\d+$\/.test(a)?a+b:a}function t(a){var b;return a&&(b=\/(\\d+)\/.exec(a))?parseInt(b[1],10):0}function C(a){return a.replace(\/&\/g,"&amp;").replace(\/<\/g,"&lt;").replace(\/>\/g,"&gt;").replace(\/"\/g,"&quot;")}function fa(a){return a.replace(\/&lt;\/g,"<").replace(\/&gt;\/g,">").replace(\/&quot;\/g,'"').replace(\/&amp;\/g,"&")}function ga(a){var b=a.split("-"),a="";m(b,function(b,d){a+=b>0?d.charAt(0).toUpperCase()+$/;"	f

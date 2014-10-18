@@ -5,19 +5,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>OPEN社团主页</title>
 
-
-<link rel="stylesheet" type="text/css" href="<?php echo BBS_WEB_TEMPLATE;?>/GeneralUI.css">
-<?php
-
-if (count($cssList)<1) array_push($cssList,'MainUI.css'); //若无额外CSS，则使用默认主页CSS
-foreach($cssList as $temp) echo '<link rel="stylesheet" type="text/css" href="'.BBS_WEB_TEMPLATE.'/'.$temp.'">';
-
+<link rel="stylesheet" type="text/css" href="<?php echo BBS_WEB_TEMPLATE.'/';?>GeneralUI.css">
+<?php 
+if (count($cssList)==0) array_push($cssList,'MainUI.css','PostListUI.css');
+foreach($cssList as $temp)
+{
+	echo '<link rel="stylesheet" type="text/css" href="'.BBS_WEB_TEMPLATE.'/'.$temp.'">';
+}
 if (count($jsList)>0)
-foreach($jsList as $temp) echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" type="text/javascript"></script>';
-
+	foreach($jsList as $temp)
+	{
+		echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" type="text/javascript"></script>';
+	}
 ?>
-
 </head>
+
+
 
 <body>
 
@@ -28,7 +31,7 @@ foreach($jsList as $temp) echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" typ
 
 
 <div class="logo-field">
-    <img class='logo-pic' src='../src/include/template/img/logo.gif'></img>
+    <img class='logo-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/logo.gif'/>
 	
 </div>
 
@@ -37,10 +40,16 @@ foreach($jsList as $temp) echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" typ
 <div class="login-field">
     <?php if(!isset($_SESSION['SysID'])) {?>
 	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
-	<pre>  用户名: <input id ="Name" type='text' name='Name' /></pre>
-	<pre>  密  码: <input id="Code" type='password' name='Code' /></pre>
+	<div class='login-name-field'>
+	<img class='login-name-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif'/>
+	<input id ="Name" type='text' name='Name' />
+	</div>
+	<div class='login-password-field'>
+	<img class='login-password-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/password.gif'/>
+	<input id="Code" type='password' name='Code' maxlength='18'/>
+	</div>
 	<input id='action' type='hidden' name='action' value='login' />
-	<pre> <input type='submit' name='submit' value='登录' /></pre>
+	<input type='image' name='submit' value='登录' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif' class='login-button'/>
 	</form>
 	<?php } else
 	{
@@ -48,7 +57,7 @@ foreach($jsList as $temp) echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" typ
 	?>
 	<form name='test' action='?' method='POST'>
 	<input id='action' type='hidden' name='action' value='logout' />
-	<pre> <input type='submit' name='submit' value='登出' /></pre>
+	<input type='image' name='submit' value='登出' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif' class='logout-button'/>
 	</form>
 	<?php
 	}
@@ -78,4 +87,5 @@ foreach($jsList as $temp) echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" typ
 		}
 	}
 </script>
-<div style="clear:both;"></div><!--需要额外加一个DIV使得以上FLOAT作用不会继续传递到下面的DIV-->
+
+
