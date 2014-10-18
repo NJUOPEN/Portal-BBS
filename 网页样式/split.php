@@ -45,7 +45,7 @@ $split_args=array(
 	/*分割帖子浏览页面的参数*/array('header_post.html'=>'<!-- 以上是帖子列表头部 -->',
 								'areaControl.html'=>'<!-- 以上是返回上一级连接，但是和另外一个不一样 -->',
 								'listControl.html'=>'<!-- 以上是帖子列表以及翻页 -->',
-								'replyPost.html'=>'<!-- 以上是发布主题 -->',
+								'addPost.html'=>'<!-- 以上是发布主题 -->',
 								'footer.html'=>'<!-- 以上是网页信息以及html结束 -->')
 				);
 				

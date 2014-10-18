@@ -6,9 +6,14 @@
  */
 function showPostList($params)
 {
-	global $cssList;  //引用函数外定义的全局变量需要先申明为global
-	global $post_list;
+	global $cssList,$jsList;  //引用函数外定义的全局变量需要先申明为global
 	array_push($cssList,'PostListUI.css');
+	array_push($jsList,'editor/kindeditor/themes/default/default.css');
+	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
+	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
+	array_push($jsList,'KE.js');	
+	
+	global $post_list;
 
 	// if ($params['num'] == NULL) $params['num'] = 0;;
 
@@ -18,8 +23,12 @@ function showPostList($params)
 }
 function showPostView()
 {
-	global $cssList;
+	global $cssList,$jsList;
 	array_push($cssList,'SinglePostUI.css');
 	array_push($cssList,'PostListUI.css');
+	array_push($jsList,'editor/kindeditor/themes/default/default.css');
+	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
+	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
+	array_push($jsList,'KE.js');	
 }
 ?>
