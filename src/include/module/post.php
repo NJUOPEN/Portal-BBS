@@ -8,7 +8,7 @@ function showPostList($params)
 {
 	global $cssList,$jsList;  //引用函数外定义的全局变量需要先申明为global
 	array_push($cssList,'PostListUI.css');
-	array_push($jsList,'editor/kindeditor/themes/default/default.css');
+	array_push($cssList,'editor/kindeditor/themes/default/default.css');
 	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
 	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
 	array_push($jsList,'KE.js');	
@@ -26,9 +26,19 @@ function showPostView()
 	global $cssList,$jsList;
 	array_push($cssList,'SinglePostUI.css');
 	array_push($cssList,'PostListUI.css');
-	array_push($jsList,'editor/kindeditor/themes/default/default.css');
+	array_push($cssList,'editor/kindeditor/themes/default/default.css');
 	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
 	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
 	array_push($jsList,'KE.js');	
+}
+// 发布帖子
+function doPost($params) {
+	include(BBS_ROOT.'/include/module/SQL.php');
+	$newPost = new SQL_Post;
+	$date = getdate();
+	$time = $date['year'];
+	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
+	echo $time.'<br/>';
+	$newPost->writePost($_SESSION['SysID'], $time, 'test test', false, 0);
 }
 ?>

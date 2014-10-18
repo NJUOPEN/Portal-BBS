@@ -1,16 +1,19 @@
 
 
 
-<div class="do-post-field">
-    <p><b class="do-post-prompt-field">发表新主题</b></p>
-    <form name='doPost' method='POST' action='?'>
-	<input class="do-post-name-input-field" name='title'/>
+
+<div>	
+    <p class="reply-prompt">回帖</p>
+
+	<form id="form1" name="form1" method="post" action="?">
+	<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
 	<br/>
-	<textarea class='do-post-text-input-field' name='content'></textarea>
+	<input id="content_1" type="hidden" runat="server" value="" />
 	<br/>
-	<input type='hidden' name='action' value='doPost'/>
-	<input class="do-post-submit-button" type="submit" value="发布"/>
-    </form>
+    <input class="reply-submit-field" type="submit" value="发表" onclick='save();'/>
+	</form>
+	<br/>
+>>>>>>> Portal-BBS/master
 </div>
 
 

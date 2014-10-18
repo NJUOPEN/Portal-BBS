@@ -132,21 +132,19 @@ class SQL_Obj
 	*/
 		if (count($value)<1) return false;
 		if (!$this->checkTable($tableName)) return false;
-		$query='INSERT INTO '.$tableName;
-		foreach (array_keys($value) as $temp)
-		{
-			$query.='"'.$temp.'",';
+		$query='INSERT INTO `'.$tableName.'` (';
+		foreach (array_keys($value) as $temp) {
+			$query.='`'.$temp.'`,';
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
-		$query.=') VALUES(';
-		foreach (array_values($value) as $temp)
-		{
+		$query.=') VALUES (';
+		foreach (array_values($value) as $temp) {
 			$query.='"'.$temp.'",';
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=');';
 		mysql_query($query,$this->db);
-		if (mysql_affected_rows()>0) return true; else return false;		
+		if (mysql_affected_rows()>0) return true; else return false;
 	}
 	
 	protected function getRecordByField($tableName,$fieldName,$value) 
@@ -280,7 +278,7 @@ class SQL_Msg extends SQL_Obj
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM '.$tableName.' ORDER BY "'.$fieldList.'" '.($descendent?'DESC':'ASC');
 		//FIXME 为什么要用 $count && $count>=0, 在这种条件下输入0或者空会输出所有帖子,是这样期望的吗?
-		if ($count>=0 && $count != NULL)	{
+		if ($count>=0 && $count != NULL && is_int($count))	{
 		    $query.=' LIMIT '.$count;
 		}
 		$query.=';';
@@ -337,31 +335,41 @@ class SQL_Post extends SQL_Msg //贴子操作类
 {
 	private $tableOfPost='PostOfUsers';
 	
-	private function resetPost($idOfPost){//更新更贴数目
-		$num=$this->countRecordByField($this->tableOfPost,'FollowAdd',$idOfPost);
-		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FollowAdd',$num+1);
-	}
-	public function delectPost($IDofPost){//删除知道ID的帖子
+	
+	private function resetPost($idOfPost) {//更新更贴数目
+		$num=$this->countRecordByField($this->tableOfPost,'FellowAdd',$idOfPost);
+		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FellowAdd',$num+1);
+	}	
+	
+	public function delectPost($IDofPost) {//删除知道ID的帖子
 		return $this->deleteRecordByField($this->tableOfPost,'PostID',$IDofPost);
-	}
-	public function writePost($IDofUser,$Time,$title,$content,$ifFollow=false,$idOfFollow=0){//发帖
+	}	
+	
+	public function writePost($IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFellow=0) {//发帖
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用
-		if ($isFollow)
-		{
-			if (!$this->resetPost($idOfFollow)) return false;
+		if ($isFollow) {
+			if (!$this->resetPost($idOfFellow)) return false;
 		}
-		return $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$title,'PostAdd'=>$content,'FollowNum'=>0,'FollowAdd'=>$idOfFollow));
-	}
-	public function getPost($IDofPost){
+		$result = $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$Title,'PostAdd'=>$content,'FellowNum'=>$idOfFello,'FellowAdd'=>$idOfFellow));
+		if ($result) return true;
+		else {
+			echo 'Failed<br/>';
+			return false;
+		}
+	}	
+	
+	public function getPost($IDofPost) {
 		return $this->getRecordByField($this->tableOfPost,"PostID",$IDofPost);
-	}
-	public function getPostByTitle($title){
+	}	
+	
+	public function getPostByTitle($title) {
 		return $this->getRecordByField($tableName,"Title",$title);
-	}
-	public function getTotalNumOfPost()
-	{
+	}	
+	
+	public function getTotalNumOfPost() {
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
-	}
+	}	
+	
 	public function getLastInfofPost($number) {
 		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number);
 	}

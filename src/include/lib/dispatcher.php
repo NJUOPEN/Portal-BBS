@@ -26,15 +26,14 @@ if ($method == 'POST') {
     }
 } else if ($method == 'GET') {
     foreach ($_GET as $key=>$val) {
-	if ($key != 'action') {
-	    $params[$key]=$val;
-	}
+		if ($key != 'action') {
+		    $params[$key]=$val;
+		}
     }
 } else {
     echo 'Unexpected request!<br />';
     $action = 'invalid';
 }
-
 
 switch ($action) {
     case 'login' :
@@ -58,7 +57,7 @@ switch ($action) {
 		echo 'here\' a function doPost<br/>';	
 		break;
     case 'invalid' :
-	echo 'action is set invalid<br />';
+		echo 'action is set invalid<br />';
     // TODO add more
 }
 ?>

@@ -111,17 +111,16 @@
 <!-- 以上是帖子列表以及翻页 -->
 
 
-<div class="do-post-field">
-    
-	<p><b class="do-post-prompt-field">发表新主题</b></p>
-	<input class="do-post-name-input-field"/>
-	<form id="form1" name="form1" method="post" action="?">
-		  <textarea class="do-post-text-input-field" id="editor_1" name="content" ></textarea>
-		  <br/>
-		  <input id="content_1" type="hidden" runat="server" value="" />
-		  <br/>
-	      <input class="do-post-submit-button" type="submit" value="发布" onclick='save();'/>
-	</form>
+<div class='do-post-field'>
+<form name='do_post' id='do_post' action='?' method='POST' >
+	<p><b class='do-post-prompt-field'>发表新主题</b></p>
+	<input class='do-post-name-input-field' type='text' id='title' />
+	<br/>
+	<textarea class='do-post-text-input-field' type='text' id='content' /></textarea>
+	<br/>
+	<input id='action' name='action' type='hidden' value='doPost' />
+	<input class='do-post-submit-button' type='submit' value='发布' />
+</form>
 </div>
 
 

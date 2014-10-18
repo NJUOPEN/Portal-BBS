@@ -10,12 +10,12 @@
 if (count($cssList)==0) array_push($cssList,'MainUI.css','PostListUI.css');
 foreach($cssList as $temp)
 {
-	echo '<link rel="stylesheet" type="text/css" href="'.BBS_WEB_TEMPLATE.'/'.$temp.'">';
+	echo '<link rel="stylesheet" type="text/css" href="'.BBS_WEB_TEMPLATE.'/'.$temp.'">'."\n";
 }
 if (count($jsList)>0)
 	foreach($jsList as $temp)
 	{
-		echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" type="text/javascript"></script>';
+		echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" type="text/javascript"></script>'."\n";
 	}
 ?>
 </head>
