@@ -44,7 +44,7 @@ div.do-post-field {
 }
 
 .do-post-text-input-field {
-    typr:text;
+    type:text;
 	height:125px;
 	width:80%;
 	position:relative;

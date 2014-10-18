@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
@@ -11,26 +11,7 @@
 <link rel="stylesheet" href="editor/kindeditor/themes/default/default.css" />
 		<script charset="utf-8" src="editor/kindeditor/kindeditor-min.js"></script>
 		<script charset="utf-8" src="editor/kindeditor/lang/zh_CN.js"></script>
-		<script>
-			var editor;
-			KindEditor.ready(function(K) {
-				editor = K.create('textarea[name="content"]', {
-					resizeType : 1,
-					allowPreviewEmoticons : false,
-					allowImageUpload : false,
-					items : [
-						 'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
-        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
-        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
-        'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
-        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
-        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
-        'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
-        'anchor', 'link', 'unlink', '|', 'about']
-				});
-			});
-		</script>
-
+		<script charset="utf-8" src="./KE.js"></script>
 </head>
 
 
@@ -167,13 +148,16 @@
 
 <div>	
     <p class="reply-prompt">回帖</p>
-	<form>
-			<textarea class="reply-input-field" id="editor_1" name="content" >KindEditor</textarea>
+	<form id="form1" name="form1" method="post" action="?">
+	<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
+	<br/>
+	<input id="content_1" type="hidden" runat="server" value="" />
+	<br/>
+    <input class="reply-submit-field" type="submit" value="发表" onclick='save();'/>
 	</form>
 	<br/>
-	<input class="reply-submit-field" type="submit" value="发表"/>
-	<br/>
 </div>
+
 
 <!-- 以上是回帖部分 -->
 

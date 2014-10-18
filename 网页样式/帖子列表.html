@@ -9,7 +9,10 @@
 <link rel="stylesheet" type="text/css" href="./GeneralUI.css">
 <link rel="stylesheet" type="text/css" href="./PostListUI.css">
 
-
+<link rel="stylesheet" href="editor/kindeditor/themes/default/default.css" />
+		<script charset="utf-8" src="editor/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="editor/kindeditor/lang/zh_CN.js"></script>
+		<script charset="utf-8" src="./KE.js"></script>
 </head>
 
 <body>
@@ -107,10 +110,13 @@
     
 	<p><b class="do-post-prompt-field">发表新主题</b></p>
 	<input class="do-post-name-input-field"/>
-	<br/>
-	<input class="do-post-text-input-field"/>
-	<br/>
-	<input class="do-post-submit-button" type="submit" value="发布"/>
+	<form id="form1" name="form1" method="post" action="?">
+		  <textarea class="do-post-text-input-field" id="editor_1" name="content" ></textarea>
+		  <br/>
+		  <input id="content_1" type="hidden" runat="server" value="" />
+		  <br/>
+	      <input class="do-post-submit-button" type="submit" value="发布" onclick='save();'/>
+	</form>
 </div>
 
 
