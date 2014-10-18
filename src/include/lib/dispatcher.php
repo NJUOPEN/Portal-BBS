@@ -34,25 +34,26 @@ if ($method == 'POST') {
 
 switch ($action) {
     case 'login' :
-        include(BBS_ROOT.'/include/module/log.php');
+        include_once(BBS_ROOT.'/include/module/log.php');
         login($params);
         break;
     case 'logout' :
-        include(BBS_ROOT.'/include/module/log.php');
+        include_once(BBS_ROOT.'/include/module/log.php');
         logout();
         break;
+    case 'doPost' :
+    	include_once(BBS_ROOT.'/include/module/post.php');
+    	doPost($params);
+    	showPostList($params);
+    	break;
     case 'postList' :
-    	include(BBS_ROOT.'/include/module/post.php');
+    	include_once(BBS_ROOT.'/include/module/post.php');
     	showPostList($params);
     	break;
     case 'postView' :
-    	include(BBS_ROOT.'/include/module/post.php');
+    	include_once(BBS_ROOT.'/include/module/post.php');
     	showPostView();
     	break;
-    case 'doPost' :
-		include(BBS_ROOT.'/include/module/post.php');
-    	doPost($params);
-		break;
     case 'invalid' :
 		echo 'action is set invalid<br />';
     // TODO add more

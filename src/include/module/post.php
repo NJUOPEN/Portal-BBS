@@ -14,13 +14,11 @@ function showPostList($params)
 	array_push($jsList,'KE.js');	
 	
 	global $post_list;
-	echo isset($post_list);
-	print_r($params);
 	// if ($params['num'] == NULL) $params['num'] = 0;;
 
-	include(BBS_ROOT.'/include/module/SQL.php');
+	include_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
-	$post_list = $PostList->getLastInfofPost($params['num']);
+	$post_list = $PostList->getLastInfofPost($params['ListSize']);
 }
 function showPostView()
 {
@@ -34,7 +32,7 @@ function showPostView()
 }
 // 发布帖子
 function doPost($params) {
-	include(BBS_ROOT.'/include/module/SQL.php');
+	include_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	$date = getdate();
 	$time = $date['year'];

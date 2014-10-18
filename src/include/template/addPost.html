@@ -3,11 +3,12 @@
 
 <?php
 if (isset($_SESSION['SysID'])) {
+	$act = '?'.$ListSize.'&';
 ?>
 <div>
     <p class="do-post-prompt">发布新主题</p>
     <br/>
-	<form id="doPost" name="doPost" method="post" action="?">
+	<form id="doPost" name="doPost" method="post" action=<?php $act ?>>
 	<input class="do-post-name-input-field" name="title"/>
 	<textarea class="do-post-text-input-field" id="doPost_editor" name="content"></textarea>
 	<br/>
