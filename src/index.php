@@ -16,7 +16,7 @@ $cssList=array();
 $jsList=array();
 
 //帖子相关缓冲
-$new_posts=array(); //存储新帖子
+$post_list=array();
 
 //进行请求分发(dispatch)
 include_once(BBS_ROOT.'/include/lib/dispatcher.php');
@@ -44,7 +44,6 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 		include_once(BBS_TEMPLATE.'/official.html');
 		include_once(BBS_TEMPLATE.'/hot.html');
 		include_once(BBS_TEMPLATE.'/new.html');
-		include_once(BBS_TEMPLATE.'/newpost.html');
 		include_once(BBS_TEMPLATE.'/forum.html');
 		include_once(BBS_TEMPLATE.'/search.html');
 	//TODO:添加登录、登出提示框，将login、logout的样式与默认主页分离；

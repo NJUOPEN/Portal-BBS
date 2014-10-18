@@ -7,12 +7,14 @@
 function showPostList($params)
 {
 	global $cssList;  //引用函数外定义的全局变量需要先申明为global
-	global $new_posts;
+	global $post_list;
 	array_push($cssList,'PostListUI.css');
+
+	// if ($params['num'] == NULL) $params['num'] = 0;;
 
 	include(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
-	$new_posts = $PostList->getLastInfofPost($params['num']);
+	$post_list = $PostList->getLastInfofPost($params['num']);
 }
 function showPostView()
 {
