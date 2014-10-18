@@ -1,6 +1,12 @@
 
 
-
+<?php 
+global $_SESSION;
+if (isset($_SESSION['SysID'])) {
+if ($_SESSION['SysID'] == NULL) echo 'hit';
+echo 'what!';
+echo $_SESSION['SysID'];
+?>
 <div>	
     <p class="reply-prompt">回帖</p>
 			<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
@@ -9,4 +15,6 @@
 	<input class="reply-submit-field" type="submit" value="发表"/>
 	<br/>
 </div>
-
+<?php
+}
+?>

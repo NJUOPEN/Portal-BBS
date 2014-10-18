@@ -6,8 +6,6 @@
  */
 
 //参考:blog.csdn.net/sysprogram/article/details/21107041
-if (!session_id()) session_start();
-
 function login($params) {
 		//print_r($params);
 		$username = $params['Name'];
@@ -31,8 +29,6 @@ function login($params) {
 	 * 登出
 	 */
 function logout() {
-	//echo "$_SESSION[userid]<br />";
-	//echo "$_SESSION[username]<br />";
     unset($_SESSION['SysID']);
     unset($_SESSION['Name']);
     echo "Log out success<br />";

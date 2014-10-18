@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(7);
 /*
 本文件为论坛前台操作的公共入口
