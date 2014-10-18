@@ -14,7 +14,8 @@ function showPostList($params)
 	array_push($jsList,'KE.js');	
 	
 	global $post_list;
-
+	echo isset($post_list);
+	print_r($params);
 	// if ($params['num'] == NULL) $params['num'] = 0;;
 
 	include(BBS_ROOT.'/include/module/SQL.php');

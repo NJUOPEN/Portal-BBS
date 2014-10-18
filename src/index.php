@@ -19,8 +19,11 @@ $cssList=array();
 $jsList=array();
 
 //帖子相关缓冲
-$post_list=array();
-
+if(!isset($post_list)) {
+	echo 'initializing<br/>';
+	$post_list=array();
+}
+print_r($_POST);
 //进行请求分发(dispatch)
 include_once(BBS_ROOT.'/include/lib/dispatcher.php');
 

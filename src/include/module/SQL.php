@@ -276,9 +276,9 @@ class SQL_Msg extends SQL_Obj
 	protected function getTopRecord($tableName,$fieldList,$descendent=true,$count=-1)  //将记录按给定字段排序并返回前数个记录
 	{
 		if (!$this->checkTable($tableName)) return NULL;
-		$query='SELECT * FROM '.$tableName.' ORDER BY "'.$fieldList.'" '.($descendent?'DESC':'ASC');
+		$query='SELECT * FROM '.$tableName.' ORDER BY `'.$tableName.'`.`'.$fieldList.'` '.($descendent?'DESC':'ASC');
 		//FIXME 为什么要用 $count && $count>=0, 在这种条件下输入0或者空会输出所有帖子,是这样期望的吗?
-		if ($count>=0 && $count != NULL && is_int($count))	{
+		if ($count>=0 && $count != NULL && is_numeric($count))	{
 		    $query.=' LIMIT '.$count;
 		}
 		$query.=';';
