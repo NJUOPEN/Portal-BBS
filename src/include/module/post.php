@@ -11,7 +11,7 @@ function showPostList($params)
 	array_push($cssList,'editor/kindeditor/themes/default/default.css');
 	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
 	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
-	array_push($jsList,'KE.js');	
+	array_push($jsList,'KE.js');
 	
 	global $post_list;
 	// if ($params['num'] == NULL) $params['num'] = 0;;
@@ -28,7 +28,7 @@ function showPostView()
 	array_push($cssList,'editor/kindeditor/themes/default/default.css');
 	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
 	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
-	array_push($jsList,'KE.js');	
+	array_push($jsList,'KE.js');
 }
 // 发布帖子
 function doPost($params) {

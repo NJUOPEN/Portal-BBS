@@ -7,6 +7,7 @@
 	$ListSize = 10;
 	if(isset($_GET['ListSize'])) $ListSize = $_GET['ListSize'];
 	else if (isset($_POST['ListSize'])) $ListSize = $_POST['ListSize'];
+	if ($ListSize > 10) $ListSize = 10;
 	for ($i = 0; $i < $ListSize; $i++) { // set a maximum
 	?><li class="single-list-field"><?php
 	    $post = $post_list[$i];
