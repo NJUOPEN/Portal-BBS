@@ -350,7 +350,7 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		if ($isFollow) {
 			if (!$this->resetPost($idOfFellow)) return false;
 		}
-		$result = $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$Title,'PostAdd'=>$content,'FellowNum'=>$idOfFello,'FellowAdd'=>$idOfFellow));
+		$result = $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>$idOfFollow,'FollowAdd'=>$idOfFollow));
 		if ($result) return true;
 		else {
 			echo 'Failed<br/>';
