@@ -32,7 +32,7 @@ $fileList=array('./Open.html','./SinglePost.html','./PostList.html');
 //TODO:将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致
 $split_args=array(
 	/*分割主页的参数*/array('header.html'=>'<!-- 以上是主页头部 -->',
-						'announcement.html'=>'<!-- 以上是通知栏 -->',
+						/*'announcement.html'=>'<!-- 以上是通知栏 -->',*/
 						'official.html'=>'<!-- 以上是官方动态 -->',
 						'hot.html'=>'<!-- 以上是热帖 -->',
 						'forum.html'=>'<!-- 以上是交流区 -->',

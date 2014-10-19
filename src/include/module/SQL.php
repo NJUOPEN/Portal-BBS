@@ -339,32 +339,32 @@ class SQL_Post extends SQL_Msg //贴子操作类
 
 
 	private function resetPost($idOfPost) {//更新更贴数目
-		$num=$this->countRecordByField($this->tableOfPost,'FellowAdd',$idOfPost);
-		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FellowAdd',$num+1);
+		$num=$this->countRecordByField($this->tableOfPost,'FollowAdd',$idOfPost);
+		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FollowAdd',$num+1);
 	}
 
 	public function delectPost($IDofPost) {//删除知道ID的帖子
 		return $this->deleteRecordByField($this->tableOfPost,'PostID',$IDofPost);
 	}
 	
-	public function writePost($IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFellow=0) {//发帖
+	public function writePost($IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFollow=0) {//发帖
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用
 		if ($isFollow) {
-			if (!$this->resetPost($idOfFellow)) return false;
+			if (!$this->resetPost($idOfFollow)) return false;
 		}
-		$result = $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>$idOfFollow,'FollowAdd'=>$idOfFollow));
+		$result = $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?'1':'0','Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>$idOfFollow,'FollowAdd'=>$idOfFollow));
 		if ($result) return true;
 		else {
 			echo 'Failed<br/>';
 			return false;
 		}
 	}
-	public function setPost($PostID,$IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFellow=0) {//修改帖子
+	public function setPost($PostID,$IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFollow=0) {//修改帖子
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用	
 		if ($isFollow) {
-			if (!$this->resetPost($idOfFellow)) return false;
+			if (!$this->resetPost($idOfFollow)) return false;
 		}
-		$result = $this->setRecordByField($this->tableOfPost,'PostID',$PostID,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>$idOfFollow,'FollowAdd'=>$idOfFollow));
+		$result = $this->setRecordByField($this->tableOfPost,'PostID',$PostID,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?'1':'0','Title'=>$Title,'PostAdd'=>$content,'FollowAdd'=>$idOfFollow));
 		if ($result) return true;
 		else {
 			echo 'Failed<br/>';
@@ -372,11 +372,13 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		}
 	}
 	public function getPost($IDofPost) {
-		return $this->getRecordByField($this->tableOfPost,"PostID",$IDofPost);
+		$postList=$this->getRecordByField($this->tableOfPost,"PostID",$IDofPost);
+		if (count($postList)>0) return $postList[0]; else return NULL;
 	}
 
 	public function getPostByTitle($title) {
-		return $this->getRecordByField($this->tableOfPost,"Title",$title);
+		$postList=$this->getRecordByField($this->tableOfPost,"Title",$title);
+		if (count($postList)>0) return $postList[0]; else return NULL;
 	}
 
 	public function getTotalNumOfPost() {

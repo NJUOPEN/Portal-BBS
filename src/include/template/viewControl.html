@@ -3,104 +3,17 @@
 
 <div class="post-field">
     <ul>
+    	<?php foreach($post_list as $post) {?>
 	    <li class="single-post-field">
-		    <div class="poster-field">
-		    <?php
-		    echo $post_list[0]['PostID'];
-		    ?>
+			<div class="poster-field">
+			<?php	echo $post['PostID'];?>
 			</div>
 			<div class="post-details-field">
-			<?php
-			echo $post_list[0]['PostAdd'];
-			?>
+			<?php	echo $post['PostAdd'];?>
 			</div>
 		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-		    <?php
-		    echo $post_list[1]['PostID'];
-		    ?>
-			</div>
-			<div class="post-details-field">
-		    <?php
-		    echo $post_list[1]['PostAdd'];
-		    ?>
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-		    <?php
-		    echo $post_list[2]['PostID'];
-		    ?>
-			</div>
-			<div class="post-details-field">
-		    <?php
-		    echo $post_list[2]['PostID'];
-		    ?>
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-		    <?php
-		    echo $post_list[3]['PostID'];
-		    ?>
-			</div>
-			<div class="post-details-field">
-		    <?php
-		    echo $post_list[3]['PostID'];
-		    ?>
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-		    <?php
-		    echo $post_list[4]['PostID'];
-		    ?>
-			</div>
-			<div class="post-details-field">
-		    <?php
-		    echo $post_list[4]['PostID'];
-		    ?>
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-		    <?php
-		    echo $post_list[5]['PostID'];
-		    ?>
-			</div>
-			<div class="post-details-field">
-		    <?php
-		    echo $post_list[5]['PostID'];
-		    ?>
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-		    <?php
-		    echo $post_list[6]['PostID'];
-		    ?>
-			</div>
-			<div class="post-details-field">
-		    <?php
-		    echo $post_list[6]['PostID'];
-		    ?>
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-		    <?php
-		    echo $post_list[7]['PostID'];
-		    ?>
-			</div>
-			<div class="post-details-field">
-		    <?php
-		    echo $post_list[7]['PostID'];
-		    ?>
-			</div>
-		</li>
-	</ul>
-	
+		<?php }?>
+	</ul>	
 </div>
 
 

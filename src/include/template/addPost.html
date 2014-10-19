@@ -1,20 +1,24 @@
+
+
+
 <?php
 if (isset($_SESSION['SysID'])) {
 	$act = '?'.$ListSize.'&';
 ?>
-<div>
-    <p class="do-post-prompt">发布新主题</p>
-    <br/>
-	<form id="doPost" name="doPost" method="post" action=<?php $act ?>>
-	<input class="do-post-name-input-field" name="title"/>
-	<textarea class="do-post-text-input-field" id="doPost_editor" name="content"></textarea>
-	<br/>
-	<input id="doPost" type="hidden" runat="server" name='action' value="doPost"/>
-	<br/>
-    <input class="do-post-submit-button" type="submit" value="发表" onclick='save();'/>
+<div class="do-post-field">
+    
+	<p><b class="do-post-prompt-field">发表新主题</b></p>
+	<input class="do-post-name-input-field"/>
+	<form id="form1" name="form1" method="post" action="<?php echo $act;?>">
+		  <textarea class="do-post-text-input-field" id="editor_1" name="content" ></textarea>		  
+		  <input id="content_1" type="hidden" runat="server" value="" />
+		  <input id="doPost" type="hidden" runat="server" name='action' value="doPost"/>
+		  <br/>
+		  <br/>
+	      <input class="do-post-submit-button" type="submit" value="发布" onclick='save();'/>
 	</form>
-	<br/>
 </div>
 <?php
 }
 ?>
+
