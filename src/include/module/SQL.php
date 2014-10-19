@@ -63,8 +63,9 @@ class SQL_Obj
 			return false;
 	}
 	
-	protected static function resourceToArray($resID) //将SQL查询返回的资源ID转变成可用的字符串数组
+	protected static function resourceToArray($resID) //将SQL查询返回的资源ID转变成可用的字符串数组;若查询失败则返回NULL
 	{
+		if (!$resID) return NULL;
 		$result=array();//用于存放查询结果的数组
 		while($temp=mysql_fetch_array($resID))//判断每次取出的记录是否为空
 		{
@@ -90,7 +91,7 @@ class SQL_Obj
 		}
 		else
 		{
-			return ' WHERE '.$fieldName.' = "'.$fieldValue.'"';
+			return ' WHERE `'.$fieldName.'` = \''.$fieldValue.'\'';
 		}
 	}
 	
@@ -111,7 +112,8 @@ class SQL_Obj
 		foreach ($fieldList as $field)
 		{
 			if ($field['name'] && $field['value'])
-				$condition.=$field['name'].$field['condition'].'"'.$field['value'].'" AND ';
+				$condition.='`'.$field['name'].'`'.$field['condition'].'\''.$field['value'].'\' AND ';
+				//这里使用单引号界定记录值，插入前需要做好转义工作！！！
 		}
 		if ($condition=='')
 			return '';
@@ -134,15 +136,16 @@ class SQL_Obj
 		if (!$this->checkTable($tableName)) return false;
 		$query='INSERT INTO `'.$tableName.'` (';
 		foreach (array_keys($value) as $temp) {
-			$query.='`'.$temp.'`,';
+			$query.='`'.$temp.'`,'; //这里使用反引号来界定字段名
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=') VALUES (';
 		foreach (array_values($value) as $temp) {
-			$query.='"'.$temp.'",';
+			$query.='\''.$temp.'\','; //这里使用单引号界定记录值，插入前需要做好转义工作！！！
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=');';
+		echo $query.'<br />';
 		mysql_query($query,$this->db);
 		if (mysql_affected_rows()>0) return true; else return false;
 	}
@@ -160,7 +163,7 @@ class SQL_Obj
 			记录数组，每一个记录对应数组中的每一个元素
 	*/
 		if (!$this->checkTable($tableName)) return NULL;
-		return self::resourceToArray(mysql_query('SELECT * FROM '.$tableName.self::buildCondition($fieldName,$value).';',$this->db));
+		return self::resourceToArray(mysql_query('SELECT * FROM `'.$tableName.'`'.self::buildCondition($fieldName,$value).';',$this->db));
 	}
 	
 	protected function setRecordByField($tableName,$fieldName,$value,$record) 
@@ -178,16 +181,16 @@ class SQL_Obj
 	*/
 		if (count($record)<1) return false;
 		if (!$this->checkTable($tableName)) return false;
-		$query='UPDATE FROM '.$tableName.'(';
+		$query='UPDATE FROM `'.$tableName.'`(';
 		foreach (array_keys($value) as $temp)
 		{
-			$query.='"'.$temp.'",';
+			$query.='`'.$temp.'`,';
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=') VALUES(';
 		foreach (array_values($value) as $temp)
 		{
-			$query.='"'.$temp.'",';
+			$query.='\''.$temp.'\',';
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=')'.self::buildCondition($fieldName,$value).';';
@@ -211,7 +214,7 @@ class SQL_Obj
 	*/
 		if (count($record)<1) return false;
 		if (!$this->checkTable($tableName)) return false;
-		mysql_query('UPDATE FROM '.$tableName.'('.$newFieldName.') VALUES('.$newFieldValue.')'.self::buildCondition($fieldName,$value).';',$this->db);
+		mysql_query('UPDATE FROM `'.$tableName.'` (`'.$newFieldName.'`) VALUES(\''.$newFieldValue.'\')'.self::buildCondition($fieldName,$value).';',$this->db);
 		if (mysql_affected_rows()>0) return true; else return false;
 	}
 	
@@ -228,7 +231,7 @@ class SQL_Obj
 			true/false：操作成功或失败；
 	*/
 		if (!$this->checkTable($tableName)) return false;
-		mysql_query('DELETE FROM '.$tableName.self::buildCondition($fieldName,$value).';',$db);
+		mysql_query('DELETE FROM `'.$tableName.'`'.self::buildCondition($fieldName,$value).';',$db);
 		if (mysql_affected_rows()>0) return true; else return false;
 	}
 	protected function countRecordByField($tableName,$fieldName,$value)
@@ -244,7 +247,7 @@ class SQL_Obj
 			整数表示的记录个数；
 	*/
 		if (!$this->checkTable($tableName)) return false;
-		$count=self::resourceToArray(mysql_query('SELECT COUNT("'.$fieldName.'") FROM '.$tableName.self::buildCondition($fieldName,$value).';',$this->db));
+		$count=self::resourceToArray(mysql_query('SELECT COUNT(`'.$fieldName.'`) FROM `'.$tableName.'`'.self::buildCondition($fieldName,$value).';',$this->db));
 		return (int)$count[0];
 	}
 }
@@ -266,7 +269,7 @@ class SQL_Info extends SQL_Obj
 	protected function getRecordByFields($tableName,$fieldList)  //根据某几个字段的值是否相等来查找记录
 	{
 		if (!$this->checkTable($tableName)) return NULL;
-		$query='SELECT * FROM '.$tableName.buildConditions($fieldList);
+		$query='SELECT * FROM `'.$tableName.'`'.buildConditions($fieldList);
 		return self::resourceToArray(mysql_query($query,$this->db));
 	}
 }
@@ -276,7 +279,7 @@ class SQL_Msg extends SQL_Obj
 	protected function getTopRecord($tableName,$fieldList,$descendent=true,$count=-1)  //将记录按给定字段排序并返回前数个记录
 	{
 		if (!$this->checkTable($tableName)) return NULL;
-		$query='SELECT * FROM '.$tableName.' ORDER BY `'.$tableName.'`.`'.$fieldList.'` '.($descendent?'DESC':'ASC');
+		$query='SELECT * FROM `'.$tableName.'` ORDER BY `'.$tableName.'`.`'.$fieldList.'` '.($descendent?'DESC':'ASC');
 		//FIXME 为什么要用 $count && $count>=0, 在这种条件下输入0或者空会输出所有帖子,是这样期望的吗?
 		if ($count>=0 && $count != NULL && is_numeric($count))	{
 		    $query.=' LIMIT '.$count;
@@ -356,8 +359,19 @@ class SQL_Post extends SQL_Msg //贴子操作类
 			echo 'Failed<br/>';
 			return false;
 		}
-	}	
-	
+	}
+	public function setPost($PostID,$IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFellow=0) {//修改帖子
+		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用	
+		if ($isFollow) {
+			if (!$this->resetPost($idOfFellow)) return false;
+		}
+		$result = $this->setRecordByField($this->tableOfPost,'PostID',$PostID,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>$idOfFollow,'FollowAdd'=>$idOfFollow));
+		if ($result) return true;
+		else {
+			echo 'Failed<br/>';
+			return false;
+		}
+	}
 	public function getPost($IDofPost) {
 		return $this->getRecordByField($this->tableOfPost,"PostID",$IDofPost);
 	}	
