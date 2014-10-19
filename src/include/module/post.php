@@ -38,7 +38,7 @@ function showPostList($params)
 		$post_list['PostAdd'] = unEscPost($post_list['PostAdd']);
 	}
 }
-function showPostView()
+function showPostView($params)
 {
 	global $cssList,$jsList;
 	array_push($cssList,'SinglePostUI.css');
@@ -47,6 +47,17 @@ function showPostView()
 	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
 	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
 	array_push($jsList,'KE.js');
+	
+	global $post_list;
+	include_once(BBS_ROOT.'/include/module/SQL.php');
+	$PostList = new SQL_Post;
+	
+	if (isset($params['PostID'])) {
+		$post_list = $PostList->getPost($params['PostID']);
+		$post_list = array_merge($post_list, $PostList->getFollowedList($params['PostID']));
+		//DELETEME
+		//print_r($post_list);
+	}
 }
 // 发布帖子
 function doPost($params) {
