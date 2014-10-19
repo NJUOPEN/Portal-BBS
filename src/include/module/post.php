@@ -63,9 +63,13 @@ function showPostView($params)
 function doPost($params) {
 	include_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
+	/*
 	$date = getdate();
 	$time = $date['year'];
 	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
-	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], EscPost($params['content']));
+	*/
+	$time=gmdate(SQL_Post::SQL_DATE_FORMAT); //更简洁的日期获取方式；参见gmdate()和SQL_Obj的定义
+	$followID=(int)$params['followID'];
+	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], EscPost($params['content'],($followID>0 ? true : false),$followID));
 }
 ?>

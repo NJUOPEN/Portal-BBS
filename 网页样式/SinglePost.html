@@ -165,8 +165,10 @@ if (isset($_SESSION['SysID'])) {
 
 	<form id="form1" name="form1" method="post" action="?">
 	<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
+	<input id="content_1" type="hidden" value="" />
+	<input id="doPost" type="hidden" name="action" value="doPost"/>
+	<input id="followID" type="hidden" name="followID" value="<?php echo $params['PostID'];/*FIXME:直接引用POST上来的数据可能会有跨站攻击的危险*/"/>
 	<br/>
-	<input id="content_1" type="hidden" runat="server" value="" />
 	<br/>
     <input class="reply-submit-field" type="submit" value="发表" onclick='save();'/>
 	</form>
