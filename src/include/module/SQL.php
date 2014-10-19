@@ -336,16 +336,16 @@ class SQL_Area extends SQL_Info //板块操作类
 class SQL_Post extends SQL_Msg //贴子操作类
 {
 	private $tableOfPost='PostOfUsers';
-	
-	
+
+
 	private function resetPost($idOfPost) {//更新更贴数目
 		$num=$this->countRecordByField($this->tableOfPost,'FellowAdd',$idOfPost);
 		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FellowAdd',$num+1);
-	}	
-	
+	}
+
 	public function delectPost($IDofPost) {//删除知道ID的帖子
 		return $this->deleteRecordByField($this->tableOfPost,'PostID',$IDofPost);
-	}	
+	}
 	
 	public function writePost($IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFellow=0) {//发帖
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用
@@ -373,19 +373,24 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	}
 	public function getPost($IDofPost) {
 		return $this->getRecordByField($this->tableOfPost,"PostID",$IDofPost);
-	}	
-	
+	}
+
 	public function getPostByTitle($title) {
-		return $this->getRecordByField($tableName,"Title",$title);
-	}	
-	
+		return $this->getRecordByField($this->tableOfPost,"Title",$title);
+	}
+
 	public function getTotalNumOfPost() {
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
-	}	
-	
+	}
+
 	public function getLastInfofPost($number) {
 		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number);
 	}
+
+	public function getFollowedList($FollowAdd) {
+		return $this->getRecordByField($this->tableOfPost,"FollowAdd",$FollowAdd);
+	}
+
 }
 
 class SQL_SysLog extends SQL_Log //系统日志操作类
