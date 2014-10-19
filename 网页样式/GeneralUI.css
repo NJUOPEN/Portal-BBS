@@ -6,7 +6,9 @@ li {
     list-style-type:none;
 }
 
-
+ul {
+    padding:0;
+}
 
 
 div.pre-blank-field {
