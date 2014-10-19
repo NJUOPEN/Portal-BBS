@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!--meta http-equiv="X-UA-Compatible" content="IE=7" />-->
@@ -45,7 +45,7 @@ if (count($jsList)>0)
 	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
 	<div class='login-name-field'>
 	<img class='login-name-pic' src='../src/include/template/img/username.gif'/>
-	<input id ="Name" type='text' name='Name' />
+	<input id ="Name" type='text' name='Name' maxlength='14' />
 	</div>
 	<div class='login-password-field'>
 	<img class='login-password-pic' src='../src/include/template/img/password.gif'/>
@@ -143,9 +143,7 @@ if (count($jsList)>0)
 		<li>【装饰图案】XXXX（按主题分类）</li>
 		<br/>
 		<li>…………</li>
-		<br/>
-		<br/>
-		<br/>
+		
 	</ul>
 </div>
 <br/>
