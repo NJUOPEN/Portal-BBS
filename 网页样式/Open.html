@@ -74,6 +74,10 @@ if (count($jsList)>0)
 			alert("账户包含非法字符。支持中文、英文、数字、“_”");
 			return false;
 		}
+		else if(document.getElementById("Name").value.length>14){
+		    alert("用户名长度不符。请输入14位以内中文、英文、数字、“_”");
+			return false;
+		}
 		else{
 			return matchPassword();
 		}
