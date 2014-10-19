@@ -98,59 +98,26 @@
 
 
 <div class="post-field">
-    <ul>
-	    <li class="single-post-field">
-		    <div class="poster-field">
-			</div>
-			<div class="post-details-field">
-			</div>
-		</li>
+	<ul>
 		<li class="single-post-field">
-		    <div class="poster-field">
-			</div>
-			<div class="post-details-field">
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-			</div>
-			<div class="post-details-field">
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-			</div>
-			<div class="post-details-field">
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-			</div>
-			<div class="post-details-field">
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-			</div>
-			<div class="post-details-field">
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
-			</div>
-			<div class="post-details-field">
-			</div>
-		</li>
-		<li class="single-post-field">
-		    <div class="poster-field">
+			<div class="poster-field">
 			</div>
 			<div class="post-details-field">
 			</div>
 		</li>
 	</ul>
-	
+<?php
+echo '刷新几次就满了,先这样测试';
+echo '<br/>';
+echo 'Theme: '.$post_list[0]['Title'];
+echo '<br/>';
+echo $post_list[0]['PostAdd'];
+echo '<br/>';
+for ($i = 1; $i < count($post_list); $i++) {
+	echo '#'.$i.': '.$post_list[$i]['PostAdd'].'<br/>';
+}
+?>
 </div>
-
 
 <p align="center" clear="both">上一页 X（当前页） 下一页 跳转至<input type="text" size="1"/>/Y页 <input type="submit" value="跳转"/> 共Y页，共Z个回复</pre>
 
@@ -174,13 +141,23 @@
 <!-- 以上是回帖部分 -->
 
 
-<div class="information-field">
-	<p align="center">网页基本信息</p>
-	
+<?php
+if (isset($_SESSION['SysID'])) {
+?>
+<div>
+	<p class="reply-prompt">回帖</p>
+	<form id="form1" name="form1" method="POST" action="?">
+	<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
+	<br/>
+	<input id='action' type='hidden' name='action' value='doReply' />
+	<br/>
+	<input class="reply-submit-field" type="submit" value="回复" onclick='save();'/>
+	</form>
+	<br/>
 </div>
+<?php
+}
+?>
 
-</body>
-
-</html>
 
 <!-- 以上是网页信息及html结束 -->

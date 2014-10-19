@@ -338,31 +338,33 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	private $tableOfPost='PostOfUsers';
 
 
-	private function resetPost($idOfPost) {//更新更贴数目
-		$num=$this->countRecordByField($this->tableOfPost,'FellowAdd',$idOfPost);
-		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FellowAdd',$num+1);
+	//FIXME:刷新跟贴数不起作用
+	private function resetPost($idOfPost) {//更新跟贴数目
+		$num=$this->countRecordByField($this->tableOfPost,'FollowAdd',$idOfPost);
+		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FollowNum',$num+1);
 	}
 
 	public function delectPost($IDofPost) {//删除知道ID的帖子
 		return $this->deleteRecordByField($this->tableOfPost,'PostID',$IDofPost);
 	}
 	
-	public function writePost($IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFellow=0) {//发帖
+	public function writePost($IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFollow=0) {//发帖
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用
-		if ($isFollow) {
-			if (!$this->resetPost($idOfFellow)) return false;
+		if ($ifFollow) {
+			$this->resetPost($idOfFollow);
 		}
-		$result = $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>$idOfFollow,'FollowAdd'=>$idOfFollow));
+		echo '';
+		$result = $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>0,'FollowAdd'=>$idOfFollow));
 		if ($result) return true;
 		else {
 			echo 'Failed<br/>';
 			return false;
 		}
 	}
-	public function setPost($PostID,$IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFellow=0) {//修改帖子
+	public function setPost($PostID,$IDofUser,$Time,$Title,$content,$ifFollow=false,$idOfFollow=0) {//修改帖子
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用	
 		if ($isFollow) {
-			if (!$this->resetPost($idOfFellow)) return false;
+			if (!$this->resetPost($idOfFollow)) return false;
 		}
 		$result = $this->setRecordByField($this->tableOfPost,'PostID',$PostID,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$ifFollow?1:0,'Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>$idOfFollow,'FollowAdd'=>$idOfFollow));
 		if ($result) return true;

@@ -1,18 +1,19 @@
 
-
-
-
-<div>	
-    <p class="reply-prompt">回帖</p>
-
-	<form id="form1" name="form1" method="post" action="?">
+<?php
+if (isset($_SESSION['SysID'])) {
+?>
+<div>
+	<p class="reply-prompt">回帖</p>
+	<form id="form1" name="form1" method="POST" action="?">
 	<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
 	<br/>
-	<input id="content_1" type="hidden" runat="server" value="" />
+	<input id='action' type='hidden' name='action' value='doReply' />
 	<br/>
-    <input class="reply-submit-field" type="submit" value="发表" onclick='save();'/>
+	<input class="reply-submit-field" type="submit" value="回复" onclick='save();'/>
 	</form>
 	<br/>
 </div>
-
+<?php
+}
+?>
 
