@@ -35,7 +35,7 @@
     <form name='test' action='?' method='POST' onsubmit='return matchName();'>
 	<div class='login-name-field'>
 	<img class='login-name-pic' src='../src/include/template/img/username.gif'/>
-	<input id ="Name" type='text' name='Name' />
+	<input id ="Name" type='text' name='Name' maxlength='14' />
 	</div>
 	<div class='login-password-field'>
 	<img class='login-password-pic' src='../src/include/template/img/password.gif'/>
@@ -62,6 +62,10 @@
 		var reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
 		if(!reg.test(document.getElementById("Name").value)){
 			alert("账户包含非法字符。支持中文、英文、数字、“_”");
+			return false;
+		}
+		else if(document.getElementById("Name").value.length>14){
+		    alert("用户名长度不符。请输入14位以内中文、英文、数字、“_”");
 			return false;
 		}
 		else{

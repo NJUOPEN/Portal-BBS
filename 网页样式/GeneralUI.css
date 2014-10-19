@@ -6,7 +6,9 @@ li {
     list-style-type:none;
 }
 
-
+ul {
+    padding:0;
+}
 
 
 div.pre-blank-field {
@@ -29,12 +31,12 @@ div.login-field {
 }
 
 #Name {
-    width:100px;
+    width:130px;
 	position:relative;
 	
 }
 #Code {
-    width:100px;
+    width:130px;
 	position:relative;
 	
 }

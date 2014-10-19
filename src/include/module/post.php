@@ -4,6 +4,21 @@
  * Contributor:WHZ
  * Filename: post.php
  */
+
+function EscPost($content) {
+	if (is_string($content)) {
+		str_replace("'", "\\'", $content);
+	}
+	return $content;
+}
+
+function unEscPost($content) {
+	if (is_string($content)) {
+		str_replace("\\'", "'", $content);
+	}
+	return $content;
+}
+
 function showPostList($params)
 {
 	global $cssList,$jsList;  //引用函数外定义的全局变量需要先申明为global
@@ -19,6 +34,9 @@ function showPostList($params)
 	include_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
 	$post_list = $PostList->getLastInfofPost($params['ListSize']);
+	for ($i = 0; $i < count($post_list); $i++) {
+		$post_list['PostAdd'] = unEscPost($post_list['PostAdd']);
+	}
 }
 function showPostView()
 {
@@ -37,6 +55,6 @@ function doPost($params) {
 	$date = getdate();
 	$time = $date['year'];
 	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
-	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], $params['content']);
+	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], EscPost($params['content']));
 }
 ?>
