@@ -20,7 +20,7 @@ $jsList=array();
 
 //帖子相关缓冲
 $post_list=array();
-
+$num_buf = $_POST['num'];
 //进行请求分发(dispatch)
 include_once(BBS_ROOT.'/include/lib/dispatcher.php');
 
@@ -32,6 +32,7 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 {
 	
 	case 'postList':
+	case 'doPost':
 		include_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
 		include_once(BBS_TEMPLATE.'/listControl.html');//显示贴子列表
 		include_once(BBS_TEMPLATE.'/addPost.html');//显示发帖模块

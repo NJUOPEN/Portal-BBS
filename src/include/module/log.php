@@ -32,6 +32,5 @@ function logout() {
     unset($_SESSION['SysID']);
     unset($_SESSION['Name']);
     echo "Log out success<br />";
-    exit;
     }
 ?>

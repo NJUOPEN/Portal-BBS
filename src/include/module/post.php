@@ -11,15 +11,14 @@ function showPostList($params)
 	array_push($cssList,'editor/kindeditor/themes/default/default.css');
 	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
 	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
-	array_push($jsList,'KE.js');	
+	array_push($jsList,'KE.js');
 	
 	global $post_list;
-
 	// if ($params['num'] == NULL) $params['num'] = 0;;
 
-	include(BBS_ROOT.'/include/module/SQL.php');
+	include_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
-	$post_list = $PostList->getLastInfofPost($params['num']);
+	$post_list = $PostList->getLastInfofPost($params['ListSize']);
 }
 function showPostView()
 {
@@ -29,16 +28,15 @@ function showPostView()
 	array_push($cssList,'editor/kindeditor/themes/default/default.css');
 	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
 	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
-	array_push($jsList,'KE.js');	
+	array_push($jsList,'KE.js');
 }
 // 发布帖子
 function doPost($params) {
-	include(BBS_ROOT.'/include/module/SQL.php');
+	include_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	$date = getdate();
 	$time = $date['year'];
 	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
-	echo $time.'<br/>';
-	$newPost->writePost($_SESSION['SysID'], $time, 'test test', false, 0);
+	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], $params['content']);
 }
 ?>
