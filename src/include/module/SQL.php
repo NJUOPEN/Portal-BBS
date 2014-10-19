@@ -145,7 +145,6 @@ class SQL_Obj
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=');';
-		echo $query.'<br />';
 		mysql_query($query,$this->db);
 		if (mysql_affected_rows()>0) return true; else return false;
 	}
@@ -276,10 +275,10 @@ class SQL_Info extends SQL_Obj
 
 class SQL_Msg extends SQL_Obj
 {
-	protected function getTopRecord($tableName,$fieldList,$descendent=true,$count=-1)  //将记录按给定字段排序并返回前数个记录
+	protected function getTopRecord($tableName,$fieldName,$descendent=true,$count=-1)  //将记录按给定字段排序并返回前数个记录
 	{
 		if (!$this->checkTable($tableName)) return NULL;
-		$query='SELECT * FROM `'.$tableName.'` ORDER BY `'.$tableName.'`.`'.$fieldList.'` '.($descendent?'DESC':'ASC');
+		$query='SELECT * FROM `'.$tableName.'` ORDER BY `'.$fieldName.'` '.($descendent?'DESC':'ASC');
 		//FIXME 为什么要用 $count && $count>=0, 在这种条件下输入0或者空会输出所有帖子,是这样期望的吗?
 		if ($count>=0 && $count != NULL && is_numeric($count))	{
 		    $query.=' LIMIT '.$count;
