@@ -54,7 +54,10 @@ $split_args=array(
 //TODO:将需要[替换的字符]写在这里，如：相对路径替换为绝对路径，调试信息替换为空字符串等
 $replace_args=array('src=\'./'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
 					'href="./'=>'href="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
-					'src=\'../src/include/template/'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>');
+					'src=\'../src/include/template/'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+					'帖子列表样式'=>'OPEN社团 - 帖子列表',
+					'贴子名字'=>'OPEN社团 - 帖子内容'
+					);
 
 
 echo 'Split begin...<br />';

@@ -157,6 +157,9 @@
 <!-- 以上是看回复与翻页 -->
 
 
+<?php
+if (isset($_SESSION['SysID'])) {
+?>
 <div>	
     <p class="reply-prompt">回帖</p>
 
@@ -169,6 +172,9 @@
 	</form>
 	<br/>
 </div>
+<?php
+}
+?>
 
 
 <!-- 以上是回帖部分 -->
