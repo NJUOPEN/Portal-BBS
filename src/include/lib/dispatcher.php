@@ -52,7 +52,7 @@ switch ($action) {
     	break;
     case 'postView' :
     	include_once(BBS_ROOT.'/include/module/post.php');
-    	showPostView();
+    	showPostView($params);
     	break;
     case 'invalid' :
 		echo 'action is set invalid<br />';
