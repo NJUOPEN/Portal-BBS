@@ -1,7 +1,7 @@
 <?php
 /**
  * Project: NJUOPEN/Portal-BBS
- * Contributor:WHZ
+ * Contributor:WHZ,WTZ
  * Filename: post.php
  */
 
@@ -70,7 +70,15 @@ function doPost($params) {
 	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
 	*/
 	$time=gmdate(SQL_Post::SQL_DATE_FORMAT); //更简洁的日期获取方式；参见gmdate()和SQL_Obj的定义
-	$followID=(int)$params['PostID'];
-	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], EscPost($params['content']),($followID>0 ? true : false),$followID);
+	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], EscPost($params['content']),false,'0');
+}
+
+function doReply($params) {
+	include_once(BBS_ROOT.'/include/module/SQL.php');
+	$newPost = new SQL_Post;
+	$date = getdate();
+	$time = $date['year'];
+	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
+	$newPost->writePost($_SESSION['SysID'], $time, NULL, EscPost($params['content']),true, $params['PostID']);
 }
 ?>

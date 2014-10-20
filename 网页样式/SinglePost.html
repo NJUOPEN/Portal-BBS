@@ -99,13 +99,21 @@
 
 <div class="post-field">
     <ul>
-    	<?php foreach($post_list as $post) {?>
-	    <li class="single-post-field">
+    	<li class="single-post-field">
 			<div class="poster-field">
-			<?php	echo $post['PostID'];?>
 			</div>
 			<div class="post-details-field">
-			<?php	echo $post['PostAdd'];?>
+			<?php	echo 'Theme: '.$post_list[0]['Title'];?>
+			<br />
+			<?php	echo $post_list[0]['PostAdd'];?>
+			</div>
+		</li>
+    	<?php for($i=1;$i<count($post_list);$i++) {?>
+	    <li class="single-post-field">
+			<div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			<?php	echo $post_list[$i]['PostAdd'];?>
 			</div>
 		</li>
 		<?php }?>
@@ -127,7 +135,7 @@ if (isset($_SESSION['SysID'])) {
 	<form id="form1" name="form1" method="post" action="?">
 	<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
 	<input id="content_1" type="hidden" value="" />
-	<input id="doPost" type="hidden" name="action" value="doPost"/>
+	<input id="doReply" type="hidden" name="action" value="doReply"/>
 	<input id="PostID" type="hidden" name="PostID" value="<?php echo $params['PostID'];/*FIXME:直接引用POST上来的数据可能会有跨站攻击的危险*/?>"/>	
 	<br/>
 	<br/>

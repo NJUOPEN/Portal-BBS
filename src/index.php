@@ -38,6 +38,7 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 		include_once(BBS_TEMPLATE.'/addPost.html');//显示发帖模块
 		break;		
 	case 'postView':
+	case 'doReply' :
 		include_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
 		include_once(BBS_TEMPLATE.'/viewControl.html');//显示贴子内容
 		include_once(BBS_TEMPLATE.'/replyPost.html');//显示回帖模块

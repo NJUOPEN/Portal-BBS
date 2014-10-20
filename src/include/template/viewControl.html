@@ -3,13 +3,21 @@
 
 <div class="post-field">
     <ul>
-    	<?php foreach($post_list as $post) {?>
-	    <li class="single-post-field">
+    	<li class="single-post-field">
 			<div class="poster-field">
-			<?php	echo $post['PostID'];?>
 			</div>
 			<div class="post-details-field">
-			<?php	echo $post['PostAdd'];?>
+			<?php	echo 'Theme: '.$post_list[0]['Title'];?>
+			<br />
+			<?php	echo $post_list[0]['PostAdd'];?>
+			</div>
+		</li>
+    	<?php for($i=1;$i<count($post_list);$i++) {?>
+	    <li class="single-post-field">
+			<div class="poster-field">
+			</div>
+			<div class="post-details-field">
+			<?php	echo $post_list[$i]['PostAdd'];?>
 			</div>
 		</li>
 		<?php }?>

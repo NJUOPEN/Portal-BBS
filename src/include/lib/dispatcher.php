@@ -46,12 +46,19 @@ switch ($action) {
     	doPost($params);
     	showPostList($params);
     	break;
+    case 'doReply' :
+    	include_once(BBS_ROOT.'/include/module/post.php');
+    	$params['PostID'] = $_SESSION['PostID'];
+    	doReply($params);
+    	showPostView($params);
+    	break;
     case 'postList' :
     	include_once(BBS_ROOT.'/include/module/post.php');
     	showPostList($params);
     	break;
     case 'postView' :
     	include_once(BBS_ROOT.'/include/module/post.php');
+    	$_SESSION['PostID'] = $params['PostID'];
     	showPostView($params);
     	break;
     case 'invalid' :
