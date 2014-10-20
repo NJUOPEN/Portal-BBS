@@ -1,0 +1,100 @@
+﻿body
+{
+}
+
+/*以下是logo部分*/
+
+.logo-field {
+    background-color:rgb(200,255,200);
+    height:300px;
+    width:1349px;
+
+}
+
+.logo-pic {
+    height:300px;
+    position:relative;
+    left:150px;
+}
+
+
+
+/*以下是帖子列表部分*/
+
+.postList-field {
+    height:1000px;
+    width:900px;
+    background-color:rgb(182, 255, 0);
+    position:relative;
+    top:10px;
+    left:10px;
+
+}
+
+.postList-div-mark-field {
+    width:900px;
+    height:50px;
+    background-color:rgb(255, 255, 255);
+    font-size:16px;
+}
+
+.postList-div-current-mark {
+    height:50px;
+    width:150px;
+    float:left;
+    background-color:rgb(182, 255, 0);
+    text-align:center;
+    position:relative;
+    line-height:45px;
+}
+
+
+.postList-div-general-mark {
+    height:50px;
+    width:150px;
+    float:left;
+    background-color:rgb(0, 148, 255);
+    text-align:center;
+    position:relative;
+    line-height:45px;
+}
+
+
+.postList-div-post-field {
+    clear:both;
+    width:900px;
+    height:950px;
+
+
+}
+
+.postList-post {
+    width:880px;
+    height:50px;
+    background-color:white;
+
+    position:relative;
+    left:10px;
+    top:10px;
+    font-size:15px;
+    line-height:45px;
+}
+
+
+
+/*以下是login部分*/
+
+
+.login-link-info-field {
+    width:420px;
+    height:1000px;
+    background-color:rgb(0, 148, 255);
+    position:absolute;
+    top:310px;
+    left:920px;
+    
+}
+
+.login-field {
+
+}
