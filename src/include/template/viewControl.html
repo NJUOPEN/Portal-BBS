@@ -2,19 +2,17 @@
 
 
 <div class="post-field">
-
     <ul>
     	<li class="single-post-field">
 			<div class="poster-field">
-				
 			</div>
 			<div class="post-details-field">
-				<?php echo 'Theme: '.$post_list[0]['Title'];?>
-				<br />
-				<?php echo $post_list[0]['PostAdd'];?>
+			<?php	echo 'Theme: '.$post_list[0]['Title'];?>
+			<br />
+			<?php	echo $post_list[0]['PostAdd'];?>
 			</div>
 		</li>
-    	<?php for ($i = 1; $i < count($post_list); $i++) {?>
+    	<?php for($i=1;$i<count($post_list);$i++) {?>
 	    <li class="single-post-field">
 			<div class="poster-field">
 			</div>
@@ -24,8 +22,8 @@
 		</li>
 		<?php }?>
 	</ul>	
-
 </div>
+
 
 <p align="center" clear="both">上一页 X（当前页） 下一页 跳转至<input type="text" size="1"/>/Y页 <input type="submit" value="跳转"/> 共Y页，共Z个回复</pre>
 
