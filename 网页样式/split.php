@@ -62,9 +62,9 @@ $replace_args=array('src=\'./'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
 
 echo 'Split begin...<br />';
 
-for($i=0;$i<count($fileList);$i++)
+for($i=0; $i<count($fileList); $i++)
 {
-	echo '<br />Processing on '.$fileList[$i].'<br />';
+	echo '<br />Processing on '.$file.'<br />';
 	$f=fopen($fileList[$i],'rb');
 	$content=fread($f,filesize($fileList[$i]));
 	fclose($f);
