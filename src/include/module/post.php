@@ -19,18 +19,32 @@ function unEscPost($content) {
 	return $content;
 }
 
+function loadCommonUI()	//加载通用CSS/JS等
+{
+	global $cssList;
+	array_push($cssList,'GeneralUI.css');
+}
+
+function loadEditorUI()	//加载帖子编辑所需CSS/JS等
+{
+	global $cssList,$jsList;
+	if(isset($_SESSION['SysID']))	//只有登录以后才显示编辑器有关脚本，以便加快加载速度
+	{
+		array_push($cssList,'editor/kindeditor/themes/default/default.css');
+		array_push($jsList,'editor/kindeditor/kindeditor-min.js');
+		array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
+		array_push($jsList,'KE.js');
+	}
+}
+
 function showPostList($params)
 {
-	global $cssList,$jsList;  //引用函数外定义的全局变量需要先申明为global
+	loadCommonUI();
+	global $cssList;
 	array_push($cssList,'PostListUI.css');
-	array_push($cssList,'editor/kindeditor/themes/default/default.css');
-	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
-	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
-	array_push($jsList,'KE.js');
+	loadEditorUI();
 	
 	global $post_list;
-	// if ($params['num'] == NULL) $params['num'] = 0;;
-
 	include_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
 	$post_list = $PostList->getLastInfofPost($params['ListSize']);
@@ -40,18 +54,15 @@ function showPostList($params)
 }
 function showPostView($params)
 {
-	global $cssList,$jsList;
-	array_push($cssList,'SinglePostUI.css');
+	loadCommonUI();
+	global $cssList;
 	array_push($cssList,'PostListUI.css');
-	array_push($cssList,'editor/kindeditor/themes/default/default.css');
-	array_push($jsList,'editor/kindeditor/kindeditor-min.js');
-	array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
-	array_push($jsList,'KE.js');
+	array_push($cssList,'SinglePostUI.css');
+	loadEditorUI();
 	
 	global $post_list;
 	include_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
-
 	if (isset($params['PostID'])) {
 		$post_list=array();
 		array_push($post_list,$PostList->getPost($params['PostID'])); //根据PostID获取到的帖子记录是单个元素，所以用push

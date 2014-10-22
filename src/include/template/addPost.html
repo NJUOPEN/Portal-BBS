@@ -8,7 +8,7 @@ if (isset($_SESSION['SysID'])) {
 <div class="do-post-field">
     
 	<p><b class="do-post-prompt-field">发表新主题</b></p>
-	<form id="form1" name="form1" method="post" action="<?php echo $act;?>">
+	<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">
 		  <input class="do-post-name-input-field" name="title" id="title" value=""/>
 		  <textarea class="do-post-text-input-field" id="editor_1" name="content" ></textarea>		  
 		  <input id="content_1" type="hidden"  value="" />

@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<!--meta http-equiv="X-UA-Compatible" content="IE=7" />-->
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>贴子名字</title>
@@ -32,7 +33,7 @@
 
 <div class="login-field">
     <?php if(!isset($_SESSION['SysID'])) {?>
-    <form name='test' action='?' method='POST' onsubmit='return matchName();'>
+    <form name='loginForm' action='?' method='POST' onsubmit='return matchName();'>
 	<div class='login-name-field'>
 	<img class='login-name-pic' src='../src/include/template/img/username.gif'/>
 	<input id ="Name" type='text' name='Name' maxlength='14' />
@@ -48,7 +49,7 @@
 	{
 	        echo $_SESSION['Name'].'已经登录。';
 	?>
-	<form name='test' action='?' method='POST'>
+	<form name='logoutForm' action='?' method='POST'>
 	<input id='action' type='hidden' name='action' value='logout' />
 	<input type='image' name='submit' value='登出' src='../src/include/template/img/logout.gif' class='logout-button'/>
 	</form>
@@ -132,7 +133,7 @@ if (isset($_SESSION['SysID'])) {
 <div class="do-post-field">	
     <p class="reply-prompt">回帖</p>
 
-	<form id="form1" name="form1" method="post" action="?">
+	<form id="postForm" name="postForm" method="post" action="?">
 	<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
 	<input id="content_1" type="hidden" value="" />
 	<input id="action" type="hidden" name="action" value="doReply"/>

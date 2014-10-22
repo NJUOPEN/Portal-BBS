@@ -5,9 +5,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>OPEN社团主页</title>
 
-<link rel="stylesheet" type="text/css" href="<?php echo BBS_WEB_TEMPLATE.'/';?>GeneralUI.css">
+
+																																																																																																																																																																																										
 <?php 
-//if (count($cssList)==0) array_push($cssList,'MainUI.css','PostListUI.css');
+if (count($cssList)==0) array_push($cssList,'GeneralUI.css','MainUI.css');	//若无特殊请求，则应用主页样式
 foreach($cssList as $temp)
 {
 	echo '<link rel="stylesheet" type="text/css" href="'.BBS_WEB_TEMPLATE.'/'.$temp.'">'."\n";
@@ -18,9 +19,6 @@ if (count($jsList)>0)
 		echo '<script src="'.BBS_WEB_TEMPLATE.'/'.$temp.'" type="text/javascript"></script>'."\n";
 	}
 ?>
-
-<link rel="stylesheet" type="text/css" href="<?php echo BBS_WEB_TEMPLATE.'/';?>MainUI.css">
-
 </head>
 
 
@@ -42,7 +40,7 @@ if (count($jsList)>0)
 
 <div class="login-field">
     <?php if(!isset($_SESSION['SysID'])) {?>
-	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
+	<form name='loginForm' action='?' method='POST' onsubmit='return matchName();'>
 	<div class='login-name-field'>
 	<img class='login-name-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif'/>
 	<input id ="Name" type='text' name='Name' maxlength='14' />
@@ -58,7 +56,7 @@ if (count($jsList)>0)
 	{
 	        echo $_SESSION['Name'].'已经登录。';
 	?>
-	<form name='test' action='?' method='POST'>
+	<form name='logoutForm' action='?' method='POST'>
 	<input id='action' type='hidden' name='action' value='logout' />
 	<input type='image' name='submit' value='登出' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif' class='logout-button'/>
 	</form>

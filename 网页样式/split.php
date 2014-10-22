@@ -52,11 +52,16 @@ $split_args=array(
 
 
 //TODO:将需要[替换的字符]写在这里，如：相对路径替换为绝对路径，调试信息替换为空字符串等
-$replace_args=array('src=\'./'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
-					'href="./'=>'href="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+//过滤顺序：绝对字符（如调试信息、完整的HTML标签）->动态信息->相对路径
+$replace_args=array('<link rel="stylesheet" type="text/css" href="./GeneralUI.css">' => '',
+					'<link rel="stylesheet" type="text/css" href="./MainUI.css">' => '',
+					'<form id="postForm" name="postForm" method="post" action="?">'=>'<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
+					'src=\'./'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+					/*'href="./'=>'href="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',*/
 					'src=\'../src/include/template/'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
 					'帖子列表样式'=>'OPEN社团 - 帖子列表',
-					'贴子名字'=>'OPEN社团 - 帖子内容'
+					'贴子名字'=>'OPEN社团 - 帖子内容',
+					
 					);
 
 

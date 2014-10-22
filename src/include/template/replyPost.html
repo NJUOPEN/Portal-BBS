@@ -7,7 +7,7 @@ if (isset($_SESSION['SysID'])) {
 <div class="do-post-field">	
     <p class="reply-prompt">回帖</p>
 
-	<form id="form1" name="form1" method="post" action="?">
+	<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">
 	<textarea class="reply-input-field" id="editor_1" name="content" ></textarea>
 	<input id="content_1" type="hidden" value="" />
 	<input id="action" type="hidden" name="action" value="doReply"/>

@@ -18,34 +18,64 @@
 				});
 			});
 			
-		function save(){ 
-		
-		//取得HTML内容 
-		        var html = editor.html();
-	        	editor.sync();  
-	        	html = document.getElementById("editor_1").value;
+		function save(){ 		
+		        if (!editor) return false;	//如果无法获取editor对象，那下面的代码也无法执行T_T
+	        	editor.sync();
+	        	var html = document.getElementById("editor_1").value;	//取得HTML内容 
 	        	document.getElementById("content_1").value=html; 
 				var action = document.getElementsByName("action"); //getElementsByName返回的是一个数组，因为不同元素的name可能相同
+				var container;
 				for(var i in action)
 				{
-					if (action[i].value=="doPost"){
-						dealWithTitle(document.getElementById("title"));
-				   		dealWithContent(document.getElementById("content_1"));
+					if (action[i].value=="doPost"){ //检测到“发表主题”动作
+					
+						container=document.getElementById("title");
+						if (container.value=="")	//过滤前内容为空，说明未填写
+						{
+							alert("请填写帖子标题后再发表！");
+							return false;
+						}
+						dealWithTitle(container);
+						if (container.value=="")	//过滤后内容为空，说明填写的全部是非法内容⊙﹏⊙
+						{
+							alert("帖子标题含有无效内容，请重新填写后提交！");
+							return false;
+						}
+						
+						container=document.getElementById("content_1");
+						//目前暂时允许发表主题的内容为空
+				   		dealWithContent(container);
+				   		if (container.value=="")
+						{
+							alert("帖子含有无效内容，请重新填写后提交！");
+							return false;
+						}
 				   		break;
 					}
-					else if(action[i].value=="doReply"){
-						dealWithContent(document.getElementById("content_1"));
-						break;						
+					else if(action[i].value=="doReply"){ //检测到“发表回复”动作
+						container=document.getElementById("content_1");
+						if (container.value=="")
+						{
+							alert("帖子内容不能为空！");
+							return false;
+						}
+				   		dealWithContent(container);
+				   		if (container.value=="")
+						{
+							alert("帖子含有无效内容，请重新填写后提交！");
+							return false;
+						}
+				   		break;					
 					}
 				}
-				//alert(document.getElementById("content_1").value);//调试用，测试完成后g请注释掉；下同
-				//alert(document.getElementById("title").value);
-	         	document.getElementById("form1").submit()
+				alert(document.getElementById("content_1").value);//调试用，测试完成后请注释掉；下同
+				alert(document.getElementById("title").value);
+	         	document.getElementById("postForm").submit()
 	        	return true;
 				
         }
 		
-		function dealWithContent(obj){  
+		function dealWithContent(obj){	//过滤帖子内容中的有害标签；注意：此时所有"<"、">"已被编辑器转义
 				if (!obj) return;
 		        var str =  obj.value; 
 				str=str.replace(/&lt;\/?html.*?&gt;/gi, " ");  //替换html标签
@@ -68,14 +98,15 @@
                 str=str.replace(/&lt;(\/?i?frame.*?)&gt;/gi," "); //过滤frame标签
                 str=str.replace(/&lt;(script.*?)&gt;(.*?)&lt;(\/script.*?)&gt;/gi," "); //过滤script标签
                 str=str.replace(/&lt;(\/?script.*?)&gt;/gi," "); //过滤script标签
-                //str=preg_replace("/网页特效/i","javascript"); //过滤script标签
-                //str=preg_replace("/on([a-z]+)s*=/i","on1="); //过滤script标签
-               
+                str=str.replace(/&lt;(iframe.*?)&gt;(.*?)&lt;(\/iframe.*?)&gt;/gi," "); //过滤iframe标签
+                str=str.replace(/&lt;(\/?iframe.*?)&gt;/gi," "); //过滤iframe标签
+                
+                str=str.replace(/(\s*$)/g,"");	//过滤结尾多余的空白字符
+                
 	            obj.value = str;
-				alert(document.getElementById("content_1").value); //测试用，调试完成请注释掉
 		}
 		
-		function dealWithTitle(obj){
+		function dealWithTitle(obj){	//过滤帖子帖子中的有害标签
 		         if (!obj) return;
 		        var str =  obj.value; 
 				str=str.replace(/<\/?html.*?>/gi, " ");  //替换html标签
@@ -98,8 +129,8 @@
                 str=str.replace(/<(\/?i?frame.*?)>/gi," "); //过滤frame标签
                 str=str.replace(/<(script.*?)>(.*?)<(\/script.*?)>/gi," "); //过滤script标签
                 str=str.replace(/<(\/?script.*?)>/gi," "); //过滤script标签
-                //str=preg_replace("/网页特效/i","javascript"); //过滤script标签
-                //str=preg_replace("/on([a-z]+)s*=/i","on1="); //过滤script标签
+                str=str.replace(/&lt;(iframe.*?)&gt;(.*?)&lt;(\/iframe.*?)&gt;/gi," "); //过滤iframe标签
+                str=str.replace(/&lt;(\/?iframe.*?)&gt;/gi," "); //过滤iframe标签
                      
                 //加强过滤帖子标题					 
                 	str=str.replace(/<(div.*)>(.*?)<(\/div.*)>/gi," "); //替换div标签
@@ -122,8 +153,10 @@
                 	str=str.replace(/<(\/?ul.*?)>/gi," "); //过滤ul标签
                 	str=str.replace(/<(li.*?)>(.*?)<(\/li.*?)>/gi," "); //替换li标签
                 	str=str.replace(/<(\/?li.*?)>/gi," "); //过滤li标签
+                	str=str.replace(/<(img.*?)\/>/gi," "); //替换img标签
                 	//TODO:添加更多可能导致标题样式被破坏的标签
-  
+                
+                str=str.replace(/(^\s*)|(\s*$)/g, "");	//过滤开头或结尾多余的空白字符
+                
 	            obj.value = str;
-				alert(document.getElementById("title").value); //测试用，调试完成请注释掉
 		}

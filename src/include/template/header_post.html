@@ -6,10 +6,10 @@
 <title>OPEN社团 - 帖子列表</title>
 
 
-<link rel="stylesheet" type="text/css" href="<?php echo BBS_WEB_TEMPLATE.'/';?>GeneralUI.css">
-<link rel="stylesheet" type="text/css" href="<?php echo BBS_WEB_TEMPLATE.'/';?>PostListUI.css">
 
-<link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE.'/';?>editor/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" type="text/css" href="./PostListUI.css">
+
+<link rel="stylesheet" href="./editor/kindeditor/themes/default/default.css" />
 
 <script charset="utf-8" src="./editor/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="./editor/kindeditor/lang/zh_CN.js"></script>
@@ -33,7 +33,7 @@
 
 <div class="login-field">
     <?php if(!isset($_SESSION['SysID'])) {?>
-	<form name='test' action='?' method='POST' onsubmit='return matchName();'>
+	<form name='loginForm' action='?' method='POST' onsubmit='return matchName();'>
 	<div class='login-name-field'>
 	<img class='login-name-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif'/>
 	<input id ="Name" type='text' name='Name' maxlength='14' />
@@ -49,7 +49,7 @@
 	{
 	        echo $_SESSION['Name'].'已经登录。';
 	?>
-	<form name='test' action='?' method='POST'>
+	<form name='logoutForm' action='?' method='POST'>
 	<input id='action' type='hidden' name='action' value='logout' />
 	<input type='image' name='submit' value='登出' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif' class='logout-button'/>
 	</form>
