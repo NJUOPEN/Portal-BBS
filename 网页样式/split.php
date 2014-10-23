@@ -57,11 +57,11 @@ $replace_args=array('<link rel="stylesheet" type="text/css" href="./GeneralUI.cs
 					'<link rel="stylesheet" type="text/css" href="./MainUI.css">' => '',
 					'<form id="postForm" name="postForm" method="post" action="?">'=>'<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
 					'src=\'./'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+					'<a href="./'=>'<a href="<?php echo BBS_WEB_ROOT.\'/\';?>',
 					/*'href="./'=>'href="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',*/
 					'src=\'../src/include/template/'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
 					'帖子列表样式'=>'OPEN社团 - 帖子列表',
 					'贴子名字'=>'OPEN社团 - 帖子内容',
-					
 					);
 
 
