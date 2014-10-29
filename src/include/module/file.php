@@ -68,9 +68,10 @@ function upload_file($id,$file_type) {
 
 	//TODO:确定一个保存路径,以及和数据库的配合
 	//move_uploaded_file($fileaddr, BBS_ROOT."/".$filename);
-	$fp=fopen($filename,"rb");
-	$file_content=fread($fp,filesize($filename));
+	$fp=fopen($fileaddr,"rb");
+	$file_content=fread($fp,filesize($fileaddr));
 	fclose($fp);
+	unlink($fileaddr);
 	$a=save_file($id,$filename,$file_type,$file_content);
 	return $a;	
     }
