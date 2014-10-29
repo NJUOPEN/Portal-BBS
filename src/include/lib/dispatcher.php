@@ -62,8 +62,9 @@ switch ($action) {
     	showPostView($params);
     	break;
     case 'upload' :
-	include_once(BBS_ROOT.'/include/module/upload_file.php');
-	break;
+	    include_once(BBS_ROOT.'/include/module/file.php');
+	    upload_file();
+	    break;
     case 'invalid' :
 		echo 'action is set invalid<br />';
     // TODO add more
