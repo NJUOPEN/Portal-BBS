@@ -61,6 +61,9 @@ switch ($action) {
     	$_SESSION['PostID'] = $params['PostID'];
     	showPostView($params);
     	break;
+    case 'upload' :
+	include_once(BBS_ROOT.'/include/module/upload_file.php');
+	break;
     case 'invalid' :
 		echo 'action is set invalid<br />';
     // TODO add more
