@@ -19,19 +19,19 @@
     <div class="postList-field">
         <div class="postList-div-mark-field">
             <ul>
-                <li class="postList-div-current-mark"><a href="">版块1</a></li>
-                <li class="postList-div-general-mark"><a href="">版块2</a></li>
-                <li class="postList-div-general-mark"><a href="">版块3</a></li>
-                <li class="postList-div-general-mark"><a href="">版块4</a></li>
-                <li class="postList-div-general-mark"><a href="">版块5</a></li>
-                <li class="postList-div-general-mark"><a href="">版块6</a></li>
+                <li class="postList-div-general-mark" id="mark-1" onclick=""><a href="">版块1</a></li>
+                <li class="postList-div-general-mark" id="mark-2" onclick="">版块2</li>
+                <li class="postList-div-general-mark" id="mark-3" onclick="">版块3</li>
+                <li class="postList-div-general-mark" id="mark-4" onclick="">版块4</li>
+                <li class="postList-div-general-mark" id="mark-5" onclick="">版块5</li>
+                <li class="postList-div-general-mark" id="mark-6" onclick="">版块6</li>
             </ul>
         </div>
 
 
         <div class="postList-div-post-field">
             <ul>
-                <li class="postList-post"><a href="">1号帖子</a></li>
+                <li class="postList-post"><a href="./newSinglePost.html">1号帖子</a></li>
                 <li class="postList-post"><a href="">2号帖子</a></li>
                 <li class="postList-post"><a href="">3号帖子</a></li>
                 <li class="postList-post"><a href="">4号帖子</a></li>
@@ -70,25 +70,31 @@
 
 
     <div class="login-link-info-field">
-        <div class="login-field">
+        <div id="login-field-1">
+            <form>
             <div class="login-name-field">
                 <img class="login-name-pic" src="./img/username.gif" />
-                <input class="login-name-input" type="text" />
+                <input class="login-name-input" type="text" id="login-name"/>
             </div>
 
             <div class="login-password-field">
                 <img class="login-password-pic" src="./img/password.gif" />
-                <input class="login-password-input" type="text" />
+                <input class="login-password-input" type="text" id="login-password"/>
             </div>
 
             <input class="login-button" type="image" src="./img/login.gif" />
            <!-- <input class="logout-button" type="image" src="./img/logout.gif" />-->
-            <a class="register-chain" href="">没有账户？</a>
+            <a class="register-chain" href="./register.html" target="_blank">没有账户？</a>
 
 
             <input type="hidden"/>
-
+            </form>
         </div>
+
+
+        <!-- login-field-2是跳转后原登陆的部分 -->
+        <div id="login-field-2"></div>  
+        
 
         <a href="http://njuopen.org" class="chain-1" target="_blank" >南京大学OPEN主页</a>
         <a href="" class="chain-2" target="_blank"><span class="heimu" title="你知道的太多了">这是第二条链接</span></a>

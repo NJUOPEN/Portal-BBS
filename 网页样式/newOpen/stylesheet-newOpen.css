@@ -38,15 +38,6 @@
     font-size:16px;
 }
 
-.postList-div-current-mark {
-    height:50px;
-    width:150px;
-    float:left;
-    background-color:rgb(202, 171, 171);
-    text-align:center;
-    position:relative;
-    line-height:45px;
-}
 
 
 .postList-div-general-mark {
@@ -59,6 +50,9 @@
     line-height:45px;
 }
 
+#mark-1 {
+    background-color:rgb(202, 171, 171);
+}
 
 .postList-div-post-field {
     clear:both;
@@ -135,12 +129,22 @@
     
 }
 
-.login-field {
+#login-field-1 {
     width:420px;
     height:250px;
     background-color:rgb(128, 128, 128);
+    display:inline;
 
 }
+
+#login-field-2 {
+    width:420px;
+    height:250px;
+    background-color:rgb(128, 128, 128);
+    display:none;
+}
+
+
 
 
 .login-name-field {
