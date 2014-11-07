@@ -133,7 +133,7 @@
     width:420px;
     height:250px;
     background-color:rgb(128, 128, 128);
-    display:inline;
+    visibility:visible;
 
 }
 
@@ -141,7 +141,7 @@
     width:420px;
     height:250px;
     background-color:rgb(128, 128, 128);
-    display:none;
+    visibility:hidden;
 }
 
 
