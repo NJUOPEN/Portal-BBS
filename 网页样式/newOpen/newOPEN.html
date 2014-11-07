@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <title></title>
 
-    <link rel="stylesheet" href="./stylesheet-newOpen.css" type="text/css">
-    <link rel="stylesheet" href="./stylesheet-general.css" type="text/css">
+    <link rel="stylesheet" href="./css/stylesheet-newOpen.css" type="text/css">
+    <link rel="stylesheet" href="./css/stylesheet-general.css" type="text/css">
     <script src="./JS/js-newOpen.js" type="text/javascript"></script>
 
 </head>
@@ -20,30 +20,30 @@
     <div class="postList-field">
         <div class="postList-div-mark-field">
             <ul>
-                <li class="postList-div-general-mark" id="mark-1" onclick=""><a href="">版块1</a></li>
-                <li class="postList-div-general-mark" id="mark-2" onclick="">版块2</li>
-                <li class="postList-div-general-mark" id="mark-3" onclick="">版块3</li>
-                <li class="postList-div-general-mark" id="mark-4" onclick="">版块4</li>
-                <li class="postList-div-general-mark" id="mark-5" onclick="">版块5</li>
-                <li class="postList-div-general-mark" id="mark-6" onclick="">版块6</li>
+                <li class="postList-div-general-mark" id="mark-1" onclick="click(1);"><a href="">版块1</a></li>
+                <li class="postList-div-general-mark" id="mark-2"><a href="" onclick="click(2);">版块2</a></li>
+                <li class="postList-div-general-mark" id="mark-3" onclick=""><a href="">版块3</a></li>
+                <li class="postList-div-general-mark" id="mark-4" onclick=""><a href="">版块4</a></li>
+                <li class="postList-div-general-mark" id="mark-5" onclick=""><a href="">版块5</a></li>
+                <li class="postList-div-general-mark" id="mark-6" onclick=""><a href="">版块6</a></li>
             </ul>
         </div>
 
 
         <div class="postList-div-post-field">
             <ul>
-                <li class="postList-post"><a href="./newSinglePost.html">1号帖子</a></li>
-                <li class="postList-post"><a href="">2号帖子</a></li>
-                <li class="postList-post"><a href="">3号帖子</a></li>
-                <li class="postList-post"><a href="">4号帖子</a></li>
-                <li class="postList-post"><a href="">5号帖子</a></li>
-                <li class="postList-post"><a href="">6号帖子</a></li>
-                <li class="postList-post"><a href="">7号帖子</a></li>
-                <li class="postList-post"><a href="">8号帖子</a></li>
-                <li class="postList-post"><a href="">9号帖子</a></li>
-                <li class="postList-post"><a href="">10号帖子</a></li>
-                <li class="postList-post"><a href="">11号帖子</a></li>
-                <li class="postList-post"><a href="">12号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="./newSinglePost.html">1号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">2号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">3号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">4号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">5号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">6号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">7号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">8号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">9号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">10号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">11号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">12号帖子</a></li>
             </ul>
         </div>
 
@@ -72,7 +72,7 @@
 
     <div class="login-link-info-field">
         <div id="login-field-1">
-            <form>
+            <form onsubmit="javascript:return false;">
             <div class="login-name-field">
                 <img class="login-name-pic" src="./img/username.gif" />
                 <input class="login-name-input" type="text" id="login-name"/>

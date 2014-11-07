@@ -1,0 +1,94 @@
+﻿body
+{
+}
+
+
+.post-head {
+    width:1349px;
+    height:100px;
+    background-color:rgb(245, 175, 65);
+
+}
+
+.back-chain {
+    font-size:25px;
+    position:relative;
+    top:65px;
+    left:10px;
+}
+
+.login-info-field {
+    width:400px;
+    height:1700px;
+    float:left;
+    position:relative;
+    left:10px;
+    top:10px;
+    background-color:rgb(0, 255, 255);
+}
+
+
+
+.post-field {
+    width:920px;
+    height:1700px;
+    float:right;
+    position:relative;
+    left:-10px;
+    top:10px;
+    background-color:rgb(210, 255, 210);
+
+}
+
+.post-first-field {
+    width:900px;
+    height:200px;
+    margin:10px;
+    background-color:white;
+}
+
+.post-reply-field {
+    width:900px;
+    height:130px;
+    margin:10px;
+    background-color:white;
+}
+
+.post-page {
+    float:left;
+    text-align:center;
+    font-size:20px;
+    position:relative;
+    top:-14px;
+    left:400px;
+
+    margin:10px;
+
+
+}
+
+
+.reply-input-field {
+    clear:both;
+    width:900px;
+    height:250px;
+    position:relative;
+    left:7px;
+    background-color:white;
+    font-size:20px;
+}
+
+.reply-submit-field {
+    width:100px;
+    height:40px;
+    margin:7px;
+    font-size:20px;
+
+}
+
+
+
+
+
+
+
