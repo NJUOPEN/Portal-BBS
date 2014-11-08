@@ -75,16 +75,15 @@
             <form onsubmit="javascript:return false;">
             <div class="login-name-field">
                 <img class="login-name-pic" src="./img/username.gif" />
-                <input class="login-name-input" type="text" id="login-name"/>
+                <input class="login-name-input" type="text" maxlength="12" id="login-name"/>
             </div>
 
             <div class="login-password-field">
                 <img class="login-password-pic" src="./img/password.gif" />
-                <input class="login-password-input" type="password" id="login-password"/>
+                <input class="login-password-input" type="password" maxlength="18" id="login-password"/>
             </div>
 
             <input class="login-button" type="image" src="./img/login.gif" onclick="login_then();" />
-           <!-- <input class="logout-button" type="image" src="./img/logout.gif" />-->
             <a class="register-chain" href="./register.html" target="_blank">没有账户？</a>
 
 
@@ -94,7 +93,23 @@
 
 
         <!-- login-field-2是跳转后原登陆的部分 -->
-        <div id="login-field-2"></div>  
+        <div id="login-field-2">
+            <a href="./infomation.html" target="_blank" class="head-chain">
+                <img src="./img/headpicture-1.jpg" class="head-pic-field" />
+                <span class="login-field-2-name">这里是用户名</span>
+            </a>
+            <div class="logout-field">
+                <span class="logout-field-text">
+                    努力水贴吧！╮(╯▽╰)╭
+                </span>
+                <form onsubmit="javascript:return false;">
+                    <input class="logout-button" type="image" src="./img/logout.gif" onclick="logout_then();" />
+                </form>
+            </div>
+
+            
+
+        </div>  
         
 
         <a href="http://njuopen.org" class="chain-1" target="_blank" >南京大学OPEN主页</a>

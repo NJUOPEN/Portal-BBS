@@ -144,8 +144,38 @@
     display:none;
 }
 
+.head-pic-field {
+    width:130px;
+    margin:10px;
+}
 
+.head-chain {
+    width:130px;
+    display:block;
+    float:left;
+}
 
+.login-field-2-name {
+    position:relative;
+    left:17px;
+}
+.logout-field {
+    float:right;
+    width:260px;
+    height:250px;
+    margin:10px;
+
+}
+.logout-field-text {
+
+}
+
+.logout-button {
+    height:80px;
+    position:absolute;
+    right:0px;
+    top:175px;
+}
 
 .login-name-field {
     width:300px;
@@ -165,6 +195,7 @@
     width:200px;
     position:relative;
     top:-14px;
+    font-size:20px;
 }
 
 
@@ -188,6 +219,7 @@
     width:200px;
     position:relative;
     top:-14px;
+    font-size:20px;
 }
 
 
@@ -208,9 +240,6 @@
 }
 
 
-.logout-button {
-
-}
 
 .chain-1 {
     font-size:20px;
