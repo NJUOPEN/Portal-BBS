@@ -130,18 +130,20 @@
 }
 
 #login-field-1 {
-    width:420px;
+    width:400px;
     height:250px;
     background-color:rgb(128, 128, 128);
     display:block;
+    margin:10px;
 
 }
 
 #login-field-2 {
-    width:420px;
+    width:400px;
     height:250px;
     background-color:rgb(128, 128, 128);
     display:none;
+    margin:10px;
 }
 
 .head-pic-field {
@@ -161,8 +163,8 @@
 }
 .logout-field {
     float:right;
-    width:260px;
-    height:250px;
+    width:240px;
+    height:230px;
     margin:10px;
 
 }
@@ -173,14 +175,13 @@
 .logout-button {
     height:80px;
     position:absolute;
-    right:0px;
-    top:175px;
+    right:10px;
+    top:185px;
 }
 
 .login-name-field {
     width:300px;
     height:45px;
-    /*background-color:white;*/
     position:relative;
     top:10px;
     left:10px;
@@ -192,7 +193,7 @@
 
 .login-name-input {
     height:24px;
-    width:200px;
+    width:170px;
     position:relative;
     top:-14px;
     font-size:20px;
@@ -216,7 +217,7 @@
 
 .login-password-input {
     height:24px;
-    width:200px;
+    width:170px;
     position:relative;
     top:-14px;
     font-size:20px;
@@ -225,8 +226,8 @@
 
 .login-button {
     position:absolute;
-    left:305px;
-    top:20px;
+    right:10px;
+    top:25px;
 
     height:80px;
 }
@@ -235,7 +236,7 @@
 .register-chain {
     font-size:18px;
     position:relative;
-    left:320px;
+    left:300px;
     top:10px;
 }
 

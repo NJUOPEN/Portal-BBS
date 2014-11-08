@@ -52,12 +52,40 @@ body {
 }
 
 
+.used-pic-1 {
+    height:120px;
+    width:90px;
+    border:1px ridge;
+    margin:10px;
+}
+
+.used-pic-2 {
+    height:120px;
+    width:90px;
+    border:1px ridge;
+    margin:10px;
+    position:relative;
+    left:-10px;
+}
+
+.used-pic-text {
+    position:relative;
+    left:10px;
+    font-size:17px;
+    display:block;
+}
+
+
 .info-form-list {
     margin:40px;
 }
 
 
-
+#info-submit {
+    width:100px;
+    height:40px;
+    font-size:17px;
+}
 
 
 

@@ -17,8 +17,8 @@
     left:10px;
 }
 
-.login-info-field {
-    width:400px;
+.post-login-info-field {
+    width:420px;
     height:1700px;
     float:left;
     position:relative;
@@ -30,7 +30,7 @@
 
 
 .post-field {
-    width:920px;
+    width:900px;
     height:1700px;
     float:right;
     position:relative;
@@ -41,14 +41,14 @@
 }
 
 .post-first-field {
-    width:900px;
+    width:880px;
     height:200px;
     margin:10px;
     background-color:white;
 }
 
 .post-reply-field {
-    width:900px;
+    width:880px;
     height:130px;
     margin:10px;
     background-color:white;
@@ -70,7 +70,7 @@
 
 .reply-input-field {
     clear:both;
-    width:900px;
+    width:880px;
     height:250px;
     position:relative;
     left:7px;
@@ -90,5 +90,125 @@
 
 
 
+
+
+
+
+
+#post-login-field-1 {
+    width:400px;
+    height:250px;
+    background-color:rgb(160,160,160);
+    display:block;
+    margin:10px;
+
+}
+
+#post-login-field-2 {
+    width:400px;
+    height:250px;
+    background-color:rgb(160,160,160);
+    display:none;
+    margin:10px;
+}
+
+.post-head-pic-field {
+    width:130px;
+    margin:10px;
+}
+
+.post-head-chain {
+    width:130px;
+    display:block;
+    float:left;
+}
+
+.post-login-field-2-name {
+    position:relative;
+    left:17px;
+}
+.post-logout-field {
+    float:right;
+    width:240px;
+    height:230px;
+    margin:10px;
+
+}
+.post-logout-field-text {
+
+}
+
+.post-logout-button {
+    height:80px;
+    position:absolute;
+    right:10px;
+    top:185px;
+}
+
+.post-login-name-field {
+    width:300px;
+    height:45px;
+    position:relative;
+    top:10px;
+    left:10px;
+}
+
+.post-login-name-pic {
+    height:45px;
+}
+
+.post-login-name-input {
+    height:24px;
+    width:200px;
+    position:relative;
+    top:-14px;
+    font-size:20px;
+}
+
+
+
+.post-login-password-field {
+    width:300px;
+    height:45px;
+    /*background-color:white;*/
+    position:relative;
+    top:10px;
+    left:10px;
+
+}
+
+.post-login-password-pic {
+    height:45px;
+}
+
+.post-login-password-input {
+    height:24px;
+    width:200px;
+    position:relative;
+    top:-14px;
+    font-size:20px;
+}
+
+
+.post-login-button {
+    position:relative;
+    top:60px;
+    left:10px;
+    height:70px;
+}
+
+
+
+
+.post-register-chain {
+    font-size:18px;
+    width:100px;
+    position:relative;
+    left:19px;
+    top:50px;
+}
+
+
+   
 
 
