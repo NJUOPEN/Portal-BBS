@@ -43,7 +43,7 @@ function register($params) {
         include_once(BBS_ROOT."/include/module/SQL.php");
         SQL_User newUser;
         $pw = sha1($pw);
-        $newUser->addUser($name, $pw, NULL, NULL, 0, 1, $email, 1, 18);
+        $newUser->addUser($name, $pw, NULL, 1, 0, $email, 0, 18);
     } else {
         echo "password not match<br/>";
     }
