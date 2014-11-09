@@ -307,9 +307,9 @@ class SQL_User extends SQL_Info //用户操作类
 		return $this->deleteRecordByField($this->tableOfUsers,'SysId',$IDOfUser);
 	}	
 	public function addUser($Name ,$Code ,$Picture ,$Root ,$Rank ,
-$Blank ,$Gender ,$Age ){//新建用户
+$Email ,$Gender ,$Age ){//新建用户
 		//FIXME:请将用户信息放到一个统一的class中，参数太多不便于调用
-		return $this->addRecord($this->tableOfUsers,array('Name'=>$Name,'Code'=>$Code,'Picture'=>$Picture,'Root'=>$Root,'Rank'=>$Rank,'Blank'=>$Blank,'Gender'=>$Gender,'Age'=>$Age));
+		return $this->addRecord($this->tableOfUsers,array('Name'=>$Name,'Code'=>$Code,'Picture'=>$Picture,'Root'=>$Root,'Rank'=>$Rank,'Email'=>$Email,'Gender'=>$Gender,'Age'=>$Age));
 	}
 	public function resetUserName($idOfUser,$name){//更改用户名
 		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Name',$name);
