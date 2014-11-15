@@ -61,17 +61,11 @@
             }
         }
 
-        function check() {
-            var res1 = checkEmail();
-            var res2 = checkUsername();
-            var res3 = checkPassword();
-            var res4 = checkRepassword();
-            if (res1 && res2 && res3 && res4) {
-                return true;
-            }
-            else {
-                return false;
-            }
+        function check() {            
+            if (!checkEmail()) return false;
+            if (!checkUsername()) return false;
+            if (!checkPassword()) return false;
+            if (!checkRepassword()) return false;
         }
     </script>
 </head>
