@@ -33,7 +33,7 @@ if ($method == 'POST') {
 }
 
 switch ($action) {
-    case 'register' :
+    case 'register2' :
 	include_once(BBS_ROOT.'/include/module/log.php');
 	register($params);
 	break;

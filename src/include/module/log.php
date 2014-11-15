@@ -39,11 +39,13 @@ function register($params) {
     $name = $params['username'];
     $pw = $params['password'];
     $repw = $params['repassword'];
-    if (pw == repw) {
+    if ($email=='' || $name=='' || $pw=='' || $repw=='') return;
+    if ($pw == $repw) {
         include_once(BBS_ROOT."/include/module/SQL.php");
-        SQL_User newUser;
         $pw = sha1($pw);
+        $newUser=new SQL_User;
         $newUser->addUser($name, $pw, NULL, 1, 0, $email, 0, 18);
+        echo "User Registered.<br />";
     } else {
         echo "password not match<br/>";
     }

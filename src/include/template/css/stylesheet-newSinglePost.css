@@ -1,0 +1,215 @@
+﻿body
+{
+    width:1366;
+}
+
+
+.post-head {
+    width:1349px;
+    height:100px;
+    background-color:rgb(245, 175, 65);
+
+}
+
+.back-chain {
+    font-size:25px;
+    position:relative;
+    top:65px;
+    left:10px;
+}
+
+.post-login-info-field {
+    width:420px;
+    height:1700px;
+    float:left;
+    position:relative;
+    left:10px;
+    top:10px;
+    background-color:rgb(0, 255, 255);
+}
+
+
+
+.post-field {
+    width:900px;
+    height:1700px;
+    float:right;
+    position:relative;
+    left:-10px;
+    top:10px;
+    background-color:rgb(210, 255, 210);
+
+}
+
+.post-first-field {
+    width:880px;
+    height:200px;
+    margin:10px;
+    background-color:white;
+}
+
+.post-reply-field {
+    width:880px;
+    height:130px;
+    margin:10px;
+    background-color:white;
+}
+
+.post-page {
+    float:left;
+    text-align:center;
+    font-size:20px;
+    position:relative;
+    top:-14px;
+    left:400px;
+
+    margin:10px;
+
+
+}
+
+
+.reply-input-field {
+    clear:both;
+    width:880px;
+    height:250px;
+    position:relative;
+    left:7px;
+    background-color:white;
+    font-size:20px;
+}
+
+.reply-submit-field {
+    width:100px;
+    height:40px;
+    margin:7px;
+    font-size:20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+#post-login-field-1 {
+    width:400px;
+    height:250px;
+    background-color:rgb(160,160,160);
+    display:block;
+    margin:10px;
+
+}
+
+#post-login-field-2 {
+    width:400px;
+    height:250px;
+    background-color:rgb(160,160,160);
+    display:none;
+    margin:10px;
+}
+
+.post-head-pic-field {
+    width:130px;
+    margin:10px;
+}
+
+.post-head-chain {
+    width:130px;
+    display:block;
+    float:left;
+}
+
+.post-login-field-2-name {
+    position:relative;
+    left:17px;
+}
+.post-logout-field {
+    float:right;
+    width:240px;
+    height:230px;
+    margin:10px;
+
+}
+.post-logout-field-text {
+
+}
+
+.post-logout-button {
+    height:80px;
+    position:absolute;
+    right:10px;
+    top:185px;
+}
+
+.post-login-name-field {
+    width:300px;
+    height:45px;
+    position:relative;
+    top:10px;
+    left:10px;
+}
+
+.post-login-name-pic {
+    height:45px;
+}
+
+.post-login-name-input {
+    height:24px;
+    width:200px;
+    position:relative;
+    top:-14px;
+    font-size:20px;
+}
+
+
+
+.post-login-password-field {
+    width:300px;
+    height:45px;
+    /*background-color:white;*/
+    position:relative;
+    top:10px;
+    left:10px;
+
+}
+
+.post-login-password-pic {
+    height:45px;
+}
+
+.post-login-password-input {
+    height:24px;
+    width:200px;
+    position:relative;
+    top:-14px;
+    font-size:20px;
+}
+
+
+.post-login-button {
+    position:relative;
+    top:60px;
+    left:10px;
+    height:70px;
+}
+
+
+
+
+.post-register-chain {
+    font-size:18px;
+    width:100px;
+    position:relative;
+    left:19px;
+    top:50px;
+}
+
+
+   
+
+

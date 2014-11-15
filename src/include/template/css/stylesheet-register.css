@@ -1,0 +1,35 @@
+body {
+    height:600px;
+    width:1366px;
+    background-color:rgb(160,255,160);
+}
+
+
+
+.total-field {
+    background-color:white;
+    width:1000px;
+    height:400px;
+    position:relative;
+    left:200px;
+    top:100px;
+}
+
+.welcome-words-field {
+    position:relative;
+    top:10px;
+    left:10px;
+
+
+}
+
+
+.form-list {
+    margin:15px;
+    position:relative;
+}
+
+span {
+    display:block;
+
+}

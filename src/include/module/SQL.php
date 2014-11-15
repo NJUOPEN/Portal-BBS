@@ -312,7 +312,7 @@ $Email ,$Gender ,$Age ){//新建用户
 		return $this->addRecord($this->tableOfUsers,array('Name'=>$Name,'Code'=>$Code,'Picture'=>$Picture,'Root'=>$Root,'Rank'=>$Rank,'Email'=>$Email,'Gender'=>$Gender,'Age'=>$Age));
 	}
 	public function resetUserName($idOfUser,$name){//更改用户名
-		return $this->setFieldByField($tableOfUsers,'SysID',$idOfUser,'Name',$name);
+		return $this->setFieldByField($this->$tableOfUsers,'SysID',$idOfUser,'Name',$name);
 	}
 	public function resetUserCode($idOfUser,$code){//更改密码
 		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Code',$code);

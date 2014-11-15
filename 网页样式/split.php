@@ -10,14 +10,14 @@ function splitFile($content,$target,$args)
 	$p1=0;$p2=0;
 	foreach ($args as $split_key=>$split_value)
 	{
-		$f=fopen(TARGET_FOLDER.$split_key,'wb');
-		if (!$f) {echo 'Writing to file failed. Please check for privileage.<br />'; break;}
-		$p2=strpos($content,$split_value,$p1);
-		echo '<textarea>'.substr($content,$p1,$p2-$p1).'</textarea>';
-		fwrite($f,substr($content,$p1,$p2-$p1));
-		fclose($f);
-		echo ' Write to '.$split_key.'<br />';
-		$p1=$p2+strlen($split_value);
+			$f=fopen($target.$split_key,'wb');
+			if (!$f) {echo 'Writing to file failed. Please check for privileage.<br />'; break;}
+			$p2=strpos($content,$split_value,$p1);
+			echo '<textarea>'.substr($content,$p1,$p2-$p1).'</textarea>';
+			fwrite($f,substr($content,$p1,$p2-$p1));
+			fclose($f);
+			echo ' Write to '.$split_key.'<br />';
+			$p1=$p2+strlen($split_value);
 	}
 }
 
@@ -26,7 +26,7 @@ define('TARGET_FOLDER','../src/include/template/');
 
 
 //TODO:将需要分割的[HTML文件名]和[段落标签]写在这里，$fileList顺序须与下面的$split_args相对应
-$fileList=array('./Open.html','./SinglePost.html','./PostList.html');
+$fileList=array('./Open.html','./SinglePost.html','./PostList.html','./newOpen/register.html');
 
 
 //TODO:将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致
@@ -47,7 +47,8 @@ $split_args=array(
 								'areaControl.html'=>'<!-- 以上是返回上一级连接，但是和另外一个不一样 -->',
 								'listControl.html'=>'<!-- 以上是帖子列表以及翻页 -->',
 								'addPost.html'=>'<!-- 以上是发布主题 -->',
-								'footer.html'=>'<!-- 以上是网页信息以及html结束 -->')
+								'footer.html'=>'<!-- 以上是网页信息以及html结束 -->'),
+	/*分割注册页面的参数*/array()
 				);
 
 
@@ -56,10 +57,12 @@ $split_args=array(
 $replace_args=array('<link rel="stylesheet" type="text/css" href="./GeneralUI.css">' => '',
 					'<link rel="stylesheet" type="text/css" href="./MainUI.css">' => '',
 					'<form id="postForm" name="postForm" method="post" action="?">'=>'<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
+					'<a href="">注册</a>'=>'<a href="?action=register">注册</a>',
 					'src=\'./'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
 					'<a href="./'=>'<a href="<?php echo BBS_WEB_ROOT.\'/\';?>',
 					/*'href="./'=>'href="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',*/
-					'src=\'../src/include/template/'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+					'src=\'../src/include/template/' => 'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+					'<link rel="stylesheet" href="./css/' => '<link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/',
 					'帖子列表样式'=>'OPEN社团 - 帖子列表',
 					'贴子名字'=>'OPEN社团 - 帖子内容',
 					);
@@ -69,7 +72,7 @@ echo 'Split begin...<br />';
 
 for($i=0; $i<count($fileList); $i++)
 {
-	echo '<br />Processing on '.$file.'<br />';
+	echo '<br />Processing on '.$fileList[$i].'<br />';
 	$f=fopen($fileList[$i],'rb');
 	$content=fread($f,filesize($fileList[$i]));
 	fclose($f);
@@ -77,8 +80,18 @@ for($i=0; $i<count($fileList); $i++)
 	{
 		//根据$replace_args的参数替换相对路径为绝对路径
 		$content=str_replace($replace_from,$replace_to,$content);
-	}	
-	splitFile($content,TARGET_FOLDER,$split_args[$i]);	
+	}
+	if (count($split_args[$i])>0)	//如果提供了分割参数，则进行分割后存储
+	{
+		splitFile($content,TARGET_FOLDER,$split_args[$i]);
+	}
+	else	//否则就直接存储
+	{
+		$f=fopen(TARGET_FOLDER.basename($fileList[$i]),'wb');
+		fwrite($f,$content);
+		fclose($f);
+		echo $fileList[$i].' copied.<br />';
+	}
 }
 
 

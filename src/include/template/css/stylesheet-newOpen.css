@@ -1,0 +1,282 @@
+﻿body
+{
+    width:1366;
+}
+
+/*以下是logo部分*/
+
+.logo-field {
+    background-color:rgb(200,255,200);
+    height:300px;
+    width:1349px;
+
+}
+
+.logo-pic {
+    height:300px;
+    position:relative;
+    left:150px;
+}
+
+
+
+/*以下是帖子列表部分*/
+
+.postList-field {
+    height:1000px;
+    width:900px;
+    background-color:rgb(202, 171, 171);
+    position:relative;
+    top:10px;
+    left:10px;
+
+}
+
+.postList-div-mark-field {
+    width:900px;
+    height:50px;
+    background-color:rgb(255, 255, 255);
+    font-size:16px;
+}
+
+
+
+.postList-div-general-mark {
+    height:50px;
+    width:150px;
+    float:left;
+    background-color:rgb(0, 148, 255);
+    text-align:center;
+    position:relative;
+    line-height:45px;
+}
+
+#mark-1 {
+    background-color:rgb(202, 171, 171);
+}
+
+.postList-div-post-field {
+    clear:both;
+    width:900px;
+
+}
+
+.postList-post {
+    width:880px;
+    height:50px;
+    background-color:white;
+
+    position:relative;
+    left:10px;
+    top:10px;
+    font-size:15px;
+    line-height:45px;
+}
+
+
+
+
+
+.turn-page {
+    width:880px;
+    height:30px;
+    /*background-color:yellow;*/
+    position:relative;
+    top:20px;
+    left:10px;
+
+}
+
+.page {
+    float:left;
+    text-align:center;
+    font-size:20px;
+    position:relative;
+    top:-14px;
+    
+
+    margin:10px;
+    
+}
+
+.post-field {
+    width:880px;
+    height:290px;
+    position:absolute;
+    top:700px;
+    left:10px;
+    background-color:rgb(255, 255, 255);
+
+}
+
+
+
+
+
+
+
+
+
+/*以下是login部分*/
+
+
+.login-link-info-field {
+    width:420px;
+    height:1000px;
+    background-color:rgb(0, 148, 255);
+    position:absolute;
+    top:310px;
+    left:920px;
+    
+}
+
+#login-field-1 {
+    width:400px;
+    height:250px;
+    background-color:rgb(128, 128, 128);
+    display:block;
+    margin:10px;
+
+}
+
+#login-field-2 {
+    width:400px;
+    height:250px;
+    background-color:rgb(128, 128, 128);
+    display:none;
+    margin:10px;
+}
+
+.head-pic-field {
+    width:130px;
+    margin:10px;
+}
+
+.head-chain {
+    width:130px;
+    display:block;
+    float:left;
+}
+
+.login-field-2-name {
+    position:relative;
+    left:17px;
+}
+.logout-field {
+    float:right;
+    width:240px;
+    height:230px;
+    margin:10px;
+
+}
+.logout-field-text {
+
+}
+
+.logout-button {
+    height:80px;
+    position:absolute;
+    right:10px;
+    top:185px;
+}
+
+.login-name-field {
+    width:300px;
+    height:45px;
+    position:relative;
+    top:10px;
+    left:10px;
+}
+
+.login-name-pic {
+    height:45px;
+}
+
+.login-name-input {
+    height:24px;
+    width:170px;
+    position:relative;
+    top:-14px;
+    font-size:20px;
+}
+
+
+
+.login-password-field {
+    width:300px;
+    height:45px;
+    /*background-color:white;*/
+    position:relative;
+    top:10px;
+    left:10px;
+
+}
+
+.login-password-pic {
+    height:45px;
+}
+
+.login-password-input {
+    height:24px;
+    width:170px;
+    position:relative;
+    top:-14px;
+    font-size:20px;
+}
+
+
+.login-button {
+    position:absolute;
+    right:10px;
+    top:25px;
+
+    height:80px;
+}
+
+
+.register-chain {
+    font-size:18px;
+    position:relative;
+    left:300px;
+    top:10px;
+}
+
+
+
+.chain-1 {
+    font-size:20px;
+    position:relative;
+    margin:20px;
+}
+
+.chain-2 {
+    font-size:20px;
+    position:relative;
+    margin:20px;
+}
+
+
+
+
+
+.info-field {
+    background-color:white;
+    position:absolute;
+    top:690px;
+    left:10px;
+
+    height:300px;
+    width:400px;
+}
+
+
+.info-list {
+    position:relative;
+    top:20px;
+    left:20px;
+}
+
+.info-single-list {
+    font-size:17px;
+
+}
