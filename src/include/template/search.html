@@ -68,10 +68,11 @@ ang="en" xmlns="http://www.w3.org/1999/xhtml">
 
     </div>
 <!-- postList-field -->
-<?php
-//if (!isset($_SESSION["SysID"])) {
-?>
     <div class="login-link-info-field">
+<?php
+if (!isset($_SESSION["SysID"])) {
+?>
+
         <div id="login-field-1">
             <form  action="?" method="POST" >
 		<!-- onsubmit="javascript:return false;" -->
@@ -93,26 +94,27 @@ ang="en" xmlns="http://www.w3.org/1999/xhtml">
             </form>
         </div>
 <?php
-//}
+} else {
 ?>
         <!-- login-field-2是跳转后原登陆的部分 -->
-        <div id="login-field-2">
+	<div>
             <a href="<?php echo BBS_WEB_ROOT.'/';?>infomation.html" target="_blank" class="head-chain">
-                <img src="./img/headpicture-1.jpg" class="head-pic-field" />
-                <span class="login-field-2-name">这里是用户名</span>
+                <img src="./img/headPicture-1.jpg" class="head-pic-field" />
+		<span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>
             </a>
             <div class="logout-field">
                 <span class="logout-field-text">
                     努力水贴吧！╮(╯▽╰)╭
                 </span>
-                <form onsubmit="javascript:return false;">
-                    <input class="logout-button" type="image" src="./img/logout.gif" onclick="logout_then();" />
+		<form action="?" method="POST" >
+		    <input type="hidden" name="action" value="logout" />
+                    <input class="logout-button" type="image" name="submit" src="./img/logout.gif" />
                 </form>
             </div>
         </div>
 
-        <a href="http://njuopen.org" class="chain-1" target="_blank" >南京大学OPEN主页</a>
-        <a href="" class="chain-2" target="_blank"><span class="heimu" title="你知道的太多了">这是第二条链接</span></a>
+	<!-- <a href="http://njuopen.org" class="chain-1" target="_blank" >南京大学OPEN主页</a> -->
+	<!-- <a href="" class="chain-2" target="_blank"><span class="heimu" title="你知道的太多了">这是第二条链接</span></a> -->
 
         <div class="info-field">
             <ul class="info-list">
@@ -120,6 +122,9 @@ ang="en" xmlns="http://www.w3.org/1999/xhtml">
                 <li class="info-single-list">网页信息2</li>
             </ul>
         </div>
+<?php
+}
+?>
 
 
     </div>
