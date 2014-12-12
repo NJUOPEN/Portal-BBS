@@ -1,15 +1,131 @@
+="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/stylesheet-newOpen.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/stylesheet-general.css" type="text/css">
+    <script src="./JS/js-newOpen.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+    <div class="logo-field">
+        <img class="logo-pic" src="./img/logo.gif" />
+    </div>
+
+<!-- logo-field -->
+
+    <div class="postList-field">
+        <div class="postList-div-mark-field">
+            <ul>
+                <li class="postList-div-general-mark" id="mark-1" onclick="click(1);"><a href="">版块1</a></li>
+                <li class="postList-div-general-mark" id="mark-2"><a href="" onclick="click(2);">版块2</a></li>
+                <li class="postList-div-general-mark" id="mark-3" onclick=""><a href="">版块3</a></li>
+                <li class="postList-div-general-mark" id="mark-4" onclick=""><a href="">版块4</a></li>
+                <li class="postList-div-general-mark" id="mark-5" onclick=""><a href="">版块5</a></li>
+                <li class="postList-div-general-mark" id="mark-6" onclick=""><a href="">版块6</a></li>
+            </ul>
+        </div>
+
+
+        <div class="postList-div-post-field">
+            <ul>
+                <li class="postList-post"><a target="_blank" href="./newSinglePost.html">1号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">2号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">3号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">4号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">5号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">6号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">7号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">8号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">9号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">10号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">11号帖子</a></li>
+                <li class="postList-post"><a target="_blank" href="">12号帖子</a></li>
+            </ul>
+        </div>
 
 
 
-<div class="hot-post-field">
-	
-	<ul height="40">
-	    <p>热门帖</p>
-	    <li>XXXX</li>
-	    <li>XXXX</li>
-	</ul>
-</div>
+        <div class="turn-page">
+            <ul>
+                <li class="page"><a href="">1</a></li>
+                <li class="page"><a href="">2</a></li>
+                <li class="page"><a href="">3</a></li>
+                <li class="page"><a href="">4</a></li>
+                <li class="page"><a href="">...</a></li>
+                <li class="page"><a href="">7</a></li>
+                <li class="page"><a href="">8</a></li>
+            </ul>
+        </div>
 
-<br/>
+        <!-- 发布主题部分 -->
+        <div class="post-field">
+            发布主题部分
+        </div>
 
 
+    </div>
+<!-- postList-field -->
+<?php
+//if (!isset($_SESSION["SysID"])) {
+?>
+    <div class="login-link-info-field">
+        <div id="login-field-1">
+            <form  action="?" method="POST" >
+		<!-- onsubmit="javascript:return false;" -->
+		<div class="login-name-field">
+		    <img class="login-name-pic" src="./img/username.gif" />
+		    <input class="login-name-input" type="text" maxlength="12" id="login-name" name="Name" />
+		</div>
+
+		<div class="login-password-field">
+		    <img class="login-password-pic" src="./img/password.gif" />
+		    <input class="login-password-input" type="password" maxlength="18" id="login-password" name="Code" />
+		</div>
+
+		<input type="hidden" name="action" value="login" />
+		<input class="login-button" type="image" name="submit" src="./img/login.gif" />
+		<!-- onclick="login_then();" -->
+		<a class="register-chain" href="./register.html" target="_blank">没有账户？</a>
+
+            </form>
+        </div>
+<?php
+//}
+?>
+        <!-- login-field-2是跳转后原登陆的部分 -->
+        <div id="login-field-2">
+            <a href="<?php echo BBS_WEB_ROOT.'/';?>infomation.html" target="_blank" class="head-chain">
+                <img src="./img/headpicture-1.jpg" class="head-pic-field" />
+                <span class="login-field-2-name">这里是用户名</span>
+            </a>
+            <div class="logout-field">
+                <span class="logout-field-text">
+                    努力水贴吧！╮(╯▽╰)╭
+                </span>
+                <form onsubmit="javascript:return false;">
+                    <input class="logout-button" type="image" src="./img/logout.gif" onclick="logout_then();" />
+                </form>
+            </div>
+        </div>
+
+        <a href="http://njuopen.org" class="chain-1" target="_blank" >南京大学OPEN主页</a>
+        <a href="" class="chain-2" target="_blank"><span class="heimu" title="你知道的太多了">这是第二条链接</span></a>
+
+        <div class="info-field">
+            <ul class="info-list">
+                <li class="info-single-list">网页信息1</li>
+                <li class="info-single-list">网页信息2</li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
+<!-- login-link-info-field -->
+
+
+</

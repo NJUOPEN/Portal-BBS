@@ -1,29 +1,112 @@
+ns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>第一个帖子</title>
+
+    <link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/stylesheet-general.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/stylesheet-newSinglePost.css" type="text/css">
+    <script src="./JS/js-newSinglePost.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+
+    <div class="post-head">
+        <a href="<?php echo BBS_WEB_ROOT.'/';?>newOPEN.html" class="back-chain">返回首页</a>
+    </div>
+
+<!-- post-head -->
+    <div class="post-login-info-field">
+        <div id="post-login-field-1">
+            <form onsubmit="javascript:return false;">
+                <div class="post-login-name-field">
+                    <img class="post-login-name-pic" src="./img/username.gif" />
+                    <input class="post-login-name-input" type="text" maxlength="12" id="post-login-name" />
+                </div>
+
+                <div class="post-login-password-field">
+                    <img class="post-login-password-pic" src="./img/password.gif" />
+                    <input class="post-login-password-input" type="password" maxlength="18" id="post-login-password" />
+                </div>
+
+                <input class="post-login-button" type="image" src="./img/login.gif" onclick="post_login_then();" />
+                <a class="post-register-chain" href="./register.html" target="_blank">没有账户？</a>
+
+
+                <input type="hidden" />
+            </form>
+        </div>
+
+
+        <!-- login-field-2是跳转后原登陆的部分 -->
+        <div id="post-login-field-2">
+            <a href="<?php echo BBS_WEB_ROOT.'/';?>infomation.html" target="_blank" class="post-head-chain">
+                <img src="./img/headpicture-1.jpg" class="post-head-pic-field" />
+                <span class="post-login-field-2-name">这里是用户名</span>
+            </a>
+            <div class="post-logout-field">
+                <span class="post-logout-field-text">
+                    努力水贴吧！╮(╯▽╰)╭
+                </span>
+                <form onsubmit="javascript:return false;">
+                    <input class="post-logout-button" type="image" src="./img/logout.gif" onclick="post_logout_then();" />
+                </form>
+            </div>
 
 
 
-<div class="post-field">
-    <ul>
-    	<li class="single-post-field">
-			<div class="poster-field">
-			</div>
-			<div class="post-details-field">
-			<?php	echo 'Theme: '.$post_list[0]['Title'];?>
-			<br />
-			<?php	echo $post_list[0]['PostAdd'];?>
-			</div>
-		</li>
-    	<?php for($i=1;$i<count($post_list);$i++) {?>
-	    <li class="single-post-field">
-			<div class="poster-field">
-			</div>
-			<div class="post-details-field">
-			<?php	echo $post_list[$i]['PostAdd'];?>
-			</div>
-		</li>
-		<?php }?>
-	</ul>	
-</div>
+        </div>
+
+    </div>
+
+<!-- post-login-info-field -->
+    <div class="post-field">
+        <ul>
+            <li class="post-first-field">
+                <span>1楼</span>
+                
+            </li>
+            <li class="post-reply-field">
+                <span>2楼</span>
+            </li>
+            <li class="post-reply-field">
+                <span>3楼</span>
+            </li>
+            <li class="post-reply-field">
+                <span>4楼</span>
+            </li>
+            <li class="post-reply-field">
+                <span>5楼</span>
+            </li>
+            <li class="post-reply-field">
+                <span>6楼</span>
+            </li>
+            <li class="post-reply-field">
+                <span>7楼</span>
+            </li>
+            <li class="post-reply-field">
+                <span>8楼</span>
+            </li>
+            <li class="post-reply-field">
+                <span>9楼</span>
+            </li>
+            
+        </ul>
+        <ul>
+            <li class="post-page"><a href="">1</a></li>
+            <li class="post-page"><a href="">2</a></li>
+            <li class="post-page"><a href="">3</a></li>
+        </ul>
+
+        <div>
+            <textarea class="reply-input-field"></textarea>
+
+            <button class="reply-submit-field">
+                提交
+            </button>
+        </div>
 
 
-<p align="center" clear="both">上一页 X（当前页） 下一页 跳转至<input type="text" size="1"/>/Y页 <input type="submit" value="跳转"/> 共Y页，共Z个回复</pre>
+    </div>
 
+<!-- post-fiel
