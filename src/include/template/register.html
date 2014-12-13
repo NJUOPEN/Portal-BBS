@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/stylesheet-general.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/stylesheet-register.css" type="text/css">
+
+    <script>
+        function checkEmail() {
+            var email = document.getElementById("email").value;
+            var reg = /^([a-zA-Z0-9_-])+@[a-zA-Z0-9_-]+(\.([a-zA-Z0-9_-]{2,3})){1,}$/i;
+            if (reg.test(email)) {
+                return true;
+            }
+            else {
+                alert("请输入正确的邮箱地址");
+                return false;
+            }
+        }
+
+        function checkUsername() {
+            var username = document.getElementById("username").value;
+            var reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+            if (!reg.test(username)) {
+                alert("账户包含非法字符。支持中文、英文、数字、“_”");
+                return false;
+            }
+            else if (username.length > 14) {
+                alert("用户名长度不符。请输入14位以内中文、英文、数字、“_”");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        function checkPassword() {
+            var length = document.getElementById("password").value.length;
+            if (length < 6 || length > 18) {
+                alert("密码长度不符。请输入6-18位密码");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        function checkRepassword() {
+            var repassword = document.getElementById("repassword").value;
+            var password = document.getElementById("password").value;
+            if (repassword != password) {
+                alert("确认密码与密码不符，请重新输入");
+                document.getElementById("repassword").value = "";
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        function check() {            
+            if (!checkEmail()) return false;
+            if (!checkUsername()) return false;
+            if (!checkPassword()) return false;
+            if (!checkRepassword()) return false;
+            return true;
+        }
+    </script>
+</head>
+
+
+
+<body>
+    <div class="total-field">
+
+        <h1 class="welcome-words-field">
+            欢迎加入我们
+        </h1>
+        <form name="register" action="?action=register2" method="post" onsubmit="return check();">
+            <ul>
+                <li class="form-list">
+                    <span>Email</span>
+                    <input id="email" type="text" name="email" onchange="checkEmail()"/>
+                </li>
+                <li class="form-list">
+                    <span>Your Name</span>
+                    <input id="username" type="text" name="username" onchange="checkUsername()"/>
+                </li>
+                <li class="form-list">
+                    <span>Password</span>
+                    <input id="password" type="password" name="password" onchange="checkPassword()"/>
+                </li>
+                <li class="form-list">
+                    <span>Repeat Password</span>
+                    <input id="repassword" type="password" name="repassword" onchange="checkRepassword()"/>
+                </li>
+                <li class="form-list">
+                    <input type="submit" value="enjoy it"/>
+                </li>
+            </ul>
+
+
+
+        </form>
+
+
+
+
+    </div>
+
+
+
+
+
+</body>
+
+
+
+</html>
+

@@ -25,44 +25,32 @@ function splitFile($content,$target,$args)
 define('TARGET_FOLDER','../src/include/template/');
 
 
-//TODO:将需要分割的[HTML文件名]和[段落标签]写在这里，$fileList顺序须与下面的$split_args相对应
-$fileList=array('./Open.html','./SinglePost.html','./PostList.html','./newOpen/register.html');
+//TODO:将需要分割的[HTML文件名]写在这里，$fileList顺序须与下面的$split_args相对应
+$fileList=array('./Open.html','./SinglePost.html','register.html');
 
 
 //TODO:将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致
 $split_args=array(
-	/*分割主页的参数*/array('header.html'=>'<!-- 以上是主页头部 -->',
-						/*'announcement.html'=>'<!-- 以上是通知栏 -->',*/
-						'official.html'=>'<!-- 以上是官方动态 -->',
-						'hot.html'=>'<!-- 以上是热帖 -->',
-						'forum.html'=>'<!-- 以上是交流区 -->',
-						'search.html'=>'<!-- 以上是死去的搜索 -->',
-						'footer.html'=>'<!-- 以上是网页信息和html结尾 -->'),
-	/*分割单贴页面的参数*/array('header_post.html'=>'<!-- 以上是单帖样式头部 -->',
-							'areaControl.html'=>'<!-- 以上是返回上一级连接 -->',
-							'viewControl.html'=>'<!-- 以上是看回复与翻页 -->',
-							'replyPost.html'=>'<!-- 以上是回帖部分 -->',
-							'footer.html'=>'<!-- 以上是网页信息及html结束 -->'),
-	/*分割帖子列表页面的参数*/array('header_post.html'=>'<!-- 以上是帖子列表头部 -->',
-								'areaControl.html'=>'<!-- 以上是返回上一级连接，但是和另外一个不一样 -->',
-								'listControl.html'=>'<!-- 以上是帖子列表以及翻页 -->',
-								'addPost.html'=>'<!-- 以上是发布主题 -->',
-								'footer.html'=>'<!-- 以上是网页信息以及html结束 -->'),
+	/*分割主页的参数*/array('header.html'=>'<!-- logo-field -->',
+						'forum.html'=>'<!-- postList-field -->',
+						'login.html'=>'<!-- login-link-info-field -->',
+						'footer.html'=>'<!-- footer -->'),
+	/*分割单贴页面的参数*/array('header_post.html'=>'<!-- post-head -->'/*单帖页面的header与主页不同*/,
+							'login_post.html'=>'<!-- post-login-info-field -->'/*单帖页面的login与主页不同*/,
+							'areaControl.html'=>'<!-- post-field -->',
+							'footer.html'=>'<!-- footer -->'),
 	/*分割注册页面的参数*/array()
 				);
 
 
 //TODO:将需要[替换的字符]写在这里，如：相对路径替换为绝对路径，调试信息替换为空字符串等
 //过滤顺序：绝对字符（如调试信息、完整的HTML标签）->动态信息->相对路径
-$replace_args=array('<link rel="stylesheet" type="text/css" href="./GeneralUI.css">' => '',
-					'<link rel="stylesheet" type="text/css" href="./MainUI.css">' => '',
-					'<form id="postForm" name="postForm" method="post" action="?">'=>'<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
-					'<a href="">注册</a>'=>'<a href="?action=register">注册</a>',
-					'src=\'./'=>'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+$replace_args=array('<form id="postForm" name="postForm" method="post" action="?">'=>'<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
+					'<a class="register-chain" href="./register.html" target="_blank">'=>'<a href="?action=register">',
+					'src="./'=>'src="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
 					'<a href="./'=>'<a href="<?php echo BBS_WEB_ROOT.\'/\';?>',
-					/*'href="./'=>'href="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',*/
-					'src=\'../src/include/template/' => 'src=\'<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
 					'<link rel="stylesheet" href="./css/' => '<link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/',
+					'<script src="./JS/' => '<script src="<?php echo BBS_WEB_TEMPLATE;?>/JS/',
 					'帖子列表样式'=>'OPEN社团 - 帖子列表',
 					'贴子名字'=>'OPEN社团 - 帖子内容',
 					);

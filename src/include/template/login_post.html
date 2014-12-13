@@ -1,0 +1,44 @@
+
+    <div class="post-login-info-field">
+        <div id="post-login-field-1">
+            <form onsubmit="javascript:return false;">
+                <div class="post-login-name-field">
+                    <img class="post-login-name-pic" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif" />
+                    <input class="post-login-name-input" type="text" maxlength="12" id="post-login-name" />
+                </div>
+
+                <div class="post-login-password-field">
+                    <img class="post-login-password-pic" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/password.gif" />
+                    <input class="post-login-password-input" type="password" maxlength="18" id="post-login-password" />
+                </div>
+
+                <input class="post-login-button" type="image" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif" onclick="post_login_then();" />
+                <a class="post-register-chain" href="./register.html" target="_blank">没有账户？</a>
+
+
+                <input type="hidden" />
+            </form>
+        </div>
+
+
+        <!-- login-field-2是跳转后原登陆的部分 -->
+        <div id="post-login-field-2">
+            <a href="<?php echo BBS_WEB_ROOT.'/';?>infomation.html" target="_blank" class="post-head-chain">
+                <img src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/headpicture-1.jpg" class="post-head-pic-field" />
+                <span class="post-login-field-2-name">这里是用户名</span>
+            </a>
+            <div class="post-logout-field">
+                <span class="post-logout-field-text">
+                    努力水贴吧！╮(╯▽╰)╭
+                </span>
+                <form onsubmit="javascript:return false;">
+                    <input class="post-logout-button" type="image" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif" onclick="post_logout_then();" />
+                </form>
+            </div>
+
+
+
+        </div>
+
+    </div>
+

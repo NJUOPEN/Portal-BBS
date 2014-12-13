@@ -37,27 +37,23 @@ else
 include_once(BBS_TEMPLATE.'/header.html');//显示通用顶部
 switch($action)//以下内容为可变部分，根据前端的ACTION进行选择性加载
 {
-	
+	/*
 	case 'postList':
 	case 'doPost':
 		include_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
 		include_once(BBS_TEMPLATE.'/listControl.html');//显示贴子列表
 		include_once(BBS_TEMPLATE.'/addPost.html');//显示发帖模块
-		break;		
+		break;
+	*/		
 	case 'postView':
 	case 'doReply' :
 		include_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
-		include_once(BBS_TEMPLATE.'/viewControl.html');//显示贴子内容
-		include_once(BBS_TEMPLATE.'/replyPost.html');//显示回帖模块
+		include_once(BBS_TEMPLATE.'/login.html');//显示贴子内容
 		break;
 	default:
 		//显示默认主页
-		include_once(BBS_TEMPLATE.'/announcement.html');//显示公告
-		include_once(BBS_TEMPLATE.'/official.html');
-		//include_once(BBS_TEMPLATE.'/hot.html');
-		//include_once(BBS_TEMPLATE.'/new.html');
-		//include_once(BBS_TEMPLATE.'/forum.html');
-		//include_once(BBS_TEMPLATE.'/search.html');
+		include_once(BBS_TEMPLATE.'/forum.html');
+		include_once(BBS_TEMPLATE.'/login.html');
 		//TODO:添加登录、登出提示框，将login、logout的样式与默认主页分离；
 }
 include_once(BBS_TEMPLATE.'/footer.html');//显示底部通用样式

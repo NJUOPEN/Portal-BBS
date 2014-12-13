@@ -1,0 +1,63 @@
+
+    <div class="login-link-info-field">
+<?php
+if (!isset($_SESSION["SysID"])) {
+?>
+
+        <div id="login-field-1">
+            <form  action="?" method="POST" >
+		<!-- onsubmit="javascript:return false;" -->
+		<div class="login-name-field">
+		    <img class="login-name-pic" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif" />
+		    <input class="login-name-input" type="text" maxlength="12" id="login-name" name="Name" />
+		</div>
+
+		<div class="login-password-field">
+		    <img class="login-password-pic" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/password.gif" />
+		    <input class="login-password-input" type="password" maxlength="18" id="login-password" name="Code" />
+		</div>
+
+		<input type="hidden" name="action" value="login" />
+		<input class="login-button" type="image" name="submit" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif" />
+		<!-- onclick="login_then();" -->
+		<a href="?action=register">没有账户？</a>
+
+            </form>
+        </div>
+<?php
+} else {
+?>
+        <!-- login-field-2是跳转后原登陆的部分 -->
+	<div>
+            <a href="<?php echo BBS_WEB_ROOT.'/';?>infomation.html" target="_blank" class="head-chain">
+                <img src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/headPicture-1.jpg" class="head-pic-field" />
+		<span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>
+            </a>
+            <div class="logout-field">
+                <span class="logout-field-text">
+                    努力水贴吧！╮(╯▽╰)╭
+                </span>
+		<form action="?" method="POST" >
+		    <input type="hidden" name="action" value="logout" />
+                    <input class="logout-button" type="image" name="submit" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif" />
+                </form>
+            </div>
+        </div>
+
+	<!-- <a href="http://njuopen.org" class="chain-1" target="_blank" >南京大学OPEN主页</a> -->
+	<!-- <a href="" class="chain-2" target="_blank"><span class="heimu" title="你知道的太多了">这是第二条链接</span></a> -->
+
+        <div class="info-field">
+            <ul class="info-list">
+                <li class="info-single-list">网页信息1</li>
+                <li class="info-single-list">网页信息2</li>
+            </ul>
+        </div>
+<?php
+}
+?>
+
+
+    </div>
+
+

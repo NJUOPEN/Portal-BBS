@@ -1,89 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!--meta http-equiv="X-UA-Compatible" content="IE=7" />-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>OPEN社团 - 帖子列表</title>
+    <meta charset="utf-8" />
+    <title>第一个帖子</title>
 
+    <link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/stylesheet-general.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/stylesheet-newSinglePost.css" type="text/css">
+    <script src="<?php echo BBS_WEB_TEMPLATE.'/';?>JS/js-newSinglePost.js" type="text/javascript"></script>
 
-
-<link rel="stylesheet" type="text/css" href="./PostListUI.css">
-
-<link rel="stylesheet" href="./editor/kindeditor/themes/default/default.css" />
-
-<script charset="utf-8" src="./editor/kindeditor/kindeditor-min.js"></script>
-<script charset="utf-8" src="./editor/kindeditor/lang/zh_CN.js"></script>
-<script charset="utf-8" src="./KE.js"></script>
 </head>
-
 <body>
 
 
-<div class="pre-blank-field">
-    <p align='center'></p>
-</div>
-
-
-<div class="logo-field">
-    <a href="<?php echo BBS_WEB_ROOT.'/';?>"><img class='logo-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/logo.gif'/></a>
-	
-</div>
-
-
-
-<div class="login-field">
-    <?php if(!isset($_SESSION['SysID'])) {?>
-	<form name='loginForm' action='?' method='POST' onsubmit='return matchName();'>
-	<div class='login-name-field'>
-	<img class='login-name-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif'/>
-	<input id ="Name" type='text' name='Name' maxlength='14' />
-	</div>
-	<div class='login-password-field'>
-	<img class='login-password-pic' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/password.gif'/>
-	<input id="Code" type='password' name='Code' maxlength='18'/>
-	</div>
-	<input id='action' type='hidden' name='action' value='login' />
-	<input type='image' name='submit' value='登录' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif' class='login-button'/>
-	</form>
-	<?php } else
-	{
-	        echo $_SESSION['Name'].'已经登录。';
-	?>
-	<form name='logoutForm' action='?' method='POST'>
-	<input id='action' type='hidden' name='action' value='logout' />
-	<input type='image' name='submit' value='登出' src='<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif' class='logout-button'/>
-	</form>
-	<?php
-	}
-	?>
-</div>
-
-<script>
-	function matchName(){
-		var reg = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
-		if(!reg.test(document.getElementById("Name").value)){
-			alert("账户包含非法字符。支持中文、英文、数字、“_”");
-			return false;
-		}
-		else if(document.getElementById("Name").value.length>14){
-		    alert("用户名长度不符。请输入14位以内中文、英文、数字、“_”");
-		    return false;
-		}
-		else{
-			return matchPassword();
-		}
-		
-	}
-	function matchPassword(){
-		var x=document.getElementById("Code").value.length;
-		if(x<6||x>18){
-			alert("密码长度不符。请输入6-18位密码");
-			return false;
-		}
-		else{
-			return true;
-		}
-	}
-</script>
-
+    <div class="post-head">
+        <a href="<?php echo BBS_WEB_ROOT.'/';?>newOPEN.html" class="back-chain">返回首页</a>
+    </div>
 
