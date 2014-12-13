@@ -274,7 +274,7 @@ class SQL_Info extends SQL_Obj
 
 class SQL_Msg extends SQL_Obj
 {
-	protected function getTopRecord($tableName,$fieldName,$descendent=true,$count=-1)  //将记录按给定字段排序并返回前数个记录
+	protected function getTopRecord($tableName,$fieldName,$descendent=true,$count=-1,$conditions=null)  //将记录按给定字段排序并返回前数个记录
 	{
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM `'.$tableName.'` ORDER BY `'.$fieldName.'` '.($descendent?'DESC':'ASC');
@@ -282,6 +282,7 @@ class SQL_Msg extends SQL_Obj
 		if ($count>=0 && $count != NULL && is_numeric($count))	{
 		    $query.=' LIMIT '.$count;
 		}
+		if ($conditions) $query.=self::buildConditions($conditions);
 		$query.=';';
 		return self::resourceToArray(mysql_query($query,$this->db));
 	}
@@ -387,7 +388,7 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	}
 
 	public function getLastInfofPost($number) {
-		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number);
+		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number,array('IfFollow'=>'0'));
 	}
 
 	public function getFollowedList($FollowAdd) {
