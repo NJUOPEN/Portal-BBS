@@ -1,6 +1,6 @@
 ﻿body
 {
-    width:1366;
+    
 }
 
 /*以下是logo部分*/
@@ -26,9 +26,9 @@
     height:1000px;
     width:900px;
     background-color:rgb(202, 171, 171);
-    position:relative;
-    top:10px;
-    left:10px;
+    margin-top:10px;
+    margin-left:10px;
+    float:left;
 
 }
 
@@ -102,8 +102,8 @@
 .post-field {
     width:880px;
     height:290px;
-    position:absolute;
-    top:700px;
+    position:relative;
+    top:15px;
     left:10px;
     background-color:rgb(255, 255, 255);
 
@@ -124,9 +124,9 @@
     width:420px;
     height:1000px;
     background-color:rgb(0, 148, 255);
-    position:absolute;
-    top:310px;
-    left:920px;
+    margin-top:10px;
+    margin-right:10px;
+    float:right;
     
 }
 
@@ -175,9 +175,9 @@
 
 .logout-button {
     height:80px;
-    position:absolute;
-    right:10px;
-    top:185px;
+    position:relative;
+    left:130px;
+    top:130px;
 }
 
 .login-name-field {
@@ -226,9 +226,9 @@
 
 
 .login-button {
-    position:absolute;
-    right:10px;
-    top:25px;
+    position:relative;
+    left:280px;
+    top:-70px;
 
     height:80px;
 }
@@ -238,7 +238,7 @@
     font-size:18px;
     position:relative;
     left:300px;
-    top:10px;
+    top:-60px;
 }
 
 
@@ -261,8 +261,8 @@
 
 .info-field {
     background-color:white;
-    position:absolute;
-    top:690px;
+    position:relative;
+    top:200px;
     left:10px;
 
     height:300px;

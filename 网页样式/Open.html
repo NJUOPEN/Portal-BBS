@@ -99,7 +99,7 @@ if (!isset($_SESSION["SysID"])) {
 } else {
 ?>
         <!-- login-field-2是跳转后原登陆的部分 -->
-	<div id="login-field-2">
+	    <div id="login-field-2">
             <a href="./infomation.html" target="_blank" class="head-chain">
                 <img src="./img/headPicture-1.jpg" class="head-pic-field" />
 		<span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>
@@ -115,8 +115,11 @@ if (!isset($_SESSION["SysID"])) {
             </div>
         </div>
 
-	<a href="http://njuopen.org" class="chain-1" target="_blank" >南京大学OPEN主页</a>
-	<a href="" class="chain-2" target="_blank"><span class="heimu" title="你知道的太多了">这是第二条链接</span></a>
+<?php
+}
+?>
+	    <a href="http://njuopen.org" class="chain-1" target="_blank" >南京大学OPEN主页</a>
+	    <a href="" class="chain-2" target="_blank"><span class="heimu" title="你知道的太多了">这是第二条链接</span></a>
 
         <div class="info-field">
             <ul class="info-list">
@@ -124,9 +127,7 @@ if (!isset($_SESSION["SysID"])) {
                 <li class="info-single-list">网页信息2</li>
             </ul>
         </div>
-<?php
-}
-?>
+
 
 
     </div>
