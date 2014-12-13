@@ -45,7 +45,7 @@ function showPostList($params)
 	loadEditorUI();
 	
 	global $post_list;
-	include_once(BBS_ROOT.'/include/module/SQL.php');
+	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
 	$post_list = $PostList->getLastInfofPost($params['ListSize']);
 	for ($i = 0; $i < count($post_list); $i++) {
@@ -61,7 +61,7 @@ function showPostView($params)
 	loadEditorUI();
 	
 	global $post_list;
-	include_once(BBS_ROOT.'/include/module/SQL.php');
+	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
 	if (isset($params['PostID'])) {
 		$post_list=array();
@@ -73,7 +73,7 @@ function showPostView($params)
 }
 // 发布帖子
 function doPost($params) {
-	include_once(BBS_ROOT.'/include/module/SQL.php');
+	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	/*
 	$date = getdate();
@@ -85,7 +85,7 @@ function doPost($params) {
 }
 
 function doReply($params) {
-	include_once(BBS_ROOT.'/include/module/SQL.php');
+	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	$date = getdate();
 	$time = $date['year'];

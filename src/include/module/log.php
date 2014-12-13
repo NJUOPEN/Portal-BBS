@@ -41,7 +41,7 @@ function register($params) {
     $repw = $params['repassword'];
     if ($email=='' || $name=='' || $pw=='' || $repw=='') return;
     if ($pw == $repw) {
-        include_once(BBS_ROOT."/include/module/SQL.php");
+        require_once(BBS_ROOT."/include/module/SQL.php");
         $pw = sha1($pw);
         $newUser=new SQL_User;
         $newUser->addUser($name, $pw, NULL, 1, 0, $email, 0, 18);
