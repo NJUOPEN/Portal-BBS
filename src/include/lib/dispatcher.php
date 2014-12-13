@@ -56,10 +56,6 @@ switch ($action) {
     	doReply($params);
     	showPostView($params);
     	break;
-    case 'postList' :
-    	require_once(BBS_ROOT.'/include/module/post.php');
-    	showPostList($params);
-    	break;
     case 'postView' :
     	require_once(BBS_ROOT.'/include/module/post.php');
     	$_SESSION['PostID'] = $params['PostID'];
@@ -71,6 +67,10 @@ switch ($action) {
 	    break;
     case 'invalid' :
 		echo 'action is set invalid<br />';
+		break;
+	default :		//默认显示主页的贴子列表
+		require_once(BBS_ROOT.'/include/module/post.php');
+    	showPostList($params);
     // TODO add more
 }
 ?>
