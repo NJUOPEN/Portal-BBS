@@ -34,39 +34,39 @@ if ($method == 'POST') {
 
 switch ($action) {
     case 'register2' :
-	include_once(BBS_ROOT.'/include/module/log.php');
+	require_once(BBS_ROOT.'/include/module/log.php');
 	register($params);
 	break;
     case 'login' :
-        include_once(BBS_ROOT.'/include/module/log.php');
+        require_once(BBS_ROOT.'/include/module/log.php');
         login($params);
         break;
     case 'logout' :
-        include_once(BBS_ROOT.'/include/module/log.php');
+        require_once(BBS_ROOT.'/include/module/log.php');
         logout();
         break;
     case 'doPost' :
-    	include_once(BBS_ROOT.'/include/module/post.php');
+    	require_once(BBS_ROOT.'/include/module/post.php');
     	doPost($params);
     	showPostList($params);
     	break;
     case 'doReply' :
-    	include_once(BBS_ROOT.'/include/module/post.php');
+    	require_once(BBS_ROOT.'/include/module/post.php');
     	$params['PostID'] = $_SESSION['PostID'];
     	doReply($params);
     	showPostView($params);
     	break;
     case 'postList' :
-    	include_once(BBS_ROOT.'/include/module/post.php');
+    	require_once(BBS_ROOT.'/include/module/post.php');
     	showPostList($params);
     	break;
     case 'postView' :
-    	include_once(BBS_ROOT.'/include/module/post.php');
+    	require_once(BBS_ROOT.'/include/module/post.php');
     	$_SESSION['PostID'] = $params['PostID'];
     	showPostView($params);
     	break;
     case 'upload' :
-	    include_once(BBS_ROOT.'/include/module/file.php');
+	    require_once(BBS_ROOT.'/include/module/file.php');
 	    upload_file();
 	    break;
     case 'invalid' :
