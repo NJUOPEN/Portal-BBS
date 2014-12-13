@@ -16,7 +16,7 @@ function login($params) {
     //认证
     $check_result = $data->getInfOfUserByName($username);
     if(!empty($check_result) && $check_result['Name']==$username && $check_result['Code']==$password) { //登录成功
-    $_SESSION['Name']   = $check_result['Name'];
+    $_SESSION['Name']  = $check_result['Name'];
     $_SESSION['SysID'] = $check_result['SysID'];
     echo 'Login success<br />';
     //exit;
