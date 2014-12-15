@@ -111,7 +111,7 @@ class SQL_Obj
 	*/
 		foreach ($fieldList as $field)
 		{
-			if ($field['name'] && $field['value'])
+			if ($field['name']!='' && $field['value']!='')
 				$condition.='`'.$field['name'].'`'.$field['condition'].'\''.$field['value'].'\' AND ';
 				//这里使用单引号界定记录值，插入前需要做好转义工作！！！
 		}
@@ -274,16 +274,30 @@ class SQL_Info extends SQL_Obj
 
 class SQL_Msg extends SQL_Obj
 {
-	protected function getTopRecord($tableName,$fieldName,$descendent=true,$count=-1,$conditions=null)  //将记录按给定字段排序并返回前数个记录
+	/*
+		功能：
+			将满足给定条件的记录按给定字段排序，并返回前数个记录
+		参数:
+			$tableName:需要操作的表的名称；
+			$fieldName:要进行排序的字段；
+			$descendent:(可选)是否为降序排列；
+			$count:(可选)记录的个数；
+			$conditions:(可选)限定条件的数组，其中每个元素都应包括如下的MAP结构：
+				name：字段名称；
+				condition：比较条件，可以是'> = < >= <= !='中的任何一个；
+				value：进行比较的值（string类型）；
+				//TODO：还可以添加不同比较之间的逻辑关系，如AND、OR、NOT；
+		返回值：（同getRecordByField）			
+	*/
+	protected function getTopRecord($tableName,$fieldName,$descendent=true,$count=-1,$conditions=null)  //
 	{
 		if (!$this->checkTable($tableName)) return NULL;
-		$query='SELECT * FROM `'.$tableName.'` ORDER BY `'.$fieldName.'` '.($descendent?'DESC':'ASC');
-		//FIXME 为什么要用 $count && $count>=0, 在这种条件下输入0或者空会输出所有帖子,是这样期望的吗?
+		$query='SELECT * FROM `'.$tableName.'` ';		
+		if ($conditions) $query.=self::buildConditions($conditions);
+		$query.=' ORDER BY `'.$fieldName.'` '.($descendent?'DESC':'ASC').';';		
 		if ($count>=0 && $count != NULL && is_numeric($count))	{
 		    $query.=' LIMIT '.$count;
 		}
-		if ($conditions) $query.=self::buildConditions($conditions);
-		$query.=';';
 		return self::resourceToArray(mysql_query($query,$this->db));
 	}
 }
@@ -388,7 +402,7 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	}
 
 	public function getLastInfofPost($number) {
-		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number,array('IfFollow'=>'0'));
+		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number,array(array('name'=>'IfFollow','condition'=>'=','value'=>'1')));
 	}
 
 	public function getFollowedList($FollowAdd) {

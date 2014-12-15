@@ -49,7 +49,7 @@ function showPostList($params)
 	$PostList = new SQL_Post;
 	$post_list = $PostList->getLastInfofPost($params['ListSize']);
 	for ($i = 0; $i < count($post_list); $i++) {
-		$post_list['PostAdd'] = unEscPost($post_list['PostAdd']);
+		$post_list[$i]['PostAdd'] = unEscPost($post_list[$i]['PostAdd']);
 	}
 }
 function showPostView($params)
