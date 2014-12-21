@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="./css/stylesheet-general.css" type="text/css">
     <script src="./JS/js-newOpen.js" type="text/javascript"></script>
 
+    <script src="./JS/js-newSinglePost.js" type="text/javascript"></script>
+    <script charset="utf-8" src="./editor/kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="./editor/kindeditor/lang/zh_CN.js"></script>
+    <script charset="utf-8" src="./KE.js"></script>
+
 </head>
 <body>
 
@@ -69,6 +74,16 @@
         <!-- 发布主题部分 -->
         <div class="post-field">
             发布主题部分
+            <p><b class="do-post-prompt-field">发表新主题</b></p>
+            <form id="postForm" name="postForm" method="post" action="?">
+                <input class="do-post-name-input-field" name="title" id="title" value="" />
+                <textarea class="do-post-text-input-field" id="editor_1" name="content"></textarea>
+                <input id="content_1" type="hidden" value="" />
+                <input id="action" type="hidden" name='action' value="doPost" />
+                <br />
+                <br />
+                <input class="do-post-submit-button" type="submit" value="发布" onclick='save();' />
+            </form>
         </div>
 
 
