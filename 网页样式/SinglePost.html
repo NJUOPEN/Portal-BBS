@@ -65,36 +65,18 @@
 
 <!-- post-login-info-field -->
     <div class="post-field">
+    	<b><?php echo $post_list[0]['Title']; ?></b>
         <ul>
+        	<?php for($i=1;$i<=count($post_list);$i++)
+        	{
+        	?>
             <li class="post-first-field">
-                <span>1楼</span>
-                
+                <span><?php echo $i; ?>楼</span>
+                <?php echo $post_list[$i-1]['PostAdd']; ?>  
             </li>
-            <li class="post-reply-field">
-                <span>2楼</span>
-            </li>
-            <li class="post-reply-field">
-                <span>3楼</span>
-            </li>
-            <li class="post-reply-field">
-                <span>4楼</span>
-            </li>
-            <li class="post-reply-field">
-                <span>5楼</span>
-            </li>
-            <li class="post-reply-field">
-                <span>6楼</span>
-            </li>
-            <li class="post-reply-field">
-                <span>7楼</span>
-            </li>
-            <li class="post-reply-field">
-                <span>8楼</span>
-            </li>
-            <li class="post-reply-field">
-                <span>9楼</span>
-            </li>
-            
+            <?php
+            }
+            ?>
         </ul>
         <ul>
             <li class="post-page"><a href="">1</a></li>

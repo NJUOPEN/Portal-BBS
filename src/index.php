@@ -47,8 +47,8 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 	*/		
 	case 'postView':
 	case 'doReply' :
+		require_once(BBS_TEMPLATE.'/login_post.html');//显示贴子内容
 		require_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
-		require_once(BBS_TEMPLATE.'/login.html');//显示贴子内容
 		break;
 	default:
 		//显示默认主页

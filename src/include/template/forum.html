@@ -20,10 +20,10 @@
 	    <div> 
 	      <ul>
                 <li class="postList-post">
-		  <a target="_blank" href="">
+		  <a target="_blank" href="<?php echo '?action=postView&PostID='.$post_list[$i-1][PostID];?>">
+		    第 <?php echo $i;?> 个帖子:
 		    <?php
-		      echo " 第".$i."个帖子:".$post_list[$i-1]['PostAdd'];
-		      //echo $post_list[$i]['PostAdd'];
+		      echo $post_list[$i-1]['PostAdd'];
 		    ?>
 		  </a>
 		</li>
