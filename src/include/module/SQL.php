@@ -402,7 +402,7 @@ class SQL_Post extends SQL_Msg //贴子操作类
 	}
 
 	public function getLastInfofPost($number) {
-		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number,array(array('name'=>'IfFollow','condition'=>'=','value'=>'1')));
+		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number,array(array('name'=>'IfFollow','condition'=>'=','value'=>'0')));
 	}
 
 	public function getFollowedList($FollowAdd) {
