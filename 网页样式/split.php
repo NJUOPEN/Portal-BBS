@@ -29,17 +29,20 @@ define('TARGET_FOLDER','../src/include/template/');
 
 
 //TODO:将需要分割的[HTML文件名]写在这里，$fileList顺序须与下面的$split_args相对应
-$fileList=array('./Open.html','./SinglePost.html','register.html');
+$fileList=array('./frame.html','./Open.html','./SinglePost.html','register.html');
 
 
 //TODO:将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致；值留空表示该段不写入到模版
 $split_args=array(
-	/*分割主页的参数*/array('<!-- header-field -->' => 'html_head.html',
+	/*分割HTML标准格式页面的参数*/array('<!-- head -->' => 'html_head.html',
+	'<!-- body -->' => '',
+	'<!-- footer -->' => ''),
+	/*分割主页的参数*/array('<!-- head -->' => '',
 	'<!-- logo-field -->' => 'header.html',
 	'<!-- postList-field -->' => 'forum.html',
 	'<!-- login-link-info-field -->' => 'login.html',
 	'<!-- footer -->' => 'footer.html'),
-	/*分割单贴页面的参数*/array('<!-- header-field -->' => '',
+	/*分割单贴页面的参数*/array('<!-- head -->' => '',
 	'<!-- post-head -->' => 'header_post.html',
 	'<!-- post-login-info-field -->' => 'login_post.html',
 	'<!-- post-field -->' => 'areaControl.html',
@@ -52,12 +55,12 @@ $split_args=array(
 //过滤顺序：绝对字符（如调试信息、完整的HTML标签）->动态信息->相对路径
 $replace_args=array(
 	'<form id="postForm" name="postForm" method="post" action="?">' => '<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
-	'<title></title>' => '<title>OPEN社团论坛</title>',
 	'<a class="register-chain" href="./register.html" target="_blank">' => '<a class="register-chain" href="?action=register">',
+	'./newOPEN.html' => '<?php echo BBS_WEB_ROOT; ?>',
+	'<link rel="stylesheet" href="" type="text/css">' => '',
+	'<script src="" type="text/javascript"></script>' => '',
 	'src="./' => 'src="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
-	'<a href="./' => '<a href="<?php echo BBS_WEB_ROOT.\'/\';?>',
-	'<link rel="stylesheet" href="./css/' => '<link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/',
-	'<script src="./JS/' => '<script src="<?php echo BBS_WEB_TEMPLATE;?>/JS/'
+	'<a href="./' => '<a href="<?php echo BBS_WEB_ROOT.\'/\';?>'	
 );
 
 

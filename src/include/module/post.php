@@ -22,7 +22,7 @@ function unEscPost($content) {
 function loadCommonUI()	//加载通用CSS/JS等
 {
 	global $cssList;
-	array_push($cssList,'GeneralUI.css');
+	array_push($cssList,'stylesheet-general.css');
 }
 
 function loadEditorUI()	//加载帖子编辑所需CSS/JS等
@@ -41,7 +41,7 @@ function showPostList($params)
 {
 	loadCommonUI();
 	global $cssList;
-	array_push($cssList,'PostListUI.css');
+	array_push($cssList,'stylesheet-newOpen.css');
 	loadEditorUI();
 	
 	global $post_list;
@@ -56,8 +56,7 @@ function showPostView($params)
 {
 	loadCommonUI();
 	global $cssList;
-	array_push($cssList,'PostListUI.css');
-	array_push($cssList,'SinglePostUI.css');
+	array_push($cssList,'stylesheet-newSinglePost.css');
 	loadEditorUI();
 	
 	global $post_list;
