@@ -19,30 +19,11 @@ function unEscPost($content) {
 	return $content;
 }
 
-function loadCommonUI()	//加载通用CSS/JS等
-{
-	global $cssList;
-	array_push($cssList,'stylesheet-general.css');
-}
-
-function loadEditorUI()	//加载帖子编辑所需CSS/JS等
-{
-	global $cssList,$jsList;
-	if(isset($_SESSION['SysID']))	//只有登录以后才显示编辑器有关脚本，以便加快加载速度
-	{
-		array_push($cssList,'editor/kindeditor/themes/default/default.css');
-		array_push($jsList,'editor/kindeditor/kindeditor-min.js');
-		array_push($jsList,'editor/kindeditor/lang/zh_CN.js');
-		array_push($jsList,'KE.js');
-	}
-}
 
 function showPostList($params)
 {
-	loadCommonUI();
-	global $cssList;
-	array_push($cssList,'stylesheet-newOpen.css');
-	loadEditorUI();
+	loadUI('general');
+	if (isset($_SESSION['SysID'])) loadUI('editor');
 	
 	global $post_list;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
@@ -54,10 +35,8 @@ function showPostList($params)
 }
 function showPostView($params)
 {
-	loadCommonUI();
-	global $cssList;
-	array_push($cssList,'stylesheet-newSinglePost.css');
-	loadEditorUI();
+	loadUI('postView');
+	if (isset($_SESSION['SysID'])) loadUI('editor');
 	
 	global $post_list;
 	require_once(BBS_ROOT.'/include/module/SQL.php');

@@ -14,9 +14,8 @@ error_reporting(7);	//设置错误提示等级
 //加载全局配制
 require_once('./config.php');
 
-//初始化前端需要用到的CSS和JS列表
-$cssList=array();
-$jsList=array();
+//加载库函数
+require_once(BBS_ROOT.'/include/lib/function_base.php');
 
 //帖子相关缓冲
 $post_list=array();

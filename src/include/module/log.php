@@ -23,6 +23,8 @@ function login($params) {
     } else {
         echo("Login failed<br />");
     }
+    loadUI('general');
+	if (isset($_SESSION['SysID'])) loadUI('editor');
 }
 
 /**
@@ -32,6 +34,8 @@ function logout() {
     unset($_SESSION['SysID']);
     unset($_SESSION['Name']);
     echo "Log out success<br />";
+    loadUI('general');
+	if (isset($_SESSION['SysID'])) loadUI('editor');
 }
 
 function register($params) {
