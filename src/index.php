@@ -34,7 +34,7 @@ if ($action=='register')	//FIXME:临时的注册样式页面，请尽快将其�
 }
 else
 {
-require_once(BBS_TEMPLATE.'/header.html');//显示通用顶部
+require_once(BBS_TEMPLATE.'/html_head.html');//显示通用顶部
 switch($action)//以下内容为可变部分，根据前端的ACTION进行选择性加载
 {
 	/*
@@ -47,11 +47,13 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 	*/		
 	case 'postView':
 	case 'doReply' :
+		require_once(BBS_TEMPLATE.'/header_post.html');
 		require_once(BBS_TEMPLATE.'/login_post.html');//显示贴子内容
 		require_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
 		break;
 	default:
 		//显示默认主页
+		require_once(BBS_TEMPLATE.'/header.html');
 		require_once(BBS_TEMPLATE.'/forum.html');
 		require_once(BBS_TEMPLATE.'/login.html');
 		//TODO:添加登录、登出提示框，将login、logout的样式与默认主页分离；

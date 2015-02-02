@@ -10,14 +10,17 @@ function splitFile($content,$target,$args)
 	$p1=0;$p2=0;
 	foreach ($args as $split_key=>$split_value)
 	{
-			$f=fopen($target.$split_key,'wb');
-			if (!$f) {echo 'Writing to file failed. Please check for privileage.<br />'; break;}
-			$p2=strpos($content,$split_value,$p1);
-			echo '<textarea>'.substr($content,$p1,$p2-$p1).'</textarea>';
-			fwrite($f,substr($content,$p1,$p2-$p1));
-			fclose($f);
-			echo ' Write to '.$split_key.'<br />';
-			$p1=$p2+strlen($split_value);
+			$p2=strpos($content,$split_key,$p1);
+			if ($split_value!='')
+			{
+				$f=fopen($target.$split_value,'wb');
+				if (!$f) {echo 'Writing to file failed. Please check for privileage.<br />'; break;}				
+				echo '<textarea>'.substr($content,$p1,$p2-$p1).'</textarea>';
+				fwrite($f,substr($content,$p1,$p2-$p1));
+				fclose($f);
+				echo ' Write to '.$split_value.'<br />';
+			}
+			$p1=$p2+strlen($split_key);
 	}
 }
 
@@ -29,31 +32,33 @@ define('TARGET_FOLDER','../src/include/template/');
 $fileList=array('./Open.html','./SinglePost.html','register.html');
 
 
-//TODO:将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致
+//TODO:将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致；值留空表示该段不写入到模版
 $split_args=array(
-	/*分割主页的参数*/array('header.html'=>'<!-- logo-field -->',
-						'forum.html'=>'<!-- postList-field -->',
-						'login.html'=>'<!-- login-link-info-field -->',
-						'footer.html'=>'<!-- footer -->'),
-	/*分割单贴页面的参数*/array('header_post.html'=>'<!-- post-head -->'/*单帖页面的header与主页不同*/,
-							'login_post.html'=>'<!-- post-login-info-field -->'/*单帖页面的login与主页不同*/,
-							'areaControl.html'=>'<!-- post-field -->',
-							'footer.html'=>'<!-- footer -->'),
+	/*分割主页的参数*/array('<!-- header-field -->' => 'html_head.html',
+	'<!-- logo-field -->' => 'header.html',
+	'<!-- postList-field -->' => 'forum.html',
+	'<!-- login-link-info-field -->' => 'login.html',
+	'<!-- footer -->' => 'footer.html'),
+	/*分割单贴页面的参数*/array('<!-- header-field -->' => '',
+	'<!-- post-head -->' => 'header_post.html',
+	'<!-- post-login-info-field -->' => 'login_post.html',
+	'<!-- post-field -->' => 'areaControl.html',
+	'<!-- footer -->' => ''),
 	/*分割注册页面的参数*/array()
-				);
+);
 
 
 //TODO:将需要[替换的字符]写在这里，如：相对路径替换为绝对路径，调试信息替换为空字符串等
 //过滤顺序：绝对字符（如调试信息、完整的HTML标签）->动态信息->相对路径
-$replace_args=array('<form id="postForm" name="postForm" method="post" action="?">'=>'<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
-					'<a class="register-chain" href="./register.html" target="_blank">'=>'<a href="?action=register">',
-					'src="./'=>'src="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
-					'<a href="./'=>'<a href="<?php echo BBS_WEB_ROOT.\'/\';?>',
-					'<link rel="stylesheet" href="./css/' => '<link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/',
-					'<script src="./JS/' => '<script src="<?php echo BBS_WEB_TEMPLATE;?>/JS/',
-					'帖子列表样式'=>'OPEN社团 - 帖子列表',
-					'贴子名字'=>'OPEN社团 - 帖子内容',
-					);
+$replace_args=array(
+	'<form id="postForm" name="postForm" method="post" action="?">' => '<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
+	'<title></title>' => '<title>OPEN社团论坛</title>',
+	'<a class="register-chain" href="./register.html" target="_blank">' => '<a class="register-chain" href="?action=register">',
+	'src="./' => 'src="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
+	'<a href="./' => '<a href="<?php echo BBS_WEB_ROOT.\'/\';?>',
+	'<link rel="stylesheet" href="./css/' => '<link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE;?>/css/',
+	'<script src="./JS/' => '<script src="<?php echo BBS_WEB_TEMPLATE;?>/JS/'
+);
 
 
 echo 'Split begin...<br />';
