@@ -9,6 +9,7 @@
     background-color:rgb(200,255,200);
     height:300px;
     width:1349px;
+    margin-left:10px;
 
 }
 
@@ -23,7 +24,7 @@
 /*以下是帖子列表部分*/
 
 .postList-field {
-    height:1000px;
+    /*height:1000px;*/
     width:900px;
     background-color:rgb(202, 171, 171);
     margin-top:10px;
@@ -82,7 +83,7 @@
     height:30px;
     /*background-color:yellow;*/
     position:relative;
-    top:20px;
+    margin-top:20px;
     left:10px;
 
 }
@@ -101,9 +102,9 @@
 
 .post-field {
     width:880px;
-    height:290px;
+    /*height:290px;*/
     position:relative;
-    top:15px;
+    top:-15px;
     left:10px;
     background-color:rgb(255, 255, 255);
 
@@ -122,7 +123,7 @@
 
 .login-link-info-field {
     width:420px;
-    height:1000px;
+    /*height:1000px;*/
     background-color:rgb(0, 148, 255);
     margin-top:10px;
     margin-right:10px;
@@ -262,7 +263,8 @@
 .info-field {
     background-color:white;
     position:relative;
-    top:200px;
+    /*top:200px;*/
+    margin:100px 0px 20px 0px;
     left:10px;
 
     height:300px;
