@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
 Project: NJUOPEN/Portal-BBS
 Contributor:ZFY,WTZ
@@ -219,8 +219,8 @@ class SQL_Obj
 			true/false：操作成功或失败；
 	*/
 		if (!$this->checkTable($tableName)) return false;
-		mysql_query('UPDATE `'.$tableName.'` SET `'.$newFieldName.'` = \''.$newFieldValue.'\''.self::buildCondition($fieldName,$value).';',$this->db);
-		if (mysql_affected_rows()>0) return true; else return false;
+		mysqli_query($this->db, 'UPDATE `'.$tableName.'` SET `'.$newFieldName.'` = \''.$newFieldValue.'\''.self::buildCondition($fieldName,$value).';');
+		if (mysqli_affected_rows($this->db)>0) return true; else return false;
 	}
 	
 	protected function deleteRecordByField($tableName,$fieldName,$value) 
@@ -338,6 +338,9 @@ $Email ,$Gender ,$Age ){//新建用户
 	}
 	public function resetUserCode($idOfUser,$code){//更改密码
 		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Code',$code);
+	}
+	public function resetUserEmail($idOfUser,$email){//更改邮箱
+		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Email',$email);
 	}
 	public function resetUserRank($idOfUser,$rank){//更改排名
 		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Rank',$rank);

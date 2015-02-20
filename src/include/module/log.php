@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Project: NJUOPEN/Portal-BBS
  * Contributor:WHZ
