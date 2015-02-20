@@ -1,9 +1,11 @@
 <?php
 session_start();
+//TODO 这相对路径...
 require_once('../../config.php');
 
 require_once(BBS_ROOT.'/include/module/usr_info.php');
 
+//TODO 这个 $action 感觉有点别扭，其value=INFO_MOD也待定。
 if (isset($_POST['action']))
 {
 	$action = $_POST['action'];
