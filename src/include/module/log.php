@@ -38,7 +38,12 @@ function logout() {
 	if (isset($_SESSION['SysID'])) loadUI('editor');
 }
 
+function register_show_form() {
+	loadUI('register');
+}
+
 function register($params) {
+	loadUI('general');
     $email = $params['email'];
     $name = $params['username'];
     $pw = $params['password'];

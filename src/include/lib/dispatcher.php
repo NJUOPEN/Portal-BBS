@@ -33,10 +33,14 @@ if ($method == 'POST') {
 }
 
 switch ($action) {
+	case 'register'  :
+        require_once(BBS_ROOT.'/include/module/log.php');
+        register_show_form($params);
+        break;
     case 'register2' :
-	require_once(BBS_ROOT.'/include/module/log.php');
-	register($params);
-	break;
+        require_once(BBS_ROOT.'/include/module/log.php');
+        register($params);
+        break;
     case 'login' :
         require_once(BBS_ROOT.'/include/module/log.php');
         login($params);

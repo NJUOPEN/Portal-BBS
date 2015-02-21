@@ -27,12 +27,6 @@ require_once(BBS_ROOT.'/include/lib/dispatcher.php');
 //输出
 header("Content-type: text/html; charset=utf-8");
 
-if ($action=='register')	//FIXME:临时的注册样式页面，请尽快将其整合到统一样式中！
-{
-	require_once(BBS_TEMPLATE.'/register.html');
-}
-else
-{
 require_once(BBS_TEMPLATE.'/html_head.html');//显示通用顶部
 switch($action)//以下内容为可变部分，根据前端的ACTION进行选择性加载
 {
@@ -50,6 +44,9 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 		require_once(BBS_TEMPLATE.'/login_post.html');//显示贴子内容
 		require_once(BBS_TEMPLATE.'/areaControl.html');//显示板块位置
 		break;
+	case 'register':
+		require_once(BBS_TEMPLATE.'/register.html');
+		break;
 	default:
 		//显示默认主页
 		require_once(BBS_TEMPLATE.'/header.html');
@@ -58,7 +55,6 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 		//TODO:添加登录、登出提示框，将login、logout的样式与默认主页分离；
 }
 require_once(BBS_TEMPLATE.'/footer.html');//显示底部通用样式
-}
 
 exit(0);
 ?>

@@ -47,7 +47,9 @@ $split_args=array(
 	'<!-- post-login-info-field -->' => 'login_post.html',
 	'<!-- post-field -->' => 'areaControl.html',
 	'<!-- footer -->' => ''),
-	/*分割注册页面的参数*/array()
+	/*分割注册页面的参数*/array('<!-- head -->' => '',
+	'<!-- register-area -->' => 'register.html',
+	'<!-- footer -->' => ''),
 );
 
 
