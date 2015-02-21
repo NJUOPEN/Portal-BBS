@@ -152,8 +152,8 @@ class SQL_Obj
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=');';
-		mysql_query($query,$this->db);
-		if (mysql_affected_rows()>0) return true; else return false;
+		mysqli_query($this->db,$query);
+		if (mysqli_affected_rows($this->db)>0) return true; else return false;
 	}
 	
 	protected function getRecordByField($tableName,$fieldName,$value) 
@@ -200,8 +200,8 @@ class SQL_Obj
 		}
 		if (substr($query,-1)==',') $query=substr($query,0,strlen($query)-1);
 		$query.=')'.self::buildCondition($fieldName,$value).';';
-		mysql_query($query,$this->db);
-		if (mysql_affected_rows()>0) return true; else return false;
+		mysqli_query($this->db,$query);
+		if (mysqli_affected_rows($this->db)>0) return true; else return false;
 	}
 	
 	protected function setFieldByField($tableName,$fieldName,$value,$newFieldName,$newFieldValue) 
@@ -236,8 +236,8 @@ class SQL_Obj
 			true/false：操作成功或失败；
 	*/
 		if (!$this->checkTable($tableName)) return false;
-		mysql_query('DELETE FROM `'.$tableName.'`'.self::buildCondition($fieldName,$value).';',$db);
-		if (mysql_affected_rows()>0) return true; else return false;
+		mysqli_query($this->db,'DELETE FROM `'.$tableName.'`'.self::buildCondition($fieldName,$value).';');
+		if (mysqli_affected_rows($this->db)>0) return true; else return false;
 	}
 	protected function countRecordByField($tableName,$fieldName,$value)
 	{
@@ -252,7 +252,7 @@ class SQL_Obj
 			整数表示的记录个数；
 	*/
 		if (!$this->checkTable($tableName)) return false;
-		$count=self::resourceToArray(mysql_query('SELECT COUNT(`'.$fieldName.'`) FROM `'.$tableName.'`'.self::buildCondition($fieldName,$value).';',$this->db));
+		$count=self::resourceToArray(mysqli_query($this->db,'SELECT COUNT(`'.$fieldName.'`) FROM `'.$tableName.'`'.self::buildCondition($fieldName,$value).';'));
 		return (int)$count[0][0];
 	}
 }
@@ -275,7 +275,7 @@ class SQL_Info extends SQL_Obj
 	{
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM `'.$tableName.'`'.buildConditions($fieldList);
-		return self::resourceToArray(mysql_query($query,$this->db));
+		return self::resourceToArray(mysqli_query($this->db,$query));
 	}
 }
 
