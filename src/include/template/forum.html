@@ -15,7 +15,13 @@
 
         <div class="postList-div-post-field">
 	    <?php
-	      for ($i = 1; $i <= 12; $i ++) {
+		  if (count($post_list)<1) {
+		?>
+		  <li class="postList-post">还没有贴子。</li>
+		<?php
+		}
+		  else {
+			for ($i = 1; $i <= count($post_list); $i ++) {
 	    ?>
 	    <div> 
 	      <ul>
@@ -31,6 +37,7 @@
 	  </div>
 	    <?php
 	      }
+	    }
 	    ?>
         </div>
 

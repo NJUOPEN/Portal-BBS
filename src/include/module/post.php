@@ -19,7 +19,6 @@ function unEscPost($content) {
 	return $content;
 }
 
-
 function showPostList($params)
 {
 	loadUI('general');
@@ -28,6 +27,7 @@ function showPostList($params)
 	global $post_list;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
+	if (!isset($params['ListSize']) || $params['ListSize']<1) $params['ListSize']=10;
 	$post_list = $PostList->getLastInfofPost($params['ListSize']);
 	for ($i = 0; $i < count($post_list); $i++) {
 		$post_list[$i]['PostAdd'] = unEscPost($post_list[$i]['PostAdd']);

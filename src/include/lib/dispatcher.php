@@ -44,10 +44,14 @@ switch ($action) {
     case 'login' :
         require_once(BBS_ROOT.'/include/module/log.php');
         login($params);
+        require_once(BBS_ROOT.'/include/module/post.php');
+        showPostList($params);
         break;
     case 'logout' :
         require_once(BBS_ROOT.'/include/module/log.php');
         logout();
+        require_once(BBS_ROOT.'/include/module/post.php');
+        showPostList($params);
         break;
     case 'doPost' :
     	require_once(BBS_ROOT.'/include/module/post.php');

@@ -301,11 +301,11 @@ class SQL_Msg extends SQL_Obj
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM `'.$tableName.'` ';		
 		if ($conditions) $query.=self::buildConditions($conditions);
-		$query.=' ORDER BY `'.$fieldName.'` '.($descendent?'DESC':'ASC').';';		
+		$query.=' ORDER BY `'.$fieldName.'` '.($descendent?'DESC':'ASC');		
 		if ($count>=0 && $count != NULL && is_numeric($count))	{
 		    $query.=' LIMIT '.$count;
 		}
-		return self::resourceToArray(mysqli_query($this->db, $query));
+		return self::resourceToArray(mysqli_query($this->db, $query.';'));
 	}
 }
 
