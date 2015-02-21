@@ -79,7 +79,7 @@ if (!isset($_SESSION["SysID"])) {
         	{
         	?>
             <li class="post-first-field">
-                <span><?php echo $i; ?>楼</span>
+                <span><?php echo $i; ?>楼</span><br />
                 <?php echo $post_list[$i-1]['PostAdd']; ?>  
             </li>
             <?php
@@ -94,7 +94,7 @@ if (!isset($_SESSION["SysID"])) {
 <?php 
 	if (isset($_SESSION['SysID'])){
 ?>
-        <div class="reply-field">
+        <form class="reply-field" action="?" method="post">
 			<div class="reply-prompt-field">回复贴子</div>
             <textarea class="reply-input-field" id="editor_1" name="content"></textarea>
             <input id="content_1" type="hidden" value="" />
@@ -103,7 +103,7 @@ if (!isset($_SESSION["SysID"])) {
             <button class="reply-submit-field">
                 提交
             </button>
-        </div>
+        </form>
 <?php
 } else {
 ?>

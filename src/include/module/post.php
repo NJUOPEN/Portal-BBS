@@ -27,7 +27,7 @@ function showPostList($params)
 	global $post_list;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
-	if (!isset($params['ListSize']) || $params['ListSize']<1) $params['ListSize']=10;
+	if (!isset($params['ListSize']) || $params['ListSize']<1) $params['ListSize']=10;	//ListSize是贴子列表的分页长度
 	$post_list = $PostList->getLastInfofPost($params['ListSize']);
 	for ($i = 0; $i < count($post_list); $i++) {
 		$post_list[$i]['PostAdd'] = unEscPost($post_list[$i]['PostAdd']);
@@ -41,10 +41,12 @@ function showPostView($params)
 	global $post_list;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
+	if (!isset($params['ViewSize']) || $params['ViewSize']<1) $params['ViewSize']=10;	//ViewSize是回贴列表的分页长度
 	if (isset($params['PostID'])) {
 		$post_list=array();
 		array_push($post_list,$PostList->getPost($params['PostID'])); //根据PostID获取到的帖子记录是单个元素，所以用push
 		$post_list=array_merge($post_list, $PostList->getFollowedList($params['PostID']));//而这里获取到的跟帖列表是数组，所以用merge;
+		$post_list=array_slice($post_list,0,$params['ViewSize']);
 		//DELETEME
 		//print_r($post_list);
 	}
@@ -65,9 +67,7 @@ function doPost($params) {
 function doReply($params) {
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
-	$date = getdate();
-	$time = $date['year'];
-	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
+	$time=gmdate(SQL_Post::SQL_DATE_FORMAT); //同上
 	$newPost->writePost($_SESSION['SysID'], $time, NULL, EscPost($params['content']),true, $params['PostID']);
 }
 ?>
