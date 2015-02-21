@@ -109,7 +109,7 @@
     width:400px;
     height:250px;
     background-color:rgb(160,160,160);
-    display:none;
+    display:block;
     margin:10px;
 }
 

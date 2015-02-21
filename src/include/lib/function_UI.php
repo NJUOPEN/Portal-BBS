@@ -17,7 +17,7 @@ function loadUI($param) //加载特定的CSS/JS
 			break;
 		case 'postView'://单贴页面
 			__add_to_list($cssList,'stylesheet-newSinglePost.css');
-			__add_to_list($jsList,'js-newSinglePost.js');
+			//__add_to_list($jsList,'js-newSinglePost.js');	//貌似在正式输出时不需要
 			break;
 		case 'information'://个人信息
 			__add_to_list($cssList,'stylesheet-infomation.css');

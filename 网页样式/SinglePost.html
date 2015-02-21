@@ -21,17 +21,21 @@
     </div>
 
 <!-- post-head -->
+
     <div class="post-login-info-field">
+<?php
+if (!isset($_SESSION["SysID"])) {
+?>
         <div id="post-login-field-1">
-            <form onsubmit="javascript:return false;">
+            <form onsubmit="javascript:return false;" action="?action=login" method="post">
                 <div class="post-login-name-field">
                     <img class="post-login-name-pic" src="./img/username.gif" />
-                    <input class="post-login-name-input" type="text" maxlength="12" id="post-login-name" />
+                    <input class="post-login-name-input" type="text" maxlength="12" id="post-login-name" name="Name" />
                 </div>
 
                 <div class="post-login-password-field">
                     <img class="post-login-password-pic" src="./img/password.gif" />
-                    <input class="post-login-password-input" type="password" maxlength="18" id="post-login-password" />
+                    <input class="post-login-password-input" type="password" maxlength="18" id="post-login-password" name="Code"/>
                 </div>
 
                 <input class="post-login-button" type="image" src="./img/login.gif" onclick="post_login_then();" />
@@ -41,27 +45,30 @@
                 <input type="hidden" />
             </form>
         </div>
-
-
+<?php
+} else {
+?>
         <!-- login-field-2是跳转后原登陆的部分 -->
         <div id="post-login-field-2">
             <a href="./infomation.html" target="_blank" class="post-head-chain">
-                <img src="./img/headpicture-1.jpg" class="post-head-pic-field" />
+                <img src="./img/headPicture-1.jpg" class="post-head-pic-field" />
                 <span class="post-login-field-2-name">这里是用户名</span>
             </a>
             <div class="post-logout-field">
                 <span class="post-logout-field-text">
                     努力水贴吧！╮(╯▽╰)╭
                 </span>
-                <form onsubmit="javascript:return false;">
-                    <input class="post-logout-button" type="image" src="./img/logout.gif" onclick="post_logout_then();" />
+                <form onsubmit="javascript:return false;" action="?action=logout" method="post">
+                    <input class="post-logout-button" type="image" src="./img/logout.gif" onclick="submit();" />
                 </form>
             </div>
 
 
 
         </div>
-
+<?php
+}
+?>
     </div>
 
 <!-- post-login-info-field -->
@@ -84,7 +91,9 @@
             <li class="post-page"><a href="">2</a></li>
             <li class="post-page"><a href="">3</a></li>
         </ul>
-
+<?php 
+	if (isset($_SESSION['SysID'])){
+?>
         <div>
             <textarea class="reply-input-field" id="editor_1" name="content"></textarea>
             <input id="content_1" type="hidden" value="" />
@@ -94,7 +103,14 @@
                 提交
             </button>
         </div>
-
+<?php
+} else {
+?>
+		<br />
+		<p>请登录后发贴</p>
+<?php
+}
+?>
 
     </div>
 

@@ -18,7 +18,9 @@
             <li class="post-page"><a href="">2</a></li>
             <li class="post-page"><a href="">3</a></li>
         </ul>
-
+<?php 
+	if (isset($_SESSION['SysID'])){
+?>
         <div>
             <textarea class="reply-input-field" id="editor_1" name="content"></textarea>
             <input id="content_1" type="hidden" value="" />
@@ -28,7 +30,14 @@
                 提交
             </button>
         </div>
-
+<?php
+} else {
+?>
+		<br />
+		<p>请登录后发贴</p>
+<?php
+}
+?>
 
     </div>
 

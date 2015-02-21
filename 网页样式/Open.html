@@ -74,6 +74,9 @@
         <!-- 发布主题部分 -->
         <div class="post-field">
             <p><b class="do-post-prompt-field">发表新主题</b></p>
+<?php 
+	if (isset($_SESSION['SysID'])){
+?>
             <form id="postForm" name="postForm" method="post" action="?">
                 <input class="do-post-name-input-field" name="title" id="title" value="" />
                 <textarea class="do-post-text-input-field" id="editor_1" name="content"></textarea>
@@ -83,6 +86,14 @@
                 <br />
                 <input class="do-post-submit-button" type="submit" value="发布" onclick='save();' />
             </form>
+<?php
+} else {
+?>
+            <br />
+            <p>请登录后发贴</p>
+<?php
+}
+?>
         </div>
 
 
