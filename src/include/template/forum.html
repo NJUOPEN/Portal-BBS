@@ -49,6 +49,10 @@
         </div>
 
         <!-- 发布主题部分 -->
+<?php
+if (isset($_SESSION['SysID'])) {
+    $act = '?'.$ListSize.'&';
+?>
         <div class="post-field">
             <p><b class="do-post-prompt-field">发表新主题</b></p>
             <form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">
@@ -61,6 +65,7 @@
                 <input class="do-post-submit-button" type="submit" value="发布" onclick='save();' />
             </form>
         </div>
-
-
+<?php
+}
+?>
     </div>

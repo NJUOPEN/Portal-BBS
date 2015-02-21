@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
 Project: NJUOPEN/Portal-BBS
 Contributor:ZFY,WTZ
@@ -46,9 +46,16 @@ class SQL_Obj
 	public function __construct() //构造函数，初始化SQL接口并设置状态变量($OK,$state)
 	{
 		$this->OK=false;	$this->state=false;
+		/*
 		$this->db=mysql_connect(SQL_HOST,SQL_ACCOUNT,SQL_PASSWORD);
 		if (!$this->db)  return;
 		if (!mysql_select_db(SQL_DB,$this->db)) return;
+		*/
+		$this->db = mysqli_connect(SQL_HOST, SQL_ACCOUNT, SQL_PASSWORD, SQL_DB);
+		if ($this->db == null)
+		{
+			return;
+		}
 		$this->OK=true;
 		$this->state=true;
 	}
@@ -56,8 +63,8 @@ class SQL_Obj
 	protected function checkTable($tableName) //检测表是否存在；若不存在，则创建之；返回值：true/false
 	{
 		if (!$this->state) return false;
-		mysql_query('CREATE TABLE IF NOT EXISTS '.$tableName.';',$this->db);
-		if(mysql_num_rows(mysql_query("SHOW TABLES LIKE '".$tableName."'",$this->db))==1)
+		mysqli_query($this->db, 'CREATE TABLE IF NOT EXISTS '.$tableName.';');
+		if(mysqli_num_rows(mysqli_query($this->db, "SHOW TABLES LIKE '".$tableName."'"))==1)
 			return true;
 		else
 			return false;
@@ -67,7 +74,7 @@ class SQL_Obj
 	{
 		if (!$resID) return NULL;
 		$result=array();//用于存放查询结果的数组
-		while($temp=mysql_fetch_array($resID))//判断每次取出的记录是否为空
+		while($temp=mysqli_fetch_array($resID))//判断每次取出的记录是否为空
 		{
 			array_push($result,$temp);
 		}
@@ -162,7 +169,7 @@ class SQL_Obj
 			记录数组，每一个记录对应数组中的每一个元素
 	*/
 		if (!$this->checkTable($tableName)) return NULL;
-		return self::resourceToArray(mysql_query('SELECT * FROM `'.$tableName.'`'.self::buildCondition($fieldName,$value).';',$this->db));
+		return self::resourceToArray(mysqli_query($this->db, 'SELECT * FROM `'.$tableName.'`'.self::buildCondition($fieldName,$value).';'));
 	}
 	
 	protected function setRecordByField($tableName,$fieldName,$value,$record) 
@@ -212,8 +219,8 @@ class SQL_Obj
 			true/false：操作成功或失败；
 	*/
 		if (!$this->checkTable($tableName)) return false;
-		mysql_query('UPDATE `'.$tableName.'` SET `'.$newFieldName.'` = \''.$newFieldValue.'\''.self::buildCondition($fieldName,$value).';',$this->db);
-		if (mysql_affected_rows()>0) return true; else return false;
+		mysqli_query($this->db, 'UPDATE `'.$tableName.'` SET `'.$newFieldName.'` = \''.$newFieldValue.'\''.self::buildCondition($fieldName,$value).';');
+		if (mysqli_affected_rows($this->db)>0) return true; else return false;
 	}
 	
 	protected function deleteRecordByField($tableName,$fieldName,$value) 
@@ -298,7 +305,7 @@ class SQL_Msg extends SQL_Obj
 		if ($count>=0 && $count != NULL && is_numeric($count))	{
 		    $query.=' LIMIT '.$count;
 		}
-		return self::resourceToArray(mysql_query($query,$this->db));
+		return self::resourceToArray(mysqli_query($this->db, $query));
 	}
 }
 
@@ -331,6 +338,9 @@ $Email ,$Gender ,$Age ){//新建用户
 	}
 	public function resetUserCode($idOfUser,$code){//更改密码
 		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Code',$code);
+	}
+	public function resetUserEmail($idOfUser,$email){//更改邮箱
+		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Email',$email);
 	}
 	public function resetUserRank($idOfUser,$rank){//更改排名
 		return $this->setFieldByField($this->tableOfUsers,'SysID',$idOfUser,'Rank',$rank);
