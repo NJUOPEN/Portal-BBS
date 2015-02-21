@@ -29,7 +29,7 @@
 		  <a target="_blank" href="<?php echo '?action=postView&PostID='.$post_list[$i-1][PostID];?>">
 		    第 <?php echo $i;?> 个帖子:
 		    <?php
-		      echo $post_list[$i-1]['PostAdd'];
+		      echo $post_list[$i-1]['Title'];
 		    ?>
 		  </a>
 		</li>
@@ -66,8 +66,6 @@
                 <textarea class="do-post-text-input-field" id="editor_1" name="content"></textarea>
                 <input id="content_1" type="hidden" value="" />
                 <input id="action" type="hidden" name='action' value="doPost" />
-                <br />
-                <br />
                 <input class="do-post-submit-button" type="submit" value="发布" onclick='save();' />
             </form>
 <?php

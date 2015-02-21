@@ -110,7 +110,34 @@
 
 }
 
+.do-post-prompt-field {
+    position:relative;
+	left:20px;
 
+}
+
+.do-post-name-input-field {
+	height:20px;
+	width:50%;
+    position:relative;
+	left:20px;
+	top:-20px;
+}
+
+.ke-container{
+	height:200px;
+	width:80%;
+	position:relative;
+	left:20px;
+	top:-10px;
+}
+
+.do-post-submit-button {
+    width:70px;
+	position:relative;
+	left:20px;
+	
+}
 
 
 

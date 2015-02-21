@@ -3,6 +3,8 @@
 		KindEditor.ready(function(K) {
 				editor = K.create('textarea[name="content"]', {
 				resizeType : 0,
+				width:750,
+				height:300,
 				allowPreviewEmoticons : false,
 				allowImageUpload : false,
 				items : [
@@ -68,8 +70,8 @@
 				   		break;					
 					}
 				}
-				alert(document.getElementById("content_1").value);//调试用，测试完成后请注释掉；下同
-				alert(document.getElementById("title").value);
+				//alert(document.getElementById("content_1").value);//调试用，测试完成后请注释掉；下同
+				//alert(document.getElementById("title").value);
 	         	document.getElementById("postForm").submit()
 	        	return true;
 				
