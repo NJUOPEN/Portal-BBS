@@ -14,7 +14,7 @@ function splitFile($content,$target,$args)
 			if ($split_value!='')
 			{
 				$f=fopen($target.$split_value,'wb');
-				if (!$f) {echo 'Writing to file failed. Please check for privileage.<br />'; break;}				
+				if (!$f) {echo 'Writing to file failed. Please check for privileage.<br />'; break;}
 				echo '<textarea>'.substr($content,$p1,$p2-$p1).'</textarea>';
 				fwrite($f,substr($content,$p1,$p2-$p1));
 				fclose($f);
@@ -29,27 +29,37 @@ define('TARGET_FOLDER','../src/include/template/');
 
 
 //TODO:将需要分割的[HTML文件名]写在这里，$fileList顺序须与下面的$split_args相对应
-$fileList=array('./frame.html','./Open.html','./SinglePost.html','register.html');
+$fileList=array('./frame.html','./Open.html','./SinglePost.html','./register.html','./infomation.html');
 
 
 //TODO:将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致；值留空表示该段不写入到模版
 $split_args=array(
-	/*分割HTML标准格式页面的参数*/array('<!-- head -->' => 'html_head.html',
+    /*分割HTML标准格式页面的参数*/
+    array(
+	'<!-- head -->' => 'html_head.html',
 	'<!-- body -->' => '',
 	'<!-- footer -->' => ''),
-	/*分割主页的参数*/array('<!-- head -->' => '',
+    /*分割主页的参数*/
+    array(
+	'<!-- head -->' => '',
 	'<!-- logo-field -->' => 'header.html',
 	'<!-- postList-field -->' => 'forum.html',
 	'<!-- login-link-info-field -->' => 'login.html',
 	'<!-- footer -->' => 'footer.html'),
-	/*分割单贴页面的参数*/array('<!-- head -->' => '',
+    /*分割单贴页面的参数*/
+    array(
+	'<!-- head -->' => '',
 	'<!-- post-head -->' => 'header_post.html',
 	'<!-- post-login-info-field -->' => 'login_post.html',
 	'<!-- post-field -->' => 'areaControl.html',
 	'<!-- footer -->' => ''),
-	/*分割注册页面的参数*/array('<!-- head -->' => '',
+    /*分割注册页面的参数*/
+    array(
+	'<!-- head -->' => '',
 	'<!-- register-area -->' => 'register.html',
 	'<!-- footer -->' => ''),
+    /* infomation 暂不分割 */
+    array()
 );
 
 
@@ -63,7 +73,9 @@ $replace_args=array(
 	'<link rel="stylesheet" href="" type="text/css">' => '',
 	'<script src="" type="text/javascript"></script>' => '',
 	'src="./' => 'src="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
-	'<a href="./' => '<a href="<?php echo BBS_WEB_ROOT.\'/\';?>'	
+	'<a href="./' => '<a href="<?php echo BBS_WEB_ROOT.\'/\';?>',	
+	'<link rel="stylesheet" href="./' => '<link rel="stylesheet" href="<?php echo BBS_WEB_TEMPLATE.\'/\'; ?>',
+	
 );
 
 

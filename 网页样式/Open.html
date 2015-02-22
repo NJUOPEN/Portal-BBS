@@ -82,7 +82,7 @@
         <div class="post-field">
             <p><b class="do-post-prompt-field">发表新主题</b></p>
 <?php 
-	if (isset($_SESSION['SysID'])){
+if (isset($_SESSION['SysID'])){
 ?>
             <form id="postForm" name="postForm" method="post" action="?">
                 <input class="do-post-name-input-field" name="title" id="title" value="" />
@@ -134,10 +134,10 @@ if (!isset($_SESSION["SysID"])) {
 ?>
         <!-- login-field-2是跳转后原登陆的部分 -->
 	    <div id="login-field-2">
-            <a href="./infomation.html" target="_blank" class="head-chain">
+		<a href="<?php echo BBS_WEB_ROOT."/include/module/viewinfo.php"; ?>" target="_blank" class="head-chain">
                 <img src="./img/headPicture-1.jpg" class="head-pic-field" />
-		<span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>
-            </a>
+	        <span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>
+              </a>
             <div class="logout-field">
                 <span class="logout-field-text">
                     努力水贴吧！╮(╯▽╰)╭
