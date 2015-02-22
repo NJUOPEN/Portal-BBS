@@ -14,7 +14,6 @@ else
 {
 	$action = 'default';
 }
-
 switch($action)
 {
 case 'INFO_MOD':
@@ -25,21 +24,21 @@ case 'INFO_MOD':
 
 	if ($curPW != $usrPW)
 	{
-		echo "wrong password\n";
-		break;
+	    echo "wrong password<br />";
+	    break;
 	}
 
 	if ($newPW != $checkPW)
 	{
-		echo "not consistent\n";
-		break;
+	    echo "not consistent<br />";
+	    break;
 	}
 
 	$tempUsr = new SQL_User;
 	if ($newPW != null)
 	{
 		$tempUsr->resetUserCode($usrID, sha1($newPW));
-		echo "password changed\n";
+		echo "password changed<br />";
 	}
 
 	if ($newEmail != null)
@@ -48,7 +47,7 @@ case 'INFO_MOD':
 		if (preg_match($regex, $newEmail))
 		{
 			$tempUsr->resetUserEmail($usrID, $newEmail);
-			echo "email changed\n";
+			echo "email changed<br />";
 		}
 		$usrEmail = $newEmail;
 	}

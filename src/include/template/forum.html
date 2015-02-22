@@ -59,7 +59,7 @@
         <div class="post-field">
             <p><b class="do-post-prompt-field">发表新主题</b></p>
 <?php 
-	if (isset($_SESSION['SysID'])){
+if (isset($_SESSION['SysID'])){
 ?>
             <form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">
                 <input class="do-post-name-input-field" name="title" id="title" value="" />
