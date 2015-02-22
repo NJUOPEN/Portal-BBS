@@ -1,4 +1,5 @@
 <?php
+loadUI('information');
 require_once(BBS_ROOT.'/include/module/SQL.php');
 $usrInfo = new SQL_User;
 $usrInfoList = $usrInfo->getInfOfUser($_SESSION['SysID']);

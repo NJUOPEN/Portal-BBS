@@ -59,7 +59,10 @@ $split_args=array(
 	'<!-- register-area -->' => 'register.html',
 	'<!-- footer -->' => ''),
     /* infomation 暂不分割 */
-    array()
+    array(
+    '<!-- head -->' => '',
+    '<!-- pic-field -->' => 'information.html',
+    '<!-- footer -->' => '')
 );
 
 
@@ -70,6 +73,7 @@ $replace_args=array(
 	'<a class="register-chain" href="./register.html" target="_blank">' => '<a class="register-chain" href="?action=register">',
 	'<form onsubmit="javascript:return false;"' => '<form ',
 	'./newOPEN.html' => '<?php echo BBS_WEB_ROOT; ?>',
+	'./information.html' => '<?php echo "?action=information"; ?>',
 	'<link rel="stylesheet" href="" type="text/css">' => '',
 	'<script src="" type="text/javascript"></script>' => '',
 	'src="./' => 'src="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',

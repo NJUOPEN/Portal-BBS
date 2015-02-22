@@ -47,6 +47,9 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 	case 'register':
 		require_once(BBS_TEMPLATE.'/register.html');
 		break;
+	case 'information':
+		require_once(BBS_TEMPLATE.'/information.html');
+		break;
 	default:
 		//显示默认主页
 		require_once(BBS_TEMPLATE.'/header.html');

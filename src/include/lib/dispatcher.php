@@ -53,6 +53,9 @@ switch ($action) {
         require_once(BBS_ROOT.'/include/module/post.php');
         showPostList($params);
         break;
+    case 'information' :
+		require_once(BBS_ROOT.'/include/module/usr_info.php');
+		break;
     case 'doPost' :
     	require_once(BBS_ROOT.'/include/module/post.php');
     	doPost($params);
