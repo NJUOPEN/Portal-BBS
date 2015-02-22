@@ -15,36 +15,34 @@
             更改你的用户信息
         </h1>
         <div class="text-info-field">
-            <form>
+	    <form action="?" method="POST">
                 <ul>
                     <li class="info-form-list">
-                        <input />
-                        <span>* 真实姓名</span>
+		      <input type="text" value="<?=$usrName ?>" readonly />
+                      <span>用户名</span>
                     </li>
                     <li class ="info-form-list">
-                        <input />
-                        <span>* 手机号码</span>
+		      <input type="text" name="newEmail" value="<?=$usrEmail ?>" />
+                      <span>* 电子邮箱</span>
                     </li>
                     <li class ="info-form-list">
-                        <input />
-                        <span>* 学校/单位名称</span>
+                        <input type="password" name="newPW"/>
+                        <span>* 新密码</span>
                     </li>
                     <li class="info-form-list">
-                        <input />
-                        <span>* bla</span>
+                        <input type="password" name="checkPW"/>
+                        <span>* 重复密码</span>
                     </li>
                     <li class="info-form-list">
-                        <input />
-                        <span>* blabla</span>
+                        <input type="password" name="curPW"/>
+                        <span>* 旧密码</span>
                     </li>
                     <li class="info-form-list">
-                        <span>
-                            注：带*号的可不填
-                        </span>
+                        <span>注：带*号的可不填</span>
                     </li>
                     <li class="info-form-list">
+			<input type="hidden" name="action" value="INFO_MOD" />
                         <input type="submit" value="提交" id="info-submit"/>
-
                     </li>
                 </ul>
             </form>
