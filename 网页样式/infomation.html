@@ -43,11 +43,16 @@
                         <span>注：带*号的可不填</span>
                     </li>
                     <li class="info-form-list">
-			<input type="hidden" name="action" value="INFO_MOD" />
-                        <input type="submit" value="提交" id="info-submit"/>
+			<input type="hidden" name="INFO_ACTION" value="change_info" />
+			<input type="hidden" name="action" value="information" />
+			<input type="submit" value="提交" id="info-submit"/>
                     </li>
                 </ul>
             </form>
+	    <form action='?' method='POST' class='info-form-list'>
+		<input type='hidden' name='action' value='' />
+		<input type='submit' value='返回' id='info-submit' />
+	    </form>
         </div>
 <!-- info-field -->
         <div class="pic-info-field">

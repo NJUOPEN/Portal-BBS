@@ -24,6 +24,7 @@ function splitFile($content,$target,$args)
 	}
 }
 
+echo '<meta charset="utf-8" />';
 //拆分后的模板存放路径
 define('TARGET_FOLDER','../src/include/template/');
 
