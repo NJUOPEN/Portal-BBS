@@ -2,12 +2,15 @@
     <div class="post-field">
     	<b><?php echo $post_list[0]['Title']; ?></b>
         <ul>
-        	<?php for($i=1;$i<=count($post_list);$i++)
+			<li class="post-first-field">
+			<?php echo $post_list[0]['PostAdd']; ?>
+			</li>
+        	<?php for($i=1;$i<count($post_list);$i++)
         	{
         	?>
-            <li class="post-first-field">
+            <li class="post-reply-field">
                 <span><?php echo $i; ?>楼</span><br />
-                <?php echo $post_list[$i-1]['PostAdd']; ?>  
+                <?php echo $post_list[$i]['PostAdd']; ?>  
             </li>
             <?php
             }
