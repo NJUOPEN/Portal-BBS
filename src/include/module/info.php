@@ -1,22 +1,24 @@
 <?php
-session_start();
-//TODO 这相对路径...
-require_once('../../config.php');
+loadUI('information');
+require_once(BBS_ROOT.'/include/module/SQL.php');
 
-require_once(BBS_ROOT.'/include/module/usr_info.php');
+/* Get infomation */
+$usrInfo = new SQL_User;
+$usrInfoList = $usrInfo->getInfOfUser($_SESSION['SysID']);
+$usrID = $_SESSION['SysID'];
+$usrName = $usrInfoList['Name'];
+$usrRank = $usrInfoList['Rank'];
+$usrEmail = $usrInfoList['Email'];
+$usrGender = $usrInfoList['Gender'];
+$usrAge = $usrInfoList['Age'];
+$usrPW = $usrInfoList['Code'];
 
-//TODO 这个 $action 感觉有点别扭，其value=INFO_MOD也待定。
-if (isset($_POST['action']))
+if (isset($_POST['INFO_ACTION']))
 {
-	$action = $_POST['action'];
-}
-else
-{
-	$action = 'default';
-}
-switch($action)
-{
-case 'INFO_MOD':
+    $info_action = $_POST['INFO_ACTION'];
+    switch($info_action)
+    {
+    case 'change_info':
 	$newPW = $_POST['newPW'];
 	$checkPW = $_POST['checkPW'];
 	$newEmail = $_POST['newEmail'];
@@ -51,7 +53,6 @@ case 'INFO_MOD':
 		}
 		$usrEmail = $newEmail;
 	}
-default:
+    }
 }
-require_once(BBS_ROOT.'/include/template/infomation.html');
 ?>

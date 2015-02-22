@@ -53,9 +53,11 @@ switch ($action) {
         require_once(BBS_ROOT.'/include/module/post.php');
         showPostList($params);
         break;
+    case 'INFO_MOD':
+	break;
     case 'information' :
-		require_once(BBS_ROOT.'/include/module/usr_info.php');
-		break;
+	require_once(BBS_ROOT.'/include/module/info.php');
+	break;
     case 'doPost' :
     	require_once(BBS_ROOT.'/include/module/post.php');
     	doPost($params);
@@ -73,8 +75,8 @@ switch ($action) {
     	showPostView($params);
     	break;
     case 'upload' :
-	    require_once(BBS_ROOT.'/include/module/file.php');
-	    upload_file();
+	require_once(BBS_ROOT.'/include/module/file.php');
+	upload_file();
 	    break;
     case 'invalid' :
 		echo 'action is set invalid<br />';
