@@ -1,3 +1,4 @@
 忽略备份文件
 *~
-src/config.php
+src\config.php
+src/userfile/*
