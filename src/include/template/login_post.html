@@ -17,7 +17,7 @@ if (!isset($_SESSION["SysID"])) {
                 </div>
 
                 <input class="post-login-button" type="image" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif" onclick="post_login_then();" />
-                <a class="post-register-chain" href="./register.html" target="_blank">没有账户？</a>
+                <a class="post-register-chain" href="?action=register">没有账户？</a>
 
 
                 <input type="hidden" />
@@ -30,7 +30,7 @@ if (!isset($_SESSION["SysID"])) {
         <div id="post-login-field-2">
             <a href="<?php echo BBS_WEB_ROOT.'/';?>infomation.html" target="_blank" class="post-head-chain">
                 <img src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/headPicture-1.jpg" class="post-head-pic-field" />
-                <span class="post-login-field-2-name">这里是用户名</span>
+                <span class="post-login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>
             </a>
             <div class="post-logout-field">
                 <span class="post-logout-field-text">

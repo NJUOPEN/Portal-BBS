@@ -43,14 +43,14 @@
 
 .post-first-field {
     width:880px;
-    height:200px;
+    min-height:200px;
     margin:10px;
     background-color:white;
 }
 
 .post-reply-field {
     width:880px;
-    height:130px;
+    min-height:130px;
     margin:10px;
     background-color:white;
 }

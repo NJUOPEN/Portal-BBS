@@ -14,17 +14,16 @@ function splitFile($content,$target,$args)
 			if ($split_value!='')
 			{
 				$f=fopen($target.$split_value,'wb');
-				if (!$f) {echo 'Writing to file failed. Please check for privileage.<br />'; break;}
-				echo '<textarea>'.substr($content,$p1,$p2-$p1).'</textarea>';
+				if (!$f) {echo '<font color="red">Writing to file failed. Please check for privileage.</font><br />'; break;}
+				echo '<p><textarea>'.htmlentities(substr($content,$p1,$p2-$p1)).'</textarea>';
 				fwrite($f,substr($content,$p1,$p2-$p1));
 				fclose($f);
-				echo ' Write to '.$split_value.'<br />';
+				echo ' Writen to <font color="red">'.$split_value.'</font></p>';
 			}
 			$p1=$p2+strlen($split_key);
 	}
 }
 
-echo '<meta charset="utf-8" />';
 //拆分后的模板存放路径
 define('TARGET_FOLDER','../src/include/template/');
 
@@ -72,9 +71,13 @@ $split_args=array(
 $replace_args=array(
 	'<form id="postForm" name="postForm" method="post" action="?">' => '<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
 	'<a class="register-chain" href="./register.html" target="_blank">' => '<a class="register-chain" href="?action=register">',
+	'<a class="post-register-chain" href="./register.html" target="_blank">' => '<a class="post-register-chain" href="?action=register">',
 	'<form onsubmit="javascript:return false;"' => '<form ',
 	'./newOPEN.html' => '<?php echo BBS_WEB_ROOT; ?>',
 	'./information.html' => '<?php echo "?action=information"; ?>',
+	'<span class="login-field-2-name">这里是用户名</span>' => '<span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>',
+	'<span class="post-login-field-2-name">这里是用户名</span>' => '<span class="post-login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>',
+	'<img src="./img/headPicture-1.jpg" class="head-pic-field" />' => '<img src="<?=$_SESSION[\'avatar\'] ?>" class="head-pic-field" />',
 	'<link rel="stylesheet" href="" type="text/css">' => '',
 	'<script src="" type="text/javascript"></script>' => '',
 	'src="./' => 'src="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
@@ -83,12 +86,13 @@ $replace_args=array(
 	
 );
 
-
-echo 'Split begin...<br />';
+echo '<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Split to template</title></head><body>
+<p>Target directory is <font color="green">'.TARGET_FOLDER.'</font></p>
+<p>Split begin...</p>';
 
 for($i=0; $i<count($fileList); $i++)
 {
-	echo '<br />Processing on '.$fileList[$i].'<br />';
+	echo '<br />Processing on <font color="green">'.$fileList[$i].'</font><br />';
 	$f=fopen($fileList[$i],'rb');
 	$content=fread($f,filesize($fileList[$i]));
 	fclose($f);
@@ -111,6 +115,6 @@ for($i=0; $i<count($fileList); $i++)
 }
 
 
-echo '<br />Split finished.';
+echo '<br />Split finished.</body></html>';
 exit(0);
 ?>
