@@ -21,6 +21,7 @@ function loadUI($param) //加载特定的CSS/JS
 			break;
 		case 'information'://个人信息
 			__add_to_list($cssList,'/css/stylesheet-infomation.css');
+			__add_to_list($jsList,'/JS/jquery.min.js');
 			break;
 		case 'register'://注册页
 			__add_to_list($cssList,'/css/stylesheet-register.css');
