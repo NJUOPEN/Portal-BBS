@@ -57,7 +57,7 @@ switch ($action) {
 	break;
     case 'change_avatar':
         require_once(BBS_ROOT.'/include/module/file.php');
-        save_avatar($_SESSION['SysID'], $_FILES['imgUP']['tmp_name']);
+        save_avatar($_SESSION['SysID'], $_FILES['imgUP']['name'], $_FILES['imgUP']['tmp_name']);
     case 'information':
         require_once(BBS_ROOT.'/include/module/info.php');
         break;
