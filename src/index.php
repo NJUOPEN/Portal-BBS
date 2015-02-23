@@ -20,7 +20,6 @@ require_once(BBS_ROOT.'/include/lib/function_base.php');
 //帖子相关缓冲
 $post_list=array();
 $num_buf = $_POST['num'];
-
 //进行请求分发(dispatch)
 require_once(BBS_ROOT.'/include/lib/dispatcher.php');
 
@@ -47,6 +46,7 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 	case 'register':
 		require_once(BBS_TEMPLATE.'/register.html');
 		break;
+	case 'change_avatar':
 	case 'information':
 		require_once(BBS_TEMPLATE.'/information.html');
 		break;
