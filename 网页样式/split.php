@@ -72,6 +72,7 @@ $split_args=array(
 $replace_args=array(
 	'<form id="postForm" name="postForm" method="post" action="?">' => '<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
 	'<a class="register-chain" href="./register.html" target="_blank">' => '<a class="register-chain" href="?action=register">',
+	'<a class="post-register-chain" href="./register.html" target="_blank">' => '<a class="post-register-chain" href="?action=register">',
 	'<form onsubmit="javascript:return false;"' => '<form ',
 	'./newOPEN.html' => '<?php echo BBS_WEB_ROOT; ?>',
 	'./information.html' => '<?php echo "?action=information"; ?>',
