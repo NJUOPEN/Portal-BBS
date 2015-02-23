@@ -9,12 +9,12 @@ if (!isset($_SESSION["SysID"])) {
 		<!-- onsubmit="javascript:return false;" -->
 		<div class="login-name-field">
 		    <img class="login-name-pic" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif" />
-		    <input class="login-name-input" type="text" maxlength="12" id="login-name" name="Name" />
+		    <input class="login-name-input" type="text" maxlength="12" id="login-name" name="username" />
 		</div>
 
 		<div class="login-password-field">
 		    <img class="login-password-pic" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/password.gif" />
-		    <input class="login-password-input" type="password" maxlength="18" id="login-password" name="Code" />
+		    <input class="login-password-input" type="password" maxlength="18" id="login-password" name="password" />
 		</div>
 
 		<input type="hidden" name="action" value="login" />
@@ -29,16 +29,16 @@ if (!isset($_SESSION["SysID"])) {
 ?>
         <!-- login-field-2是跳转后原登陆的部分 -->
 	    <div id="login-field-2">
-		<a href="<?php echo "?action=information"; ?>" class="head-chain">
-                <img src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/headPicture-1.jpg" class="head-pic-field" />
-	        <span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>
-              </a>
+            <a href="<?php echo "?action=information"; ?>" class="head-chain">
+                <img src="<?=$_SESSION['avatar'] ?>" class="head-pic-field" />
+	           <span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>
+            </a>
             <div class="logout-field">
                 <span class="logout-field-text">
                     努力水贴吧！╮(╯▽╰)╭
                 </span>
-		<form action="?" method="POST" >
-		    <input type="hidden" name="action" value="logout" />
+                <form action="?" method="POST" >
+                    <input type="hidden" name="action" value="logout" />
                     <input class="logout-button" type="image" name="submit" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif" />
                 </form>
             </div>

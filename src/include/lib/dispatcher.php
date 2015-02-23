@@ -55,9 +55,12 @@ switch ($action) {
         break;
     case 'INFO_MOD':
 	break;
-    case 'information' :
-	require_once(BBS_ROOT.'/include/module/info.php');
-	break;
+    case 'change_avatar':
+        require_once(BBS_ROOT.'/include/module/file.php');
+        save_avatar($_SESSION['SysID'], $_FILES['imgUP']['tmp_name']);
+    case 'information':
+        require_once(BBS_ROOT.'/include/module/info.php');
+        break;
     case 'doPost' :
     	require_once(BBS_ROOT.'/include/module/post.php');
     	doPost($params);

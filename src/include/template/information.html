@@ -44,17 +44,18 @@
 <!-- info-field -->
         <div class="pic-info-field">
             <div class="pic-input-field">
-                <div class="pic-input-frame">
-                    
+                <div  class="pic-input-frame">
+                    <img src="" id="img2show" name="img2show" height="400px"/>
                 </div>
-                <form>
-                    <input type="submit" value="浏览" id="pic-submit" />
-                    <input />
+                <form action='' method='POST' enctype="multipart/form-data" >
+                    <input type="file" name="imgUP" id="imgUP" />
+                    <input type="hidden" name="action" value="change_avatar" />
+                    <input type="submit" value='提交' id="pic-submit" />
                 </form>
             </div>
 
             <div >
-                <img src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/headPicture-1.jpg" class="used-pic-1"/>
+                <img src="<?=$_SESSION['avatar'] ?>" class="used-pic-1"/>
                 <img class="used-pic-2"/>
                 <span class="used-pic-text">
                     曾用过的图片
@@ -62,6 +63,35 @@
             </div>
 
         </div>
+   	<script>
+    /**
+     * 参考来源：https://dl.dropboxusercontent.com/u/19427089/temp/imagePreview.htm
+     * 使用HTML5 File API, 來即時預覽image
+     */
+    $("#imgUP").change(function(){
+        var objUrl = getObjectURL(this.files[0]) ;
+        console.log("objUrl = "+objUrl) ;
+        if (objUrl) {
+            $("#img2show").attr("src", objUrl) ;
+        }
+    }) ;
+   	/**
+	 * 建立一個可存取到該file的url
+	 * PS: 瀏覽器必須支援HTML5 File API
+	 */
+	function getObjectURL(file) {
+		var url = null ; 
+		if (window.createObjectURL!=undefined) { // basic
+			url = window.createObjectURL(file) ;
+		} else if (window.URL!=undefined) { // mozilla(firefox)
+			url = window.URL.createObjectURL(file) ;
+		} else if (window.webkitURL!=undefined) { // webkit or chrome
+			url = window.webkitURL.createObjectURL(file) ;
+		}
+		return url ;
+	}
 
+	
+	</script>
     </div>
 

@@ -6,12 +6,16 @@
  */
 
 //参考:blog.csdn.net/sysprogram/article/details/21107041
+function login_check($params)
+{
+
+}
 function login($params) {
     //print_r($params);
-    $username = $params['Name'];
-    $password = sha1($params['Code']);
+    $username = $params['username'];
+    $password = sha1($params['password']);
     //连接数据库
-    include(BBS_ROOT.'/include/module/SQL.php');
+    require_once(BBS_ROOT.'/include/module/SQL.php');
     $data = new SQL_User;
     //认证
     $check_result = $data->getInfOfUserByName($username);
@@ -19,6 +23,8 @@ function login($params) {
     $_SESSION['Name']  = $check_result['Name'];
     $_SESSION['SysID'] = $check_result['SysID'];
     echo 'Login success<br />';
+    // 记录头像路径
+    $_SESSION['avatar'] = BBS_WEB_ROOT.'/userfile/'.$_SESSION['SysID'].'/avatar.jpg';
     //exit;
     } else {
         echo("Login failed<br />");
@@ -36,6 +42,25 @@ function logout() {
     echo "Log out success<br />";
     loadUI('general');
 	if (isset($_SESSION['SysID'])) loadUI('editor');
+}
+
+//备注：注册时创建用户文件目录
+//功能：检查用户文件目录是否存在，如果不存在，则创建之
+//参数：
+//  userID - 用户ID，即SysID
+//返回值：无
+function userfile_mkdir($userID)
+{
+    if (!file_exists(BBS_ROOT.'/userfile/'))
+    {
+        echo 'Create '.BBS_ROOT.'/userfile/<br />';
+        mkdir(BBS_ROOT.'/userfile/');
+    }
+    if (!file_exists(BBS_ROOT.'/userfile/'.$userID.'/'))
+    {
+        echo 'Create '.BBS_ROOT.'/userfile/'.$userID.'/<br />';
+        mkdir(BBS_ROOT.'/userfile/'.$userID.'/');
+    }
 }
 
 function register_show_form() {
@@ -58,5 +83,11 @@ function register($params) {
     } else {
         echo "password not match<br/>";
     }
+
+    // mkdir
+    require_once(BBS_ROOT.'/include/module/SQL.php');
+    $data = new SQL_User;
+    $check_result = $data->getInfOfUserByName($name);
+    userfile_mkdir($check_result['SysID']);
 }
 ?>

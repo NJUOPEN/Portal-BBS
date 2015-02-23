@@ -2,10 +2,25 @@
 
 define("USERFILE","./userfile/");
 
+//备注：试作型
+//功能：保存用户头像至 /userfile/"user id"/avatar.jpg
+//参数：
+//	userID - 用户ID，即SysID
+//	filename - 文件名，包括路径，通常是php的缓存路径
+//返回值：无
+function save_avatar($userID, $filename)
+{
+	$file_content = file_get_contents($filename);
+	$fp = fopen(USERFILE.$userID.'/avatar.jpg', 'w');
+	fwrite($fp, $file_content);
+	fclose($fp);
+}
+
+
 //功能：保存文件
 //需要变量：id（用户的或帖子的）、文件名、文件类型、文件内容
 //$file_type=1,头像；$file_type=2,附件
-function save_file($id,$file_name,$file_type,&$file_content)
+function save_file($id, $file_name, $file_type, &$file_content)
 {
 	$file_id=md5(time());//生成文件的md5
 	//数据库检验$file_id是否重复，若重复则重新生成，最多重新生成50次
@@ -17,11 +32,10 @@ function save_file($id,$file_name,$file_type,&$file_content)
 	}
 	
 	$fp=fopen(USERFILE.$file_id,"wb");
-	fwrite($fp,$file_content);
+	fwrite($fp, $file_content);
 	fclose($fp);
 	return true;//保存成功
 }
-
 //功能：读取文件
 //需要变量：文件md5、文件内容
 //文件内容保存在$file_content中
