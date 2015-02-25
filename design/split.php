@@ -29,7 +29,7 @@ define('TARGET_FOLDER','../src/include/template/');
 
 
 //TODO:将需要分割的[HTML文件名]写在这里，$fileList顺序须与下面的$split_args相对应
-$fileList=array('./frame.html','./Open.html','./SinglePost.html','./register.html','./infomation.html');
+$fileList=array('./frame.html','./Open.html','./SinglePost.html','./register.html','./information.html');
 
 
 //TODO:将文件名和对应分割标签写在这里，参数顺序必须与标签顺一致；值留空表示该段不写入到模版
