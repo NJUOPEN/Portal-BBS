@@ -69,10 +69,11 @@ $split_args=array(
 //TODO:将需要[替换的字符]写在这里，如：相对路径替换为绝对路径，调试信息替换为空字符串等
 //过滤顺序：绝对字符（如调试信息、完整的HTML标签）->动态信息->相对路径
 $replace_args=array(
-	'<form id="postForm" name="postForm" method="post" action="?">' => '<form id="postForm" name="postForm" method="post" action="<?php echo $act;?>">',
 	'<a class="register-chain" href="./register.html" target="_blank">' => '<a class="register-chain" href="?action=register">',
 	'<a class="post-register-chain" href="./register.html" target="_blank">' => '<a class="post-register-chain" href="?action=register">',
 	'<form onsubmit="javascript:return false;"' => '<form ',
+	'<input class="login-button" type="image" src="./img/login.gif" onclick="login_then();" />' => '<input class="login-button" type="image" src="./img/login.gif" onclick="submit();" />',
+	'<input class="post-login-button" type="image" src="./img/login.gif" onclick="post_login_then();" />' => '<input class="post-login-button" type="image" src="./img/login.gif" onclick="submit();" />',
 	'./newOPEN.html' => '<?php echo BBS_WEB_ROOT; ?>',
 	'./information.html' => '<?php echo "?action=information"; ?>',
 	'<span class="login-field-2-name">这里是用户名</span>' => '<span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>',

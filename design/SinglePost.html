@@ -30,12 +30,12 @@ if (!isset($_SESSION["SysID"])) {
             <form onsubmit="javascript:return false;" action="?action=login" method="post">
                 <div class="post-login-name-field">
                     <img class="post-login-name-pic" src="./img/username.gif" />
-                    <input class="post-login-name-input" type="text" maxlength="12" id="post-login-name" name="Name" />
+                    <input class="post-login-name-input" type="text" maxlength="12" id="post-login-name" name="username" />
                 </div>
 
                 <div class="post-login-password-field">
                     <img class="post-login-password-pic" src="./img/password.gif" />
-                    <input class="post-login-password-input" type="password" maxlength="18" id="post-login-password" name="Code"/>
+                    <input class="post-login-password-input" type="password" maxlength="18" id="post-login-password" name="password"/>
                 </div>
 
                 <input class="post-login-button" type="image" src="./img/login.gif" onclick="post_login_then();" />

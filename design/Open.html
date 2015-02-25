@@ -109,8 +109,7 @@ if (!isset($_SESSION["SysID"])) {
 ?>
 
         <div id="login-field-1">
-            <form  action="?" method="POST" >
-		<!-- onsubmit="javascript:return false;" -->
+            <form onsubmit="javascript:return false;" action="?" method="POST" >
 		<div class="login-name-field">
 		    <img class="login-name-pic" src="./img/username.gif" />
 		    <input class="login-name-input" type="text" maxlength="12" id="login-name" name="username" />
@@ -122,8 +121,7 @@ if (!isset($_SESSION["SysID"])) {
 		</div>
 
 		<input type="hidden" name="action" value="login" />
-		<input class="login-button" type="image" name="submit" src="./img/login.gif" />
-		<!-- onclick="login_then();" -->
+		<input class="login-button" type="image" src="./img/login.gif" onclick="login_then();" />
 		<a class="register-chain" href="./register.html" target="_blank">没有账户？</a>
 
             </form>
@@ -143,7 +141,7 @@ if (!isset($_SESSION["SysID"])) {
                 </span>
                 <form action="?" method="POST" >
                     <input type="hidden" name="action" value="logout" />
-                    <input class="logout-button" type="image" name="submit" src="./img/logout.gif" />
+                    <input class="logout-button" type="image" src="./img/logout.gif" />
                 </form>
             </div>
         </div>

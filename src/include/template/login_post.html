@@ -8,15 +8,15 @@ if (!isset($_SESSION["SysID"])) {
             <form  action="?action=login" method="post">
                 <div class="post-login-name-field">
                     <img class="post-login-name-pic" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif" />
-                    <input class="post-login-name-input" type="text" maxlength="12" id="post-login-name" name="Name" />
+                    <input class="post-login-name-input" type="text" maxlength="12" id="post-login-name" name="username" />
                 </div>
 
                 <div class="post-login-password-field">
                     <img class="post-login-password-pic" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/password.gif" />
-                    <input class="post-login-password-input" type="password" maxlength="18" id="post-login-password" name="Code"/>
+                    <input class="post-login-password-input" type="password" maxlength="18" id="post-login-password" name="password"/>
                 </div>
 
-                <input class="post-login-button" type="image" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif" onclick="post_login_then();" />
+                <input class="post-login-button" type="image" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif" onclick="submit();" />
                 <a class="post-register-chain" href="?action=register">没有账户？</a>
 
 

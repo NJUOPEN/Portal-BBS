@@ -6,7 +6,6 @@ if (!isset($_SESSION["SysID"])) {
 
         <div id="login-field-1">
             <form  action="?" method="POST" >
-		<!-- onsubmit="javascript:return false;" -->
 		<div class="login-name-field">
 		    <img class="login-name-pic" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/username.gif" />
 		    <input class="login-name-input" type="text" maxlength="12" id="login-name" name="username" />
@@ -18,8 +17,7 @@ if (!isset($_SESSION["SysID"])) {
 		</div>
 
 		<input type="hidden" name="action" value="login" />
-		<input class="login-button" type="image" name="submit" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif" />
-		<!-- onclick="login_then();" -->
+		<input class="login-button" type="image" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/login.gif" onclick="submit();" />
 		<a class="register-chain" href="?action=register">没有账户？</a>
 
             </form>
@@ -39,7 +37,7 @@ if (!isset($_SESSION["SysID"])) {
                 </span>
                 <form action="?" method="POST" >
                     <input type="hidden" name="action" value="logout" />
-                    <input class="logout-button" type="image" name="submit" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif" />
+                    <input class="logout-button" type="image" src="<?php echo BBS_WEB_TEMPLATE.'/';?>img/logout.gif" />
                 </form>
             </div>
         </div>
