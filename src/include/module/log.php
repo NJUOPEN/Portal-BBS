@@ -20,7 +20,7 @@ function login($params) {
     $_SESSION['SysID'] = $user_info['SysID'];
     echo 'Login success<br />';
     // 记录头像路径
-    if (file_exists(BBS_WEB_ROOT.'/userfile/'.$user_info['Picture']))
+    if (file_exists(BBS_ROOT.'/userfile/'.$user_info['Picture']))
     {
         $_SESSION['avatar'] = BBS_WEB_ROOT.'/userfile/'.$user_info['Picture'];
     }
