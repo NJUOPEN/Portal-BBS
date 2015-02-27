@@ -46,8 +46,11 @@
 						
 						container=document.getElementById("content_1");
 						//目前暂时允许发表主题的内容为空
+						var content_1_empty;
+						if (container.value=="") content_1_empty=true;
+						else content_1_empty=false;						
 				   		dealWithContent(container);
-				   		if (container.value=="")
+				   		if (container.value=="" && content_1_empty==false)
 						{
 							alert("帖子含有无效内容，请重新填写后提交！");
 							return false;
