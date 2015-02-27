@@ -8,6 +8,7 @@ Portal-BBS
 2.使用指南
 
 2.1 环境要求
+
   Apache: >= 2.0
   PHP: >= 5.0.0
   MySQL: >= 4.1.0
@@ -16,8 +17,8 @@ Portal-BBS
 2.2 快速安装
 
 Windows:
-  1.从GITHUB上获取项目文件(https://github.com/NJUOPEN/Portal-BBS/)，点击Download ZIP即可下载；
-  2.安装WAMP，配置服务器(参考http://jingyan.baidu.com/article/22fe7ced7ba5403003617f60.html)；
+  1.从GITHUB上获取项目文件(https://github.com/NJUOPEN/Portal-BBS/ )，点击Download ZIP即可下载；
+  2.安装WAMP，配置服务器(参考http://jingyan.baidu.com/article/22fe7ced7ba5403003617f60.html )；
   3.将下载的Portal-BBS-master中src文件夹的内容复制到WAMP的www文件夹下(覆盖粘贴)；
   4.在WAMP的www文件夹中，根据wamp配置编辑config.php。例如，你的MySQL用户名为user，密码为password，则修改以下两行
 	define('SQL_ACCOUNT','root');
@@ -29,7 +30,7 @@ Windows:
   6.在浏览器里访问127.0.0.1，即可浏览论坛页面。
 
 Linux:
-  1.从GITHUB上获取项目文件(https://github.com/NJUOPEN/Portal-BBS/)；
+  1.从GITHUB上获取项目文件(https://github.com/NJUOPEN/Portal-BBS/ )；
   2.安装apache、PHP、MySQL；
   3.配置apache，为项目文件夹分配一个前端路径；
   4.修改config.php，将SQL_HOST、SQL_ACCOUNT、SQL_PASSWORD更改成对应的前端路径、数据库用户名和密码；
