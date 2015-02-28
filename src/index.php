@@ -11,7 +11,6 @@
 session_start();	//开启会话控制
 error_reporting(7);	//设置错误提示等级
 
-print_r($_SESSION);
 //加载全局配制
 require_once('./config.php');
 
@@ -31,11 +30,6 @@ else
     $page = 1;
 }
 
-echo '<br />Post = ';
-print_r($_POST);
-echo '<br />Get = ';
-print_r($_GET);
-echo '<br />Page = '.$page.'<br />';
 //进行请求分发(dispatch)
 require_once(BBS_ROOT.'/include/lib/dispatcher.php');
 

@@ -283,7 +283,7 @@ class SQL_Msg extends SQL_Obj
 {
 	/*
 		功能：
-			将满足给定条件的记录按给定字段排序，并返回前数个记录
+			将满足给定条件的记录按给定字段排序，并返回前(或指定起点)数个记录
 		参数:
 			$tableName:需要操作的表的名称；
 			$fieldName:要进行排序的字段；
@@ -296,15 +296,16 @@ class SQL_Msg extends SQL_Obj
 				//TODO：还可以添加不同比较之间的逻辑关系，如AND、OR、NOT；
 		返回值：（同getRecordByField）			
 	*/
-	protected function getTopRecord($tableName,$fieldName,$descendent=true,$count=-1,$conditions=null)  //
+	protected function getTopRecord($tableName,$fieldName,$descendent=true,$count=-1,$conditions=null, $start=0)  //
 	{
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM `'.$tableName.'` ';		
 		if ($conditions) $query.=self::buildConditions($conditions);
 		$query.=' ORDER BY `'.$fieldName.'` '.($descendent?'DESC':'ASC');		
 		if ($count>=0 && $count != NULL && is_numeric($count))	{
-		    $query.=' LIMIT '.$count;
+		    $query.=' LIMIT '.$start. ','.$count;
 		}
+
 		return self::resourceToArray(mysqli_query($this->db, $query.';'));
 	}
 }
@@ -411,8 +412,8 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
 	}
 
-	public function getLastInfofPost($number) {
-		return $this->getTopRecord($this->tableOfPost,'PostID',true,$number,array(array('name'=>'IfFollow','condition'=>'=','value'=>'0')));
+	public function getLastInfofPost($count, $start) {
+		return $this->getTopRecord($this->tableOfPost,'PostID',true,$count,array(array('name'=>'IfFollow','condition'=>'=','value'=>'0')), $start);
 	}
 
 	public function getFollowedList($FollowAdd) {
