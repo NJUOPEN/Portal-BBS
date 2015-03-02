@@ -86,6 +86,7 @@ switch ($action) {
 		break;
 	default :		//默认显示主页的贴子列表
 		require_once(BBS_ROOT.'/include/module/post.php');
+		$params['page'] = $page;
     	showPostList($params);
     // TODO add more
 }

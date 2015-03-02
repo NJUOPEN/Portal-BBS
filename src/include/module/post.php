@@ -28,7 +28,11 @@ function showPostList($params)
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
 	if (!isset($params['ListSize']) || $params['ListSize']<1) $params['ListSize']=10;	//ListSize是贴子列表的分页长度
-	$post_list = $PostList->getLastInfofPost($params['ListSize']);
+
+	$start = ($params['page'] - 1) * $params['ListSize'];
+
+	$post_list = $PostList->getLastInfofPost($params['ListSize'], $start);
+
 	for ($i = 0; $i < count($post_list); $i++) {
 		$post_list[$i]['PostAdd'] = unEscPost($post_list[$i]['PostAdd']);
 	}

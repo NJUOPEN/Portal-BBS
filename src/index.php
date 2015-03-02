@@ -20,6 +20,16 @@ require_once(BBS_ROOT.'/include/lib/function_base.php');
 //帖子相关缓冲
 $post_list=array();
 $num_buf = $_POST['num'];
+
+if (isset($_GET['page']))
+{
+    $page = $_GET['page'];
+}
+else
+{
+    $page = 1;
+}
+
 //进行请求分发(dispatch)
 require_once(BBS_ROOT.'/include/lib/dispatcher.php');
 
