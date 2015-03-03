@@ -30,7 +30,7 @@ Windows:
 
   3.将下载的Portal-BBS-master中src文件夹的内容复制到WAMP的www文件夹下(覆盖粘贴)；
 
-  4.在WAMP的www文件夹中，根据wamp配置编辑config.php。例如，你的MySQL用户名为user，密码为password，则修改以下两行
+  4.在WAMP的www文件夹中，根据WAMP配置编辑config.php.sample。例如，你的MySQL用户名为user，密码为password，则修改以下两行
 
 	define('SQL_ACCOUNT','root');
 	define('SQL_PASSWORD','');
@@ -39,6 +39,8 @@ Windows:
 
 	define('SQL_ACCOUNT','user');
 	define('SQL_PASSWORD','password');
+
+  然后将config.php.sample重命名为config.php；
 
   5.导入“数据库/数据库创建信息”文件夹下的“BuildOPENBBS.sql”，可以使用WAMP自带的phpMyAdmin；
 
@@ -53,7 +55,7 @@ Linux:
 
   3.配置apache，为项目文件夹分配一个前端路径；
 
-  4.修改config.php，将SQL_HOST、SQL_ACCOUNT、SQL_PASSWORD更改成对应的前端路径、数据库用户名和密码；
+  4.修改config.php.sample，将SQL_HOST、SQL_ACCOUNT、SQL_PASSWORD更改成对应的前端路径、数据库用户名和密码，然后另存为config.php；
 
   5.导入“数据库/数据库创建信息”文件夹下的“BuildOPENBBS.sql”，可使用phpMyAdmin；
 
