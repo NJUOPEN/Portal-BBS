@@ -1,6 +1,7 @@
 
     <div class="post-field">
     	<b><?php echo $post_list[0]['Title']; ?></b>
+    	<div>由 <?php echo $post_list[0]['AuthorName'];?> 发布于 <?php echo $post_list[0]['Time'];?></div>
         <ul>
 			<li class="post-first-field">
 			<?php echo $post_list[0]['PostAdd']; ?>
@@ -9,7 +10,9 @@
         	{
         	?>
             <li class="post-reply-field">
-                <span><?php echo $i; ?>楼</span><br />
+                <span><?php echo $i; ?>楼</span>
+                <span><?php echo $post_list[0]['AuthorName'];?> <?php echo $post_list[0]['Time'];?></span>
+                <br />
                 <?php echo $post_list[$i]['PostAdd']; ?>  
             </li>
             <?php
