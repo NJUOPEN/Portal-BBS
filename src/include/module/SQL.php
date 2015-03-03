@@ -36,7 +36,7 @@ SQL_Obj(基类，包含基本的添加[add]、读取[get]、写入[set]、删除
 
 class SQL_Obj
 {
-	const SQL_DATE_FORMAT='Y-m-d h:m:s';
+	const SQL_DATE_FORMAT='Y-m-d h:i:s';
 	
 	protected $db; //数据库对象的句柄
 	
@@ -417,8 +417,8 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		return $this->getRecordRange($this->tableOfPost,'PostID',true,$count,array(array('name'=>'IfFollow','condition'=>'=','value'=>'0')), $start);
 	}
 
-	public function getFollowedList($FollowAdd) {
-		return $this->getRecordByField($this->tableOfPost,"FollowAdd",$FollowAdd);
+	public function getFollowedList($FollowAdd, $count, $start) {
+		return $this->getRecordRange($this->tableOfPost,"PostID",false,$count,array(array('name'=>'FollowAdd','condition'=>'=','value'=>$FollowAdd)), $start);
 	}
 
 }
