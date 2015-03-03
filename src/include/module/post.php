@@ -29,7 +29,10 @@ function showPostList($params)
 	$PostList = new SQL_Post;
 	if (!isset($params['ListSize']) || $params['ListSize']<1) $params['ListSize']=10;	//ListSize是贴子列表的分页长度
 
-	$start = ($params['page'] - 1) * $params['ListSize'];
+	if (isset($params['page']) && $params['page']>0)
+		$start = ($params['page'] - 1) * $params['ListSize'];
+	else
+		$start=0;
 
 	$post_list = $PostList->getLastInfofPost($params['ListSize'], $start);
 
