@@ -31,7 +31,7 @@ function showPostList($params)
 
 	$start = ($params['page'] - 1) * $params['ListSize'];
 
-	$post_list = $PostList->getLastInfofPost($params['ListSize'], $start);
+	$post_list = $PostList->getPostList($params['ListSize'], $start);
 
 	$userDB = new SQL_User;
 	

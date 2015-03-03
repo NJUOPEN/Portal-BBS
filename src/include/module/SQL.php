@@ -413,7 +413,7 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
 	}
 
-	public function getLastInfofPost($count, $start) {
+	public function getPostList($count, $start) {
 		return $this->getRecordRange($this->tableOfPost,'PostID',true,$count,array(array('name'=>'IfFollow','condition'=>'=','value'=>'0')), $start);
 	}
 
