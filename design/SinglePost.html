@@ -84,7 +84,7 @@ if (!isset($_SESSION["SysID"])) {
         	?>
             <li class="post-reply-field">
                 <span><?php echo $i; ?>楼</span>
-                <span><?php echo $post_list[0]['AuthorName'];?> <?php echo $post_list[0]['Time'];?></span>
+                <span><?php echo $post_list[$i]['AuthorName'];?> <?php echo $post_list[$i]['Time'];?></span>
                 <br />
                 <?php echo $post_list[$i]['PostAdd']; ?>  
             </li>
