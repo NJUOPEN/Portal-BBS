@@ -33,8 +33,13 @@ function showPostList($params)
 
 	$post_list = $PostList->getLastInfofPost($params['ListSize'], $start);
 
+	$userDB = new SQL_User;
+	
 	for ($i = 0; $i < count($post_list); $i++) {
 		$post_list[$i]['PostAdd'] = unEscPost($post_list[$i]['PostAdd']);
+		
+		$tempUser = $userDB->getInfOfUser($post_list[$i]['IDofUsers']);
+		$post_list[$i]['AuthorName']=$tempUser['Name'];
 	}
 }
 function showPostView($params)
