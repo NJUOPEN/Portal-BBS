@@ -36,7 +36,7 @@ SQL_Obj(基类，包含基本的添加[add]、读取[get]、写入[set]、删除
 
 class SQL_Obj
 {
-	const SQL_DATE_FORMAT='Y-m-d h:m:s';
+	const SQL_DATE_FORMAT='Y-m-d h:i:s';
 	
 	protected $db; //数据库对象的句柄
 	
