@@ -2,3 +2,4 @@
 *~
 /src/config.php
 /src/userfile/*
+./*
