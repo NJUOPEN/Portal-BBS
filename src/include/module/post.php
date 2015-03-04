@@ -60,6 +60,7 @@ function showPostView($params)
 }
 // 发布帖子
 function doPost($params) {
+	if (!isset($_SESSION['SysID'])) return;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	/*
@@ -72,6 +73,7 @@ function doPost($params) {
 }
 
 function doReply($params) {
+	if (!isset($_SESSION['SysID'])) return;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	$time=gmdate(SQL_Post::SQL_DATE_FORMAT); //同上
