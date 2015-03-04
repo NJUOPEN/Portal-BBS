@@ -43,10 +43,13 @@
 		<?php
 		}
 		  else {
+		?>
+		<div> 
+	      <ul>
+	    <?php
 			for ($i = 1; $i <= count($post_list); $i ++) {
 	    ?>
-	    <div> 
-	      <ul>
+	    
                 <li class="postList-post">
 		  <a target="_blank" href="<?php echo '?action=postView&PostID='.$post_list[$i-1][PostID];?>">
 		    第 <?php echo $i;?> 个帖子:
@@ -56,10 +59,12 @@
 		    <i>由 <?php echo $post_list[$i-1]['AuthorName'];?> 发布于 <?php echo $post_list[$i-1]['Time'];?></i>
 		  </a>
 		</li>
+		<?php
+		}
+		?>
               </ul>
-	  </div>
+        </div>
 	    <?php
-	      }
 	    }
 	    ?>
         </div>
