@@ -64,10 +64,12 @@ function register($params) {
         require_once(BBS_ROOT."/include/module/SQL.php");
         $pw = sha1($pw);
         $newUser = new SQL_User;
-        $newUser->addUser($name, $pw, NULL, 1, 0, $email, 0, 18);
-        // default avatar
-        $all_info = $newUser->getInfOfUserByName($name);
-        $newUser->resetUserPicture($all_info['SysID'], 'default-avatar');
+        if($newUser->getInfOfUserByName($name)!=NULL)	//目前限定用户名不能重复
+        {
+			echo 'User exists.';
+			return;
+        }
+        $newUser->addUser($name, $pw, 'default-avatar', 0, 0, $email, 0, 18);
         echo "User Registered.<br />";
     } else {
         echo "password not match<br/>";

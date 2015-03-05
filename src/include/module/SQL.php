@@ -326,7 +326,7 @@ class SQL_User extends SQL_Info //用户操作类
 		$result=$this->getRecordByField($this->tableOfUsers,'Name',$nameOfUser);
 		if (count($result)>0) return $result[0]; else return NULL; //只返回满足条件的第一个记录
 	}
-	public function delectUser($IDOfUser){//删除知道ID的用户
+	public function deleteUser($IDOfUser){//删除知道ID的用户
 		return $this->deleteRecordByField($this->tableOfUsers,'SysId',$IDOfUser);
 	}	
 	public function addUser($Name ,$Code ,$Picture ,$Root ,$Rank ,
@@ -370,7 +370,7 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		return $this->setFieldByField($this->tableOfPost,'PostID',$idOfPost,'FollowNum',$num+1);
 	}
 
-	public function delectPost($IDofPost) {//删除知道ID的帖子
+	public function deletePost($IDofPost) {//删除知道ID的帖子
 		return $this->deleteRecordByField($this->tableOfPost,'PostID',$IDofPost);
 	}
 	
