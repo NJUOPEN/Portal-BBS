@@ -40,6 +40,8 @@ switch ($action) {
     case 'register2' :
         require_once(BBS_ROOT.'/include/module/log.php');
         register($params);
+        require_once(BBS_ROOT.'/include/module/post.php');
+        showPostList($params);
         break;
     case 'login' :
         require_once(BBS_ROOT.'/include/module/log.php');
