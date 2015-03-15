@@ -294,9 +294,10 @@ class SQL_Msg extends SQL_Obj
 				condition：比较条件，可以是'> = < >= <= !='中的任何一个；
 				value：进行比较的值（string类型）；
 				//TODO：还可以添加不同比较之间的逻辑关系，如AND、OR、NOT；
+			$start:(可选)起始记录编号
 		返回值：（同getRecordByField）			
 	*/
-	protected function getTopRecord($tableName,$fieldName,$descendent=true,$count=-1,$conditions=null, $start=0)  //
+	protected function getRecordRange($tableName,$fieldName,$descendent=true,$count=-1,$conditions=null, $start=0)  
 	{
 		if (!$this->checkTable($tableName)) return NULL;
 		$query='SELECT * FROM `'.$tableName.'` ';		
@@ -412,12 +413,12 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
 	}
 
-	public function getLastInfofPost($count, $start) {
-		return $this->getTopRecord($this->tableOfPost,'PostID',true,$count,array(array('name'=>'IfFollow','condition'=>'=','value'=>'0')), $start);
+	public function getPostList($count, $start) {
+		return $this->getRecordRange($this->tableOfPost,'PostID',true,$count,array(array('name'=>'IfFollow','condition'=>'=','value'=>'0')), $start);
 	}
 
-	public function getFollowedList($FollowAdd) {
-		return $this->getRecordByField($this->tableOfPost,"FollowAdd",$FollowAdd);
+	public function getFollowedList($FollowAdd, $count, $start) {
+		return $this->getRecordRange($this->tableOfPost,"PostID",false,$count,array(array('name'=>'FollowAdd','condition'=>'=','value'=>$FollowAdd)), $start);
 	}
 
 }

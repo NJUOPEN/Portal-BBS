@@ -34,10 +34,15 @@ function showPostList($params)
 	else
 		$start=0;
 
-	$post_list = $PostList->getLastInfofPost($params['ListSize'], $start);
+	$post_list = $PostList->getPostList($params['ListSize'], $start);
 
+	$userDB = new SQL_User;
+	
 	for ($i = 0; $i < count($post_list); $i++) {
 		$post_list[$i]['PostAdd'] = unEscPost($post_list[$i]['PostAdd']);
+		
+		$tempUser = $userDB->getInfOfUser($post_list[$i]['IDofUsers']);
+		$post_list[$i]['AuthorName']=$tempUser['Name'];
 	}
 }
 function showPostView($params)
@@ -52,10 +57,20 @@ function showPostView($params)
 	if (isset($params['PostID'])) {
 		$post_list=array();
 		array_push($post_list,$PostList->getPost($params['PostID'])); //根据PostID获取到的帖子记录是单个元素，所以用push
-		$post_list=array_merge($post_list, $PostList->getFollowedList($params['PostID']));//而这里获取到的跟帖列表是数组，所以用merge;
-		$post_list=array_slice($post_list,0,$params['ViewSize']);
-		//DELETEME
+		
+		if (isset($params['replyPage']) && $params['replyPage']>0)
+			$start = ($params['replyPage'] - 1) * $params['ViewSize'];
+		else
+			$start=0;		
+		$post_list=array_merge($post_list, $PostList->getFollowedList($params['PostID'],$params['ViewSize'],$start));//而这里获取到的跟帖列表是数组，所以用merge;
 		//print_r($post_list);
+	}
+	$userDB = new SQL_User;
+	for ($i = 0; $i < count($post_list); $i++) {
+		$post_list[$i]['PostAdd'] = unEscPost($post_list[$i]['PostAdd']);
+		
+		$tempUser = $userDB->getInfOfUser($post_list[$i]['IDofUsers']);
+		$post_list[$i]['AuthorName']=$tempUser['Name'];
 	}
 }
 // 发布帖子
