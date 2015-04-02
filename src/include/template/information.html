@@ -1,4 +1,5 @@
 
+<div id="container">
     <div class="info-body-field">
         <h1 class="info-welcome-words">
             更改你的用户信息
@@ -7,23 +8,23 @@
 	    <form action="?" method="POST">
                 <ul>
                     <li class="info-form-list">
-		      <input type="text" value="<?=$usrName ?>" readonly />
+		      <input type="text" value="<?=$usrName ?>" readonly class="info-form-list-input"/>
                       <span>用户名</span>
                     </li>
                     <li class ="info-form-list">
-		      <input type="text" name="newEmail" value="<?=$usrEmail ?>" />
+		      <input type="text" name="newEmail" value="<?=$usrEmail ?>" class="info-form-list-input" />
                       <span>* 电子邮箱</span>
                     </li>
                     <li class ="info-form-list">
-                        <input type="password" name="newPW"/>
+                        <input type="password" name="newPW" class="info-form-list-input"/>
                         <span>* 新密码</span>
                     </li>
                     <li class="info-form-list">
-                        <input type="password" name="checkPW"/>
+                        <input type="password" name="checkPW" class="info-form-list-input"/>
                         <span>* 重复密码</span>
                     </li>
                     <li class="info-form-list">
-                        <input type="password" name="curPW"/>
+                        <input type="password" name="curPW" class="info-form-list-input"/>
                         <span>* 旧密码</span>
                     </li>
                     <li class="info-form-list">
@@ -36,7 +37,7 @@
                     </li>
                 </ul>
             </form>
-	    <form action='?' method='POST' class='info-form-list'>
+	    <form action='?' method='POST' class='info-cancel'>
 		<input type='hidden' name='action' value='' />
 		<input type='submit' value='返回' id='info-submit' />
 	    </form>
@@ -94,4 +95,4 @@
 	
 	</script>
     </div>
-
+</div>
