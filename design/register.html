@@ -13,6 +13,7 @@
 
 <body>
 <!-- head -->
+<div id="container">
     <script>
         function checkEmail() {
             var email = document.getElementById("email").value;
@@ -84,22 +85,22 @@
             <ul>
                 <li class="form-list">
                     <span>Email</span>
-                    <input id="email" type="text" name="email" onchange="checkEmail()"/>
+                    <input id="email" type="text" name="email" onchange="checkEmail()" class="register-input" />
                 </li>
                 <li class="form-list">
                     <span>Your Name</span>
-                    <input id="username" type="text" name="username" onchange="checkUsername()"/>
+                    <input id="username" type="text" name="username" onchange="checkUsername()" class="register-input" />
                 </li>
                 <li class="form-list">
                     <span>Password</span>
-                    <input id="password" type="password" name="password" onchange="checkPassword()"/>
+                    <input id="password" type="password" name="password" onchange="checkPassword()" class="register-input" />
                 </li>
                 <li class="form-list">
                     <span>Repeat Password</span>
-                    <input id="repassword" type="password" name="repassword" onchange="checkRepassword()"/>
+                    <input id="repassword" type="password" name="repassword" onchange="checkRepassword()"  class="register-input" />
                 </li>
                 <li class="form-list">
-                    <input type="submit" value="enjoy it"/>
+                    <input type="submit" value="Enjoy it!" class="register-submit-button"/>
                 </li>
             </ul>
 
@@ -111,6 +112,7 @@
 
 
     </div>
+</div>
 <!-- register-area -->
 
 

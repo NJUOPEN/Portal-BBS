@@ -1,17 +1,15 @@
-body {
-    height:600px;
-    width:1366px;
-    background-color:rgb(160,255,160);
+#container{
+	background-color:rgb(160,255,160);
+	min-width:1000px;
+	height:600px;
 }
 
-
-
 .total-field {
+	margin:0px auto;
     background-color:white;
-    width:1000px;
+    width:800px;
     height:400px;
     position:relative;
-    left:200px;
     top:100px;
 }
 
@@ -32,4 +30,13 @@ body {
 span {
     display:block;
 
+}
+
+.register-input {
+	width:250px;
+}
+
+.register-submit-button {
+	height:40px;
+	width:100px;
 }
