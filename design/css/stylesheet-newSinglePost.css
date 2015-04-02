@@ -39,6 +39,16 @@
 
 }
 
+.post-title-field {
+	margin:5px 0px 5px 2px;
+	font-weight:bold;
+	font-size:larger;
+}
+
+.post-time-field {
+	margin:5px 0px 5px 10px;
+}
+
 .post-first-field {
     width:880px;
     min-height:200px;

@@ -76,10 +76,15 @@ $replace_args=array(
 	'<input class="post-login-button" type="image" src="./img/login.gif" onclick="post_login_then();" />' => '<input class="post-login-button" type="image" src="./img/login.gif" onclick="submit();" />',
 	'./newOPEN.html' => '<?php echo BBS_WEB_ROOT; ?>',
 	'./information.html' => '<?php echo "?action=information"; ?>',
+	
 	'<span class="login-field-2-name">这里是用户名</span>' => '<span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>',
 	'<span class="post-login-field-2-name">这里是用户名</span>' => '<span class="post-login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>',
 	'<img src="./img/headPicture-1.jpg" class="head-pic-field" />' => '<img src="<?=$_SESSION[\'avatar\'] ?>" class="head-pic-field" />',
 	'<img src="./img/headPicture-1.jpg" class="post-head-pic-field" />' => '<img src="<?=$_SESSION[\'avatar\'] ?>" class="post-head-pic-field" />',
+	'帖子标题' => '<?php echo $post_list[0][\'Title\']; ?>',
+	'帖子作者' => '<?php echo $post_list[0][\'AuthorName\'];?>',
+	'帖子发布时间' => '<?php echo $post_list[0][\'Time\'];?>',
+	
 	'<link rel="stylesheet" href="" type="text/css">' => '',
 	'<script src="" type="text/javascript"></script>' => '',
 	'src="./' => 'src="<?php echo BBS_WEB_TEMPLATE.\'/\';?>',
