@@ -5,8 +5,6 @@
     font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif;
     background: #fafafa;
     color:#222;
-    min-width: 990px;
-
 }
 
 h1,h2,h3,h4,h5,h6,ul,li{ 
@@ -54,4 +52,6 @@ a {
     background-color:black;
 }
 
-
+#container{
+	margin:0px auto;
+}

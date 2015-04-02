@@ -1,22 +1,20 @@
-﻿body
-{
-    max-width:100%;
+﻿#container{
+	width:1340px;
 }
 
 /*以下是logo部分*/
 
 .logo-field {
     background-color:rgb(200,255,200);
-    height:300px;
+    height:250px;
     max-width:100%;
-    margin-left:10px;
-
+	text-align:center;
 }
 
 .logo-pic {
     height:300px;
     position:relative;
-    left:150px;
+    /*left:150px;*/
 }
 
 
@@ -24,11 +22,10 @@
 /*以下是帖子列表部分*/
 
 .postList-field {
-    height:1000px;
+    height:900px;
     max-width:900px;
     background-color:rgb(202, 171, 171);
     margin-top:10px;
-    margin-left:10px;
     float:left;
 
 }
@@ -152,10 +149,9 @@
 
 .login-link-info-field {
     width:420px;
-    height:1000px;
+    height:900px;
     background-color:rgb(0, 148, 255);
     margin-top:10px;
-    margin-right:10px;
     float:right;
     
 }
