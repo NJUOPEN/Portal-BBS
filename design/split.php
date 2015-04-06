@@ -93,6 +93,10 @@ $replace_args=array(
 	
 );
 
+//TODO:将需要[查找的正则表达式]和[要替换成的内容]写在这里，
+//过滤顺序：同上
+$replace_args_2=array();
+
 echo '<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Split to template</title></head><body>
 <p>Target directory is <font color="green">'.TARGET_FOLDER.'</font></p>
 <p>Split begin...</p>';
@@ -105,8 +109,13 @@ for($i=0; $i<count($fileList); $i++)
 	fclose($f);
 	foreach ($replace_args as $replace_from => $replace_to)
 	{
-		//根据$replace_args的参数替换相对路径为绝对路径
+		//根据$replace_args的参数进行简单查找，若找到则替换
 		$content=str_replace($replace_from,$replace_to,$content);
+	}
+	foreach ($replace_args_2 as $replace_pattern => $replace_to)
+	{
+		//根据$replace_args2的参数进行正则匹配，若匹配则替换
+		$content=preg_replace($replace_pattern,$replace_to,$content);
 	}
 	if (count($split_args[$i])>0)	//如果提供了分割参数，则进行分割后存储
 	{
