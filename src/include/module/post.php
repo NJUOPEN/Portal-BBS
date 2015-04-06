@@ -27,14 +27,27 @@ function showPostList($params)
 	global $post_list;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
-	if (!isset($params['ListSize']) || $params['ListSize']<1) $params['ListSize']=10;	//ListSize是贴子列表的分页长度
+	
+	if (isset($params['ListSize']))	//ListSize是贴子列表的分页长度
+		$listsize=(int)$params['ListSize'];
+		if ($listsize<1) $listsize=10;
+	else
+		$listsize=10;	
 
-	if (isset($params['page']) && $params['page']>0)
-		$start = ($params['page'] - 1) * $params['ListSize'];
+	if (isset($params['page']))	//page是浏览器请求显示的页面编号
+	{
+		$pageNum=(int)$params['page'];
+		if ($pageNum<1) $pageNum=1;
+	}
+	else
+		$pageNum=1;	
+	
+	if ($pageNum>0)
+		$start = ($pageNum - 1) * $listsize;
 	else
 		$start=0;
-
-	$post_list = $PostList->getPostList($params['ListSize'], $start);
+	
+	$post_list = $PostList->getPostList($listsize, $start);
 
 	$userDB = new SQL_User;
 	
@@ -43,6 +56,17 @@ function showPostList($params)
 		
 		$tempUser = $userDB->getInfOfUser($post_list[$i]['IDofUsers']);
 		$post_list[$i]['AuthorName']=$tempUser['Name'];
+	}
+	
+	global $page_link;
+	$page_link=pagination($pageNum,ceil($PostList->getTotalNumOfPost()/$listsize),7);
+	for($i=0;$i<count($page_link);$i++)	//将页面编号进一步扩展成编号+链接
+	{
+		$temp=$page_link[$i];
+		if ($temp=='...')
+			$page_link[$i]=array($temp,'#');
+		else
+			$page_link[$i]=array($temp,'?page='.$temp);
 	}
 }
 function showPostView($params)

@@ -409,8 +409,11 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		if (count($postList)>0) return $postList[0]; else return NULL;
 	}
 
-	public function getTotalNumOfPost() {
-		return $this->countRecordByField($this->tableOfPost,NULL,NULL);
+	public function getTotalNumOfPost($reply=false) {
+		if ($reply)
+			return $this->countRecordByField($this->tableOfPost,NULL,NULL);
+		else
+			return $this->countRecordByField($this->tableOfPost,'IfFollow','0');
 	}
 
 	public function getPostList($count, $start) {

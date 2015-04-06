@@ -95,7 +95,9 @@ $replace_args=array(
 
 //TODO:将需要[查找的正则表达式]和[要替换成的内容]写在这里，
 //过滤顺序：同上
-$replace_args_2=array();
+$replace_args_2=array(
+	'/<li class="page"><a href="\?page=1">.*<a href="\?page=8">8<\/a><\/li>/s' => ''
+);
 
 echo '<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Split to template</title></head><body>
 <p>Target directory is <font color="green">'.TARGET_FOLDER.'</font></p>

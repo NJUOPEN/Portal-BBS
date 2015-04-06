@@ -79,6 +79,15 @@
                 <li class="page"><a href="">...</a></li>
                 <li class="page"><a href="?page=7">7</a></li>
                 <li class="page"><a href="?page=8">8</a></li>
+                <?php
+					for($i=0;$i<count($page_link);$i++)
+					{
+						$temp=$page_link[$i];
+				?>
+				<li class="page"><a href="<?php echo $temp[1]; ?>"><?php echo $temp[0]; ?></a></li>
+				<?php
+					}
+				?>
             </ul>
         </div>
 
