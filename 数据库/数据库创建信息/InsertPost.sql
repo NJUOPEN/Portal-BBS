@@ -1,2 +1,22 @@
-insert into PostOfUsers values(7,4,'2014-10-3 16:18:00',1,'first','Hello world!',0,8);
-insert into PostOfUsers values(8,4,'2014-10-3 16:18:00',0,'second','Hello!',1,0);
+use UsersOfOPENBBS;
+show tables;
+insert into PostOfUsers values(
+	7,	#PostID
+	4,	#IDofUsers
+	'2014-10-3 16:18:00',	#Time
+	0,	#IfFollow
+	'first',	#Title
+	'Hello world!',	#PostAdd
+	1,	#FollowNum
+	0	#FollowAdd
+);
+insert into PostOfUsers values(
+	8,
+	4,
+	'2014-10-3 16:18:00',
+	1,
+	'second',
+	'Hello!',
+	0,
+	7
+);
