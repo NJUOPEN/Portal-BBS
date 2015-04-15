@@ -8,7 +8,8 @@ insert into PostOfUsers values(
 	'first',	#Title
 	'Hello world!',	#PostAdd
 	1,	#FollowNum
-	0	#FollowAdd
+	0,	#FollowAdd
+	1	#SectionID
 );
 insert into PostOfUsers values(
 	8,
@@ -18,5 +19,6 @@ insert into PostOfUsers values(
 	'second',
 	'Hello!',
 	0,
-	7
+	7,
+	1
 );

@@ -24,5 +24,6 @@ create table PostOfUsers(
 	PostAdd text,
 	FollowNum smallint,
 	FollowAdd int,
+	SectionID  smallint,
 	primary key(PostID)
 );
