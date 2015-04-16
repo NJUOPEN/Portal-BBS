@@ -97,6 +97,7 @@ $replace_args=array(
 //过滤顺序：同上
 $replace_args_2=array(
 	'/<li class="page"><a href="\?page=1">.*<a href="\?page=8">8<\/a><\/li>/s' => '',
+	'/<li class="post-page"><a href="">1.*3<\/a><\/li>/s' => '',
 	'/<li class="postList-div-general-mark" id="mark-1".*版块5<\/a><\/li>/s' => ''
 );
 

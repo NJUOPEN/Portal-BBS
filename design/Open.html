@@ -89,9 +89,8 @@
                 <?php
 					for($i=0;$i<count($page_link);$i++)
 					{
-						$temp=$page_link[$i];
 				?>
-				<li class="page"><a href="<?php echo $temp[1]; ?>"><?php echo $temp[0]; ?></a></li>
+				<li class="page"><a href="<?php echo $page_link[$i][1]; ?>"><?php echo $page_link[$i][0]; ?></a></li>
 				<?php
 					}
 				?>

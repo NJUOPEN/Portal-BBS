@@ -38,5 +38,22 @@ function pagination($current,$total,$limit,$ellipsis='...')
 	return $list;	
 }
 
+/*
+	功能：
+		判断数值是否为自然数，并返回有效值（用于解析传入的$params）
+	参数：
+		$var:待分析值
+		$default:当$var无效时采用的默认值
+	返回值：
+		有效的自然数（int型）
+*/
+function getNatureNumber(&$var,$default)
+{
+	if (isset($var) && $var!=NULL)
+		if ((int)$var < 1)	return $default; else return (int)$var;
+	else
+		return $default;	
+}
+
 require_once(BBS_ROOT.'/include/lib/function_UI.php');
 ?>
