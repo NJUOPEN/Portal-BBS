@@ -39,6 +39,7 @@ function showPostList($params)
 	$userDB = new SQL_User;
 	
 	for ($i = 0; $i < count($post_list); $i++) {
+		$post_list[$i]['title'] = unEscPost($post_list[$i]['title']);
 		$post_list[$i]['PostAdd'] = unEscPost($post_list[$i]['PostAdd']);
 		
 		$tempUser = $userDB->getInfOfUser($post_list[$i]['IDofUsers']);
@@ -60,7 +61,8 @@ function showPostView($params)
 {
 	loadUI('postView');
 	if (isset($_SESSION['SysID'])) loadUI('editor');
-	if (!isset($params['PostID'])) return;
+	$params['PostID']=getNatureNumber($params['PostID'],-1);
+	if ($params['PostID']==-1) return;	//PostID不合法，则返回
 	
 	global $post_list;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
@@ -80,6 +82,7 @@ function showPostView($params)
 		//print_r($post_list);
 	
 	$userDB = new SQL_User;
+	$post_list[0]['Title'] = unEscPost($post_list[0]['Title']);	//只有主题帖子的标题需要解码
 	for ($i = 0; $i < count($post_list); $i++) {
 		$post_list[$i]['PostAdd'] = unEscPost($post_list[$i]['PostAdd']);
 		
@@ -109,7 +112,7 @@ function doPost($params) {
 	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
 	*/
 	$time=gmdate(SQL_Post::SQL_DATE_FORMAT); //更简洁的日期获取方式；参见gmdate()和SQL_Obj的定义
-	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], EscPost($params['content']),false,'0');
+	$newPost->writePost($_SESSION['SysID'], $time, EscPost($params['title']), EscPost($params['content']),false,'0');
 }
 
 function doReply($params) {
