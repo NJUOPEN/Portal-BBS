@@ -7,7 +7,7 @@
 					for($i=1;$i<=BBS_SECTION_NUMBER;$i++)
 					{
 				?>
-				<li class="postList-div-general-mark" id="mark-<?php echo $i;?>" onclick=""><a href="?section=<?php echo $i;?>">版块<?php echo $i;?></a></li>
+				<li class="<?php if ($i==$_SESSION['SectionID']) echo 'postList-div-current-mark'; else echo 'postList-div-general-mark';?>" id="mark-<?php echo $i;?>" onclick=""><a href="?section=<?php echo $i;?>">版块<?php echo $i;?></a></li>
 				<?php
 					}
 				?>
@@ -31,7 +31,7 @@
 	    ?>
 	    
                 <li class="postList-post">
-		  <a target="_blank" href="<?php echo '?action=postView&PostID='.$post_list[$i-1][PostID];?>">
+		  <a target="_blank" href="?action=postView&PostID=<?php echo $post_list[$i-1][PostID];?>">
 		    第 <?php echo $i;?> 个帖子:
 		    <?php
 		      echo $post_list[$i-1]['Title'];

@@ -33,7 +33,7 @@
 					for($i=1;$i<=BBS_SECTION_NUMBER;$i++)
 					{
 				?>
-				<li class="postList-div-general-mark" id="mark-<?php echo $i;?>" onclick=""><a href="?section=<?php echo $i;?>">版块<?php echo $i;?></a></li>
+				<li class="<?php if ($i==$_SESSION['SectionID']) echo 'postList-div-current-mark'; else echo 'postList-div-general-mark';?>" id="mark-<?php echo $i;?>" onclick=""><a href="?section=<?php echo $i;?>">版块<?php echo $i;?></a></li>
 				<?php
 					}
 				?>
