@@ -20,9 +20,15 @@
             ?>
         </ul>
         <ul>
-            <li class="post-page"><a href="?action=postView&PostID=<?php echo $post_list[0]['PostID'];?>&replyPage=1">1</a></li>
-            <li class="post-page"><a href="?action=postView&PostID=<?php echo $post_list[0]['PostID'];?>&replyPage=2">2</a></li>
-            <li class="post-page"><a href="?action=postView&PostID=<?php echo $post_list[0]['PostID'];?>&replyPage=3">3</a></li>
+            
+            <?php
+				for ($i=0;$i<count($page_link);$i++)
+				{
+			?>			
+            <li class="post-page"><a href="<?php echo $page_link[$i][1];?>"><?php echo $page_link[$i][0];?></a></li>
+            <?php
+				}
+			?>
         </ul>
 <?php 
 	if (isset($_SESSION['SysID'])){
