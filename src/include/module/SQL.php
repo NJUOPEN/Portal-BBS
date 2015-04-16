@@ -274,7 +274,7 @@ class SQL_Info extends SQL_Obj
 	protected function getRecordByFields($tableName,$fieldList)  //根据某几个字段的值是否相等来查找记录
 	{
 		if (!$this->checkTable($tableName)) return NULL;
-		$query='SELECT * FROM `'.$tableName.'`'.buildConditions($fieldList);
+		$query='SELECT * FROM `'.$tableName.'`'.self::buildConditions($fieldList);
 		return self::resourceToArray(mysqli_query($this->db,$query));
 	}
 }
@@ -308,6 +308,25 @@ class SQL_Msg extends SQL_Obj
 		}
 
 		return self::resourceToArray(mysqli_query($this->db, $query.';'));
+	}
+	
+	/*
+		功能：
+			根据某个字段的值是否相等来查找记录
+		参数:
+			$tableName:需要操作的表的名称；
+			$fieldList:要进行比较的字段列表数组，其中每一个元素都应包括如下的MAP结构：
+				name：字段名称；
+				condition：比较条件，可以是'> = < >= <= !='中的任何一个；
+				value：进行比较的值（string类型）；
+				//TODO：还可以添加不同比较之间的逻辑关系，如AND、OR、NOT；
+		返回值：（同countRecordByField）			
+	*/
+	protected function countRecordByFields($tableName,$fieldList)  //统计满足条件的记录个数
+	{
+		if (!$this->checkTable($tableName)) return false;
+		$count=self::resourceToArray(mysqli_query($this->db,'SELECT COUNT(*) FROM `'.$tableName.'`'.self::buildConditions($fieldList).';'));
+		return (int)$count[0][0];
 	}
 }
 
@@ -375,24 +394,24 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		return $this->deleteRecordByField($this->tableOfPost,'PostID',$IDofPost);
 	}
 	
-	public function writePost($IDofUser,$Time,$Title,$content,$isFollow=false,$idOfFollow='0') {//发帖
+	public function writePost($IDofUser,$Time,$Title,$content,$isFollow=false,$idOfFollow='0',$SectionID='1') {//发帖
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用
 		if ($isFollow) {
 			if (!$this->resetPost($idOfFollow)) return false;
 		}
-		$result = $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$isFollow?'1':'0','Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>0,'FollowAdd'=>$idOfFollow));
+		$result = $this->addRecord($this->tableOfPost,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$isFollow?'1':'0','Title'=>$Title,'PostAdd'=>$content,'FollowNum'=>0,'FollowAdd'=>$idOfFollow,'SectionID'=>$SectionID));
 		if ($result) return true;
 		else {
 			echo 'Failed<br/>';
 			return false;
 		}
 	}
-	public function setPost($PostID,$IDofUser,$Time,$Title,$content,$isFollow=false,$idOfFollow='0') {//修改帖子
+	public function setPost($PostID,$IDofUser,$Time,$Title,$content,$isFollow=false,$idOfFollow='0',$SectionID='1') {//修改帖子
 		//FIXME:请将贴子信息放到一个统一的class中，参数太多不便于调用	
 		if ($isFollow) {
 			if (!$this->resetPost($idOfFollow)) return false;
 		}
-		$result = $this->setRecordByField($this->tableOfPost,'PostID',$PostID,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$isFollow?'1':'0','Title'=>$Title,'PostAdd'=>$content,'FollowAdd'=>$idOfFollow));
+		$result = $this->setRecordByField($this->tableOfPost,'PostID',$PostID,array('IDofUsers'=>$IDofUser,'Time'=>$Time,'IfFollow'=>$isFollow?'1':'0','Title'=>$Title,'PostAdd'=>$content,'FollowAdd'=>$idOfFollow,'SectionID'=>$SectionID));
 		if ($result) return true;
 		else {
 			echo 'Failed<br/>';
@@ -409,15 +428,28 @@ class SQL_Post extends SQL_Msg //贴子操作类
 		if (count($postList)>0) return $postList[0]; else return NULL;
 	}
 
-	public function getTotalNumOfPost($reply=false) {
+	public function getTotalNumOfPost($reply=false) {//统计所有版块的帖子数
 		if ($reply)
 			return $this->countRecordByField($this->tableOfPost,NULL,NULL);
 		else
 			return $this->countRecordByField($this->tableOfPost,'IfFollow','0');
 	}
+	
+	public function getSectionNumOfPost($SectionID,$reply=false) {//统计指定版块的帖子数
+		if ($reply)
+			return $this->countRecordByField($this->tableOfPost,'SectionID',$SectionID);
+		else
+			return $this->countRecordByFields($this->tableOfPost,array(
+				array('name'=>'SectionID','condition'=>'=','value'=>$SectionID),
+				array('name'=>'IfFollow','condition'=>'=','value'=>'0')
+			));
+	}
 
-	public function getPostList($count, $start) {
-		return $this->getRecordRange($this->tableOfPost,'PostID',true,$count,array(array('name'=>'IfFollow','condition'=>'=','value'=>'0')), $start);
+	public function getPostList($count, $start,$SectionID='1') {
+		return $this->getRecordRange($this->tableOfPost,'PostID',true,$count,array(
+			array('name'=>'IfFollow','condition'=>'=','value'=>'0'),
+			array('name'=>'SectionID','condition'=>'=','value'=>$SectionID),
+		), $start);
 	}
 
 	public function getFollowedList($FollowAdd, $count, $start) {

@@ -2,12 +2,15 @@
     <div class="postList-field">
         <div class="postList-div-mark-field">
             <ul>
-                <li class="postList-div-general-mark" id="mark-1" onclick="click(1);"><a href="">版块1</a></li>
-                <li class="postList-div-general-mark" id="mark-2"><a href="" onclick="click(2);">版块2</a></li>
-                <li class="postList-div-general-mark" id="mark-3" onclick=""><a href="">版块3</a></li>
-                <li class="postList-div-general-mark" id="mark-4" onclick=""><a href="">版块4</a></li>
-                <li class="postList-div-general-mark" id="mark-5" onclick=""><a href="">版块5</a></li>
-                <li class="postList-div-general-mark" id="mark-6" onclick=""><a href="">版块6</a></li>
+                
+                <?php
+					for($i=1;$i<=BBS_SECTION_NUMBER;$i++)
+					{
+				?>
+				<li class="postList-div-general-mark" id="mark-<?php echo $i;?>" onclick=""><a href="?section=<?php echo $i;?>">版块<?php echo $i;?></a></li>
+				<?php
+					}
+				?>
             </ul>
         </div>
 
@@ -74,6 +77,7 @@ if (isset($_SESSION['SysID'])){
                 <textarea class="do-post-text-input-field" id="editor_1" name="content"></textarea>
                 <input id="content_1" type="hidden" value="" />
                 <input id="action" type="hidden" name='action' value="doPost" />
+                <input id="section" type="hidden" name='section' value="<?php echo $_SESSION['SectionID'];?>" />
                 <input class="do-post-submit-button" type="submit" value="发布" onclick='return save();' />
             </form>
 <?php

@@ -45,9 +45,23 @@ function showPostList($params)
 	if ($pageNum>0)
 		$start = ($pageNum - 1) * $listsize;
 	else
-		$start=0;
+		$start=0;		
+		
+	if (isset($params['section']))	//section是浏览器请求显示的版块编号
+	{
+		$secNum=(int)$params['section'];
+		if ($secNum<1) $secNum=1;		
+	}
+	else
+	{
+		if (isset($_SESSION['SectionID']))
+			$secNum=$_SESSION['SectionID'];
+		else
+			$secNum=1;
+	}
+	$_SESSION['SectionID']=$secNum;	//将当前浏览的版块编号缓存于SESSION
 	
-	$post_list = $PostList->getPostList($listsize, $start);
+	$post_list = $PostList->getPostList($listsize, $start, $secNum);
 
 	$userDB = new SQL_User;
 	
@@ -59,14 +73,14 @@ function showPostList($params)
 	}
 	
 	global $page_link;
-	$page_link=pagination($pageNum,ceil($PostList->getTotalNumOfPost()/$listsize),7);
+	$page_link=pagination($pageNum,ceil($PostList->getSectionNumOfPost($secNum)/$listsize),7);
 	for($i=0;$i<count($page_link);$i++)	//将页面编号进一步扩展成编号+链接
 	{
 		$temp=$page_link[$i];
 		if ($temp=='...')
 			$page_link[$i]=array($temp,'#');
 		else
-			$page_link[$i]=array($temp,'?page='.$temp);
+			$page_link[$i]=array($temp,'?page='.$temp.'&section='.$secNum);
 	}
 }
 function showPostView($params)
@@ -100,6 +114,7 @@ function showPostView($params)
 // 发布帖子
 function doPost($params) {
 	if (!isset($_SESSION['SysID'])) return;
+	if (!isset($_SESSION['SectionID'])) return;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	/*
@@ -108,14 +123,16 @@ function doPost($params) {
 	$time = $time.'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'];
 	*/
 	$time=gmdate(SQL_Post::SQL_DATE_FORMAT); //更简洁的日期获取方式；参见gmdate()和SQL_Obj的定义
-	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], EscPost($params['content']),false,'0');
+	$newPost->writePost($_SESSION['SysID'], $time, $params['title'], EscPost($params['content']),false,'0',$_SESSION['SectionID']);
 }
 
 function doReply($params) {
 	if (!isset($_SESSION['SysID'])) return;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
+	$followedPost=$newPost->getPost($params['PostID']);
+	if ($followedPost==NULL) return;	//检查所跟帖子是否合法
 	$time=gmdate(SQL_Post::SQL_DATE_FORMAT); //同上
-	$newPost->writePost($_SESSION['SysID'], $time, NULL, EscPost($params['content']),true, $params['PostID']);
+	$newPost->writePost($_SESSION['SysID'], $time, NULL, EscPost($params['content']),true, $params['PostID'],$followedPost->$SectionID);
 }
 ?>

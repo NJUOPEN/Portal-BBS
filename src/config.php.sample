@@ -17,4 +17,6 @@ define('SQL_ACCOUNT','root');
 define('SQL_PASSWORD','');
 define('SQL_DB','UsersOfOPENBBS');
 
+define('BBS_SECTION_NUMBER',6);	//版块数
+
 ?>
