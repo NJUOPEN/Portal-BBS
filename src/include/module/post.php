@@ -40,6 +40,7 @@ function showPostList($params)
 	else
 	{
 		$secNum=getNatureNumber($params['section'],1);	
+		if ($secNum > BBS_SECTION_NUMBER) $secNum=1;
 		$_SESSION['SectionID']=$secNum;	//将当前浏览的版块编号缓存于SESSION
 	}
 	
