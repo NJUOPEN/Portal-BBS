@@ -117,7 +117,8 @@ function doPost($params) {
 
 function doReply($params) {
 	if (!isset($_SESSION['SysID'])) return;
-	if (!isset($params['PostID'])) return;
+	$params['PostID']=getNatureNumber($params['PostID'],-1);
+	if ($params['PostID']==-1) return;	//PostID不合法，则返回	
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	$time=gmdate(SQL_Post::SQL_DATE_FORMAT); //同上

@@ -55,8 +55,6 @@ switch ($action) {
         require_once(BBS_ROOT.'/include/module/post.php');
         showPostList($params);
         break;
-    case 'INFO_MOD':
-	break;
     case 'change_avatar':
         require_once(BBS_ROOT.'/include/module/file.php');
         save_avatar($_SESSION['SysID'], $_FILES['imgUP']['name'], $_FILES['imgUP']['tmp_name']);
