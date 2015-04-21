@@ -20,11 +20,11 @@
 	    <form action="?" method="POST">
                 <ul>
                     <li class="info-form-list">
-		      <input type="text" value="<?=$usrName ?>" readonly class="info-form-list-input"/>
+		      <input type="text" value="<?=$usrInfoList['Name'] ?>" readonly class="info-form-list-input"/>
                       <span>用户名</span>
                     </li>
                     <li class ="info-form-list">
-		      <input type="text" name="newEmail" value="<?=$usrEmail ?>" class="info-form-list-input" />
+		      <input type="text" name="newEmail" value="<?=$usrInfoList['Email'] ?>" class="info-form-list-input" />
                       <span>* 电子邮箱</span>
                     </li>
                     <li class ="info-form-list">

@@ -10,6 +10,8 @@
 	$action:前端提交的动作；
 	$params:前端提交的参数；
 */
+if (!defined('BBS_ROOT')) exit(0);
+
 $action = $_REQUEST['action'];
 $params = array();
 $method = $_SERVER['REQUEST_METHOD'];
@@ -55,11 +57,17 @@ switch ($action) {
         require_once(BBS_ROOT.'/include/module/post.php');
         showPostList($params);
         break;
+    case 'change_info':
+        require_once(BBS_ROOT.'/include/module/info.php');
+        updateUserInfo($params);
+        getUserInfo($params);
+        break;
     case 'change_avatar':
         require_once(BBS_ROOT.'/include/module/file.php');
         save_avatar($_SESSION['SysID'], $_FILES['imgUP']['name'], $_FILES['imgUP']['tmp_name']);
     case 'information':
         require_once(BBS_ROOT.'/include/module/info.php');
+        getUserInfo($params);
         break;
     case 'doPost' :
     	require_once(BBS_ROOT.'/include/module/post.php');

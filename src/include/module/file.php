@@ -1,6 +1,5 @@
 <?php
 
-define("USERFILE","./userfile/");
 define('AVATAR', 1);       // 头像
 define('ATTACHMENT', 0);   // 附件
 
@@ -22,7 +21,7 @@ function save_file($id, $file_name, $file_type, &$file_content)
 			return false;//保存失败
 	}
 
-	$fp=fopen(USERFILE.$file_id,"wb");
+	$fp=fopen(BBS_USERFILE.$file_id,"wb");
 	fwrite($fp, $file_content);
 	fclose($fp);
 	return true;//保存成功
@@ -34,10 +33,10 @@ function save_file($id, $file_name, $file_type, &$file_content)
 //文件内容保存在$file_content中
 function load_file($file_id,&$file_content)
 {
-	if(file_exists(USERFILE.$file_id)==false)
+	if(file_exists(BBS_USERFILE.$file_id)==false)
 		return -1;//表示文件不存在
 	else{
-		$fp=fopen(USERFILE.$file_id,"rb");
+		$fp=fopen(BBS_USERFILE.$file_id,"rb");
 		$file_content=fread($fp,filesize($file_id));
 		fclose($fp);
 		return 1;//读取成功
@@ -49,10 +48,10 @@ function load_file($file_id,&$file_content)
 //需要变量：文件md5
 function remove_file($file_id)
 {
-	if(file_exists(USERFILE.$file_id)==false)
+	if(file_exists(BBS_USERFILE.$file_id)==false)
 		return -1;//表示文件不存在
 	else{
-		unlink(USERFILE.$file_id);
+		unlink(BBS_USERFILE.$file_id);
 		return 1;//删除成功
 	}
 }
@@ -103,7 +102,7 @@ function save_avatar($userID, $filename, $source)
     $user = new SQL_User;
     $all_info = $user->getInfOfUser( $_SESSION['SysID'] );
     $old_avatar = $_SESSION['avatar'];
-    $_SESSION['avatar'] = USERFILE.$all_info['Picture'];
+    $_SESSION['avatar'] = BBS_USERFILE.$all_info['Picture'];
     //删除旧头像
     $old_filename = basename($old_avatar);
     if ($old_filename != 'default-avatar')

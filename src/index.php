@@ -57,6 +57,7 @@ switch($action)//以下内容为可变部分，根据前端的ACTION进行选择
 		require_once(BBS_TEMPLATE.'/register.html');
 		break;
 	case 'change_avatar':
+	case 'change_info':
 	case 'information':
 		require_once(BBS_TEMPLATE.'/information.html');
 		break;

@@ -8,11 +8,11 @@
 	    <form action="?" method="POST">
                 <ul>
                     <li class="info-form-list">
-		      <input type="text" value="<?=$usrName ?>" readonly class="info-form-list-input"/>
+		      <input type="text" value="<?=$usrInfoList['Name'] ?>" readonly class="info-form-list-input"/>
                       <span>用户名</span>
                     </li>
                     <li class ="info-form-list">
-		      <input type="text" name="newEmail" value="<?=$usrEmail ?>" class="info-form-list-input" />
+		      <input type="text" name="newEmail" value="<?=$usrInfoList['Email'] ?>" class="info-form-list-input" />
                       <span>* 电子邮箱</span>
                     </li>
                     <li class ="info-form-list">
@@ -31,8 +31,8 @@
                         <span>注：带*号的可不填</span>
                     </li>
                     <li class="info-form-list">
-			<input type="hidden" name="INFO_ACTION" value="change_info" />
-			<input type="hidden" name="action" value="information" />
+			<input type="hidden" name="INFO_ACTION" value="change_all_info" />
+			<input type="hidden" name="action" value="change_info" />
 			<input type="submit" value="提交" id="info-submit"/>
                     </li>
                 </ul>
