@@ -1,7 +1,7 @@
 <?php
 
-define('AVATAR', 1);       // 头像
-define('ATTACHMENT', 0);   // 附件
+define('FILE_TYPE_AVATAR', 1);       // 头像
+define('FILE_TYPE_ATTACHMENT', 0);   // 附件
 
 
 //功能：保存文件
@@ -57,7 +57,10 @@ function remove_file($file_id)
 }
 
 
-function upload_file($id,$file_type) {
+function upload_file() {	
+	if (!isset($_SESSION['SysID'])) return;
+	if (empty($_FILES)) return;
+	$userID=$_SESSION['SysID'];
     if ($_FILES["file"]["error"] > 0) {
 	echo "Error: ".$_FILES["file"]["error"]."<br />";
     }
@@ -80,7 +83,7 @@ function upload_file($id,$file_type) {
 	$file_content=fread($fp,filesize($fileaddr));
 	fclose($fp);
 	unlink($fileaddr);
-	$a=save_file($id,$filename,$file_type,$file_content);
+	$a=save_file($userID,$filename,FILE_TYPE_ATTACHMENT,$file_content);
 	return $a;
     }
 }
@@ -88,19 +91,23 @@ function upload_file($id,$file_type) {
 
 //备注: 试作型
 //功能: 保存用户头像并在数据库中记录
-//参数:
 //  userID   - number - 用户ID, 即SysID
 //  filename - string - 文件名, 不包括路径
 //  source   - string - 完整路径, 一般是php缓存的地址
 //返回值: 无
-function save_avatar($userID, $filename, $source)
+function save_avatar()
 {
+	if (!isset($_SESSION['SysID'])) return;
+	if (empty($_FILES)) return;
+	$userID=$_SESSION['SysID'];
+	$filename=$_FILES['imgUP']['name'];
+	$source=$_FILES['imgUP']['tmp_name'];
     require_once(BBS_ROOT.'/include/module/SQL.php');
     $content = file_get_contents($source);
-    save_file($userID, $filename, AVATAR, $content);
+    save_file($userID, $filename, FILE_TYPE_AVATAR, $content);
     //更新$_SESSION
     $user = new SQL_User;
-    $all_info = $user->getInfOfUser( $_SESSION['SysID'] );
+    $all_info = $user->getInfOfUser($userID);
     $old_avatar = $_SESSION['avatar'];
     $_SESSION['avatar'] = BBS_USERFILE.$all_info['Picture'];
     //删除旧头像
