@@ -1,30 +1,43 @@
 <?php
-loadUI('information');
-require_once(BBS_ROOT.'/include/module/SQL.php');
 
-/* Get infomation */
-$usrInfo = new SQL_User;
-$usrInfoList = $usrInfo->getInfOfUser($_SESSION['SysID']);
-$usrID = $_SESSION['SysID'];
-$usrName = $usrInfoList['Name'];
-$usrRank = $usrInfoList['Rank'];
-$usrEmail = $usrInfoList['Email'];
-$usrGender = $usrInfoList['Gender'];
-$usrAge = $usrInfoList['Age'];
-$usrPW = $usrInfoList['Code'];
-
-if (isset($_POST['INFO_ACTION']))
+function getUserInfo($params)
 {
-    $info_action = $_POST['INFO_ACTION'];
+	loadUI('information');
+	if (!isset($_SESSION['SysID'])) return;
+	$usrID = $_SESSION['SysID'];
+	require_once(BBS_ROOT.'/include/module/SQL.php');
+	$usrInfo = new SQL_User;
+	global $usrInfoList;
+	$usrInfoList = $usrInfo->getInfOfUser($usrID);
+	$usrInfoList['Code']='';	//密码信息不通过global共享
+}
+
+function updateUserInfo($params)
+{
+if (!isset($_SESSION['SysID'])) return;
+$usrID = $_SESSION['SysID'];
+require_once(BBS_ROOT.'/include/module/SQL.php');
+$usrInfo = new SQL_User;
+$usrInfoList = $usrInfo->getInfOfUser($usrID);
+
+if (isset($params['INFO_ACTION']))
+{
+    $info_action = $params['INFO_ACTION'];
     switch($info_action)
     {
-    case 'change_info':
-	$newPW = $_POST['newPW'];
-	$checkPW = $_POST['checkPW'];
-	$newEmail = $_POST['newEmail'];
-	$curPW = sha1($_POST['curPW']);
-
-	if ($curPW != $usrPW)
+    case 'change_all_info':
+	$newPW = $params['newPW'];
+	$checkPW = $params['checkPW'];
+	$newEmail = $params['newEmail'];
+	$curPW = sha1($params['curPW']);
+	
+	if ($params['curPW'] == '')
+	{
+		echo 'Please input original password!<br />';
+		break;
+	}
+	
+	if ($curPW != $usrInfoList['Code'])
 	{
 	    echo "wrong password<br />";
 	    break;
@@ -36,23 +49,23 @@ if (isset($_POST['INFO_ACTION']))
 	    break;
 	}
 
-	$tempUsr = new SQL_User;
 	if ($newPW != null)
 	{
-		$tempUsr->resetUserCode($usrID, sha1($newPW));
+		$usrInfo->resetUserCode($usrID, sha1($newPW));
 		echo "password changed<br />";
 	}
 
-	if ($newEmail != null)
+	if ($newEmail != null && $newEmail!=$usrInfoList['Email'])
 	{
 		$regex = "/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/";
 		if (preg_match($regex, $newEmail))
 		{
-			$tempUsr->resetUserEmail($usrID, $newEmail);
+			$usrInfo->resetUserEmail($usrID, $newEmail);
 			echo "email changed<br />";
 		}
-		$usrEmail = $newEmail;
+		$usrInfoList['Email'] = $newEmail;
 	}
     }
+}
 }
 ?>

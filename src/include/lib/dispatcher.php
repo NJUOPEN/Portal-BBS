@@ -10,6 +10,8 @@
 	$action:前端提交的动作；
 	$params:前端提交的参数；
 */
+if (!defined('BBS_ROOT')) exit(0);
+
 $action = $_REQUEST['action'];
 $params = array();
 $method = $_SERVER['REQUEST_METHOD'];
@@ -55,13 +57,17 @@ switch ($action) {
         require_once(BBS_ROOT.'/include/module/post.php');
         showPostList($params);
         break;
-    case 'INFO_MOD':
-	break;
+    case 'change_info':
+        require_once(BBS_ROOT.'/include/module/info.php');
+        updateUserInfo($params);
+        getUserInfo($params);
+        break;
     case 'change_avatar':
         require_once(BBS_ROOT.'/include/module/file.php');
-        save_avatar($_SESSION['SysID'], $_FILES['imgUP']['name'], $_FILES['imgUP']['tmp_name']);
+        save_avatar();
     case 'information':
         require_once(BBS_ROOT.'/include/module/info.php');
+        getUserInfo($params);
         break;
     case 'doPost' :
     	require_once(BBS_ROOT.'/include/module/post.php');
@@ -70,25 +76,24 @@ switch ($action) {
     	break;
     case 'doReply' :
     	require_once(BBS_ROOT.'/include/module/post.php');
-    	$params['PostID'] = $_SESSION['PostID'];
     	doReply($params);
     	showPostView($params);
     	break;
     case 'postView' :
     	require_once(BBS_ROOT.'/include/module/post.php');
-    	$_SESSION['PostID'] = $params['PostID'];
     	showPostView($params);
     	break;
+    /*Direct uploading to BBS_USERFILE directory is currently unavailable
     case 'upload' :
 	require_once(BBS_ROOT.'/include/module/file.php');
 	upload_file();
 	    break;
+	*/
     case 'invalid' :
 		echo 'action is set invalid<br />';
-		break;
+		//break;
 	default :		//默认显示主页的贴子列表
 		require_once(BBS_ROOT.'/include/module/post.php');
-		$params['page'] = $page;
     	showPostList($params);
     // TODO add more
 }

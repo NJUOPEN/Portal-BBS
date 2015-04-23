@@ -72,7 +72,12 @@ function showPostView($params)
 	loadUI('postView');
 	if (isset($_SESSION['SysID'])) loadUI('editor');
 	$params['PostID']=getNatureNumber($params['PostID'],-1);
-	if ($params['PostID']==-1) return;	//PostID不合法，则返回
+	if ($params['PostID']==-1) //PostID不合法
+	{
+		if (!isset($_SESSION['PostID'])) return;	//且SESSION中无缓存，则返回	
+		$params['PostID'] = $_SESSION['PostID'];
+	}
+	$_SESSION['PostID'] = $params['PostID'];	//将当前浏览的帖子ID缓存于SESSION中
 	
 	global $post_list;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
@@ -128,7 +133,12 @@ function doPost($params) {
 
 function doReply($params) {
 	if (!isset($_SESSION['SysID'])) return;
-	if (!isset($params['PostID'])) return;
+	$params['PostID']=getNatureNumber($params['PostID'],-1);
+	if ($params['PostID'] == -1)	//PostID不合法
+	{
+		if (!isset($_SESSION['PostID'])) return;	//且SESSION中无缓存，则返回	
+		$params['PostID'] = $_SESSION['PostID'];	//否则就使用缓存
+	}
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	$followedPost=$newPost->getPost($params['PostID']);
