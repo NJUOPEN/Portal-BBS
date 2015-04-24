@@ -1,53 +1,60 @@
 
     <div class="post-field">
-    	<div class="post-title-field"><?php echo $post_list[0]['Title']; ?></div>
-    	<div class="post-time-field">由 <?php echo $post_list[0]['AuthorName'];?> 发布于 <?php echo $post_list[0]['Time'];?></div>
-        <ul>
-			<li class="post-first-field">
-			<?php echo $post_list[0]['PostAdd']; ?>
-			</li>
-        	<?php for($i=1;$i<count($post_list);$i++)
-        	{
-        	?>
-            <li class="post-reply-field">
-                <span><?php echo $i; ?>楼</span>
-                <span><?php echo $post_list[$i]['AuthorName'];?> <?php echo $post_list[$i]['Time'];?></span>
-                <br />
-                <?php echo $post_list[$i]['PostAdd']; ?>  
-            </li>
-            <?php
-            }
-            ?>
-        </ul>
-        <ul>
-            
-            <?php
-				for ($i=0;$i<count($page_link);$i++)
-				{
-			?>			
-            <li class="post-page"><a href="<?php echo $page_link[$i][1];?>"><?php echo $page_link[$i][0];?></a></li>
-            <?php
-				}
-			?>
-        </ul>
-<?php 
-	if (isset($_SESSION['SysID'])){
-?>
-        <form class="reply-field" action="?" method="post">
-			<div class="reply-prompt-field">回复贴子</div>
-            <textarea class="reply-input-field" id="editor_1" name="content"></textarea>
-            <input id="content_1" type="hidden" value="" />
-            <input id="action" type="hidden" name="action" value="doReply" />
+      <div class="post-title-field">
+        <?php echo $post_list[0]['Title']; ?>
+      </div>
+      <div class="post-time-field">
+        由 <?php echo $post_list[0]['AuthorName'];?> 发布于 <?php echo $post_list[0]['Time'];?>
+      </div>
+      <ul>
+        <li class="post-first-field">
+          <?php echo $post_list[0]['PostAdd']; ?>
+          <?php $floor = $_SESSION['PostOffset'] + 1; ?>
+        </li>
+        <?php
+        for($i=1;$i<count($post_list);$i++) {
+        ?>
+          <li class="post-reply-field">
+              <span><?php echo $floor++; ?>楼</span>
+              <span><?php echo $post_list[$i]['AuthorName'];?> <?php echo $post_list[$i]['Time'];?></span>
+              <br />
+              <?php echo $post_list[$i]['PostAdd']; ?>
+          </li>
+        <?php
+        }
+        ?>
+      </ul>
+      <ul>
+        <?php
+        for ($i=0;$i<count($page_link);$i++) {
+        ?>
+          <li class="post-page">
+            <a href="<?php echo $page_link[$i][1];?>">
+              <?php echo $page_link[$i][0];?>
+            </a>
+          </li>
+        <?php
+        }
+        ?>
+      </ul>
 
-            <button class="reply-submit-field" type="submit" onclick='return save();'>
-                提交
-            </button>
-        </form>
+<?php
+if (isset($_SESSION['SysID'])){
+?>
+      <form class="reply-field" action="?" method="post">
+        <div class="reply-prompt-field">回复贴子</div>
+          <textarea class="reply-input-field" id="editor_1" name="content"></textarea>
+          <input id="content_1" type="hidden" value="" />
+          <input id="action" type="hidden" name="action" value="doReply" />
+          <button class="reply-submit-field" type="submit" onclick='return save();'>
+              提交
+          </button>
+      </form>
 <?php
 } else {
 ?>
-		<br />
-		<p>请登录后发贴</p>
+      <br />
+      <p>请登录后发贴</p>
 <?php
 }
 ?>
