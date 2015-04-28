@@ -22,7 +22,7 @@
 /*以下是帖子列表部分*/
 
 .postList-field {
-    height:900px;
+    height:920px;
     max-width:900px;
     background-color:rgb(202, 171, 171);
     margin-top:10px;
@@ -79,22 +79,17 @@
 
 .turn-page {
     width:880px;
-    height:30px;
-    /*background-color:yellow;*/
     position:relative;
-    margin-top:20px;
     left:10px;
-
+	height:40px;
 }
 
 .page {
+	height:20px;
     float:left;
     text-align:center;
     font-size:20px;
     position:relative;
-    top:-14px;
-    
-
     margin:10px;
     
 }
@@ -149,7 +144,7 @@
 
 .login-link-info-field {
     width:420px;
-    height:900px;
+    height:920px;
     background-color:rgb(0, 148, 255);
     margin-top:10px;
     float:right;
