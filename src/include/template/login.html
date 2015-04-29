@@ -44,6 +44,12 @@ if (!isset($_SESSION["SysID"])) {
 <?php
 }
 ?>
+        <!-- 登陆失败的部分 -->
+		<div id="login-failed">
+		    <span><?php echo $sysMsg['result'];?></span>
+			<a><span><?php echo $sysMsg['help'];?></span></a>
+		</div>
+		
 	    <a href="http://njuopen.org" class="chain-1" target="_blank" >南京大学OPEN主页</a>
 	    <a href="" class="chain-2" target="_blank"><span class="heimu" title="你知道的太多了">这是第二条链接</span></a>
 

@@ -18,7 +18,8 @@ function login($params) {
     if ( !empty($user_info) && $user_info['Name'] == $username && $user_info['Code'] == $password) { //登录成功
     $_SESSION['Name']  = $user_info['Name'];
     $_SESSION['SysID'] = $user_info['SysID'];
-    echo 'Login success<br />';
+    //echo 'Login success<br />';
+    setSysMsg('result','您已成功登录！');
     // 记录头像路径
     if (file_exists(BBS_ROOT.'/userfile/'.$user_info['Picture']))
     {
@@ -31,7 +32,9 @@ function login($params) {
 
     //exit;
     } else {
-        echo("Login failed<br />");
+        //cho("Login failed<br />");
+        setSysMsg('result','登录失败！');
+        setSysMsg('help','请重新登录');
     }
     loadUI('general');
 	if (isset($_SESSION['SysID'])) loadUI('editor');
@@ -43,7 +46,8 @@ function login($params) {
 function logout() {
     unset($_SESSION['SysID']);
     unset($_SESSION['Name']);
-    echo "Log out success<br />";
+    //echo "Log out success<br />";
+    setSysMsg('result','您已成功登出！');
     loadUI('general');
 	if (isset($_SESSION['SysID'])) loadUI('editor');
 }

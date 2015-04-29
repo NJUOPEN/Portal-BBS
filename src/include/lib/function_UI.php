@@ -38,7 +38,14 @@ function loadUI($param) //加载特定的CSS/JS
 			
 }
 
+function setSysMsg($item,$value) //向用户反馈系统提示信息
+{
+	global $sysMsg;
+	$sysMsg[$item]=$value;
+}
+
 //初始化前端需要用到的CSS和JS列表
 $cssList=array();
 $jsList=array();
+$sysMsg=array();
 ?>

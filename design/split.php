@@ -84,6 +84,8 @@ $replace_args=array(
 	'帖子标题' => '<?php echo $post_list[0][\'Title\']; ?>',
 	'帖子作者' => '<?php echo $post_list[0][\'AuthorName\'];?>',
 	'帖子发布时间' => '<?php echo $post_list[0][\'Time\'];?>',
+	'<span>登陆失败</span>' => '<span><?php echo $sysMsg[\'result\'];?></span>',
+	'<span>重新登陆</span>' => '<span><?php echo $sysMsg[\'help\'];?></span>',
 	
 	'<link rel="stylesheet" href="" type="text/css">' => '',
 	'<script src="" type="text/javascript"></script>' => '',
