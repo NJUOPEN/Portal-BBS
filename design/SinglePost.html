@@ -114,9 +114,8 @@ if (!isset($_SESSION["SysID"])) {
             <input id="content_1" type="hidden" value="" />
             <input id="action" type="hidden" name="action" value="doReply" />
 
-            <button class="reply-submit-field" type="submit" onclick='return save();'>
-                提交
-            </button>
+            <input class="reply-submit-field" type="submit" value="发布" onclick="return save();" />
+            <input class="reply-submit-field" type="button" value="重填" onclick="clearPost();" />
         </form>
 <?php
 } else {

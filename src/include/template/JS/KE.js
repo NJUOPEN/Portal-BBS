@@ -165,3 +165,9 @@
                 
 	            obj.value = str;
 		}
+		
+		function clearPost(){
+			var container=document.getElementById('title');
+			if (container)	container.value='';
+			if (editor)	editor.text('');
+		}

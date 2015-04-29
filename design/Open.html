@@ -110,6 +110,7 @@ if (isset($_SESSION['SysID'])){
                 <input id="action" type="hidden" name='action' value="doPost" />
                 <input id="section" type="hidden" name='section' value="<?php echo $_SESSION['SectionID'];?>" />
                 <input class="do-post-submit-button" type="submit" value="发布" onclick='return save();' />
+                <input class="do-post-submit-button" type="button" value="重填" onclick='clearPost();' />
             </form>
 <?php
 } else {
