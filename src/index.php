@@ -2,21 +2,13 @@
 /**
  *本文件为论坛前台操作的公共入口
  *运行时，依次进行以下操作：
- *	系统基本配置
- *	加载数据库/前端样式配置文件；
- *	分发请求；
- *	输出样式；
+ *  初始化操作
+ *  分发请求
+ *  输出结果
 **/
 
-session_start();	//开启会话控制
-error_reporting(7);	//设置错误提示等级
-
-//加载全局配制
-require_once('./config.php');
-
-//加载库函数
-require_once(BBS_ROOT.'/include/lib/function_base.php');
-
+//初始化操作
+require_once('./init.php');
 
 //进行请求分发(dispatch)
 require_once(BBS_ROOT.'/include/lib/dispatcher.php');

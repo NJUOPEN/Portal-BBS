@@ -5,17 +5,15 @@
  * 本PHP程序是演示程序，建议不要直接在实际项目中使用。
  * 如果您确定直接使用本程序，使用之前请仔细确认相关安全设置。
  *
+ * Modified by NJUOPEN for project "Portal-BBS"
  */
-
+require_once '../../../../../init.php';   //初始化操作
 require_once 'JSON.php';
 
-$php_path = dirname(__FILE__) . '/';
-$php_url = dirname($_SERVER['PHP_SELF']) . '/';
-
 //文件保存目录路径
-$save_path = $php_path . '../attached/';
+$save_path = BBS_USERFILE;
 //文件保存目录URL
-$save_url = $php_url . '../attached/';
+$save_url = BBS_WEB_USERFILE;
 //定义允许上传的文件扩展名
 $ext_arr = array(
 	'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp'),
@@ -88,6 +86,7 @@ if (empty($_FILES) === false) {
 		alert("上传文件大小超过限制。");
 	}
 	//检查目录名
+	//注意：此处“目录名”仅作为分类用，并不建立对应的子目录
 	$dir_name = empty($_GET['dir']) ? 'image' : trim($_GET['dir']);
 	if (empty($ext_arr[$dir_name])) {
 		alert("目录名不正确。");
@@ -101,7 +100,8 @@ if (empty($_FILES) === false) {
 	if (in_array($file_ext, $ext_arr[$dir_name]) === false) {
 		alert("上传文件扩展名是不允许的扩展名。\n只允许" . implode(",", $ext_arr[$dir_name]) . "格式。");
 	}
-	//创建文件夹
+	/*
+	//创建文件夹	
 	if ($dir_name !== '') {
 		$save_path .= $dir_name . "/";
 		$save_url .= $dir_name . "/";
@@ -123,6 +123,11 @@ if (empty($_FILES) === false) {
 		alert("上传文件失败。");
 	}
 	@chmod($file_path, 0644);
+	*/
+	require_once(BBS_ROOT.'/include/module/file.php');
+	$_FILES['file']=$_FILES['imgFile'];
+	$new_file_name=upload_file();
+	if ($new_file_name==null) exit;
 	$file_url = $save_url . $new_file_name;
 
 	header('Content-type: text/html; charset=UTF-8');
