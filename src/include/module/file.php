@@ -49,7 +49,7 @@ function remove_file($file_id)
 }
 
 
-function upload_file() {	
+function upload_file() {
 	if (!isset($_SESSION['SysID'])) return;
 	if (empty($_FILES)) return;
 	$userID=$_SESSION['SysID'];
@@ -86,19 +86,19 @@ function save_avatar()
 	if (!isset($_SESSION['SysID'])) return;
 	if (empty($_FILES)) return;
 	$userID=$_SESSION['SysID'];
-	$source=$_FILES['imgUP']['tmp_name'];    
+	$source=$_FILES['imgUP']['tmp_name'];
     $content = file_get_contents($source);
     $file_id=save_file($content);
     unlink($source);
     if ($file_id == null) return;
-    
+
     require_once(BBS_ROOT.'/include/module/SQL.php');
     $user = new SQL_User;
     $user->resetUserPicture($userID,$file_id);
-    
+
     //更新$_SESSION
     $old_avatar = $_SESSION['avatar'];
-    $_SESSION['avatar'] = BBS_USERFILE.$all_info['Picture'];
+    $_SESSION['avatar'] = BBS_WEB_USERFILE.$file_id;
     //删除旧头像
     $old_filename = basename($old_avatar);
     if ($old_filename != 'default-avatar')
