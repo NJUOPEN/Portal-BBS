@@ -134,9 +134,9 @@ if (empty($_FILES) === false) {
 	
     header('Content-type: text/html; charset=UTF-8');
     $json = new Services_JSON();
-	if ($new_file_name==null)
-	{
-        //echo $json->encode(array('error' => 1, 'message' => '保存文件时出错'));
+    if ($new_file_name==null)
+    {
+        echo $json->encode(array('error' => 1, 'message' => '保存文件时出错'));
         exit;
     }
 	$file_url = $save_url . $new_file_name;

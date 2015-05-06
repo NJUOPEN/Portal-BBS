@@ -4,13 +4,14 @@
 //需要变量：存放文件内容的变量
 function save_file(&$file_content)
 {
-	$file_id=md5(time());//生成文件的md5
+    srand(time());
+    $file_id=md5(time()+rand());//生成文件的md5
     //检验$file_id是否重复，若重复则重新生成，最多重新生成50次
     $count=0;
     while(file_exists(BBS_USERFILE.$file_id) && $count<50)
     {
         $count++;
-        $file_id=md5(time());
+        $file_id=md5(time()+rand());
     }
     if (file_exists(BBS_USERFILE.$file_id)) return null;
 
