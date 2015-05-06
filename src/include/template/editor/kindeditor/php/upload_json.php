@@ -7,6 +7,10 @@
  *
  * Modified by NJUOPEN for project "Portal-BBS"
  */
+ 
+if(isset($_GET['optSession'])){ //用SWFUpload所提交的session替换系统根据COOKIE所得到的session
+    session_id($_GET['optSession']);
+}
 require_once '../../../../../init.php';   //初始化操作
 require_once 'JSON.php';
 
@@ -127,11 +131,15 @@ if (empty($_FILES) === false) {
 	require_once(BBS_ROOT.'/include/module/file.php');
 	$_FILES['file']=$_FILES['imgFile'];
 	$new_file_name=upload_file();
-	if ($new_file_name==null) exit;
+	
+    header('Content-type: text/html; charset=UTF-8');
+    $json = new Services_JSON();
+	if ($new_file_name==null)
+	{
+        //echo $json->encode(array('error' => 1, 'message' => '保存文件时出错'));
+        exit;
+    }
 	$file_url = $save_url . $new_file_name;
-
-	header('Content-type: text/html; charset=UTF-8');
-	$json = new Services_JSON();
 	echo $json->encode(array('error' => 0, 'url' => $file_url));
 	exit;
 }
