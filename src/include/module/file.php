@@ -1,36 +1,29 @@
 <?php
 
-define('FILE_TYPE_AVATAR', 1);       // 头像
-define('FILE_TYPE_ATTACHMENT', 0);   // 附件
-
-
 //功能：保存文件
-//需要变量：id（用户的或帖子的）、文件名、文件类型、文件内容
-//$file_type=1, 头像; $file_type=2, 附件
-function save_file($id, $file_name, $file_type, &$file_content)
+//需要变量：存放文件内容的变量
+function save_file(&$file_content)
 {
-    require_once(BBS_ROOT.'/include/module/SQL.php');
-
-	$file_id=md5(time());//生成文件的md5
-	//数据库检验$file_id是否重复，若重复则重新生成，最多重新生成50次
-	//TODO: 数据库写入($id,$file_id,$file_name);
-	if($file_type==1){
-        $user = new SQL_User;
-		$ret = $user->resetUserPicture($id,$file_id);
-		if($ret == false)
-			return false;//保存失败
-	}
+    srand(time());
+    $file_id=md5(time()+rand());//生成文件的md5
+    //检验$file_id是否重复，若重复则重新生成，最多重新生成50次
+    $count=0;
+    while(file_exists(BBS_USERFILE.$file_id) && $count<50)
+    {
+        $count++;
+        $file_id=md5(time()+rand());
+    }
+    if (file_exists(BBS_USERFILE.$file_id)) return null;
 
 	$fp=fopen(BBS_USERFILE.$file_id,"wb");
 	fwrite($fp, $file_content);
 	fclose($fp);
-	return true;//保存成功
+	return $file_id;//保存成功
 }
 
 
 //功能：读取文件
-//需要变量：文件md5、文件内容
-//文件内容保存在$file_content中
+//需要变量：文件id、用于存放文件内容的变量
 function load_file($file_id,&$file_content)
 {
 	if(file_exists(BBS_USERFILE.$file_id)==false)
@@ -45,7 +38,7 @@ function load_file($file_id,&$file_content)
 
 
 //功能：删除文件
-//需要变量：文件md5
+//需要变量：文件id
 function remove_file($file_id)
 {
 	if(file_exists(BBS_USERFILE.$file_id)==false)
@@ -57,7 +50,7 @@ function remove_file($file_id)
 }
 
 
-function upload_file() {	
+function upload_file() {
 	if (!isset($_SESSION['SysID'])) return;
 	if (empty($_FILES)) return;
 	$userID=$_SESSION['SysID'];
@@ -70,21 +63,15 @@ function upload_file() {
 	$filesize = $_FILES["file"]["size"] / 1024;
 	$fileaddr = $_FILES["file"]["tmp_name"];
 
-	/* debug
-	echo $filetype."<br />";
-	echo $fileaddr."<br />";
-
-	echo "Is uploaded file: ".is_uploaded_file($fileaddr)."<br />";
-	 */
 
 	//TODO:确定一个保存路径,以及和数据库的配合
 	//move_uploaded_file($fileaddr, BBS_ROOT."/".$filename);
 	$fp=fopen($fileaddr,"rb");
 	$file_content=fread($fp,filesize($fileaddr));
 	fclose($fp);
+	$file_id=save_file($file_content);
 	unlink($fileaddr);
-	$a=save_file($userID,$filename,FILE_TYPE_ATTACHMENT,$file_content);
-	return $a;
+	return $file_id;
     }
 }
 
@@ -100,16 +87,19 @@ function save_avatar()
 	if (!isset($_SESSION['SysID'])) return;
 	if (empty($_FILES)) return;
 	$userID=$_SESSION['SysID'];
-	$filename=$_FILES['imgUP']['name'];
 	$source=$_FILES['imgUP']['tmp_name'];
-    require_once(BBS_ROOT.'/include/module/SQL.php');
     $content = file_get_contents($source);
-    save_file($userID, $filename, FILE_TYPE_AVATAR, $content);
-    //更新$_SESSION
+    $file_id=save_file($content);
+    unlink($source);
+    if ($file_id == null) return;
+
+    require_once(BBS_ROOT.'/include/module/SQL.php');
     $user = new SQL_User;
-    $all_info = $user->getInfOfUser($userID);
+    $user->resetUserPicture($userID,$file_id);
+
+    //更新$_SESSION
     $old_avatar = $_SESSION['avatar'];
-    $_SESSION['avatar'] = BBS_USERFILE.$all_info['Picture'];
+    $_SESSION['avatar'] = BBS_WEB_USERFILE.$file_id;
     //删除旧头像
     $old_filename = basename($old_avatar);
     if ($old_filename != 'default-avatar')

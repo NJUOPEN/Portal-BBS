@@ -250,7 +250,7 @@ KindEditor.plugin('multiimage', function(K) {
 			fileIconUrl : imgPath + 'image.png',
 			uploadDesc : uploadDesc,
 			startButtonValue : lang.startUpload,
-			uploadUrl : K.addParam(uploadJson, 'dir=image'),
+			uploadUrl : K.addParam(uploadJson, 'dir=image&optSession='+window.SWFUpload.getCurrentSession()),
 			flashUrl : imgPath + 'swfupload.swf',
 			filePostName : filePostName,
 			fileTypes : '*.jpg;*.jpeg;*.gif;*.png;*.bmp',
@@ -406,6 +406,22 @@ SWFUpload.completeURL = function(url) {
 
 };
 
+SWFUpload.getCurrentSession = function () {
+    if (document.cookie.length>0)
+    {
+        var sessionName='PHPSESSID';
+        var p_start=document.cookie.indexOf(sessionName)
+        if (p_start!=-1)
+        { 
+            p_start = p_start + sessionName.length+1 
+            var p_end=document.cookie.indexOf(";",p_start)
+            if (p_end==-1) p_end=document.cookie.length;
+            return unescape(document.cookie.substring(p_start,p_end));
+        } 
+    }
+    return '';
+}
+
 
 /* ******************** */
 /* Instance Members  */
@@ -489,7 +505,7 @@ SWFUpload.prototype.initSettings = function () {
 		this.settings.upload_url = SWFUpload.completeURL(this.settings.upload_url);
 		this.settings.button_image_url = SWFUpload.completeURL(this.settings.button_image_url);
 	}
-
+	
 	delete this.ensureDefault;
 };
 
