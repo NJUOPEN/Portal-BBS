@@ -4,7 +4,7 @@
 				editor = K.create('textarea[name="content"]', {
 				resizeType : 0,
 				width:750,
-				height:300,
+				height:200,
 				allowPreviewEmoticons : false,
 				allowImageUpload : false,
 				items : [
