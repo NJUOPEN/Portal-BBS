@@ -43,19 +43,19 @@ case 'register2' :
     require_once(BBS_ROOT.'/include/module/log.php');
     register($params);
     require_once(BBS_ROOT.'/include/module/post.php');
-    showPostList($params);
+    showPost($params);
     break;
 case 'login' :
     require_once(BBS_ROOT.'/include/module/log.php');
     login($params);
     require_once(BBS_ROOT.'/include/module/post.php');
-    showPostList($params);
+    showPost($params);
     break;
 case 'logout' :
     require_once(BBS_ROOT.'/include/module/log.php');
     logout();
     require_once(BBS_ROOT.'/include/module/post.php');
-    showPostList($params);
+    showPost($params);
     break;
 case 'change_info':
     require_once(BBS_ROOT.'/include/module/info.php');

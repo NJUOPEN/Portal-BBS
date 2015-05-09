@@ -3,7 +3,7 @@
  * Project: NJUOPEN/Portal-BBS
  * Contributor:WHZ,WTZ
  * Filename: post.php
- */
+**/
 
 function EscPost($content) {
 	if (is_string($content)) {
@@ -27,6 +27,8 @@ function showPostList($params)
 	global $post_list;
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$PostList = new SQL_Post;
+	
+	if (isset($_SESSION['PostID'])) unset($_SESSION['PostID']);
 
 	$listsize=getNatureNumber($params['ListSize'],10);	//ListSize是贴子列表的分页长度
 
@@ -126,6 +128,19 @@ function showPostView($params)
 			$page_link[$i]=array($temp,'?action=postView&PostID='.$params['PostID'].'&page='.$temp);
 	}
 }
+
+function showPost($params) {	//根据Session中缓存PostID决定访客所处位置（帖子列表/帖子内容）
+	if (isset($_SESSION['PostID']))
+	{
+		showPostView($params);
+		//FIXME:此处不应直接修改$action
+		global $action;	
+		$action='postView';	//改写$action以便index.php能够输出相应页面
+	}
+	else
+		showPostList($params);
+}
+
 // 发布帖子
 function doPost($params) {
 	if (!isset($_SESSION['SysID'])) return;
