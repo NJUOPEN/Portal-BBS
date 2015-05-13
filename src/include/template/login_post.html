@@ -47,5 +47,9 @@ if (!isset($_SESSION["SysID"])) {
 <?php
 }
 ?>
+        <div id="login-failed">
+            <span><?php echo $sysMsg['result'];?></span>
+            <a><span><?php echo $sysMsg['help'];?></span></a>
+        </div>
     </div>
 

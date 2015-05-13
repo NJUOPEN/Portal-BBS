@@ -97,3 +97,9 @@
 	top:-70px;
 	left:200px;
 }
+
+#info-sysMsg {
+    position:relative;
+    top:-50px;
+    left:20px;
+}

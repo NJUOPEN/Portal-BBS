@@ -86,6 +86,7 @@ $replace_args=array(
 	'帖子发布时间' => '<?php echo $post_list[0][\'Time\'];?>',
 	'<span>登陆失败</span>' => '<span><?php echo $sysMsg[\'result\'];?></span>',
 	'<span>重新登陆</span>' => '<span><?php echo $sysMsg[\'help\'];?></span>',
+	'<div id="info-sysMsg"></div>' => '<div id="info-sysMsg"><?php echo $sysMsg[\'result\'];?></div>',
 	
 	'<link rel="stylesheet" href="" type="text/css">' => '',
 	'<script src="" type="text/javascript"></script>' => '',

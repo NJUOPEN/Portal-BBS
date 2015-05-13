@@ -70,12 +70,16 @@ function register($params) {
         $newUser = new SQL_User;
         if($newUser->getInfOfUserByName($name)!=NULL)	//目前限定用户名不能重复
         {
-			echo 'User exists.';
-			return;
+            setSysMsg('result','注册失败，该用户已经存在');
+            //echo 'User exists.';
+            return;
         }
         $newUser->addUser($name, $pw, 'default-avatar', 0, 0, $email, 0, 18);
-        echo "User Registered.<br />";
+        setSysMsg('result','注册成功！请使用新用户名和密码登录');        
+        //echo "User Registered.<br />";
     } else {
+        setSysMsg('result','注册失败，密码和验证密码不匹配');
+        //
         echo "password not match<br/>";
     }
 }

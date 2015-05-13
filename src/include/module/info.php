@@ -33,26 +33,30 @@ if (isset($params['INFO_ACTION']))
 	
 	if ($params['curPW'] == '')
 	{
-		echo 'Please input original password!<br />';
+        setSysMsg('result','请输入原密码！');
+		//echo 'Please input original password!<br />';
 		break;
 	}
 	
 	if ($curPW != $usrInfoList['Code'])
 	{
-	    echo "wrong password<br />";
+        setSysMsg('result','原密码错误！');
+	    //echo "wrong password<br />";
 	    break;
 	}
 
 	if ($newPW != $checkPW)
 	{
-	    echo "not consistent<br />";
+        setSysMsg('result','新密码不一致！');
+	    //echo "not consistent<br />";
 	    break;
 	}
 
 	if ($newPW != null)
 	{
 		$usrInfo->resetUserCode($usrID, sha1($newPW));
-		echo "password changed<br />";
+        setSysMsg('result','密码已经更改');
+		//echo "password changed<br />";
 	}
 
 	if ($newEmail != null && $newEmail!=$usrInfoList['Email'])
@@ -61,7 +65,8 @@ if (isset($params['INFO_ACTION']))
 		if (preg_match($regex, $newEmail))
 		{
 			$usrInfo->resetUserEmail($usrID, $newEmail);
-			echo "email changed<br />";
+            setSysMsg('result','邮箱已经更改');
+			//echo "email changed<br />";
 		}
 		$usrInfoList['Email'] = $newEmail;
 	}
