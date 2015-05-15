@@ -36,8 +36,6 @@ function login($params) {
         setSysMsg('result','登录失败！');
         setSysMsg('help','请重新登录');
     }
-    loadUI('general');
-	if (isset($_SESSION['SysID'])) loadUI('editor');
 }
 
 /**
@@ -48,8 +46,6 @@ function logout() {
     unset($_SESSION['Name']);
     //echo "Log out success<br />";
     setSysMsg('result','您已成功登出！');
-    loadUI('general');
-	if (isset($_SESSION['SysID'])) loadUI('editor');
 }
 
 
@@ -58,7 +54,6 @@ function register_show_form() {
 }
 
 function register($params) {
-	loadUI('general');
     $email = $params['email'];
     $name = $params['username'];
     $pw = $params['password'];
