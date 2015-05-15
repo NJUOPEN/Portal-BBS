@@ -10,14 +10,19 @@
 //初始化操作
 require_once('./init.php');
 
+$outputView='';
+
 //进行请求分发(dispatch)
 require_once(BBS_ROOT.'/include/lib/dispatcher.php');
+
+//若分发过程中未指定具体的outputView，则将action作为outputView
+if ($outputView=='') $outputView=$action;
 
 //输出
 header("Content-type: text/html; charset=utf-8");
 
 require_once(BBS_TEMPLATE.'/html_head.html');//显示通用顶部
-switch($action)//以下内容为可变部分，根据前端的ACTION进行选择性加载
+switch($outputView)//以下内容为可变部分，根据前端的ACTION进行选择性加载
 {		
 	case 'postView':
 	case 'doReply' :

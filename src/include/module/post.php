@@ -132,10 +132,9 @@ function showPostView($params)
 function showPost($params) {	//根据Session中缓存PostID决定访客所处位置（帖子列表/帖子内容）
 	if (isset($_SESSION['PostID']))
 	{
-		showPostView($params);
-		//FIXME:此处不应直接修改$action
-		global $action;	
-		$action='postView';	//改写$action以便index.php能够输出相应页面
+		showPostView($params);		
+		global $outputView;	
+		$outputView='postView';
 	}
 	else
 		showPostList($params);
