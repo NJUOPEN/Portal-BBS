@@ -39,20 +39,34 @@
 
 }
 
+.post-section-name {
+    margin:0px 0px 20px 10px;
+}
+
+.post-author-avatar {
+    float:left;
+    max-width:100px;
+    max-height:100px;
+    margin:0px 20px 10px 20px;
+}
+
 .post-title-field {
-	margin:5px 0px 5px 2px;
+	margin:0px 0px 0px 2px;
 	font-weight:bold;
 	font-size:larger;
 }
 
-.post-time-field {
-	margin:5px 0px 5px 10px;
+.post-detail-field {
+        height:60px;
+        line-height:60px;
+        color:#AAAAAA;
 }
 
 .post-first-field {
+    clear:both;
     width:880px;
     min-height:200px;
-    margin:10px;
+    margin:10px 10px;
     background-color:white;
 }
 
@@ -61,6 +75,25 @@
     min-height:130px;
     margin:10px;
     background-color:white;
+}
+
+.post-reply-field-order {
+    text-align:right;
+}
+
+.post-reply-field-left {
+    float:left;
+}
+
+.post-reply-field-author-avatar {
+    max-width:100px;
+    max-height:100px;
+    margin:0px 10px;
+}
+
+.post-reply-field-detail {
+    color:#AAAAAA;
+    margin:0px 0px 20px 20px;
 }
 
 .post-page {

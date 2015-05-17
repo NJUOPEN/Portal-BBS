@@ -1,7 +1,11 @@
 
     <div class="post-field">
-    	<div class="post-title-field"><?php echo $post_list[0]['Title']; ?></div>
-    	<div class="post-time-field">由 <?php echo $post_list[0]['AuthorName'];?> 发布于 <?php echo $post_list[0]['Time'];?></div>
+        <div class="post-section-name">OPEN论坛 > 板块<?php echo $post_list[0]['SectionID']; ?></div>
+        <div class="post-info">
+            <img class="post-author-avatar" src="<?php echo $post_list[0]['AuthorAvatar']; ?>" />
+            <div class="post-title-field"><?php echo $post_list[0]['Title']; ?></div>
+            <div class="post-detail-field"><?php echo $post_list[0]['AuthorName'];?> 发布于 <?php echo $post_list[0]['Time'];?> , <?php echo count($post_list)-1;?> 个回复</div>
+        </div>
         <ul>
 			<li class="post-first-field">
 			<?php echo $post_list[0]['PostAdd']; ?>
@@ -10,10 +14,16 @@
         	{
         	?>
             <li class="post-reply-field">
-                <span><?php echo $i; ?>楼</span>
-                <span><?php echo $post_list[$i]['AuthorName'];?> <?php echo $post_list[$i]['Time'];?></span>
-                <br />
-                <?php echo $post_list[$i]['PostAdd']; ?>  
+                <div class="post-reply-field-order"><?php echo $i; ?>楼</div>
+                <div class="post-reply-field-left">
+                    <img class="post-reply-field-author-avatar" src="<?php echo $post_list[$i]['AuthorAvatar']; ?>" />
+                </div>
+                <div class="post-reply-field-right">
+                    <div class="post-reply-field-detail">
+                        <?php echo $post_list[$i]['AuthorName'];?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post_list[$i]['Time'];?>
+                    </div>
+                     <?php echo $post_list[$i]['PostAdd']; ?>
+                </div>
             </li>
             <?php
             }
