@@ -79,11 +79,32 @@
     left:10px;
     top:10px;
     font-size:15px;
-    line-height:45px;
+    clear:both;
 }
 
+.postList-post-left {
+    float:left;
+    width:700px;
+}
 
+.postList-post-right {
+    width:50px;
+    float:right;
+    text-align:center;
+    margin:0px 20px;
+}
 
+.postList-post-author-avatar {
+    width:30px;
+    height:30px;
+    float:left;
+    margin:5px 20px 0px 5px
+}
+
+.postList-post-detail {
+    margin:3px 0px 5px 20px;
+    color:#AAAAAA;
+}
 
 
 .turn-page {
