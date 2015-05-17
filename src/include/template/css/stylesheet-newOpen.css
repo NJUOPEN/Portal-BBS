@@ -88,10 +88,10 @@
 }
 
 .postList-post-right {
-    width:50px;
+    width:100px;
     float:right;
     text-align:center;
-    margin:0px 20px;
+    margin:0px 10px;
 }
 
 .postList-post-author-avatar {
