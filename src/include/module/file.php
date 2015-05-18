@@ -99,6 +99,7 @@ function save_avatar()
 {
 	if (!isset($_SESSION['SysID'])) return;
 	if (empty($_FILES)) return;
+	if ($_FILES['imgUP']['tmp_name']=='') return;
 	$userID=$_SESSION['SysID'];
 	$filename=$_FILES['imgUP']['name'];
 	$source=$_FILES['imgUP']['tmp_name'];

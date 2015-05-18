@@ -48,7 +48,7 @@
                 <div  class="pic-input-frame">
                     <img src="" id="img2show" name="img2show" height="400px"/>
                 </div>
-                <form action='' method='POST' enctype="multipart/form-data" >
+                <form action='' method='POST' enctype="multipart/form-data" onsubmit="return checkImage();" >
                     <input type="file" name="imgUP" id="imgUP" />
                     <input type="hidden" name="action" value="change_avatar" />
                     <input type="submit" value='提交' id="pic-submit" />
@@ -92,7 +92,13 @@
 		return url ;
 	}
 
-	
+        function checkImage(){
+            var file=document.getElementById('imgUP');
+            if (file.value=='')
+                return false;
+            else
+                return true;
+        }
 	</script>
     </div>
 </div>
