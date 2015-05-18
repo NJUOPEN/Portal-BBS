@@ -57,9 +57,11 @@
         </div>
 <!-- info-field -->
         <div class="pic-info-field">
-            <div class="pic-input-field">
+            <div>上传新头像</div>
+            <hr width="90%" align="left" />
+            <div class="pic-input-field">                
                 <div  class="pic-input-frame">
-                    <img src="" id="img2show" name="img2show" height="400px"/>
+                    <img src="" id="img2show" name="img2show" />
                 </div>
                 <form action='' method='POST' enctype="multipart/form-data" >
                     <input type="file" name="imgUP" id="imgUP" />
@@ -70,9 +72,9 @@
 
             <div >
                 <img src="<?=$_SESSION['avatar'] ?>" class="used-pic-1"/>
-                <img class="used-pic-2"/>
+                <!--<img class="used-pic-2"/>-->
                 <span class="used-pic-text">
-                    曾用过的图片
+                    当前头像
                 </span>
             </div>
 

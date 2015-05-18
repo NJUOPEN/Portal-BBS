@@ -8,7 +8,7 @@
 .info-body-field {
 	width:1000px;
 	margin:0px auto;
-    height:550px;
+    height:570px;
     background-color:white;
     position:relative;
     top:80px;
@@ -38,7 +38,7 @@
 
 .pic-input-field {
     float:left;
-    width:300px;
+    width:290px;
     height:520px;
     margin:10px;
 
@@ -46,16 +46,20 @@
 
 
 .pic-input-frame {
-    width:300px;
-    height:400px;
+    width:270px;
+    height:360px;
     border: 2px ridge;
     overflow: hidden;
 }
 
+#img2show {
+    max-width:270px;
+    max-height:360px;
+}
 
 .used-pic-1 {
-    height:120px;
-    width:90px;
+    max-width:200px;
+    max-height:200px;
     border:1px ridge;
     margin:10px;
 }
@@ -78,7 +82,7 @@
 
 
 .info-form-list {
-    margin:30px;
+    margin:30px 0px 30px 50px;
 }
 
 .info-form-list-input {
