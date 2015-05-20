@@ -61,11 +61,11 @@
                         <img class="postList-post-author-avatar" src="<?php echo $post_list[$i-1]['AuthorAvatar'];?>" />
                         <div class="postList-post-title">
                             <a target="_blank" href="<?php echo '?action=postView&PostID='.$post_list[$i-1][PostID];?>">
-                                第 <?php echo $i;?> 个帖子: <?php echo $post_list[$i-1]['Title'];?>
+                                第 1 个帖子 <?php echo $post_list[$i-1]['Title'];?>
                             </a>
                         </div>
                         <div class="postList-post-detail">
-                            <?php echo $post_list[$i-1]['AuthorName'];?> 发布于 <?php echo $post_list[$i-1]['Time'];?>
+                            <b><?php echo $post_list[$i-1]['AuthorName'];?></b> 发布于 <?php echo $post_list[$i-1]['Time'];?>
                         </div>
                     </div>
                     <div class="postList-post-right">

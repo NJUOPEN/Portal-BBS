@@ -101,6 +101,10 @@
     margin:5px 20px 0px 5px
 }
 
+.postList-post-title {
+    font-size:large;
+}
+
 .postList-post-detail {
     margin:3px 0px 5px 20px;
     color:#AAAAAA;
