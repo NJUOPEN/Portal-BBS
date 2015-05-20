@@ -55,5 +55,41 @@ function getNatureNumber(&$var,$default)
 		return $default;	
 }
 
+/**
+ * Returns XSS-safe equivalent of string
+ * @param mixed $data
+ * From phpsec project, by the OWASP foundation
+ */
+function xss_safe($data)
+{
+    if (func_num_args()>1)
+    {
+        $args=func_get_args();
+        $out=array();
+        foreach ($args as $arg)
+            $out[]=xss_safe ($arg);
+        return implode("",$out);
+    }
+    if (defined("ENT_HTML401"))
+        $t=htmlspecialchars($data,ENT_QUOTES | ENT_HTML401,"UTF-8");
+    else
+        $t=htmlspecialchars($data,ENT_QUOTES,"UTF-8");
+
+    return $t;
+}
+
+/**   
+ * PHP去掉特定的html标签
+ * @param string $str
+ * @param array $tagsArr
+ */  
+function strip_tag_array($str,$tagsArr) {   
+    foreach ($tagsArr as $tag)
+    {
+        $reg[]='/(<(?:\/'.$tag.'|'.$tag.')[^>]*>)/i';  
+    }
+    return preg_replace($reg,'',$str);
+}
+
 require_once(BBS_ROOT.'/include/lib/function_UI.php');
 ?>

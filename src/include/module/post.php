@@ -109,6 +109,10 @@ function showPostView($params)
 // 发布帖子
 function doPost($params) {
 	if (!isset($_SESSION['SysID'])) return;
+	$params['title']=xss_safe($params['title']);
+	$params['content']=strip_tag_array($params['content'],array('html','body','meta','head','script','iframe','frameset','frame','form'));
+	if (empty($params['title']) || empty($params['content'])) return;
+	
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	/*
@@ -128,6 +132,9 @@ function doReply($params) {
 		if (!isset($_SESSION['PostID'])) return;	//且SESSION中无缓存，则返回	
 		$params['PostID'] = $_SESSION['PostID'];	//否则就使用缓存
 	}
+	$params['content']=strip_tag_array($params['content'],array('html','body','meta','head','script','iframe','frameset','frame','form'));
+	if (empty($params['title']) || empty($params['content'])) return;
+	
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	$time=gmdate(SQL_Post::SQL_DATE_FORMAT); //同上
