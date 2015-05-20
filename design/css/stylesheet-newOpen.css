@@ -72,9 +72,9 @@
 
 .postList-post {
     width:880px;
-    height:50px;
+    height:48px;
     background-color:white;
-
+    border-bottom:solid thin #DDDDDD;
     position:relative;
     left:10px;
     top:10px;
@@ -83,8 +83,9 @@
 }
 
 .postList-post-left {
+    margin:5px 0px 0px 5px;
     float:left;
-    width:700px;
+    width:750px;
 }
 
 .postList-post-right {
@@ -92,6 +93,7 @@
     float:right;
     text-align:center;
     margin:0px 10px;
+    line-height:50px;
 }
 
 .postList-post-author-avatar {
@@ -103,10 +105,12 @@
 
 .postList-post-title {
     font-size:large;
+    height:20px;
+    overflow:hidden;
 }
 
 .postList-post-detail {
-    margin:3px 0px 5px 20px;
+    margin:2px 0px 0px 30px;
     color:#AAAAAA;
 }
 
