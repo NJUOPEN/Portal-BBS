@@ -28,7 +28,12 @@ if (isset($params['INFO_ACTION']))
     case 'change_all_info':
 	$newPW = $params['newPW'];
 	$checkPW = $params['checkPW'];
-	$newEmail = $params['newEmail'];
+        $newEmail = strip_tags(trim($params['newEmail']));
+        if (!preg_match('/^([a-zA-Z0-9_-])+@[a-zA-Z0-9_-]+(\.([a-zA-Z0-9_-]{2,3})){1,}$/iu',$newEmail))
+        {
+            echo 'Email invalid!<br />';
+            break;
+        }
 	$curPW = sha1($params['curPW']);
 	
 	if ($params['curPW'] == '')
