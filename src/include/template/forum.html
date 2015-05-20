@@ -69,7 +69,7 @@
 if (isset($_SESSION['SysID'])){
 ?>
             <form id="postForm" name="postForm" method="post" action="?">
-                <input class="do-post-name-input-field" name="title" id="title" value="" />
+                <input class="do-post-name-input-field" name="title" id="title" value="" maxlength="99" />
                 <textarea class="do-post-text-input-field" id="editor_1" name="content"></textarea>
                 <input id="content_1" type="hidden" value="" />
                 <input id="action" type="hidden" name='action' value="doPost" />
