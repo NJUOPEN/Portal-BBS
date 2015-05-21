@@ -168,7 +168,7 @@ function doReply($params) {
 		$params['PostID'] = $_SESSION['PostID'];	//否则就使用缓存
 	}
 	$params['content']=strip_tag_array($params['content'],array('html','body','meta','head','script','iframe','frameset','frame','form'));
-	if (empty($params['title']) || empty($params['content'])) return;
+	if (empty($params['content'])) return;
 	
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
