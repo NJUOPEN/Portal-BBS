@@ -43,8 +43,8 @@
                         <span>注：带*号的可不填</span>
                     </li>
                     <li class="info-form-list">
-			<input type="hidden" name="INFO_ACTION" value="change_info" />
-			<input type="hidden" name="action" value="information" />
+			<input type="hidden" name="INFO_ACTION" value="change_all_info" />
+			<input type="hidden" name="action" value="change_info" />
 			<input type="submit" value="提交" id="info-submit"/>
                     </li>
                 </ul>
@@ -63,7 +63,7 @@
                 <div  class="pic-input-frame">
                     <img src="" id="img2show" name="img2show" />
                 </div>
-                <form action='' method='POST' enctype="multipart/form-data" >
+                <form action='' method='POST' enctype="multipart/form-data" onsubmit="return checkImage();" >
                     <input type="file" name="imgUP" id="imgUP" />
                     <input type="hidden" name="action" value="change_avatar" />
                     <input type="submit" value='提交' id="pic-submit" />
@@ -107,7 +107,13 @@
 		return url ;
 	}
 
-	
+        function checkImage(){
+            var file=document.getElementById('imgUP');
+            if (file.value=='')
+                return false;
+            else
+                return true;
+        }
 	</script>
     </div>
 </div>

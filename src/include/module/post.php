@@ -144,6 +144,10 @@ function showPost($params) {	//根据Session中缓存PostID决定访客所处位
 function doPost($params) {
 	if (!isset($_SESSION['SysID'])) return;
 	if (!isset($_SESSION['SectionID'])) return;
+	$params['title']=substr(xss_safe($params['title']),0,100);
+	$params['content']=strip_tag_array($params['content'],array('html','body','meta','head','script','iframe','frameset','frame','form'));
+	if (empty($params['title']) || empty($params['content'])) return;
+	
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	/*
@@ -163,6 +167,9 @@ function doReply($params) {
 		if (!isset($_SESSION['PostID'])) return;	//且SESSION中无缓存，则返回
 		$params['PostID'] = $_SESSION['PostID'];	//否则就使用缓存
 	}
+	$params['content']=strip_tag_array($params['content'],array('html','body','meta','head','script','iframe','frameset','frame','form'));
+	if (empty($params['title']) || empty($params['content'])) return;
+	
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
 	$followedPost=$newPost->getPost($params['PostID']);

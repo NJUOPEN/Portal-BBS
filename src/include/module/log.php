@@ -54,8 +54,11 @@ function register_show_form() {
 }
 
 function register($params) {
-    $email = $params['email'];
-    $name = $params['username'];
+	loadUI('general');
+    $email = strip_tags(trim($params['email']));
+    if (!preg_match('/^([a-zA-Z0-9_-])+@[a-zA-Z0-9_-]+(\.([a-zA-Z0-9_-]{2,3})){1,}$/iu',$email)) return;
+    $name = strip_tags(trim($params['username']));
+    if (!preg_match('/^(?!_)(?!.*?_$)[a-zA-Z0-9_\x{4e00}-\x{9fa5}]+$/u',$name)) return;
     $pw = $params['password'];
     $repw = $params['repassword'];
     if ($email=='' || $name=='' || $pw=='' || $repw=='') return;
