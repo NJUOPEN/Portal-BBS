@@ -43,6 +43,10 @@
     margin:0px 0px 20px 10px;
 }
 
+.post-section-name a{
+    display:inline;
+}
+
 .post-author-avatar {
     float:left;
     max-width:100px;

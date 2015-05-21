@@ -17,7 +17,7 @@
 <div id="container">
 
     <div class="post-head">
-        <a href="./newOPEN.html" class="back-chain">返回首页</a>
+        <a href="./Open.html" class="back-chain">返回首页</a>
     </div>
 
 <!-- post-head -->
@@ -77,7 +77,7 @@ if (!isset($_SESSION["SysID"])) {
 
 <!-- post-login-info-field -->
     <div class="post-field">
-        <div class="post-section-name">OPEN论坛 > 板块<?php echo $post_list[0]['SectionID']; ?></div>
+        <div class="post-section-name"><a href="./Open.html">OPEN论坛</a> > <a href="?section=<?php echo $post_list[0]['SectionID']; ?>">板块<?php echo $post_list[0]['SectionID']; ?></a></div>
         <div class="post-info">
             <img class="post-author-avatar" src="<?php echo $post_list[0]['AuthorAvatar']; ?>" />
             <div class="post-title-field">帖子标题</div>

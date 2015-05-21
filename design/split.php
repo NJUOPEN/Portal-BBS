@@ -74,7 +74,7 @@ $replace_args=array(
 	'<form onsubmit="javascript:return false;"' => '<form ',
 	'<input class="login-button" type="image" src="./img/login.gif" onclick="login_then();" />' => '<input class="login-button" type="image" src="./img/login.gif" onclick="submit();" />',
 	'<input class="post-login-button" type="image" src="./img/login.gif" onclick="post_login_then();" />' => '<input class="post-login-button" type="image" src="./img/login.gif" onclick="submit();" />',
-	'./newOPEN.html' => '<?php echo BBS_WEB_ROOT; ?>',
+	'./Open.html' => '<?php echo BBS_WEB_ROOT; ?>',
 	'./information.html' => '<?php echo "?action=information"; ?>',
 	
 	'<span class="login-field-2-name">这里是用户名</span>' => '<span class="login-field-2-name"><?php echo $_SESSION["Name"]; ?></span>',
