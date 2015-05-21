@@ -56,6 +56,7 @@ function showPostList($params)
 
 		$tempUser = $userDB->getInfOfUser($post_list[$i]['IDofUsers']);
 		$post_list[$i]['AuthorName']=$tempUser['Name'];
+		$post_list[$i]['AuthorAvatar']=BBS_WEB_USERFILE.$tempUser['Picture'];
 	}
 
 	global $page_link;
@@ -115,6 +116,7 @@ function showPostView($params)
 
 		$tempUser = $userDB->getInfOfUser($post_list[$i]['IDofUsers']);
 		$post_list[$i]['AuthorName']=$tempUser['Name'];
+		$post_list[$i]['AuthorAvatar']=BBS_WEB_USERFILE.$tempUser['Picture'];
 	}
 
 	global $page_link;
