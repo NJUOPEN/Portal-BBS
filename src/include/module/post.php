@@ -111,7 +111,7 @@ function doPost($params) {
 	if (!isset($_SESSION['SysID'])) return;
 	$params['title']=substr(xss_safe($params['title']),0,100);
 	$params['content']=strip_tag_array($params['content'],array('html','body','meta','head','script','iframe','frameset','frame','form'));
-	if (empty($params['title']) || empty($params['content'])) return;
+	if (empty($params['title'])) return;
 	
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;
