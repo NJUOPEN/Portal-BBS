@@ -104,8 +104,8 @@
 }
 
 .postList-post-title {
-    font-size:large;
-    height:20px;
+    font-size:18px;
+    height:22px;
     overflow:hidden;
 }
 
@@ -208,13 +208,14 @@
 
 .head-pic-field {
     width:130px;
-    margin:10px;
+    max-height:200px;
 }
 
 .head-chain {
     width:130px;
     display:block;
     float:left;
+    margin:10px 0px 0px 10px;
 }
 
 .login-field-2-name {
