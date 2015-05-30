@@ -138,6 +138,7 @@
 .post-head-pic-field {
     width:130px;
     margin:10px;
+    max-height:200px;
 }
 
 .post-head-chain {
