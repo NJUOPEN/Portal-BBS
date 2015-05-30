@@ -106,10 +106,11 @@ function showPostView($params)
 			$page_link[$i]=array($temp,'?action=postView&PostID='.$params['PostID'].'&page='.$temp);
 	}
 }
+
 // 发布帖子
 function doPost($params) {
 	if (!isset($_SESSION['SysID'])) return;
-	$params['title']=substr(xss_safe($params['title']),0,100);
+	$params['title']=mb_strcut(xss_safe($params['title']),0,100);
 	$params['content']=strip_tag_array($params['content'],array('html','body','meta','head','script','iframe','frameset','frame','form'));
 	if (empty($params['title'])) return;
 	
