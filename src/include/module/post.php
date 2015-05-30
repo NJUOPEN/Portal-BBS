@@ -146,9 +146,8 @@ function showPost($params) {	//根据Session中缓存PostID决定访客所处位
 function doPost($params) {
 	if (!isset($_SESSION['SysID'])) return;
 	if (!isset($_SESSION['SectionID'])) return;
-	$params['title']=substr(xss_safe($params['title']),0,100);
-	$params['content']=strip_tag_array($params['content'],array('html','body','meta','head','script','iframe','frameset','frame','form'));
-	if (empty($params['title']) || empty($params['content'])) return;
+	$params['title']=mb_strcut(xss_safe($params['title']),0,100);	$params['content']=strip_tag_array($params['content'],array('html','body','meta','head','script','iframe','frameset','frame','form'));
+	if (empty($params['title'])) return;
 	
 	require_once(BBS_ROOT.'/include/module/SQL.php');
 	$newPost = new SQL_Post;

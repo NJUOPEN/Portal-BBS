@@ -35,7 +35,13 @@
                         <img class="postList-post-author-avatar" src="<?php echo $post_list[$i-1]['AuthorAvatar'];?>" />
                         <div class="postList-post-title">
                             <a target="_blank" href="<?php echo '?action=postView&PostID='.$post_list[$i-1][PostID];?>">
-                                 <?php echo $post_list[$i-1]['Title'];?>
+                                
+                                <?php
+                                    if (mb_strlen($post_list[$i-1]['Title'])<75)
+                                        echo $post_list[$i-1]['Title'];
+                                    else
+                                        echo mb_strcut($post_list[$i-1]['Title'],0,75).'...';
+                                ?>
                             </a>
                         </div>
                         <div class="postList-post-detail">

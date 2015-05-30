@@ -58,6 +58,7 @@
 	margin:0px 0px 0px 2px;
 	font-weight:bold;
 	font-size:larger;
+        word-wrap:break-word;
 }
 
 .post-detail-field {
@@ -174,6 +175,7 @@
 .post-head-pic-field {
     width:130px;
     margin:10px;
+    max-height:200px;
 }
 
 .post-head-chain {
